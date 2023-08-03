@@ -1,0 +1,104 @@
+.navbar01 ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #013737;
+  height: 80px;
+  color: white;
+  list-style-type: none;
+  margin: 0%;
+  padding: 0%;
+  position: relative;
+  z-index: 1;
+}
+.navbar01 ul li {
+  margin: 20px;
+  cursor: pointer;
+}
+.navbar01 ul li:nth-child(1) img {
+  height: 90px;
+  padding-top: 30px;
+  border-right: 1px solid #fe4200;
+}
+.navbar01 ul li:nth-child(2) {
+  color: red;
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: auto;
+}
+.navbar01 ul li:nth-child(4) {
+  background-color: #fe4200;
+  padding: 10px;
+}
+.navbar02 {
+  background-color: rgba(0, 0, 0, 0.055);
+  box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+}
+.navbar02ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0%;
+  padding: 10px;
+  height: fit-content;
+  list-style-type: none;
+  /* box-sizing: border-box; */
+}
+.navbar02 ul li {
+  margin: 0 20px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 0;
+}
+.navbar02 ul li:hover {
+  background-color: #fe4200;
+}
+.navbar03 ul {
+  display: none;
+  list-style-type: none;
+}
+
+/* Media Queries Started */
+@media screen and (max-width: 520px) {
+  .navbar02 ul {
+    flex-direction: column;
+  }
+  .navbar02 ul {
+    display: none;
+  }
+  .navbar03 ul {
+    display: flex;
+    flex-direction: row;
+  }
+  .navbar03 ul li:nth-child(2) {
+    margin-left: auto;
+  }
+}
+@media screen and (max-width: 780px) {
+  .navbar01 ul li:nth-child(3) {
+    display: none;
+  }
+  .navbar01 ul li:nth-child(1) img {
+    height: 70px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .navbar01 ul {
+    height: 60px;
+  }
+  .navbar01 ul li:nth-child(1) img {
+    height: 50px;
+  }
+  .navbar01 ul li:nth-child(2) {
+    font-size: 20px;
+  }
+  .navbar01 ul li:nth-child(4) {
+    background-color: #fe4200;
+    padding: 3px;
+  }
+}
