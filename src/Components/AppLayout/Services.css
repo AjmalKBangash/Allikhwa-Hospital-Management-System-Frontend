@@ -1,0 +1,25 @@
+.servicestop {
+  border: 10px solid #0137371a;
+}
+
+.servicestop p {
+  height: 20%;
+  padding: 5%;
+}
+.servicestop p ul {
+  margin: 2%;
+}
+
+.servicestop ul li {
+  background-color: #0137375d;
+  margin: 2px 2px 2px 20px;
+  width: 50%;
+  list-style-type: square;
+  padding: 5px;
+}
+
+@media screen and (max-width: 900px) {
+  .servicestop ul li {
+    width: 90%;
+  }
+}

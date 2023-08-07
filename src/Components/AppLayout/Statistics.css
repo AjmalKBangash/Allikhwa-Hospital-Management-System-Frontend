@@ -1,0 +1,62 @@
+/* * {
+  border: 1px solid green;
+} */
+
+.backgImageStatistics {
+  /* height: 400px; */
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: inline-block;
+  column-count: 4;
+  column-width: 25%; */
+}
+.backgImageStatistics::before {
+  height: 400px;
+  width: 100%;
+  content: "";
+  background-image: url("https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  position: absolute;
+}
+.statiscsIcons {
+  margin: 5%;
+  margin-bottom: 100px;
+  z-index: 1;
+}
+.statiscsIcons h1 {
+  color: #ff4400;
+}
+.statIcons {
+  font-size: 80px;
+  margin: 10px;
+  padding: 20px;
+  color: #fe4200;
+  background-color: rgba(255, 255, 255, 0.637);
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 860px) {
+  .statIcons {
+    font-size: 60px;
+    margin: 10px;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .statIcons {
+    font-size: 40px;
+    margin: 8px;
+    padding: 8px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .backgImageStatistics {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
+}

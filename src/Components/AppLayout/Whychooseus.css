@@ -1,0 +1,39 @@
+.whychooseustop {
+  margin: 8% 0 8% 0;
+}
+.whychooseus {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10%;
+}
+h1 {
+  background-color: rgba(0, 0, 0, 0.096);
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 25px;
+  width: fit-content;
+  margin: auto;
+}
+.whychooseus h4 {
+  margin-bottom: 20px;
+}
+.whychooseus p {
+  margin: 5% 5%;
+  padding: 5%;
+  font-size: 20px;
+  border-right: 1px solid #fe4200;
+  transform: scaleX();
+}
+.laboratory {
+  font-size: 150px;
+  color: #fe4200;
+  margin: 12% 0% 0 0;
+}
+
+@media screen and (max-width: 900px) {
+  .whychooseus {
+    display: grid;
+    /* grid-template-columns: 70% 30%; */
+    grid-column-gap: 3%;
+  }
+}
