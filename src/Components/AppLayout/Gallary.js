@@ -1,6 +1,7 @@
 import "./Gallary.css";
 
 import React, { useRef, useState } from "react";
+import { Fade } from "react-reveal";
 
 const photos = [
   {
@@ -107,23 +108,25 @@ function Gallary() {
       <div className="Gallary">
         {photos.map((photo, id) => {
           return (
-            <div
-              //   key={id}
-              className="pics"
-              onClick={() => {
-                ViewImage(photo);
-              }}
-            >
-              <img
-                // ref={ref}
-                key={photo.id}
-                src={photo.src}
-                style={{
-                  width: "100%",
-                  height: "fit-content",
+            <Fade top distance="100%" duration="3000">
+              <div
+                //   key={id}
+                className="pics"
+                onClick={() => {
+                  ViewImage(photo);
                 }}
-              ></img>
-            </div>
+              >
+                <img
+                  // ref={ref}
+                  key={photo.id}
+                  src={photo.src}
+                  style={{
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                ></img>
+              </div>
+            </Fade>
           );
         })}
       </div>

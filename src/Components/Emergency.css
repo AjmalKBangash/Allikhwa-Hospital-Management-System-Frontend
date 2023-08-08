@@ -1,0 +1,35 @@
+.emergencytop {
+  /* display: flex; */
+  margin: 3% 10%;
+}
+
+.emergencyQuestions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3%;
+}
+.emergencyQuestions h3 {
+  padding: 10px;
+  /* margin: 20px; */
+  background-color: #fe4200;
+  border-radius: 4px;
+  color: white;
+}
+.emergencyQuestions p {
+  margin: 10px 0;
+}
+.reachingEmergency p {
+  margin: 3%;
+  background-color: #0137375d;
+  padding: 10px;
+  border-radius: 4px;
+}
+.reachingEmergency span {
+  color: red;
+  border-bottom: 1px solid #fe4200;
+}
+.reachingEmergency span:hover {
+  cursor: pointer;
+}

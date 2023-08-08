@@ -33,7 +33,8 @@
   font-size: 30px;
   margin-left: auto;
 }
-.navbar01 ul li:nth-child(4) {
+.donate {
+  color: white;
   background-color: #fe4200;
   padding: 10px;
 }
@@ -106,14 +107,14 @@
 }
 .navbar03 ul li {
   padding: 10px;
+  background-color: #fe4200;
 }
-.navbar03 ul li Link:hover {
+.navbar03 ul li:hover {
   background-color: #fe4200;
   cursor: pointer;
 }
-.navbar03 ul li:nth-child(2) {
-  margin-left: auto;
-}
+/* .navbar03 ul li:nth-child(2) {
+} */
 
 /* Media Queries Started */
 /* 2nd one media query */
@@ -160,6 +161,12 @@
     flex-direction: column;
     display: none;
   }
+  .navbar02 ul li {
+    /* background-color: #0137375d; */
+    margin: 2px;
+    width: 100%;
+  }
+
   .navbar03 ul {
     display: flex;
     flex-direction: row;

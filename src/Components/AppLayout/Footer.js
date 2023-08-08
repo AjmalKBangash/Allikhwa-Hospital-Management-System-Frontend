@@ -1,39 +1,43 @@
 import "./Footer.css";
 import FooterSocialMedia from "/home/ajay/Desktop/FYP/allikhwa/src/Media/FooterSocialMedia.webp";
+import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
+
 function Footer() {
   return (
     <>
-      <div className="containerFooter">
+      <div className="containerFootertop">
         <hr />
         <div className="linksEtc">
-          <span className="inLinks1">
-            <h4>Customer Care</h4>
+          <span className="inLinks4 footerParagraphs">
+            <img
+              src={AllikhwaLogo}
+              style={{
+                height: "80px",
+              }}
+            ></img>
+            <p>
+              {" "}
+              All'Ikhwa Medical Hospital aims to deliver a comprehensive range
+              of preventive, curative, rehabilitative, emergency and educational
+              health services with compassion to the people in KPK, through its
+              healthcare facilities and services with a view to raising the
+              long-term health status of community.{" "}
+            </p>
+          </span>
+          <span className="inLinks1 footerParagraphs">
+            <h4>Patient Care</h4>
             <ul>
+              <li>Help Center</li>
               <li>
-                {/* he anchor tag  in react should not be used because it rerenders the component and to avoid it we are having react router */}
-                Help Center
-              </li>
-              <li>How to buy</li>
-              <li>Corporate and bulk purchasing</li>
-              <li>
-                {/* <a target="_blank" rel="noreferrer" href="#"> */}
-                Returns and Refunds
-                {/* </a> */}
-              </li>
-              <li>
-                {/* <a target="_blank" rel="noreferrer" href="#"> */}
-                Pharma Shop
-                {/* </a> */}
-              </li>
-              <li>
-                {/* <a target="_blank" rel="noreferrer" href="#"> */}
-                Contact Us
-                {/* </a> */}
-              </li>
-              <li>
-                {/* <a target="_blank" rel="noreferrer" href="#"> */}
-                Purchase Protection
-                {/* </a> */}
+                eStore
+                <ul>
+                  <li>Corporate and bulk purchasing</li>
+                  <li>Returns and Refunds</li>
+                  <li>Pharma Shop</li>
+                  <li>Contact Us</li>
+                  <li>Purchase Protection</li>
+                </ul>
+                <li>About Pharmacy</li>
               </li>
             </ul>
           </span>
@@ -51,22 +55,11 @@ function Footer() {
             <p className="footerParagraphs">
               We collect data for a better user experience and our data includes
               your address, sites yo visited for a better product interests. We
-              will also be sending you emails base on yor interest to entertain
-              you with our customer care
+              will also be sending you emails base on your interest to entertain
+              you with our customer care.
             </p>
           </span>
         </div>
-        {/* <hr /> */}
-        {/* <div className="linksEtc">
-          <span className="inPrivacy"></span>
-          <span className="inPrivacy">
-            <p className="footerParagraphs"></p>
-          </span>
-          <span className="inPrivacy">
-            <p className="footerParagraphs"></p>
-          </span>
-          <span className="inPrivacy"></span>
-        </div> */}
         <div className="copyRight">
           <span> &#169; ParmaStore 2023</span>
           <img
@@ -76,7 +69,7 @@ function Footer() {
             style={{
               height: "80px",
               //   width: "auto",
-              margin: "0px 10px 0 60%",
+              margin: "0px 10px 0 auto",
             }}
           />
           <map name={"image_map"}>

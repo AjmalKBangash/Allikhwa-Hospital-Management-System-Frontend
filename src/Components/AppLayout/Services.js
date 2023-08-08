@@ -1,4 +1,5 @@
 import "./Services.css";
+import { Zoom } from "react-reveal";
 
 function Services() {
   return (
@@ -11,14 +12,30 @@ function Services() {
           bringing Health with joy, treatement with purity, patient care with
           kindness. We hope the best for all and healthy life.
           <ul>
-            <li>Qualified Staff</li>
-            <li>Doctors with having 10+ years of experience</li>
-            <li>Patient Care</li>
-            <li>Nurses</li>
-            <li>Phyciatrist</li>
-            <li>Dermatologists</li>
-            <li>House Officers for Future</li>
-            <li>Job Openings</li>
+            <Zoom left duration="3000">
+              <li>Qualified Staff</li>
+            </Zoom>
+            <Zoom right duration="3000">
+              <li>Doctors with having 10+ years of experience</li>
+            </Zoom>
+            <Zoom left duration="3000">
+              <li>Patient Care</li>
+            </Zoom>
+            <Zoom right duration="3000">
+              <li>Nurses</li>
+            </Zoom>
+            <Zoom left duration="3000">
+              <li>Phyciatrist</li>
+            </Zoom>
+            <Zoom right duration="3000">
+              <li>Dermatologists</li>
+            </Zoom>
+            <Zoom left duration="3000">
+              <li>House Officers for Future</li>
+            </Zoom>
+            <Zoom right duration="3000">
+              <li>Job Openings</li>
+            </Zoom>
           </ul>
         </p>
         <div></div>

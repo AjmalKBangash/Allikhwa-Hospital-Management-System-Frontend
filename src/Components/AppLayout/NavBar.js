@@ -1,4 +1,5 @@
 import "./NavBar.css";
+import Emergency from "../Emergency";
 import { ImWhatsapp } from "react-icons/im";
 import { HiMenuAlt3 } from "react-icons/hi";
 import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
@@ -285,11 +286,16 @@ function NavBar() {
     <div style={{ position: "relative", zIndex: "2" }}>
       <div className="navbar01">
         <ul>
+          <Link to={"/"}>
+            <li>
+              <img src={AllikhwaLogo} />
+            </li>
+          </Link>
+
           <li>
-            <img src={AllikhwaLogo} />
-          </li>
-          <li>
-            <span>EMERGENCY</span>
+            <Link to={"/Emergency"} className="linkk" style={{ color: "red" }}>
+              <span>EMERGENCY</span>
+            </Link>
           </li>
           <li>
             <div style={{ display: "flex", alignItems: "center" }}>
@@ -303,15 +309,21 @@ function NavBar() {
               <span>92 3334483486</span>
             </div>
           </li>
-          <li>Donate Now</li>
+          <Link to={"/Donate"} className="linkk ">
+            <li className="donate">Donate Now</li>
+          </Link>
         </ul>
       </div>
       <div className="navbar02">
         <div className="navbar03">
           <ul>
-            <li>HOME</li>
             <li>
-              <HiMenuAlt3 onClick={displayMenu} />
+              <Link className="linkk ">HOME</Link>
+            </li>
+            <li onClick={displayMenu}>
+              <Link className="linkk ">
+                <HiMenuAlt3 />
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,6 +1,9 @@
 import "./App.css";
 import NavBar from "./Components/AppLayout/NavBar";
+import Emergency from "./Components/Emergency";
+import Donate from "./Components/Donate";
 import Statistics from "./Components/AppLayout/Statistics";
+import Administration from "./Components/AppLayout/Administration";
 import Estore from "./Components/eStore/Estore";
 import Gallary from "./Components/AppLayout/Gallary";
 import Services from "./Components/AppLayout/Services";
@@ -22,6 +25,8 @@ const theRoutes = createBrowserRouter(
     <>
       <Route path="/" element={<AppLayout />}></Route>
       <Route path="/eStore" element={<Estore />} />
+      <Route path="/Emergency" element={<Emergency />}></Route>
+      <Route path="/Donate" element={<Donate />}></Route>
     </>
   )
 );
@@ -42,14 +47,15 @@ function AppLayout() {
       <NavBar />
       <Container fixed style={{ overflow: "hidden", marginTop: "65px" }}>
         <Statistics />
+        <hr />
+        <Administration />
         {/* <hr /> */}
         {/* <Gallary /> */}
-        <hr />
         <Whychooseus />
         <Services />
         <Gallary />
-        <Footer />
       </Container>
+      <Footer />
     </>
   );
 }

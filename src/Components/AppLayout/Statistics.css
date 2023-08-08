@@ -1,16 +1,30 @@
-/* * {
-  border: 1px solid green;
-} */
+.statisticsonlineconsul {
+  padding: 10px;
+  font-size: 20px;
+  background-color: #fe4200;
+  border-radius: 4px;
+  color: white;
+  z-index: 1;
+  text-align: start;
+  margin-bottom: 60px;
+}
+.statisticsonlineconsul:hover {
+  cursor: pointer;
+}
+.statisticsonlineconsularrow {
+  /* position: absolute; */
+  font-size: 30px;
+  margin-left: 57%;
+}
+.statisticsonlineconsularrow:hover {
+  transform: translateX(15%);
+}
 
 .backgImageStatistics {
-  /* height: 400px; */
-  z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: inline-block;
-  column-count: 4;
-  column-width: 25%; */
+  margin: 30px;
 }
 .backgImageStatistics::before {
   height: 400px;
@@ -48,7 +62,7 @@
 }
 @media screen and (max-width: 620px) {
   .statIcons {
-    font-size: 40px;
+    font-size: 50px;
     margin: 8px;
     padding: 8px;
   }
