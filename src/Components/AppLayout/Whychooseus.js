@@ -16,7 +16,7 @@ function Whychooseus() {
         patients with kindness and proper procedures.
       </p> */}
       <div className="whychooseus">
-        <Zoom left duration="3000">
+        <Zoom left duration="2000">
           <p>
             <h4>All'Ikhwa Accreditation</h4>
             Our Hospital is based upon our country accreditation council and our
@@ -26,13 +26,13 @@ function Whychooseus() {
             serving of patients with kindness and proper procedures.
           </p>
         </Zoom>
-        <Zoom right duration="3000">
+        <Zoom right duration="2000">
           <TbListDetails className="laboratory" />
         </Zoom>
-        <Zoom left duration="3000">
+        <Zoom left duration="2000">
           <LuMicroscope className="laboratory" />
         </Zoom>
-        <Zoom right duration="3000">
+        <Zoom right duration="2000">
           <p>
             <h4>All'Ikhwa Laboratory</h4>
             In the minimum years after its existence ALL"IKHWA proved it patient
@@ -40,7 +40,7 @@ function Whychooseus() {
             world top most computer based technology.
           </p>
         </Zoom>
-        <Zoom left duration="3000">
+        <Zoom left duration="2000">
           <p>
             <h4>All'Ikhwa Qualified Staff </h4>
             In the minimum years after its existence ALL"IKHWA proved it patient
@@ -49,13 +49,13 @@ function Whychooseus() {
           </p>
         </Zoom>
 
-        <Zoom right duration="3000">
+        <Zoom right duration="2000">
           <FaPeopleLine className="laboratory" />
         </Zoom>
-        <Zoom left duration="3000">
+        <Zoom left duration="2000">
           <BiStreetView className="laboratory" />
         </Zoom>
-        <Zoom right duration="3000">
+        <Zoom right duration="2000">
           <p>
             <h4>All'Ikhwa Treatments and Conditions</h4>
             All'Ikhwa chooses treatments upon the latest innovative proved

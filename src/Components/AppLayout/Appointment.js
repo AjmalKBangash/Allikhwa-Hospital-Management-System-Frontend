@@ -1,8 +1,7 @@
-import "./Donate.css";
-import NavBar from "./AppLayout/NavBar";
-import Footer from "./AppLayout/Footer";
-import { Zoom } from "react-reveal";
-import CountryList from "./JSX/CountryList";
+import "./Appointment.css";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import { useRef } from "react";
 
 const countries = [
   {
@@ -67,7 +66,40 @@ const countries = [
   },
 ];
 
-function Donate() {
+function Appointment() {
+  let ref1 = useRef();
+  let ref2 = useRef();
+  let valid = useRef(0);
+
+  function physicalappointmentFun() {
+    if (ref1.current.checked) {
+      //   valid.current = valid.current + 1;
+      console.log("clicked");
+      //   console.log(valid.current);
+      ref2.current.checked = false;
+      //   if (valid.current >= 2) {
+      //     ref2.current.checked = false;
+      //     console.log("plz select only one!");
+      //   }
+      //   else ref1.current.checked = true;
+    }
+  }
+
+  function onlineappointmentFun() {
+    if (ref2.current.checked) {
+      //   valid.current = valid.current + 1;
+      console.log("clicked2");
+      //   console.log(valid.current);
+      ref1.current.checked = false;
+
+      //   if (valid.current >= 2) {
+      //     ref1.current.checked = false;
+      //     console.log("plz select only one!");
+      //   }
+      //   else ref2.current.checked = true;
+    }
+  }
+
   return (
     <>
       <NavBar />
@@ -75,81 +107,33 @@ function Donate() {
         {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
         <div
           className="statisticsonlineconsul"
-          style={{ width: "fit-content", margin: "auto auto 10px auto" }}
+          style={{ width: "fit-content", margin: "auto" }}
         >
-          Donation{" "}
+          Appointment Services
         </div>
-        {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
-        <div
-          className="statisticsonlineconsul"
-          style={{
-            width: "fit-content",
-            height: "fir-content",
-            margin: "auto auto 10px auto",
-            backgroundColor: "black",
-            color: "white",
-            padding: "50px",
-            boxSizing: "border-box",
-          }}
-        >
-          Giving a little is better than not giving at all!
-          <br />
-          <span
-            style={{
-              color: "#fe4200",
-              fontSize: "12px",
-            }}
-          >
-            By Jennefer Bets
-          </span>
-        </div>
-        {/* <img
-          src={
-            "https://cf.ltkcdn.net/charity/images/std/266980-800x600r1-fundraising-quotes.webp"
-          }
-          style={{
-            border: "4px solid #fe4200",
-            // height: "400px",
-            margin: " 0 0 0 7%",
-          }}
-        /> */}
         <span>
-          <div>WE VALUE YOUR DONATION</div>
-          <div>THROUGH YOUR DONATION WE SERVE HUMANITY</div>
+          <div>WE ARE AT YOUR SERVICE</div>
+          <div>USE THIS FORM ONLY FOR AN APPOINTMENT</div>
         </span>
         <p>
-          Your donation is a gift for charity, humanitarian aid, or to benefit a
-          cause. Your donation may take various forms, including money, alms,
-          services, or goods such as clothing, toys, food, or vehicles. Your
-          donation may satisfy medical needs such as blood or organs for
-          transplant. Which we are in severe need due to currently evolving
-          number of patients.
+          After you submit the form, a representative will call you back with
+          the information you’ll need to make an appointment. You may also speak
+          with a representative directly Monday–Friday, 8:30 am to 5:00 pm EST
+          by calling 0092 3334483486.{" "}
+          <h4>
+            ALL FIELDS ARE MANDATORY FOR YOUR APPOINTMENT PLEASE PROVIDE VALID
+            INFORMATION.
+          </h4>
+          <br />
+          <br />
+          <h4>Please call 1122 if you are experiencing a medical emergency.</h4>
         </p>
-        <h3>Submit Your Donation</h3>
+        <h3>Submit Your Appointment Details:</h3>
         <form id="donationForm" className="donationformclass">
           <label for="name">Name</label>
           <input id="name" type="text" placeholder="Enter Your Name" />
           <label for="email">Email</label>
           <input id="email" type="email" placeholder="Enter Your Email"></input>
-          <label for="country">Choose Country:</label>
-          <select
-            type="select"
-            id="country"
-            name="countrylist"
-            form="donationForm"
-          >
-            <option value={""} disabled selected>
-              ..select an option..
-            </option>
-
-            {countries.map((country, id) => {
-              return (
-                <option key={id} value={country.name}>
-                  {country.name}
-                </option>
-              );
-            })}
-          </select>{" "}
           <label for="city">Choose City</label>
           <select type="select" id="city" name="carlist" form="donationForm">
             <option value={""} disabled selected>
@@ -158,7 +142,7 @@ function Donate() {
             </option>
             {countries.map((country, id) => {
               return (
-                <option key={id} value={country.name}>
+                <option key={id} value={country.capital}>
                   {country.capital}
                 </option>
               );
@@ -212,37 +196,46 @@ function Donate() {
                 value="informphone"
               />
             </span>
-            {/* <input type="submit" value="Submit" /> */}
           </div>
-          <div className="finalstepduringdonation">
-            <h3>Complete Your Payment</h3>
+          <div className="emailingduringdonation">
+            <h3>Please select one out of two</h3>
             <p>
-              You can complete your payment by contacting with one of our staff
-              member or you ca directly deposit your money through your
-              easypaisa account or your band debit cards. We accept following
-              debit cards.
-              <ul>
-                <li>Faysal Bank Platinum Debit Card</li>
-                <li>Allied Cash Shop Sapphire 200 Visa Debit Card</li>
-                <li>Meezan Titanium Debit Card</li>
-                <li>Allied PayPak Assan Debit Card</li>
-                <li>BOP MasterCard Debit Card – Platinum</li>
-              </ul>
+              You will be contacted soon from our staff member within 24 hours
+              but if we did not reached you, You can simply contact us through
+              0092 3334483486
             </p>
-            <label for="Price">Price</label>
-            <input id="Price" type="text" placeholder="Enter Your Price" />
-            <label for="creditordebitcard">credit or debit card</label>
-            <input
-              id="creditordebitcard"
-              type="creditordebitcard"
-              placeholder="Enter Your credit or debit card num"
-            ></input>
+            <span>
+              <label htmlfor="physicalappointment">
+                {" "}
+                Physical Appointment{" "}
+              </label>
+              <input
+                ref={ref1}
+                type="checkbox"
+                id="physicalappointment"
+                name="physicalappointment"
+                value="physicalappointment"
+                onClick={physicalappointmentFun}
+              />
+            </span>
+            <span>
+              <label htmlfor="onlineappointment"> Online Appointment </label>
+              <input
+                ref={ref2}
+                type="checkbox"
+                id="onlineappointment"
+                name="onlineappointment"
+                value="onlineappointment"
+                onClick={onlineappointmentFun}
+              />
+            </span>
           </div>
-          <button type="submit">Donate</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
       <Footer />
     </>
   );
 }
-export default Donate;
+
+export default Appointment;

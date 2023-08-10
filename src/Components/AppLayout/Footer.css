@@ -29,11 +29,8 @@ h4 {
 }
 .inLinks1 {
   width: 20%;
-  /* padding: 0 20px; */
 }
-.inLinks1 ul li {
-  list-style-type: square;
-}
+
 .inLinks2 {
   width: 20%;
 }

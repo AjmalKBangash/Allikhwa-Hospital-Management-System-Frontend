@@ -5,10 +5,12 @@
 
 .emergencyQuestions {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  /* flex-wrap: wrap; */
   align-items: center;
   margin: 3%;
+  font-size: 13px;
 }
 .emergencyQuestions h3 {
   padding: 10px;
@@ -18,7 +20,7 @@
   color: white;
 }
 .emergencyQuestions p {
-  margin: 10px 0;
+  margin: 5px;
 }
 .reachingEmergency p {
   margin: 3%;
@@ -32,4 +34,10 @@
 }
 .reachingEmergency span:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 720px) {
+  .emergencyQuestions {
+    flex-direction: column;
+  }
 }

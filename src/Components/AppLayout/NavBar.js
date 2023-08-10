@@ -3,13 +3,13 @@ import Emergency from "../Emergency";
 import { ImWhatsapp } from "react-icons/im";
 import { HiMenuAlt3 } from "react-icons/hi";
 import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 
-const wholesaledrugs = [
+const departments = [
   {
     id: "1",
-    name: "Vigoor",
+    name: "CARDIOLOGY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
     description:
       "Used in men who do not make enough of a natural substance called testosterone ",
@@ -19,7 +19,7 @@ const wholesaledrugs = [
   },
   {
     id: "2",
-    name: "Alatrol",
+    name: "ENDOCRINOLOGY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -29,7 +29,7 @@ const wholesaledrugs = [
   },
   {
     id: "3",
-    name: "Sildenafil",
+    name: "ENT",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -39,7 +39,7 @@ const wholesaledrugs = [
   },
   {
     id: "4",
-    name: "Azythromycin",
+    name: "EYE",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -49,7 +49,7 @@ const wholesaledrugs = [
   },
   {
     id: "5",
-    name: "Physica",
+    name: "PHYSICA",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -59,7 +59,7 @@ const wholesaledrugs = [
   },
   {
     id: "6",
-    name: "Sperex",
+    name: "GASTROENTEROLOGY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
     description:
       "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
@@ -69,7 +69,7 @@ const wholesaledrugs = [
   },
   {
     id: "7",
-    name: "Avetex",
+    name: "GYNAE",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -79,7 +79,7 @@ const wholesaledrugs = [
   },
   {
     id: "8",
-    name: "Zolpidem",
+    name: "    MAXILLOFACIAL AND DENTISTRY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -88,8 +88,28 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "3",
-    name: "Sildenafil",
+    id: "9",
+    name: "    DEPTT OF ORTHOPEDIC & SPINE SURGERY",
+    pic: "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
+    description:
+      "Used in men who do not make enough of a natural substance called testosterone ",
+    price: 700,
+    discount: 10,
+    category: "wholeSale",
+  },
+  {
+    id: "10",
+    name: "PATHOLOGY",
+    pic: "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
+    description:
+      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+    price: 700,
+    discount: 20,
+    category: "wholeSale",
+  },
+  {
+    id: "11",
+    name: "PEADS",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -98,8 +118,8 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "4",
-    name: "Azythromycin",
+    id: "12",
+    name: "    PLASTIC SURGERY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -108,8 +128,8 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "5",
-    name: "Physica",
+    id: "13",
+    name: "RADIOLOGY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -118,8 +138,8 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "6",
-    name: "Sperex",
+    id: "14",
+    name: "SURGICAL",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
     description:
       "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
@@ -128,8 +148,8 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "7",
-    name: "Avetex",
+    id: "15",
+    name: "    ACCIDENT AND EMERGENCY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -138,8 +158,8 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "8",
-    name: "Zolpidem",
+    id: "16",
+    name: "    HUMAN RESOURCEY",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -148,8 +168,38 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "3",
-    name: "Sildenafil",
+    id: "17",
+    name: " ONCOLOGY",
+    pic: "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
+    description:
+      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+    price: 700,
+    discount: 20,
+    category: "wholeSale",
+  },
+  {
+    id: "18",
+    name: "       IT DEPARTMENT",
+    pic: "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
+    description:
+      "Used in men who do not make enough of a natural substance called testosterone ",
+    price: 700,
+    discount: 10,
+    category: "wholeSale",
+  },
+  {
+    id: "19",
+    name: "    BIOMEDICAL ENGINEERING",
+    pic: "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
+    description:
+      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+    price: 700,
+    discount: 20,
+    category: "wholeSale",
+  },
+  {
+    id: "20",
+    name: "    PURCHASE AND PROCUREMENT",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
@@ -158,119 +208,28 @@ const wholesaledrugs = [
     category: "wholeSale",
   },
   {
-    id: "4",
-    name: "Azythromycin",
+    id: "21",
+    name: "        DEPARTMENT OF ANESTHESIA AND PAIN MANAGEMENT",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
     description:
       "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
     price: 150,
     discount: 32,
-    category: "wholeSale",
-  },
-  {
-    id: "5",
-    name: "Physica",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 650,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "6",
-    name: "Sperex",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
-    description:
-      "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
-    price: 30,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "7",
-    name: "Avetex",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 90,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "8",
-    name: "Zolpidem",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 700,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "3",
-    name: "Sildenafil",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 400,
-    discount: 50,
-    category: "wholeSale",
-  },
-  {
-    id: "4",
-    name: "Azythromycin",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 150,
-    discount: 32,
-    category: "wholeSale",
-  },
-  {
-    id: "5",
-    name: "Physica",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 650,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "6",
-    name: "Sperex",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
-    description:
-      "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
-    price: 30,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "7",
-    name: "Avetex",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 90,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "8",
-    name: "Zolpidem",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 700,
-    discount: 20,
     category: "wholeSale",
   },
 ];
 
+const slugify = (str) =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 function NavBar() {
   const [displayState, setDisplayState] = useState(false);
+  let { departmentname } = useParams();
   // const [nestedDepartState, setNestedDepartState] = useState(false);
   // const refNestedDepartment = useRef();
 
@@ -281,6 +240,12 @@ function NavBar() {
   //   setNestedDepartState(!nestedDepartState);
   //   console.log("Salam");
   // }
+  function navbardepartmentlisthoverFunOver(e) {
+    e.target.style.color = "#fe4200";
+  }
+  function navbardepartmentlisthoverFunOut(e) {
+    e.target.style.color = "black";
+  }
 
   return (
     <div style={{ position: "relative", zIndex: "2" }}>
@@ -334,10 +299,10 @@ function NavBar() {
           }}
           className="navbar02ul"
         >
-          <li
-          // onClick={nestedDepartmen}
-          >
-            <Link className="linkk linkk2">DEPARTMENTS</Link>
+          <li>
+            {/* <Link className="linkk linkk2"> */}
+            <span className="linkk2">DEPARTMENTS</span>
+            {/* </Link> */}
             <span style={{ color: "#fe4200" }}>&#x2193;</span>
             <ul
               // ref={refNestedDepartment}
@@ -345,11 +310,19 @@ function NavBar() {
               // style={{ display: nestedDepartState && "grid" }}
               // onMouseOut={nestedDepartment}
             >
-              {wholesaledrugs.map((drugs, id) => {
+              {departments.map((department, id) => {
                 return (
                   <>
-                    <li key={id}>
-                      <Link className="linkk">{drugs.name}</Link>
+                    <li key={id} className="navbardepartmentlisthover">
+                      <Link
+                        to={"http://localhost:3000/" + slugify(department.name)}
+                        state={{ department: department }}
+                        className="linkk "
+                        onMouseOver={navbardepartmentlisthoverFunOver}
+                        onMouseOut={navbardepartmentlisthoverFunOut}
+                      >
+                        {department.name}
+                      </Link>
                     </li>
                   </>
                 );
@@ -357,7 +330,9 @@ function NavBar() {
             </ul>
           </li>
           <li>
-            <Link className="linkk linkk2">SERVICES</Link>
+            <Link to={"/Appointment"} className="linkk linkk2">
+              SERVICES
+            </Link>
             <span style={{ color: "#fe4200" }}>&#x2193;</span>
           </li>
           <li>

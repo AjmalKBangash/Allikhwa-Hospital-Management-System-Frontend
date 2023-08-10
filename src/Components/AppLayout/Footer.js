@@ -26,20 +26,12 @@ function Footer() {
           </span>
           <span className="inLinks1 footerParagraphs">
             <h4>Patient Care</h4>
-            <ul>
-              <li>Help Center</li>
-              <li>
-                eStore
-                <ul>
-                  <li>Corporate and bulk purchasing</li>
-                  <li>Returns and Refunds</li>
-                  <li>Pharma Shop</li>
-                  <li>Contact Us</li>
-                  <li>Purchase Protection</li>
-                </ul>
-                <li>About Pharmacy</li>
-              </li>
-            </ul>
+            eStore
+            <li>Corporate and bulk purchasing</li>
+            <li>Returns and Refunds</li>
+            <li>Pharma Shop</li>
+            <li>Contact Us</li>
+            <li>Purchase Protection</li>
           </span>
           <span className="inLinks2">
             <h4>Pharma Store Contract</h4>

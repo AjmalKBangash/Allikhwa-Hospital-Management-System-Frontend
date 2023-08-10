@@ -48,7 +48,8 @@
 .donationformclass button:hover {
   cursor: pointer;
 }
-.emailingduringdonation {
+.emailingduringdonation,
+.finalstepduringdonation {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -57,4 +58,9 @@
   -moz-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
   margin: 10px;
   padding: 10px;
+}
+.finalstepduringdonation ul li {
+  list-style-type: square;
+  margin: 10px;
+  color: #013737;
 }

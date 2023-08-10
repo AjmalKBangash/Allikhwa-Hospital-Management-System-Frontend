@@ -8,10 +8,16 @@ function Emergency() {
     <>
       <NavBar />
       <div className="emergencytop">
-        <h1>Emergency</h1>
+        {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
+        <div
+          className="statisticsonlineconsul"
+          style={{ width: "fit-content", margin: "auto" }}
+        >
+          Emergency{" "}
+        </div>
         <div className="emergencyQuestions">
           <p>
-            <h3>What is Emergency ?</h3>
+            <h3>Our Emergency</h3>
             Sudden illness or injury requiring immediate physicians attention to
             prevent the danger and delay in treatment to save the precious part
             or life with minimum disability or death . Most common cause of
@@ -36,9 +42,9 @@ function Emergency() {
             basic and advance life care support.
           </p>
           <p>
-            <h3>TYPES OF EMERGENCY SERVICES</h3> Depending on size of hospital,
-            nature of injuries, population and catchments Area. The services may
-            be: EMERGENCY MAJOR EMERGENCY AND DISASTER MANGT. REFFERAL EMERGENCY
+            <h3>EMERGENCY SERVICES</h3> Depending on size of hospital, nature of
+            injuries, population and catchments Area. The services may be:
+            EMERGENCY MAJOR EMERGENCY AND DISASTER MANGT. REFFERAL EMERGENCY
             BASIC EMERGENCY OR ROUTINE WITH SP. ON CALL STAND BY EMERGENCY
           </p>
           <p>

@@ -1,0 +1,109 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  /* border: 1px solid brown; */
+}
+
+.departmentdetailstop {
+}
+
+.departdetailscontainer {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  margin: 4px 0 10px 0;
+}
+.departdetailscolumn01 {
+  /* border: 5px solid #fe4200; */
+  height: 100vh;
+  overflow: scroll;
+  position: sticky;
+  top: 0;
+}
+.departdetailscolumn01 ul {
+  display: flex;
+  flex-direction: column;
+  background-color: #013737;
+}
+.departdetailscolumn01 ul li {
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 2px;
+  margin: 2px 0 2px 0;
+  padding: 10px 100px 10px 10px;
+  border-bottom: 1px solid #fe44005b;
+}
+.departdetailscolumn01 ul li:hover {
+  cursor: pointer;
+  /* color: #fe4200;+ */
+}
+.departdetailcolumn02arrow {
+  font-size: 15px;
+  right: 2%;
+  position: absolute;
+  padding: 0% 3% 3% 88%;
+  color: white;
+}
+.departdetailcolumn02arrow:hover {
+  transform: translateX(2%);
+}
+.departdetailscolumn02Father {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px 0 0 0;
+}
+.departdetailscolumn02Father Footer {
+  width: 100vw;
+}
+.departdetailscolumn02 {
+  /* position: absolute; */
+}
+.departdetailscolumn02 ul li {
+  margin: 10px;
+  padding: 10px;
+}
+.departmentdetailsexplaining {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.departmentdetailsexplaining h4 {
+  margin: 20px;
+}
+@media screen and (max-width: 1000px) {
+  .departdetailscolumn01 ul li {
+    font-size: 13px;
+    font-weight: 400;
+    margin: 2px 0 2px 0;
+    padding: 10px 100px 10px 7px;
+  }
+}
+@media screen and (max-width: 820px) {
+  .departdetailscolumn01 ul li {
+    font-size: 12px;
+    font-weight: 300;
+    margin: 2px 0 2px 0;
+    padding: 10px 100px 10px 5px;
+  }
+}
+@media screen and (max-width: 760px) {
+  .departdetailscolumn01 ul li {
+    font-size: 9px;
+    font-weight: 300;
+    margin: 2px 0 2px 0;
+    padding: 10px 100px 10px 3px;
+  }
+}
+@media screen and (max-width: 680px) {
+  .departdetailscontainer {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 10px 0 10px 0;
+  }
+  .departdetailscolumn01 {
+    display: none;
+  }
+}

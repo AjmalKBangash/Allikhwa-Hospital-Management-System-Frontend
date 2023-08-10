@@ -1,0 +1,11 @@
+.doctorcard {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 300px;
+}
+.doctorimgincard {
+}
+.doctorcoverofimgtagsindoctorcard {
+  background-color: rgba(0, 0, 0, 0.171);
+}

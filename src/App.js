@@ -1,10 +1,13 @@
 import "./App.css";
 import NavBar from "./Components/AppLayout/NavBar";
+import Appointment from "./Components/AppLayout/Appointment";
 import Emergency from "./Components/Emergency";
 import Donate from "./Components/Donate";
+import Departmentdetails from "./Components/Departmentdetails";
 import Statistics from "./Components/AppLayout/Statistics";
 import Administration from "./Components/AppLayout/Administration";
 import Estore from "./Components/eStore/Estore";
+import Doctor from "./Components/Doctor";
 import Gallary from "./Components/AppLayout/Gallary";
 import Services from "./Components/AppLayout/Services";
 import Whychooseus from "./Components/AppLayout/Whychooseus";
@@ -27,6 +30,9 @@ const theRoutes = createBrowserRouter(
       <Route path="/eStore" element={<Estore />} />
       <Route path="/Emergency" element={<Emergency />}></Route>
       <Route path="/Donate" element={<Donate />}></Route>
+      <Route path="/Appointment" element={<Appointment />} />
+      <Route path="/:departmentdetails" element={<Departmentdetails />} />
+      <Route path="/doctor" element={<Doctor />} />
     </>
   )
 );

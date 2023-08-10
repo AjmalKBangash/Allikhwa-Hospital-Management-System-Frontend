@@ -3,8 +3,10 @@
   column-width: 0.06%;
   column-gap: 2px;
   padding: 0%;
+  height: 1000px;
   overflow: scroll;
   margin: auto;
+  border: 8px solid #013737;
 }
 .pics {
   border: 3px solid #fe4200;
