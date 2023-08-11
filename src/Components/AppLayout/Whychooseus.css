@@ -3,16 +3,18 @@
 }
 .whychooseus {
   display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 10%;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 0%;
+  height: 1000px;
 }
 h1 {
-  background-color: rgba(0, 0, 0, 0.096);
-  border-radius: 4px;
-  padding: 5px;
+  background-color: #013737;
+  border-radius: 8px;
+  padding: 10px;
   font-size: 25px;
-  width: fit-content;
-  margin: auto;
+  /* width: fit-co; */
+  color: white;
+  text-align: center;
 }
 .whychooseus h4 {
   margin-bottom: 10px;
@@ -23,10 +25,16 @@ h1 {
   font-size: 15px;
   border-right: 1px solid #fe4200;
 }
-.laboratory {
+/* .laboratory {
   font-size: 150px;
   color: #fe4200;
   margin: 12% 0% 0 0;
+} */
+.medicallabelsinwhychooseus {
+  height: 70%;
+  padding: 10px;
+  margin: auto;
+  border-radius: 20px;
 }
 
 @media screen and (max-width: 900px) {
@@ -39,11 +47,15 @@ h1 {
   .whychooseus p {
     margin: 2% 2%;
     padding: 2%;
-    font-size: 10px;
+    font-size: 14px;
   }
-  .laboratory {
+  .medicallabelsinwhychooseus {
+    height: 50%;
+    padding: 10px;
+  }
+  /* .laboratory {
     font-size: 50px;
     color: #fe4200;
     margin: 8% 0% 0 0;
-  }
+  } */
 }

@@ -1,11 +1,78 @@
+.doctortop {
+  margin: 3% 10%;
+}
+.doctordetails {
+  display: none;
+  flex-direction: row;
+  margin: 20px;
+}
+.col2indocdetails {
+  margin: 10px 30px;
+}
+
+/* Doctor Details Table */
+table.GeneratedTable {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: separate;
+  border-width: 0px;
+  border-color: #013737;
+  border-style: solid;
+  color: #000000;
+}
+
+table.GeneratedTable td,
+table.GeneratedTable th {
+  border-width: 1px;
+  border-color: #0137372c;
+  border-style: solid;
+  padding: 10px;
+}
+
+table.GeneratedTable thead {
+  background-color: #fe4200;
+}
+
+.doctorslider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 .doctorcard {
   display: flex;
   flex-direction: column;
-  height: 400px;
-  width: 300px;
+  height: 380px;
+  width: 250px;
+  margin: 10px;
 }
-.doctorimgincard {
+.jobtitleincard {
+  color: rgba(0, 0, 0, 0.555);
 }
 .doctorcoverofimgtagsindoctorcard {
-  background-color: rgba(0, 0, 0, 0.171);
+  background-color: rgba(0, 0, 0, 0.055);
+  padding: 4px;
+}
+.fblogosincard {
+  font-size: 35px;
+  color: #fe4200;
+  /* width: 33%; */
+  margin: 8px 0;
+}
+.viewdetailsincard {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fe4200;
+  border: 2px solid #fe4200;
+  width: fit-content;
+  height: fit-content;
+  margin: 12px 0 0px auto;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.viewdetailsincard:hover {
+  background-color: #013737;
+  /* color: white; this will not work due to Link of reacr router */
+  /* cursor: pointer; this wil pre work bc of react router */
 }

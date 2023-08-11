@@ -8,60 +8,134 @@ import { BsArrowRight } from "react-icons/bs";
 import CountUp from "react-countup";
 import { Link } from "react-router-dom";
 
+const news = [
+  {
+    id: 1,
+    title:
+      "Massachusetts General Hospital Launches First-of-its-Kind Center for Clinical Transplant Tolerance",
+  },
+  {
+    id: 2,
+    title:
+      "Research Spotlight: Race-Based Differences in ST Elevation Myocardial Infarction (STEMI) Process Metrics ",
+  },
+  {
+    id: 3,
+    title:
+      "Massachusetts General Hospital Launches First-of-its-Kind Center for Clinical Transplant Tolerance",
+  },
+  {
+    id: 4,
+    title:
+      "Massachusetts General Hospital Launches First-of-its-Kind Center for Clinical Transplant Tolerance",
+  },
+  {
+    id: 5,
+    title:
+      "Massachusetts General Hospital Launches First-of-its-Kind Center for Clinical Transplant Tolerance",
+  },
+  {
+    id: 6,
+    title:
+      "Massachusetts General Hospital Launches First-of-its-Kind Center for Clinical Transplant Tolerance",
+  },
+  {
+    id: 7,
+    title:
+      "Research Spotlight: Race-Based Differences in ST Elevation Myocardial Infarction (STEMI) Process Metrics ",
+  },
+];
+
 function Statistics() {
   return (
     <>
-      {" "}
-      <Link to={"/Appointment"} className="linkk">
-        <div className="statisticsonlineconsul">
-          FOR <span style={{ color: "#fe4200" }}>ONLINE CONSULTATION</span>{" "}
-          REFER TO OUR STAFF
-          <span className="statisticsonlineconsularrow">&#8594;</span>
+      <div className="statisticsfirstportionofnewsandappointment">
+        <div className="consltationinstatistics">
+          <Link to={"/Appointment"} className="linkk">
+            <div className="statisticsonlineconsul">
+              FOR <span style={{ color: "#fe4200" }}>ONLINE CONSULTATION</span>{" "}
+              REFER TO OUR STAFF
+              <span className="statisticsonlineconsularrow">&#8594;</span>
+            </div>
+          </Link>
+          <Link to={"/Appointment"} className="linkk">
+            <div className="statisticsonlineconsul">
+              FOR AN <span style={{ color: "#fe4200" }}>APPOINTMENT</span> AND
+              QUERIES
+              <span className="statisticsonlineconsularrow">&#8594;</span>
+            </div>
+          </Link>
         </div>
-      </Link>
-      <Link to={"/Appointment"} className="linkk">
-        <div className="statisticsonlineconsul">
-          FOR AN <span style={{ color: "#fe4200" }}>APPOINTMENT</span> AND
-          QUERIES
-          <span className="statisticsonlineconsularrow">&#8594;</span>
+        <div>
+          <h1
+            style={{ borderRadius: "2px", fontSize: "20px", color: "#fe4200" }}
+          >
+            FEATURED&nbsp;&nbsp;&nbsp;&nbsp; News/Events/Stories
+          </h1>
+
+          <div className="newsandstoriesinstatistics">
+            <marquee
+              scrolldelay="5"
+              direction="down"
+              height="300"
+              scrollamount="2"
+            >
+              {news.map((title, id) => {
+                return (
+                  <div
+                    key={id}
+                    style={{
+                      padding: "10px",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    <h3 style={{ marginBottom: "10px", fontSize: "15px" }}>
+                      {title.title}
+                    </h3>
+                    <h6 style={{ color: "#fe4200" }}>11 August 2023</h6>
+                  </div>
+                );
+              })}
+            </marquee>
+          </div>
         </div>
-      </Link>
+      </div>
       <div className="backgImageStatistics">
         <div className="statiscsIcons">
           <BsFillPersonPlusFill className="statIcons" />
           <p>
-            <h1>
+            <h2>
               <CountUp start={0} end={4231} duration={8} />
-            </h1>
+            </h2>
             Patients Treated
           </p>
         </div>
         <div className="statiscsIcons">
           <FaUserDoctor className="statIcons" />
           <p>
-            <h1>
+            <h2>
               {" "}
               <CountUp start={0} end={875} duration={8} />
-            </h1>
+            </h2>
             Surgeries performed
           </p>
         </div>
         <div className="statiscsIcons">
           <FcDepartment className="statIcons" duration={8} />
           <p>
-            <h1>
+            <h2>
               {" "}
               <CountUp start={0} end={18} duration={8} />
-            </h1>
+            </h2>
             Departments
           </p>
         </div>
         <div className="statiscsIcons">
           <FaBed className="statIcons" />
           <p>
-            <h1>
+            <h2>
               <CountUp start={0} end={321} />
-            </h1>
+            </h2>
             Patients Beds
           </p>
         </div>

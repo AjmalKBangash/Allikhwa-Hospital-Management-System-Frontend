@@ -1,5 +1,8 @@
 import "./App.css";
+
+// AppLayout Components
 import NavBar from "./Components/AppLayout/NavBar";
+import ScrollToTop from "./Components/ScrollToTop";
 import Appointment from "./Components/AppLayout/Appointment";
 import Emergency from "./Components/Emergency";
 import Donate from "./Components/Donate";
@@ -32,7 +35,7 @@ const theRoutes = createBrowserRouter(
       <Route path="/Donate" element={<Donate />}></Route>
       <Route path="/Appointment" element={<Appointment />} />
       <Route path="/:departmentdetails" element={<Departmentdetails />} />
-      <Route path="/doctor" element={<Doctor />} />
+      <Route path="/doctors" element={<Doctor />} />
     </>
   )
 );
@@ -52,6 +55,7 @@ function AppLayout() {
     <>
       <NavBar />
       <Container fixed style={{ overflow: "hidden", marginTop: "65px" }}>
+        <ScrollToTop />
         <Statistics />
         <hr />
         <Administration />

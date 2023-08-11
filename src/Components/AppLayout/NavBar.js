@@ -336,7 +336,7 @@ function NavBar() {
             <span style={{ color: "#fe4200" }}>&#x2193;</span>
           </li>
           <li>
-            <Link className="linkk linkk2">
+            <Link to={"/doctors"} className="linkk linkk2">
               DOCTORS<span style={{ color: "#fe4200" }}>&#x2193;</span>
             </Link>
           </li>
