@@ -1,5 +1,5 @@
 import "./Departmentdetails.css";
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./AppLayout/NavBar";
 import Footer from "./AppLayout/Footer";
 import { Link, useParams, useLocation } from "react-router-dom";
@@ -227,8 +227,18 @@ const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
 //   .replace("-", " ");
 
 function Departmentdetails() {
+  // let [displayNotDepartment, setDisplayNotDepartment] = useState(true);
+  // try {
+  //   const { departmentdetails } = useParams();
+  //   const { state } = useLocation("");
+  // } catch (err) {
+  //   console.log(err);
+  // }
   const { departmentdetails } = useParams();
   const { state } = useLocation("");
+  // if (state == "") {
+  //   setDisplayNotDepartment(false);
+  // }
   //   console.log(state.department.name); valid
   //   if ((state = "")) console.log("done");
 
@@ -244,7 +254,7 @@ function Departmentdetails() {
                 <li key={id}>
                   <Link
                     to={
-                      "http://localhost:3000/" +
+                      "http://localhost:3000/departments/" +
                       department.name.toLowerCase().replace(" ", "-")
                     }
                     state={{ department: department }}
@@ -260,20 +270,22 @@ function Departmentdetails() {
           })}
         </div>
         <div className="departdetailscolumn02Father">
-          {/* this is department details column  */}
-          <div className="departdetailscolumn02">
-            {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
-            <div
-              className="statisticsonlineconsul"
-              style={{ width: "fit-content", margin: "auto" }}
-            >
-              Appointment Services
-            </div>
-            <div className="departmentdetailsexplaining">
-              <h4>{state.department.name}</h4>
-              <p>{state.department.description}</p>
-            </div>
+          {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
+
+          <div
+            className="statisticsonlineconsul"
+            style={{ width: "fit-content", margin: "auto" }}
+          >
+            Departments{" "}
           </div>
+          {/* this is department details column  */}
+          {/* {displayNotDepartment && ( */}
+          <div className="departmentdetailsexplaining">
+            <h4>{state.department.name}</h4>
+            <p>{state.department.description}</p>
+          </div>
+          {/* )} */}
+          <div className="departdetailscolumn02"></div>
           <Footer />
         </div>
       </div>

@@ -4,6 +4,34 @@
   list-style-type: none;
   /* border: 1px solid rgb(0, 255, 13); */
 }
+.navbar04 {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  background-color: #fe4200;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px;
+}
+.navbar04loginup {
+  font-size: 18px;
+  margin: 0 10px;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.navbar04loginup:hover {
+  /* background-color: #013737; */
+  border-bottom: 2px solid #013737;
+}
+.active {
+  background-color: #fe4200;
+}
 .navbar01 ul {
   display: flex;
   flex-direction: row;
@@ -51,21 +79,23 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  box-sizing: border-box;
   z-index: 1;
+}
+
+.navbar02ul li {
+  padding: 20px 0px;
+  margin: 0 10px;
 }
 .linkk {
   text-decoration: none;
   color: black;
 }
-.navbar02ul li {
-  margin: 10px 10px;
-  padding: 10px;
-  cursor: pointer;
-}
 .linkk2 {
-  padding: 0 0 25px 0;
+  padding: 10px;
+  margin: 0%;
 }
-.navbar02ul li:hover {
+.linkk2:hover {
   background-color: #fe4200;
 }
 .nestedDepartments {
@@ -82,7 +112,7 @@
 }
 .nestedDepartments li {
   border-bottom: 1px solid #fe440046;
-  padding: 0%;
+  padding: 2%;
 }
 .nestedDepartments li:hover {
   background-color: white;
@@ -104,16 +134,15 @@
   padding: 10px;
   margin-top: 10px;
 }
-.navbar03 ul li {
+.navbar03items {
+  width: 100%;
   padding: 10px;
+  margin: 0 2px;
   background-color: #fe4200;
 }
 .navbar03 ul li:hover {
-  background-color: #fe4200;
   cursor: pointer;
 }
-/* .navbar03 ul li:nth-child(2) {
-} */
 
 /* Media Queries Started */
 /* 2nd one media query */
@@ -123,10 +152,6 @@
   }
   .navbar01 ul li:nth-child(1) img {
     height: 70px;
-  }
-
-  .navbar02ul li {
-    margin: 0px 10px;
   }
   .nestedDepartments {
     grid-template-columns: auto auto;
@@ -159,11 +184,6 @@
     flex-direction: column;
     display: none;
   }
-  .navbar02 ul li {
-    /* background-color: #0137375d; */
-    margin: 2px;
-    width: 100%;
-  }
 
   .navbar03 ul {
     display: flex;
@@ -172,7 +192,6 @@
   .nestedDepartments {
     grid-template-columns: 200px;
     height: 400px;
-    /* width: 200px; */
     overflow: scroll;
   }
 }

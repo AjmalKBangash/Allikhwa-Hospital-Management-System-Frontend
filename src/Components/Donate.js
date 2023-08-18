@@ -149,7 +149,7 @@ function Donate() {
                 </option>
               );
             })}
-          </select>{" "}
+          </select>
           <label for="city">Choose City</label>
           <select type="select" id="city" name="carlist" form="donationForm">
             <option value={""} disabled selected>

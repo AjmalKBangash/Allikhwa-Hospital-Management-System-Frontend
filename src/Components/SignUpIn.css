@@ -1,0 +1,119 @@
+.signupintop {
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+}
+
+.imgofform {
+  height: 800px;
+  width: 100vw;
+  position: absolute;
+  top: 0%;
+  z-index: 0;
+  opacity: 1;
+}
+
+.signupinform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: auto;
+  height: fit-content;
+  width: 40%;
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px 2px 8px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 2px 8px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 2px 8px 0px rgba(1, 55, 55, 0.7);
+}
+.menuforsignup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #013737;
+  color: white;
+  height: 60px;
+  width: 90%;
+  z-index: 1;
+  /* margin: 0 20px; */
+}
+.menuforsignup img {
+  margin: 10px auto 0 0;
+  height: 70px;
+  border-right: 1px solid #fe4400;
+}
+.menuforsignup h3 {
+  font-size: 15px;
+  font-family: Impact, sans-serif;
+  margin: 0 4%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.signupform {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 20px;
+  width: 90%;
+}
+.inputFieldinOverlayForm {
+  height: 40px;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid #fe440063;
+  color: black;
+  margin: 5px;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+.signupform p {
+  color: red;
+  font-size: 12px;
+}
+.signupform button {
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  background-color: #fe4200;
+  color: white;
+  font-family: Impact, sans-serif;
+}
+.signupform button:hover {
+  font-size: 18px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 950px) {
+  .signupinform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px auto;
+    height: fit-content;
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .menuforsignup {
+    height: 40px;
+  }
+  .menuforsignup img {
+    margin: 10px auto 0 0;
+    height: 50px;
+  }
+  .menuforsignup h3 {
+    font-size: 12px;
+    padding: 5px;
+  }
+}

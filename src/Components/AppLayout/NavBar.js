@@ -3,7 +3,7 @@ import Emergency from "../Emergency";
 import { ImWhatsapp } from "react-icons/im";
 import { HiMenuAlt3 } from "react-icons/hi";
 import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
-import { Link, useParams } from "react-router-dom";
+import { NavLink, Link, useParams } from "react-router-dom";
 import { useRef, useState } from "react";
 
 const departments = [
@@ -249,6 +249,25 @@ function NavBar() {
 
   return (
     <div style={{ position: "relative", zIndex: "2" }}>
+      <div className="navbar04">
+        <Link
+          to={"/signup"}
+          state={{ truefalse: true }}
+          className="linkk navbar04loginup"
+          style={{ color: "white" }}
+        >
+          LogIn
+        </Link>
+        |
+        <Link
+          to={"/signup"}
+          state={{ truefalse: false }}
+          className="linkk navbar04loginup"
+          style={{ color: "white" }}
+        >
+          SignUp
+        </Link>
+      </div>
       <div className="navbar01">
         <ul>
           <Link to={"/"}>
@@ -282,13 +301,11 @@ function NavBar() {
       <div className="navbar02">
         <div className="navbar03">
           <ul>
-            <li>
-              <Link className="linkk ">HOME</Link>
-            </li>
-            <li onClick={displayMenu}>
-              <Link className="linkk ">
-                <HiMenuAlt3 />
-              </Link>
+            <Link to={"/"} className="linkk navbar03items">
+              <li>HOME</li>
+            </Link>
+            <li onClick={displayMenu} className="navbar03items">
+              <HiMenuAlt3 />
             </li>
           </ul>
         </div>
@@ -300,56 +317,73 @@ function NavBar() {
           className="navbar02ul"
         >
           <li>
-            {/* <Link className="linkk linkk2"> */}
-            <span className="linkk2">DEPARTMENTS</span>
-            {/* </Link> */}
-            <span style={{ color: "#fe4200" }}>&#x2193;</span>
-            <ul
-              // ref={refNestedDepartment}
-              className="nestedDepartments"
-              // style={{ display: nestedDepartState && "grid" }}
-              // onMouseOut={nestedDepartment}
+            <NavLink
+              to={"/departments"}
+              className="linkk linkk2"
+              state={{
+                department:
+                  "We have 18 iso qualified departments for outstanding and extra ordinary patient care!",
+              }}
             >
-              {departments.map((department, id) => {
-                return (
-                  <>
-                    <li key={id} className="navbardepartmentlisthover">
-                      <Link
-                        to={"http://localhost:3000/" + slugify(department.name)}
-                        state={{ department: department }}
-                        className="linkk "
-                        onMouseOver={navbardepartmentlisthoverFunOver}
-                        onMouseOut={navbardepartmentlisthoverFunOut}
-                      >
-                        {department.name}
-                      </Link>
-                    </li>
-                  </>
-                );
-              })}
-            </ul>
+              <span className="linkk2">
+                DEPARTMENTS
+                <span style={{ color: "#fe4200" }}>&#x2193;</span>
+              </span>
+              <ul
+                // ref={refNestedDepartment}
+                className="nestedDepartments"
+                // style={{ display: nestedDepartState && "grid" }}
+                // onMouseOut={nestedDepartment}
+              >
+                {departments.map((department, id) => {
+                  return (
+                    <>
+                      <li key={id} className="navbardepartmentlisthover">
+                        <Link
+                          to={
+                            "http://localhost:3000/departments/" +
+                            slugify(department.name)
+                          }
+                          state={{ department: department }}
+                          className="linkk "
+                          onMouseOver={navbardepartmentlisthoverFunOver}
+                          onMouseOut={navbardepartmentlisthoverFunOut}
+                        >
+                          {department.name}
+                        </Link>
+                      </li>
+                    </>
+                  );
+                })}
+              </ul>
+            </NavLink>
           </li>
+
           <li>
-            <Link to={"/Appointment"} className="linkk linkk2">
+            <NavLink to={"/Appointment"} className="linkk linkk2">
               SERVICES
-            </Link>
-            <span style={{ color: "#fe4200" }}>&#x2193;</span>
+              <span style={{ color: "#fe4200" }}>&#x2193;</span>
+            </NavLink>
           </li>
           <li>
-            <Link to={"/doctors"} className="linkk linkk2">
+            <NavLink to={"/doctors"} className="linkk linkk2">
               DOCTORS<span style={{ color: "#fe4200" }}>&#x2193;</span>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link className="linkk linkk2">ABOUT US</Link>
+            <NavLink to={"/aboutus"} className="linkk linkk2">
+              ABOUT US
+            </NavLink>
           </li>
           <li>
-            <Link className="linkk linkk2">CURRENT FLOW</Link>
+            <NavLink to={"/currentflow"} className="linkk linkk2">
+              CURRENT FLOW
+            </NavLink>
           </li>
           <li>
-            <Link to={"/eStore"} className="linkk linkk2">
+            <NavLink to={"/eStore"} className="linkk linkk2">
               eStore
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

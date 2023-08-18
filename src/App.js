@@ -2,6 +2,7 @@ import "./App.css";
 
 // AppLayout Components
 import NavBar from "./Components/AppLayout/NavBar";
+import SignUpIn from "./Components/SignUpIn";
 import ScrollToTop from "./Components/ScrollToTop";
 import Appointment from "./Components/AppLayout/Appointment";
 import Emergency from "./Components/Emergency";
@@ -15,15 +16,22 @@ import Gallary from "./Components/AppLayout/Gallary";
 import Services from "./Components/AppLayout/Services";
 import Whychooseus from "./Components/AppLayout/Whychooseus";
 import Footer from "./Components/AppLayout/Footer";
+// practice component Jaaaaaaaaaaannnn
+import Jaan from "./Components/Jaan";
+import HMSroutes from "./HMSComponents/AppLayout/HMSroutes";
+// Now management system started
+import HmsAppLayout from "./HMSComponents/HmsAppLayout";
 
 // This is material ui imports
 import { Container } from "@mui/material";
+
 // This is router imports
 import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  Routes,
 } from "react-router-dom";
 
 const theRoutes = createBrowserRouter(
@@ -34,8 +42,19 @@ const theRoutes = createBrowserRouter(
       <Route path="/Emergency" element={<Emergency />}></Route>
       <Route path="/Donate" element={<Donate />}></Route>
       <Route path="/Appointment" element={<Appointment />} />
-      <Route path="/:departmentdetails" element={<Departmentdetails />} />
+      <Route path="/departments" element={<Departmentdetails />}>
+        <Route
+          path="/departments/:departmentdetails"
+          element={<Departmentdetails />}
+        />
+      </Route>
+
       <Route path="/doctors" element={<Doctor />} />
+      <Route path="signup" element={<SignUpIn />} />
+      {/* <Routes> */}
+      <Route path="HMSroutes" element={<HMSroutes />} />
+      {/* </Routes> */}
+      <Route path="all'ikhwa-management-system" element={<HmsAppLayout />} />
     </>
   )
 );
@@ -59,8 +78,6 @@ function AppLayout() {
         <Statistics />
         <hr />
         <Administration />
-        {/* <hr /> */}
-        {/* <Gallary /> */}
         <Whychooseus />
         <Services />
         <Gallary />
