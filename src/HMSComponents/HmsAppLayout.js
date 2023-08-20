@@ -1,7 +1,9 @@
 import "./HmsAppLayout.css";
 
 import React, { useState } from "react";
-import { NavLink, useParams, useLocation } from "react-router-dom";
+import { NavLink, useParams, useLocation, Outlet } from "react-router-dom";
+
+// HMS Icons
 import { RiDashboardFill, RiAdminFill } from "react-icons/ri";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
@@ -205,20 +207,19 @@ function AppLayout() {
             {departments.map((department, id) => {
               return (
                 <ul>
-                  <li key={id}>
-                    <NavLink
-                      to={"/"}
-                      className="linkk"
-                      style={{ color: "white" }}
-                    >
+                  <NavLink
+                    to={"/"}
+                    className="linkk"
+                    style={{ color: "white" }}
+                  >
+                    <li key={id}>
                       <span className="hmsmanagementicons">
                         <department.logo /> &nbsp;
                       </span>
-
                       {department.name}
-                      <span className="departdetailcolumn02arrow">&#8594;</span>
-                    </NavLink>
-                  </li>
+                      <span className="hmscontainercol01_arrow">&#8594;</span>
+                    </li>
+                  </NavLink>
                 </ul>
               );
             })}
@@ -235,6 +236,9 @@ function AppLayout() {
                 style={{ fontSize: "30px", color: "#fe4200" }}
               />
             </div>
+            {/* <h4>Salammmmmm </h4> */}
+
+            <Outlet />
           </div>
         </div>
       </div>

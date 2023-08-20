@@ -9,7 +9,7 @@
 
 .hmscontainer {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 16% 84%;
   /* grid-gap: 2px; */
   /* margin: 4px 0 10px 0; */
 }
@@ -30,14 +30,23 @@
   color: white;
   font-size: 15px;
   font-weight: 500;
-  border-radius: 2px;
-  margin: 2px 0 2px 0;
-  padding: 10px 100px 10px 10px;
+  /* margin: 2px 0 2px 0; */
+  padding: 12px;
   border-bottom: 1px solid #fe44005b;
 }
 .hmscontainercol01 ul li:hover {
   cursor: pointer;
   /* color: #fe4200;+ */
+}
+.hmscontainercol01_arrow {
+  font-size: 15px;
+  right: 2%;
+  position: absolute;
+  padding: 0% 5% 5% 100%;
+  color: white;
+}
+.hmscontainercol01_arrow:hover {
+  transform: translateX(2%);
 }
 .hmsmanagementicons {
   font-size: 20px;

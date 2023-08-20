@@ -1,0 +1,133 @@
+* {
+}
+.profile_top {
+  width: 100%;
+  margin: 15px auto;
+}
+.profile_profile_pic_card {
+  display: grid;
+  grid-template-columns: 20% 35% 45%;
+  height: 140px;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  background-color: gray;
+  border-top-left-radius: 40px;
+}
+.profile_profile_pic_card img {
+  height: 140px;
+  width: 140px;
+  border-radius: 70px;
+  border: 3px solid white;
+  position: relative;
+  top: 65px;
+  left: 20px;
+}
+.profile_name_speciality_jobtitile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  top: 140px;
+}
+.profile_name_speciality_jobtitile h4 {
+  font-family: system-ui;
+  color: #fe4200;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 10px 0px;
+}
+.profile_name_speciality_jobtitile span {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.534);
+}
+.profile_buttons_update {
+  position: relative;
+  top: 140px;
+  right: 0px;
+  margin-left: 240px;
+  border: none;
+  position: relative;
+  background-color: none;
+}
+.profile_buttons_update button {
+  background-color: #fe4400a9;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  height: 30px;
+  width: 70px;
+  box-shadow: 0px 1px 2px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(1, 55, 55, 0.7);
+  margin: 10px;
+}
+.profile_buttons_update button:hover {
+  cursor: pointer;
+  background-color: #fe4200;
+  transition: background-color 0.3s;
+  box-shadow: 0px 1px 10px 0px #fe4200;
+  -webkit-box-shadow: 0px 1px 10px 0px #fe4200;
+  -moz-box-shadow: 0px 1px 10px 0px #fe4200;
+}
+
+/* table css  */
+.profile_html_table_explanation {
+  margin: 150px 15px;
+}
+table.profile_GeneratedTable {
+  background-color: #ffffff;
+  border-collapse: separate;
+  border-width: 2px;
+  color: #000000;
+}
+
+table.profile_GeneratedTable td,
+table.profile_GeneratedTable th {
+  border-width: 2px;
+  border-color: #fe4200;
+  border-style: dotted;
+  padding: 10px;
+}
+
+table.profile_GeneratedTable thead {
+  background-color: #ffffff;
+}
+
+/* profile Form started */
+.profile_information_all {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 75%;
+  margin: 100px auto 10px auto;
+  position: relative;
+}
+.profile_label_input {
+  display: grid;
+  grid-template-columns: 40% 70%;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.041);
+}
+.profile_label_input input[type="text"],
+.profile_label_input input[type="password"],
+.profile_label_input input[type="file"] {
+  height: 25px;
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.103);
+  border-radius: 4px;
+  outline: none;
+}
+.profile_label_input textarea {
+  height: fit-content;
+  margin: 10px 0;
+}

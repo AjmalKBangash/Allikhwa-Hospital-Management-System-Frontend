@@ -18,9 +18,12 @@ import Whychooseus from "./Components/AppLayout/Whychooseus";
 import Footer from "./Components/AppLayout/Footer";
 // practice component Jaaaaaaaaaaannnn
 import Jaan from "./Components/Jaan";
-import HMSroutes from "./HMSComponents/AppLayout/HMSroutes";
+// import HMSroutes from "./HMSComponents/HMSapps/HMSroutes";
+
 // Now management system started
 import HmsAppLayout from "./HMSComponents/HmsAppLayout";
+import Dashboard from "./HMSComponents/HMSapps/Dashboard";
+import Admins from "./HMSComponents/HMSapps/Admins";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -33,6 +36,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import Profile from "./HMSComponents/HMSapps/Profile";
 
 const theRoutes = createBrowserRouter(
   createRoutesFromElements(
@@ -52,9 +56,13 @@ const theRoutes = createBrowserRouter(
       <Route path="/doctors" element={<Doctor />} />
       <Route path="signup" element={<SignUpIn />} />
       {/* <Routes> */}
-      <Route path="HMSroutes" element={<HMSroutes />} />
+      {/* <Route path="HMSroutes" element={<HMSroutes />} /> */}
       {/* </Routes> */}
-      <Route path="all'ikhwa-management-system" element={<HmsAppLayout />} />
+      <Route path="all'ikhwa-management-system" element={<HmsAppLayout />}>
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="admins" element={<Admins />} />
+      </Route>
     </>
   )
 );
