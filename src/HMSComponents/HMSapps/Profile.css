@@ -118,7 +118,7 @@ table.profile_GeneratedTable thead {
 .profile_label_input input[type="text"],
 .profile_label_input input[type="password"],
 .profile_label_input input[type="file"] {
-  height: 25px;
+  height: 20px;
   width: 70%;
   padding: 10px;
   font-size: 16px;

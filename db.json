@@ -1,0 +1,591 @@
+{
+  "wholesaledrugs": [
+    {
+      "id": "1",
+      "name": "Vigoor",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
+      "description": "Used in men who do not make enough of a natural substance called testosterone ",
+      "price": 700,
+      "discount": 10,
+      "category": "wholeSale"
+    },
+    {
+      "id": "2",
+      "name": "Alatrol",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 700,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "3",
+      "name": "Sildenafil",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 400,
+      "discount": 50,
+      "category": "wholeSale"
+    },
+    {
+      "id": "4",
+      "name": "Azythromycin",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 150,
+      "discount": 32,
+      "category": "wholeSale"
+    },
+    {
+      "id": "5",
+      "name": "Physica",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 650,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "6",
+      "name": "Sperex",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
+      "description": "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
+      "price": 30,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "7",
+      "name": "Avetex",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 90,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "8",
+      "name": "Zolpidem",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 700,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "9",
+      "name": "Xtandi",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill09.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 700,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "10",
+      "name": "Avandia",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 700,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "11",
+      "name": "carol",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 400,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "12",
+      "name": "dawai",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 150,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "13",
+      "name": "Euphrene",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 650,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "14",
+      "name": "Fault",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
+      "description": "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
+      "price": 300,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "15",
+      "name": "golai",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 950,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "16",
+      "name": "Holland",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 730,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "17",
+      "name": "InterTablets",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill09.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 290,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "18",
+      "name": "JoliDawai",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 520,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "19",
+      "name": "kolalampoorGolai",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 650,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "20",
+      "name": "LahoLohaanDawai",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 460,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "21",
+      "name": "monarch",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 400,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "22",
+      "name": "namanam",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 150,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "23",
+      "name": "openAI",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 650,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "24",
+      "name": "pills",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
+      "description": "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
+      "price": 230,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "25",
+      "name": "qataw",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 90,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "26",
+      "name": "rowal",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 730,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "27",
+      "name": "Slamin",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill09.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 555,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "28",
+      "name": "Toor",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 600,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "29",
+      "name": "Uoaan",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 980,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "30",
+      "name": "zurbex",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 896,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "31",
+      "name": "Venom Namnam",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 545,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "32",
+      "name": "zoor Sharbaat",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 111,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "33",
+      "name": "kolam",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 102,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "34",
+      "name": "Loram",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 291,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "35",
+      "name": "Manama Namnam",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 879,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "36",
+      "name": "nawa Sharbaatai",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 654,
+      "discount": 20,
+      "category": "wholeSale"
+    }
+  ],
+  "dailyuseDrugs": [
+    {
+      "id": "1",
+      "name": "Vigorex",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
+      "description": "Used in men who do not make enough of a natural substance called testosterone ",
+      "price": 700,
+      "discount": 10,
+      "category": "wholeSale"
+    },
+    {
+      "id": "2",
+      "name": "Alatrol",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 700,
+      "discount": 20,
+      "category": "wholeSale"
+    },
+    {
+      "id": "3",
+      "name": "Sildenafil",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 400,
+      "discount": 50,
+      "category": "wholeSale"
+    },
+    {
+      "id": "4",
+      "name": "Azythromycin",
+      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
+      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
+      "price": 150,
+      "discount": 32,
+      "category": "wholeSale"
+    }
+  ],
+  "details": [],
+  "admins": [
+    {
+      "addUpdate_Form_Data": {
+        "employee_name": "Admin01",
+        "employee_website": "",
+        "employee_photo": {},
+        "employee_description": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+        "employee_jobtitle": "Assistent Professor",
+        "employee_education": "",
+        "employee_experience": "5 years",
+        "employee_department": "IT",
+        "employee_surgeries": "aa",
+        "employee_appointments": "",
+        "employee_awards": "",
+        "employee_address": "",
+        "employee_phone": "",
+        "employee_email": "ak1489007@gmail.com",
+        "employee_facebook": "",
+        "employee_linkedin": ""
+      },
+      "id": 1
+    },
+    {
+      "addUpdate_Form_Data": {
+        "employee_name": "Admin01",
+        "employee_website": "",
+        "employee_photo": {},
+        "employee_description": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+        "employee_jobtitle": "Assistent Professor",
+        "employee_education": "",
+        "employee_experience": "5 years",
+        "employee_department": "IT",
+        "employee_surgeries": "aa",
+        "employee_appointments": "",
+        "employee_awards": "",
+        "employee_address": "",
+        "employee_phone": "",
+        "employee_email": "ak1489007@gmail.com",
+        "employee_facebook": "",
+        "employee_linkedin": ""
+      },
+      "id": 2
+    },
+    {
+      "addUpdate_Form_Data": {
+        "employee_name": "Admin01",
+        "employee_website": "",
+        "employee_photo": {},
+        "employee_description": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+        "employee_jobtitle": "Assistent Professor",
+        "employee_education": "",
+        "employee_experience": "5 years",
+        "employee_department": "IT",
+        "employee_surgeries": "aa",
+        "employee_appointments": "",
+        "employee_awards": "",
+        "employee_address": "",
+        "employee_phone": "",
+        "employee_email": "ak1489007@gmail.com",
+        "employee_facebook": "",
+        "employee_linkedin": ""
+      },
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
+    },
+    {
+      "id": 19
+    },
+    {
+      "id": 20
+    },
+    {
+      "id": 21
+    },
+    {
+      "id": 22
+    },
+    {
+      "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "id": 25
+    },
+    {
+      "id": 26
+    },
+    {
+      "id": 27
+    },
+    {
+      "id": 28
+    },
+    {
+      "id": 29
+    },
+    {
+      "id": 30
+    },
+    {
+      "id": 31
+    },
+    {
+      "id": 32
+    },
+    {
+      "id": 33
+    },
+    {
+      "id": 34
+    },
+    {
+      "id": 35
+    },
+    {
+      "id": 36
+    },
+    {
+      "id": 37
+    },
+    {
+      "id": 38
+    },
+    {
+      "id": 39
+    },
+    {
+      "id": 40
+    },
+    {
+      "id": 41
+    },
+    {
+      "id": 42
+    },
+    {
+      "id": 43
+    },
+    {
+      "id": 44
+    },
+    {
+      "id": 45
+    },
+    {
+      "id": 46
+    },
+    {
+      "id": 47
+    },
+    {
+      "id": 48
+    },
+    {
+      "id": 49
+    },
+    {
+      "id": 50
+    },
+    {
+      "id": 51
+    },
+    {
+      "id": 52
+    },
+    {
+      "id": 53
+    },
+    {
+      "id": 54
+    },
+    {
+      "id": 55
+    },
+    {
+      "id": 56
+    }
+  ]
+}

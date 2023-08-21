@@ -9,27 +9,35 @@
 .col2indocdetails {
   margin: 10px 30px;
 }
-
-/* Doctor Details Table */
-table.GeneratedTable {
-  width: 100%;
-  background-color: #ffffff;
-  border-collapse: separate;
-  border-width: 0px;
-  border-color: #013737;
-  border-style: solid;
-  color: #000000;
+.doctorimgincard {
+  height: 180px;
+  width: 188px;
+  margin: 0 auto 10px auto;
+  border-radius: 20px;
+}
+.doctornameincard {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.byprofessionincard {
+  font-size: 10px;
+  color: #000000a8;
 }
 
-table.GeneratedTable td,
-table.GeneratedTable th {
-  border-width: 1px;
-  border-color: #0137372c;
-  border-style: solid;
+/* Doctor Details Table */
+table.employee_GeneratedTable {
+  width: 100%;
+  border-collapse: separate;
+}
+
+table.employee_GeneratedTable td,
+table.employee_GeneratedTable th {
+  border: 1px solid #0137372c;
   padding: 10px;
 }
 
-table.GeneratedTable thead {
+table.employee_GeneratedTable thead {
   background-color: #fe4200;
 }
 
@@ -43,36 +51,39 @@ table.GeneratedTable thead {
 .doctorcard {
   display: flex;
   flex-direction: column;
-  height: 380px;
-  width: 250px;
+  height: 300px;
+  width: 220px;
   margin: 10px;
 }
 .jobtitleincard {
-  color: rgba(0, 0, 0, 0.555);
+  color: rgba(0, 0, 0, 0.397);
 }
 .doctorcoverofimgtagsindoctorcard {
-  background-color: rgba(0, 0, 0, 0.055);
-  padding: 4px;
+  padding: 6px;
+  width: 220px;
+  box-shadow: 0px 5px 5px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(1, 55, 55, 0.7);
 }
 .fblogosincard {
-  font-size: 35px;
-  color: #fe4200;
-  /* width: 33%; */
+  font-size: 20px;
+  padding-top: 4px;
+  padding-left: 2px;
   margin: 8px 0;
 }
 .viewdetailsincard {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 500;
   color: #fe4200;
   border: 2px solid #fe4200;
   width: fit-content;
   height: fit-content;
-  margin: 12px 0 0px auto;
+  margin: 8px 0 0px auto;
   padding: 5px;
   box-sizing: border-box;
 }
 .viewdetailsincard:hover {
-  background-color: #013737;
+  border: 2px solid #fe440071;
   /* color: white; this will not work due to Link of reacr router */
   /* cursor: pointer; this wil pre work bc of react router */
 }

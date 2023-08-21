@@ -228,14 +228,23 @@ function Doctor() {
                     {propfromshodetailsdoctorcard.name}
                   </h5>
                   <div style={{ display: "flex", flexDirection: "row" }}>
-                    <Link className="linkk" style={{ color: "#fe4200" }}>
-                      <BiLogoFacebookCircle className="fblogosincard" />
+                    <Link className="linkk">
+                      <BiLogoFacebookCircle
+                        style={{ color: "#3b5998" }}
+                        className="fblogosincard"
+                      />
                     </Link>
-                    <Link className="linkk" style={{ color: "#fe4200" }}>
-                      <AiFillTwitterCircle className="fblogosincard" />
+                    <Link className="linkk">
+                      <AiFillTwitterCircle
+                        style={{ color: "#00acee" }}
+                        className="fblogosincard"
+                      />
                     </Link>
-                    <Link className="linkk" style={{ color: "#fe4200" }}>
-                      <AiFillGooglePlusCircle className="fblogosincard" />
+                    <Link className="linkk">
+                      <AiFillGooglePlusCircle
+                        style={{ color: "#f7b529" }}
+                        className="fblogosincard"
+                      />
                     </Link>
                     <span
                       className="viewdetailsincard"
@@ -253,20 +262,22 @@ function Doctor() {
               {/* )} */}
               <div className="col2indocdetails">
                 {" "}
-                <div
-                  className="statisticsonlineconsul"
-                  style={{ width: "fit-content", margin: "auto" }}
-                >
-                  DOCTOR DETAILS{" "}
-                </div>
-                <table className="GeneratedTable">
-                  <thead>
-                    {/* <tr> */}
-                    {/* <th>Header</th> */}
-                    {/* <th>Header</th> */}
-                    {/* </tr> */}
-                  </thead>
+                <table className="employee_GeneratedTable">
                   <tbody>
+                    <tr>
+                      <td>
+                        {" "}
+                        <div
+                          className="statisticsonlineconsul"
+                          style={{
+                            width: "fit-content",
+                            margin: "auto",
+                          }}
+                        >
+                          DOCTOR DETAILS{" "}
+                        </div>
+                      </td>
+                    </tr>
                     <tr>
                       <td>Name</td>
                       <td> {propfromshodetailsdoctorcard.title}</td>
@@ -330,27 +341,38 @@ function Doctor() {
             return (
               <>
                 <div className="doctorcard">
-                  <img
-                    className="doctorimgincard"
-                    src={
-                      //   "https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvY3RvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                      "https://img.freepik.com/premium-vector/avatar-bearded-doctor-doctor-with-stethoscope-vector-illustrationxa_276184-31.jpg"
-                    }
-                  />
+                  <div>
+                    <img
+                      className="doctorimgincard"
+                      src={
+                        //   "https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvY3RvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                        "https://img.freepik.com/premium-vector/avatar-bearded-doctor-doctor-with-stethoscope-vector-illustrationxa_276184-31.jpg"
+                      }
+                    />
+                  </div>
                   <div className="doctorcoverofimgtagsindoctorcard">
                     <h3 className="doctornameincard">{doctor.title}</h3>
                     <h6 className="jobtitleincard">Assistent Professor</h6>
                     <br />
                     <h5 className="byprofessionincard">{doctor.name}</h5>
                     <div style={{ display: "flex", flexDirection: "row" }}>
-                      <Link className="linkk" style={{ color: "#fe4200" }}>
-                        <BiLogoFacebookCircle className="fblogosincard" />
+                      <Link className="linkk">
+                        <BiLogoFacebookCircle
+                          style={{ color: "#3b5998" }}
+                          className="fblogosincard"
+                        />
                       </Link>
-                      <Link className="linkk" style={{ color: "#fe4200" }}>
-                        <AiFillTwitterCircle className="fblogosincard" />
+                      <Link className="linkk">
+                        <AiFillTwitterCircle
+                          style={{ color: "#00acee" }}
+                          className="fblogosincard"
+                        />
                       </Link>
-                      <Link className="linkk" style={{ color: "#fe4200" }}>
-                        <AiFillGooglePlusCircle className="fblogosincard" />
+                      <Link className="linkk">
+                        <AiFillGooglePlusCircle
+                          style={{ color: "#f7b529" }}
+                          className="fblogosincard"
+                        />
                       </Link>
                       <span
                         className="viewdetailsincard"
