@@ -12,14 +12,13 @@
   border-radius: 50%;
   height: 35px;
   width: 35px;
-  background-color: #fe4200;
+  background-color: #013737;
   cursor: pointer;
-  animation: movebtn 3s ease-in-out infinite;
-  transition: all 0.5s ease-in-out;
+  /* animation: movebtn 3s ease-in-out infinite; */
 }
 .icon-style:hover {
   animation: none;
-  background-color: #013737;
+  color: #fe4200;
 }
 /* @keyframes movebtn {
   0% {

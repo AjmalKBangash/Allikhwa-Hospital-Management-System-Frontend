@@ -23,7 +23,16 @@ import Jaan from "./Components/Jaan";
 // Now management system started
 import HmsAppLayout from "./HMSComponents/HmsAppLayout";
 import Dashboard from "./HMSComponents/HMSapps/Dashboard";
+// import CardForAll from "./HMSComponents/HMSapps/CardForAll";
 import Admins from "./HMSComponents/HMSapps/Admins";
+import Doctors from "./HMSComponents/HMSapps/Doctors";
+import Pharmacists from "./HMSComponents/HMSapps/Pharmacists";
+import Nurses from "./HMSComponents/HMSapps/Nurses";
+import Receptionists from "./HMSComponents/HMSapps/Receptionists";
+import Staff from "./HMSComponents/HMSapps/Staff";
+import Others from "./HMSComponents/HMSapps/Others";
+import Patients from "./HMSComponents/HMSapps/Patients";
+import Departments from "./HMSComponents/HMSapps/Departments";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -52,16 +61,20 @@ const theRoutes = createBrowserRouter(
           element={<Departmentdetails />}
         />
       </Route>
-
       <Route path="/doctors" element={<Doctor />} />
       <Route path="signup" element={<SignUpIn />} />
-      {/* <Routes> */}
-      {/* <Route path="HMSroutes" element={<HMSroutes />} /> */}
-      {/* </Routes> */}
       <Route path="all'ikhwa-management-system" element={<HmsAppLayout />}>
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route index path="dashboard" element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />
         <Route path="admins" element={<Admins />} />
+        <Route path="doctors" element={<Doctors />} />
+        <Route path="pharmacists" element={<Pharmacists />} />
+        <Route path="nurses" element={<Nurses />} />
+        <Route path="receptionists" element={<Receptionists />} />
+        <Route path="staff" element={<Staff />} />
+        <Route path="others" element={<Others />} />
+        <Route path="patients" element={<Patients />} />
+        <Route path="departments" element={<Departments />} />
       </Route>
     </>
   )
