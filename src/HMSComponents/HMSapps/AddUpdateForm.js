@@ -10,6 +10,7 @@ import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
 function AddUpdateForm(props) {
+  const { data__employee_category, data } = props;
   let [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
   const location = useLocation();
 
@@ -24,6 +25,9 @@ function AddUpdateForm(props) {
     employee_jobtitle: Yup.string()
       .max(50, "Must be 50 characters or less")
       .required("Job title is Required"),
+    employee_category: Yup.string()
+      .max(50, "Must be 50 characters or less")
+      .required("Job category is Required"),
     employee_experience: Yup.string()
       .max(200, "Must be 200 characters or less")
       .required("Experience is Required"),
@@ -53,18 +57,27 @@ function AddUpdateForm(props) {
   const handle_addupdateformsubmit = (data) => {
     alert(JSON.stringify(data));
     set_AddUpdate_Form_Data(data);
+    console.log(data);
     reset();
   };
 
   useEffect(() => {
-    axios
-      .post(`  http://localhost:3100/admins`, { addUpdate_Form_Data })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    {
+      addUpdate_Form_Data &&
+        axios
+          .post(
+            `http://localhost:3100/` +
+              data__employee_category.toLowerCase() +
+              "s",
+            { ...addUpdate_Form_Data }
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
   }, [addUpdate_Form_Data]);
   return (
     <div
@@ -87,7 +100,7 @@ function AddUpdateForm(props) {
           mozboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
         }}
       >
-        ADMIN
+        {data__employee_category}
       </h2>
       <form onSubmit={handleSubmit(handle_addupdateformsubmit)}>
         <div className="profile_label_input">
@@ -97,7 +110,8 @@ function AddUpdateForm(props) {
             {...register("employee_name")}
             id="employee_name"
             type="text"
-            placeholder={props.data.name}
+            defaultValue={data.employee_name}
+            placeholder="Enter Your Name"
           ></input>
           <p className="pForForm">{errors.employee_name?.message}</p>
         </div>
@@ -112,6 +126,8 @@ function AddUpdateForm(props) {
             id="employee_website"
             type="text"
             {...register("employee_website")}
+            defaultValue={data.employee_website}
+            placeholder="Enter Your Website"
           ></input>
         </div>
         <div className="profile_label_input ">
@@ -122,7 +138,9 @@ function AddUpdateForm(props) {
             id="employee_photo"
             type="file"
             {...register("employee_photo")}
+            placeholder="Upload Your Photo"
           ></input>
+          {/* placeholder={props.data.photo} here ia willl be displaying image with paragraph */}
         </div>
         <div className="profile_label_input ">
           <span>
@@ -142,6 +160,7 @@ function AddUpdateForm(props) {
             >
               <select
                 {...register("employee_website")}
+                defaultValue={"Normal text"}
                 style={{
                   fontSize: "15px",
                   backgroundColor: "white",
@@ -205,6 +224,7 @@ function AddUpdateForm(props) {
               placeholder="Your short introduction!"
               rows="6"
               cols="60"
+              defaultValue={data.employee_description}
             />
           </div>
         </div>
@@ -220,8 +240,26 @@ function AddUpdateForm(props) {
             id="employee_jobtitle"
             type="text"
             {...register("employee_jobtitle")}
+            defaultValue={data.employee_jobtitle}
+            placeholder="Enter Your Job Title"
           ></input>
           <p className="pForForm">{errors.employee_jobtitle?.message}</p>
+        </div>
+        <div className="profile_label_input ">
+          <label
+            htmlFor="employee_category"
+            className="profile_lanel_input_label"
+          >
+            Job Category:
+          </label>
+          <input
+            id="employee_category"
+            type="text"
+            {...register("employee_category")}
+            defaultValue={data.employee_category}
+            placeholder="Enter Your Job Category"
+          ></input>
+          <p className="pForForm">{errors.employee_category?.message}</p>
         </div>
         <div className="profile_label_input ">
           <label
@@ -234,6 +272,8 @@ function AddUpdateForm(props) {
             {...register("employee_education")}
             id="employee_education"
             type="text"
+            defaultValue={data.employee_education}
+            placeholder="Enter Youe Education Details"
           ></input>
         </div>
         <div className="profile_label_input ">
@@ -248,6 +288,8 @@ function AddUpdateForm(props) {
             {...register("employee_experience")}
             id="employee_experience"
             type="text"
+            defaultValue={data.employee_experience}
+            placeholder="Enter Your Experience"
           ></input>
           <p className="pForForm">{errors.employee_experience?.message}</p>
         </div>
@@ -263,6 +305,8 @@ function AddUpdateForm(props) {
             {...register("employee_department")}
             id="employee_department"
             type="text"
+            defaultValue={data.employee_department}
+            placeholder="Enter Your Department Name You Are Working "
           ></input>
           <p className="pForForm">{errors.employee_department?.message}</p>
         </div>
@@ -278,6 +322,8 @@ function AddUpdateForm(props) {
             {...register("employee_surgeries")}
             id="employee_surgeries"
             type="text"
+            defaultValue={data.employee_surgeries}
+            placeholder="Enter The Number Of Surgeries You Performed"
           ></input>
         </div>
         <div className="profile_label_input ">
@@ -291,6 +337,8 @@ function AddUpdateForm(props) {
             {...register("employee_appointments")}
             id="employee_appointments"
             type="text"
+            defaultValue={data.employee_appointments}
+            placeholder="Enter Your Appointments Per Month"
           ></input>
         </div>
         <div className="profile_label_input ">
@@ -304,6 +352,8 @@ function AddUpdateForm(props) {
             {...register("employee_awards")}
             id="employee_awards"
             type="text"
+            defaultValue={data.employee_awards}
+            placeholder="Enter Your Awards"
           ></input>
         </div>
         <div className="profile_label_input ">
@@ -318,6 +368,8 @@ function AddUpdateForm(props) {
             {...register("employee_address")}
             id="employee_address"
             type="text"
+            defaultValue={data.employee_address}
+            placeholder="Enter Your Address"
           ></input>
           <p className="pForForm">{errors.employee_address?.message}</p>
         </div>
@@ -329,6 +381,8 @@ function AddUpdateForm(props) {
             {...register("employee_phone")}
             id="employee_phone"
             type="text"
+            defaultValue={data.employee_phone}
+            placeholder="Enter Your Phone"
           ></input>
           <p className="pForForm">{errors.employee_phone?.message}</p>
         </div>
@@ -340,6 +394,8 @@ function AddUpdateForm(props) {
             {...register("employee_email")}
             id="employee_email"
             type="text"
+            defaultValue={data.employee_email}
+            placeholder="Enter Your Email"
           ></input>
           <p className="pForForm">{errors.employee_email?.message}</p>
         </div>
@@ -354,6 +410,8 @@ function AddUpdateForm(props) {
             {...register("employee_facebook")}
             id="employee_facebook"
             type="text"
+            defaultValue={data.employee_facebook}
+            placeholder="Enter Your Facebook ID"
           ></input>
         </div>
         <div className="profile_label_input ">
@@ -367,6 +425,8 @@ function AddUpdateForm(props) {
             {...register("employee_linkedin")}
             id="employee_linkedin"
             type="text"
+            defaultValue={data.employee_linkedin}
+            placeholder="Enter Your LinkedIn ID"
           ></input>
         </div>
         <input

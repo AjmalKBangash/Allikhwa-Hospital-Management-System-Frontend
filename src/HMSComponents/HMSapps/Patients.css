@@ -1,0 +1,37 @@
+.patient_html_table {
+  width: 95%;
+  margin: 10px auto;
+}
+
+table.patient_GeneratedTable_details {
+  width: 100%;
+  background-color: #ffffff;
+  border-collapse: separate;
+  border-width: 0px;
+  border-color: #fe4200;
+  border-style: solid;
+  color: #000000;
+}
+
+table.patient_GeneratedTable_details td,
+table.patient_GeneratedTable_details th {
+  border: 1px solid #01373754;
+  padding: 3px;
+}
+
+table.patient_GeneratedTable_details thead {
+  background-color: #ffffff;
+}
+table.patient_GeneratedTable_details thead tr th {
+  text-align: start;
+  padding: 5px 2px;
+  color: #fe4400b0;
+}
+.patient_details_edit_icon {
+  color: #fe4400b0;
+  font-size: 18px;
+}
+.patient_details_edit_icon:hover {
+  cursor: pointer;
+  color: #fe4200;
+}

@@ -11,9 +11,11 @@
 }
 .doctorimgincard {
   height: 180px;
-  width: 188px;
-  margin: 0 auto 10px auto;
-  border-radius: 20px;
+  width: 150px;
+  margin: 5px 25px 5px 25px;
+  border-radius: 2px;
+  border: 2px solid #fe4200;
+  box-sizing: border-box;
 }
 .doctornameincard {
   font-size: 14px;
@@ -37,10 +39,6 @@ table.employee_GeneratedTable th {
   padding: 10px;
 }
 
-table.employee_GeneratedTable thead {
-  background-color: #fe4200;
-}
-
 .doctorslider {
   display: flex;
   flex-direction: row;
@@ -53,17 +51,19 @@ table.employee_GeneratedTable thead {
   flex-direction: column;
   height: 300px;
   width: 220px;
-  margin: 10px;
+  margin: 20px;
 }
 .jobtitleincard {
   color: rgba(0, 0, 0, 0.397);
 }
 .doctorcoverofimgtagsindoctorcard {
   padding: 6px;
-  width: 220px;
+  width: 200px;
+  height: fit-content;
   box-shadow: 0px 5px 5px 0px rgba(1, 55, 55, 0.7);
   -webkit-box-shadow: 0px 5px 5px 0px rgba(1, 55, 55, 0.7);
   -moz-box-shadow: 0px 5px 5px 0px rgba(1, 55, 55, 0.7);
+  box-sizing: border-box;
 }
 .fblogosincard {
   font-size: 20px;
@@ -74,8 +74,9 @@ table.employee_GeneratedTable thead {
 .viewdetailsincard {
   font-size: 12px;
   font-weight: 500;
-  color: #fe4200;
-  border: 2px solid #fe4200;
+  color: white;
+  background-color: #013737;
+  border-radius: 2px;
   width: fit-content;
   height: fit-content;
   margin: 8px 0 0px auto;
@@ -83,7 +84,6 @@ table.employee_GeneratedTable thead {
   box-sizing: border-box;
 }
 .viewdetailsincard:hover {
-  border: 2px solid #fe440071;
-  /* color: white; this will not work due to Link of reacr router */
-  /* cursor: pointer; this wil pre work bc of react router */
+  color: #fe4200;
+  cursor: pointer;
 }

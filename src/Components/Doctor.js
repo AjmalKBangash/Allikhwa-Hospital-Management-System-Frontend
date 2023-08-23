@@ -280,7 +280,7 @@ function Doctor() {
                     </tr>
                     <tr>
                       <td>Name</td>
-                      <td> {propfromshodetailsdoctorcard.title}</td>
+                      <td>{propfromshodetailsdoctorcard.title}</td>
                     </tr>
                     <tr>
                       <td>Education</td>
