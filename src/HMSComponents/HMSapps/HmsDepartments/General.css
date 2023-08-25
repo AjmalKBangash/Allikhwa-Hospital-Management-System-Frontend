@@ -1,0 +1,14 @@
+.parag_about_general_depart {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.note {
+  width: fit-content;
+  border-radius: 4px;
+  font-size: 20;
+  font-weight: 600;
+  padding: 10px;
+  color: white;
+  background-color: #fe4200;
+}

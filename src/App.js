@@ -24,6 +24,7 @@ import Jaan from "./Components/Jaan";
 import HmsAppLayout from "./HMSComponents/HmsAppLayout";
 import Dashboard from "./HMSComponents/HMSapps/Dashboard";
 // import CardForAll from "./HMSComponents/HMSapps/CardForAll";
+import Profile from "./HMSComponents/HMSapps/Profile";
 import Admins from "./HMSComponents/HMSapps/Admins";
 import Doctors from "./HMSComponents/HMSapps/Doctors";
 import Pharmacists from "./HMSComponents/HMSapps/Pharmacists";
@@ -32,7 +33,16 @@ import Receptionists from "./HMSComponents/HMSapps/Receptionists";
 import Staff from "./HMSComponents/HMSapps/Staff";
 import Others from "./HMSComponents/HMSapps/Others";
 import Patients from "./HMSComponents/HMSapps/Patients";
+// Departments Started
 import Departments from "./HMSComponents/HMSapps/Departments";
+import HMSEmergency from "./HMSComponents/HMSapps/HmsDepartments/HMSEmergency";
+import General from "./HMSComponents/HMSapps/HmsDepartments/General";
+import Cardiology from "./HMSComponents/HMSapps/HmsDepartments/Cardiology";
+import ENDOCRINOLOGY from "./HMSComponents/HMSapps/HmsDepartments/ENDOCRINOLOGY";
+// Departments Information For All
+import TotalDepartmentBeds from "./ForAll/TotalDepartmentBeds";
+import TotalDepartmentDoctors from "./ForAll/TotalDepartmentDoctors";
+import TotalDepartmentNurses from "./ForAll/TotalDepartmentNurses";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -45,7 +55,6 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Profile from "./HMSComponents/HMSapps/Profile";
 
 const theRoutes = createBrowserRouter(
   createRoutesFromElements(
@@ -74,7 +83,28 @@ const theRoutes = createBrowserRouter(
         <Route path="staff" element={<Staff />} />
         <Route path="others" element={<Others />} />
         <Route path="patients" element={<Patients />} />
-        <Route path="departments" element={<Departments />} />
+        <Route path="departments" element={<Departments />}>
+          {/* <Route
+            path="all'ikhwa-management-system/departments/:departmentname"
+            element={<Departments />}
+          /> */}
+          {/* Departments  */}
+          <Route path="hmsemergency" element={<HMSEmergency />} />
+          <Route path="general" element={<General />} />
+          <Route path="endocrinology" element={<ENDOCRINOLOGY />} />
+          <Route path="cardiology" element={<Cardiology />} />
+
+          {/* Departments Cards Information  */}
+          <Route
+            path="totaldepartmentdoctors"
+            element={<TotalDepartmentDoctors />}
+          />
+          <Route
+            path="totaldepartmentnurses"
+            element={<TotalDepartmentNurses />}
+          />
+          <Route path="totaldepartmentbeds" element={<TotalDepartmentBeds />} />
+        </Route>
       </Route>
     </>
   )
