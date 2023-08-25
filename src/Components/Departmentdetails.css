@@ -4,60 +4,67 @@
   /* border: 1px solid brown; */
 }
 
-/* .departmentdetailstop {
-} */
+.departmentdetailstop {
+  position: relative;
+}
 
 .departdetailscontainer {
   display: grid;
-  grid-template-columns: 20% 80%;
-  margin: 4px 0 10px 0;
+  grid-template-columns: 16% 84%;
+  margin: 4px 0 0 0;
+  position: relative;
 }
 .departdetailscolumn01 {
-  /* border: 5px solid #fe4200; */
-  height: 100vh;
   overflow: scroll;
+  width: 16vw;
   position: sticky;
-  top: 0;
+  height: 100vh;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  z-index: 1;
 }
 .departdetailscolumn01 ul {
   display: flex;
   flex-direction: column;
   background-color: #013737;
+  box-sizing: border-box;
 }
 .departdetailscolumn01 ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  border-radius: 2px;
-  margin: 2px 0 2px 0;
-  padding: 10px 100px 10px 10px;
+  padding: 5%;
   border-bottom: 1px solid #fe44005b;
+  overflow: hidden;
 }
 .departdetailscolumn01 ul li:hover {
   cursor: pointer;
-  /* color: #fe4200;+ */
 }
 .departdetailcolumn02arrow {
-  font-size: 15px;
-  right: 2%;
+  font-size: 20px;
   position: absolute;
-  padding: 0% 3% 3% 88%;
+  right: 5%;
+  padding: 0% 5% 0% 100%;
   color: white;
 }
 .departdetailcolumn02arrow:hover {
   transform: translateX(2%);
 }
 .departdetailscolumn02Father {
+  margin: 20px 0 0 0;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 20px 0 0 0;
+  z-index: 1;
 }
 .departdetailscolumn02Father Footer {
   width: 100vw;
 }
 .departdetailscolumn02 {
-  /* position: absolute; */
 }
 .departdetailscolumn02 ul li {
   margin: 10px;

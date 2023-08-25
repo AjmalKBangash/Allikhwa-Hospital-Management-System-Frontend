@@ -2,7 +2,14 @@ import "./HmsAppLayout.css";
 import Dashboard from "./HMSapps/Dashboard";
 
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useMatch,
+  useMatches,
+  matchPath,
+} from "react-router-dom";
 
 // HMS Icons
 import { RiDashboardFill, RiAdminFill } from "react-icons/ri";
@@ -95,33 +102,50 @@ const departments = [
 let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
 
-// strr
-//   .toUpperCase()
-// .trim()
-// .replace(" ",/[^\w\s-]/g)
-// .replace(" ",/[\s_-]+/g)
-//   .replace("-", " ");
-// const { departmentdetails } = useParams();
-// const { state } = useLocation("");
-
 function HmsAppLayout() {
-  const [displayDashboard, setDisplayDashboard] = useState(true);
+  const [displayDashboard, setDisplayDashboard] = useState(false);
+  const [displayHmsMenu, setDisplayHmsMenu] = useState(true);
+  const only_hms_icons = useRef();
+  const hms_outlet = useRef();
   const location = useLocation();
+  // only_hms_icons.current.style.display = "none";
 
+  // matching path for displaying dashboard otherwise not
+  const pathhh = matchPath("/all'ikhwa-management-system/", location.pathname);
   useEffect(() => {
-    if (location.pathname === "/all'ikhwa-management-system/") {
-      setDisplayDashboard(true);
-    } else if (
-      location.pathname === "/all'ikhwa-management-system/:dashboard"
-    ) {
-      setDisplayDashboard(false);
+    pathhh ? setDisplayDashboard(true) : setDisplayDashboard(false);
+  }, [pathhh]);
+  // matching path for displaying dashboard otherwise not
+  const path_depart = matchPath(
+    "/all'ikhwa-management-system/departments/",
+    location.pathname
+  );
+  const path_departments = matchPath(
+    "/all'ikhwa-management-system/departments/:cardiology",
+    location.pathname
+  );
+  useEffect(() => {
+    if (path_depart) {
+      setDisplayHmsMenu(false);
+      only_hms_icons.current.style.width = "0vw";
+      hms_outlet.current.style.width = "100vw";
+      hms_outlet.current.style.left = "0vw";
+    } else if (path_departments) {
+      only_hms_icons.current.style.width = "0vw";
+      hms_outlet.current.style.width = "100vw";
+      hms_outlet.current.style.left = "0vw";
+    } else {
+      setDisplayHmsMenu(true);
+      only_hms_icons.current.style.width = "16vw";
+      hms_outlet.current.style.width = "84vw";
+      hms_outlet.current.style.left = "16vw";
     }
-  }, [location.pathname]);
+  }, [path_depart, path_departments]);
   return (
     <>
       <div className="hmstop">
         <div className="hmscontainercol02_menu">
-          <img
+          <img // onClick={() => setDisplayDashboard(false)}
             className="hmscontainercol02_img"
             // src={} dynamic
             src="https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
@@ -130,7 +154,7 @@ function HmsAppLayout() {
           <IoMdNotifications style={{ fontSize: "30px", color: "#fe4200" }} />
         </div>
         <div className="hmscontainer">
-          <div className="hmscontainercol01">
+          <div className="hmscontainercol01" ref={only_hms_icons}>
             <ul>
               {departments.map((department, id) => {
                 return (
@@ -139,21 +163,26 @@ function HmsAppLayout() {
                     to={department.name.toLowerCase()}
                     className="linkk"
                     style={{ color: "white" }}
-                    onClick={() => setDisplayDashboard(false)}
                   >
-                    <li>
-                      <span className="hmsmanagementicons">
-                        <department.logo /> &nbsp;
-                      </span>
-                      {department.name}
-                      <span className="hmscontainercol01_arrow">&#8594;</span>
-                    </li>
+                    {displayHmsMenu && (
+                      <>
+                        <li>
+                          <span className="hmsmanagementicons">
+                            <department.logo /> &nbsp;
+                          </span>
+                          <span> {department.name}</span>
+                          <span className="hmscontainercol01_arrow">
+                            &#8594;
+                          </span>
+                        </li>
+                      </>
+                    )}
                   </NavLink>
                 );
               })}
             </ul>
           </div>
-          <div className="hmscontainercol02">
+          <div className="hmscontainercol02" ref={hms_outlet}>
             {displayDashboard && <Dashboard />}
 
             <Outlet />
