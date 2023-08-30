@@ -1,0 +1,18 @@
+.expenses_cards_fontsize {
+  font-size: 14px;
+}
+.expenses_col02 {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2%;
+  width: 95%;
+  margin: 0 auto;
+}
+.expenses_col02_radialchart {
+  height: 250px;
+  padding: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+}

@@ -1,13 +1,13 @@
 import "./General.css";
 import InformationCards from "../../../ForAll/InformationCards";
-import TotalDepartmentDoctors from "../../../ForAll/TotalDepartmentDoctors";
+// import TotalDepartmentDoctors from "../../../ForAll/TotalDepartmentDoctors";
 
 // icons
 
 function General() {
   return (
     <>
-      <InformationCards data={{ department: "general" }} />
+      <InformationCards data={"general"} />
       {/* paragraph About This General Depart  */}
       <p className="parag_about_general_depart">
         <div className="note">Note!</div>
