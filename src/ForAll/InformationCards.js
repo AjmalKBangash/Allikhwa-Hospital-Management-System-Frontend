@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
+import InformationCardForEmployee from "/home/ajay/Desktop/FYP/allikhwa/src/ForAll/InformationCardForEmployee";
 
 function InformationCards(props) {
-  console.log(props);
+  // console.log(props);
+  let departmentname = [props.data];
+
   return (
     <>
       {" "}
@@ -43,19 +45,19 @@ function InformationCards(props) {
         </div>
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">324</span>
-          <span
-            className="dashboard_employee_card_name"
-            style={{ fontSize: "15px" }}
-          >
+          <span className="dashboard_employee_card_name">
             <Link
               to={
                 "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentdoctors"
               }
-              // state={props.data}
+              // to={
+              //   "http://localhost:3000/all'ikhwa-management-system/departments/informationcardforemployee"
+              // }
+              state={departmentname}
               className="linkk"
               style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
             >
-              Total Doctors
+              Doctors
             </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
@@ -64,19 +66,17 @@ function InformationCards(props) {
         </div>
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">324</span>
-          <span
-            className="dashboard_employee_card_name"
-            style={{ fontSize: "15px" }}
-          >
-            {/* <Link
+          <span className="dashboard_employee_card_name">
+            <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments"
+                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentnurses"
               }
+              state={departmentname}
               className="linkk"
               style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
-            > */}
-            Total Nurses
-            {/* </Link> */}
+            >
+              Nurses
+            </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
             <FaUserDoctor />
@@ -84,19 +84,17 @@ function InformationCards(props) {
         </div>
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">324</span>
-          <span
-            className="dashboard_employee_card_name"
-            style={{ fontSize: "15px" }}
-          >
-            {/* <Link
+          <span className="dashboard_employee_card_name">
+            <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments"
+                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentbeds"
               }
+              state={departmentname}
               className="linkk"
               style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
-            > */}
-            Total Beds
-            {/* </Link> */}
+            >
+              Total Beds
+            </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
             <FaUserDoctor />
@@ -104,19 +102,17 @@ function InformationCards(props) {
         </div>
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">324</span>
-          <span
-            className="dashboard_employee_card_name"
-            style={{ fontSize: "15px" }}
-          >
-            {/* <Link
+          <span className="dashboard_employee_card_name">
+            <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments"
+                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentbeds"
               }
+              state={departmentname}
               className="linkk"
               style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
-            > */}
-            Filled Beds
-            {/* </Link> */}
+            >
+              Filled Beds
+            </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
             <FaUserDoctor />
@@ -124,19 +120,17 @@ function InformationCards(props) {
         </div>
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">324</span>
-          <span
-            className="dashboard_employee_card_name"
-            style={{ fontSize: "15px" }}
-          >
-            {/* <Link
+          <span className="dashboard_employee_card_name">
+            <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments"
+                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentbeds"
               }
+              state={departmentname}
               className="linkk"
               style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
-            > */}
-            Free Beds
-            {/* </Link> */}
+            >
+              Free Beds
+            </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
             <FaUserDoctor />
