@@ -1,7 +1,9 @@
 import "/home/ajay/Desktop/FYP/allikhwa/src/HMSComponents/HMSapps/CardForAll.css";
 import AddUpdateForm from "/home/ajay/Desktop/FYP/allikhwa/src/HMSComponents/HMSapps/AddUpdateForm";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+// import { UseSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux";
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { AiFillGooglePlusCircle } from "react-icons/ai";
@@ -32,6 +34,12 @@ const empty_data_for_adupdate_component = [
 ];
 
 function InformationCardForEmployee(props) {
+  // const location = useLocation()
+  const props_from_depart_actions = useSelector(
+    (state) => state.props_from_depart_actions
+  );
+  // console.log(props_from_depart_actions.employee_department);
+  // console.log(props.data);
   const [fetched_employee_data_for_card, setfetched_employee_data_for_card] =
     useState();
   const showdetailsref = useRef();
@@ -54,16 +62,24 @@ function InformationCardForEmployee(props) {
   }
   let data_editing = {
     data: propfromshodetailsdoctorcard,
-    data__employee_category: props.data,
+    data__employee_category: props_from_depart_actions.employee_category,
   };
   let data_adding = {
     data: empty_data_for_adupdate_component[0],
-    data__employee_category: props.data,
+    data__employee_category: props_from_depart_actions.employee_category,
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:3100/" + props.data.toLowerCase() + "s")
+      .get(
+        "http://localhost:3100/" +
+          props_from_depart_actions.employee_category.toLowerCase() +
+          "s"
+        // * fetcing only doctors which are in the department of general is willl be fetching after django backend ceated
+        // "?" +
+        // "employee_department" ==
+        // props_from_depart_actions.employee_department
+      )
       .then((res) => {
         setfetched_employee_data_for_card(res.data);
       })
@@ -80,7 +96,7 @@ function InformationCardForEmployee(props) {
             onClick={() => setDisplayFormForAddUpdate(true)}
             className="admin_buttons_add_update_from_add_update_form"
           >
-            ADD {props.data}
+            ADD {props_from_depart_actions.employee_category}
           </button>
         )}
         {displayFormForAddUpdate && (
@@ -113,9 +129,11 @@ function InformationCardForEmployee(props) {
                 setDisplayFormForAddUpdate(false);
               }}
             >
-              EDIT {props.data}
+              EDIT {props_from_depart_actions.employee_category}
             </button>
-            <button>DELETE {props.data}</button>
+            <button>
+              DELETE {props_from_depart_actions.employee_category}
+            </button>
           </>
         )}
       </div>

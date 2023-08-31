@@ -33,16 +33,19 @@ import Receptionists from "./HMSComponents/HMSapps/Receptionists";
 import Staff from "./HMSComponents/HMSapps/Staff";
 import Others from "./HMSComponents/HMSapps/Others";
 import Patients from "./HMSComponents/HMSapps/Patients";
+import Expenses from "./HMSComponents/HMSapps/Expenses";
 // Departments Started
 import Departments from "./HMSComponents/HMSapps/Departments";
 import HMSEmergency from "./HMSComponents/HMSapps/HmsDepartments/HMSEmergency";
 import General from "./HMSComponents/HMSapps/HmsDepartments/General";
 import Cardiology from "./HMSComponents/HMSapps/HmsDepartments/Cardiology";
 import ENDOCRINOLOGY from "./HMSComponents/HMSapps/HmsDepartments/ENDOCRINOLOGY";
-// Departments Information For All
+//   For All, components
 import TotalDepartmentBeds from "./ForAll/TotalDepartmentBeds";
 import TotalDepartmentDoctors from "./ForAll/TotalDepartmentDoctors";
 import TotalDepartmentNurses from "./ForAll/TotalDepartmentNurses";
+import InformationCardForEmployee from "./ForAll/InformationCardForEmployee";
+import ExpenseDynamicDetails from "./ForAll/ExpenseDynamicDetails";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -93,7 +96,6 @@ const theRoutes = createBrowserRouter(
           <Route path="general" element={<General />} />
           <Route path="endocrinology" element={<ENDOCRINOLOGY />} />
           <Route path="cardiology" element={<Cardiology />} />
-
           {/* Departments Cards Information  */}
           <Route
             path="totaldepartmentdoctors"
@@ -104,6 +106,14 @@ const theRoutes = createBrowserRouter(
             element={<TotalDepartmentNurses />}
           />
           <Route path="totaldepartmentbeds" element={<TotalDepartmentBeds />} />
+          {/* Departments Employee Card */}
+          <Route
+            path="informationcardforemployee"
+            element={<InformationCardForEmployee />}
+          />
+        </Route>
+        <Route path="expenses" element={<Expenses />}>
+          <Route path="expensedetails" element={<ExpenseDynamicDetails />} />
         </Route>
       </Route>
     </>

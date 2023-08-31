@@ -3,6 +3,7 @@ import "./Departments.css";
 import React, { useState } from "react";
 import {
   Link,
+  NavLink,
   useParams,
   useLocation,
   Outlet,
@@ -247,58 +248,58 @@ function Departments() {
           // }}
         >
           <ul>
-            <li>
-              <Link
-                // to={
-                //   "http://localhost:3000/all'ikhwa-management-system/departments/" +
-                //   department.name.toLowerCase().replace(" ", "-")
-                // }
-                // to={department.name.toLowerCase().replace(" ", "-")}
-                to={"general"}
-                // state={{ department: department }}
-                className="linkk"
-                style={{ color: "white" }}
-                onClick={() => setDepart_name_for_bread("GENERAL")}
-              >
+            <NavLink
+              // to={
+              //   "http://localhost:3000/all'ikhwa-management-system/departments/" +
+              //   department.name.toLowerCase().replace(" ", "-")
+              // }
+              // to={department.name.toLowerCase().replace(" ", "-")}
+              to={"general"}
+              // state={{ department: department }}
+              className="linkk"
+              style={{ color: "white" }}
+              onClick={() => setDepart_name_for_bread("GENERAL")}
+            >
+              <li>
                 <span> GENERAL</span>
                 <span className="departdetail_column01_arrow_hmsapps">
                   &#8594;
                 </span>
-              </Link>
-            </li>
+              </li>
+            </NavLink>
             {departments.map((department, id) => {
               return (
-                <li key={id}>
-                  <Link
-                    // to={
-                    //   "http://localhost:3000/all'ikhwa-management-system/departments/" +
-                    //   department.name.toLowerCase().replace(" ", "-")
-                    // }
-                    // to={department.name.toLowerCase().replace(" ", "-")}
-                    to={department.name.toLowerCase()}
-                    state={{ department: department }}
-                    className="linkk"
-                    style={{ color: "white" }}
-                    onClick={() => setDepart_name_for_bread(department.name)}
-                  >
+                <NavLink
+                  // to={
+                  //   "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                  //   department.name.toLowerCase().replace(" ", "-")
+                  // }
+                  // to={department.name.toLowerCase().replace(" ", "-")}
+                  to={department.name.toLowerCase()}
+                  state={{ department: department }}
+                  className="linkk"
+                  style={{ color: "white" }}
+                  onClick={() => setDepart_name_for_bread(department.name)}
+                >
+                  <li key={id}>
                     <span> {department.name}</span>
                     <span className="departdetail_column01_arrow_hmsapps">
                       &#8594;
                     </span>
-                  </Link>
-                </li>
+                  </li>
+                </NavLink>
               );
             })}
           </ul>
         </div>
         <div className="departdetails_column02_in_hmsapps">
           {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
-          <div
-            className="depart_heading"
-            style={{ width: "fit-content", margin: "auto" }}
+          <h2
+            className="fillfreebeds_h2"
+            // style={{ width: "fit-content", margin: "auto" }}
           >
-            All'IKHWA Departments Information
-          </div>
+            All'IKHWA DEPARTMENTS INFORMATION
+          </h2>
 
           <Outlet />
         </div>

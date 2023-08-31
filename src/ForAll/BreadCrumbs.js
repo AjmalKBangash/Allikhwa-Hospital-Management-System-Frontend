@@ -3,7 +3,6 @@ import "./BreadCrumbs.css";
 
 function BreadCrumbs(props) {
   let path_names = props.data;
-  console.log(props.data);
   // convering path_names into bread_crumbs
   const bread_crumbs = [];
   let start = 0;
@@ -16,10 +15,8 @@ function BreadCrumbs(props) {
         .toUpperCase();
       bread_crumbs.push(path);
       start = i + 1;
-      console.log(i);
     }
   }
-  console.log(bread_crumbs);
 
   return (
     <div className="breadcrumbs_hmsapps">

@@ -30,6 +30,7 @@
   flex-direction: column;
   background-color: #013737;
   box-sizing: border-box;
+  border-top: 2px solid black;
 }
 .departdetails_column01_in_hmsapp ul li {
   display: flex;

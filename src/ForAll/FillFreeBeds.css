@@ -1,0 +1,101 @@
+.fillfreebeds_paatient_details {
+  width: 75%;
+  margin: 10px auto;
+  padding: 10px;
+  /* border: 2px solid black; */
+  box-shadow: 0px 1px 8px 0px rgb(1, 55, 55);
+  -webkit-box-shadow: 0px 1px 8px 0px rgb(1, 55, 55);
+  -moz-box-shadow: 0px 1px 8px 0px rgb(1, 55, 55);
+  box-sizing: border-box;
+}
+.fillfreebeds_h2 {
+  font-size: 15px;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -webkit-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -moz-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  width: fit-content;
+}
+.patient_details_edit_icon {
+  font-size: 20px;
+}
+.fillfreebeds_edit_icon {
+  font-size: 20px;
+  color: #fe4400ab;
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 60px;
+  box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -webkit-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -moz-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+}
+.fillfreebeds_edit_icon:hover {
+  color: #fe4200;
+}
+.fillfree_edit_icon_inedit {
+  position: absolute;
+  margin-top: 2px;
+}
+.fillfreebeds_dynamic_field_medicine div {
+  display: grid;
+  grid-template-columns: 47% 83%;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.041);
+  height: fit-content;
+  width: 82%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.041);
+}
+.fillfreebeds_dynamic_field_medicine input {
+  height: 20px;
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.103);
+  border-radius: 4px;
+  outline: none;
+}
+.fillfreebeds_dynamic_field_medicine button {
+  height: 40px;
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  position: relative;
+  /* border: 1px solid rgba(0, 0, 0, 0.103); */
+  border-radius: 4px;
+  outline: none;
+}
+/* .profile_information_all {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: 75%;
+  margin: 110px auto 10px auto;
+  position: relative;
+}
+.profile_label_input {
+  display: grid;
+  grid-template-columns: 40% 70%;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.041);
+}
+.profile_label_input input[type="text"],
+.profile_label_input input[type="password"],
+.profile_label_input input[type="date"],
+.profile_label_input input[type="file"] {
+  height: 20px;
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.103);
+  border-radius: 4px;
+  outline: none;
+} */

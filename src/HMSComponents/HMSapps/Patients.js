@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { RiHospitalFill } from "react-icons/ri";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FcDepartment } from "react-icons/fc";
-import { BiEdit } from "react-icons/bi";
+import { MdDetails } from "react-icons/md";
 
 function Patients() {
   let [patientData, setPatientData] = useState();
@@ -205,13 +205,12 @@ function Patients() {
               <th>City</th>
               <th>Department</th>
               <th>Admitted Status</th>
-              <th>Details</th>
+              <th>View</th>
             </tr>
           </thead>
           <tbody>
             {patientData ? (
               patientData.map((patdet, id) => {
-                console.log(patdet);
                 return (
                   <tr key={id}>
                     <td>{patdet.name}</td>
@@ -226,7 +225,7 @@ function Patients() {
                         PatientDetailsFun(patdet);
                       }}
                     >
-                      <BiEdit className="patient_details_edit_icon" />
+                      <MdDetails className="patient_details_edit_icon" />
                     </td>
                   </tr>
                 );
