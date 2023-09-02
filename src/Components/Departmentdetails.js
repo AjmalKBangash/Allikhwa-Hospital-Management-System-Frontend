@@ -241,7 +241,14 @@ function Departmentdetails() {
   // }
   //   console.log(state.department.name); valid
   //   if ((state = "")) console.log("done");
-
+  function Replacing(text) {
+    const replaced = [];
+    for (let i = 0; i < text.length; i++) {
+      const path = text[i].replace(" ", "-");
+      replaced.push(path);
+    }
+    return replaced.join("");
+  }
   return (
     <div className="departmentdetailstop">
       <NavBar />
@@ -251,20 +258,25 @@ function Departmentdetails() {
           {departments.map((department, id) => {
             return (
               <ul>
-                <li key={id}>
-                  <Link
-                    to={
-                      "http://localhost:3000/departments/" +
-                      department.name.toLowerCase().replace(" ", "-")
-                    }
-                    state={{ department: department }}
-                    className="linkk"
-                    style={{ color: "white" }}
-                  >
+                <Link
+                  to={
+                    "http://localhost:3000/departments/" +
+                    Replacing(department.name.toLowerCase().trim())
+                  }
+                  state={{ department: department }}
+                  className={
+                    departmentdetails ===
+                    Replacing(department.name.toLowerCase().trim())
+                      ? "linkk active"
+                      : "linkk"
+                  }
+                  style={{ color: "white" }}
+                >
+                  <li key={id}>
                     <span> {department.name}</span>
                     <span className="departdetailcolumn02arrow">&#8594;</span>
-                  </Link>
-                </li>
+                  </li>
+                </Link>
               </ul>
             );
           })}
@@ -272,12 +284,7 @@ function Departmentdetails() {
         <div className="departdetailscolumn02Father">
           {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
 
-          <div
-            className="statisticsonlineconsul"
-            style={{ width: "fit-content", margin: "auto" }}
-          >
-            Departments{" "}
-          </div>
+          <h2 className="fillfreebeds_h2">All'IKHWA DEPARTMENTS INFORMATION</h2>
           {/* this is department details column  */}
           {/* {displayNotDepartment && ( */}
           <div className="departmentdetailsexplaining">

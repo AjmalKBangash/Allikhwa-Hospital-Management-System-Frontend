@@ -7,9 +7,13 @@ export const props_from_depart_actions = createAction(
 export const expenses_to_expensedynamic_form_display = createAction(
   "expenses_to_expensedynamic_form_display"
 );
+export const allikhwa_department_infomation_dynamic_name = createAction(
+  "allikhwa_department_infomation_dynamic_name"
+);
 const initialState = {
   props_from_depart_actions: [],
   expenses_to_expensedynamic_form_display: [],
+  allikhwa_department_infomation_dynamic_name: "",
 };
 // *
 // *
@@ -59,6 +63,12 @@ const sliceReducer = createReducer(initialState, (builder) => {
   builder.addCase(expenses_to_expensedynamic_form_display, (state, action) => {
     state.expenses_to_expensedynamic_form_display = action.payload;
   });
+  builder.addCase(
+    allikhwa_department_infomation_dynamic_name,
+    (state, action) => {
+      state.allikhwa_department_infomation_dynamic_name = action.payload;
+    }
+  );
 });
 
 // *

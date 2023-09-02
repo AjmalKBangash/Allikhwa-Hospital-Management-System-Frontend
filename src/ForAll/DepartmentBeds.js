@@ -1,4 +1,4 @@
-import "./TotalDepartmentBeds.css";
+import "./DepartmentBeds.css";
 import InformationTableForBeds from "./InformationTableForBeds";
 import FillFreeBeds from "./FillFreeBeds";
 
@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { props_from_depart_actions } from "../Store/Store";
 import { useLocation } from "react-router-dom";
 
-function TotalDepartmentBeds() {
+function DepartmentBeds() {
   const location = useLocation();
   const dispatch = useDispatch();
   // return <>{location.state && location.state}</>;
@@ -21,9 +21,7 @@ function TotalDepartmentBeds() {
   return (
     <>
       <InformationTableForBeds {...departname} />
-      {/* {location.state[0] === "FillFreeBeds" && <FillFreeBeds {...departname} />} */}
-      {/* {<FillFreeBeds {...departname} />} */}
     </>
   );
 }
-export default TotalDepartmentBeds;
+export default DepartmentBeds;

@@ -9,6 +9,7 @@ import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 function InformationTableForBeds(props) {
+  console.log(props.depart_name);
   const [fetched_beds_data, setfetched_beds_data] = useState();
   const [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
   const [show_editing_beds_form, setshow_editing_beds_form] = useState(false);
