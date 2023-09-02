@@ -36,16 +36,21 @@ import Patients from "./HMSComponents/HMSapps/Patients";
 import Expenses from "./HMSComponents/HMSapps/Expenses";
 // Departments Started
 import Departments from "./HMSComponents/HMSapps/Departments";
-import HMSEmergency from "./HMSComponents/HMSapps/HmsDepartments/HMSEmergency";
-import General from "./HMSComponents/HMSapps/HmsDepartments/General";
-import Cardiology from "./HMSComponents/HMSapps/HmsDepartments/Cardiology";
-import ENDOCRINOLOGY from "./HMSComponents/HMSapps/HmsDepartments/ENDOCRINOLOGY";
+// import HMSEmergency from "./HMSComponents/HMSapps/HmsDepartments/HMSEmergency";
+import DepartmentHMS from "./HMSComponents/HMSapps/HmsDepartments/DepartmentHMS";
+
 //   For All, components
-import TotalDepartmentBeds from "./ForAll/TotalDepartmentBeds";
-import TotalDepartmentDoctors from "./ForAll/TotalDepartmentDoctors";
-import TotalDepartmentNurses from "./ForAll/TotalDepartmentNurses";
+import DepartmentBeds from "./ForAll/DepartmentBeds";
+import DepartmentDoctors from "./ForAll/DepartmentDoctors";
+import DepartmentNurses from "./ForAll/DepartmentNurses";
 import InformationCardForEmployee from "./ForAll/InformationCardForEmployee";
 import ExpenseDynamicDetails from "./ForAll/ExpenseDynamicDetails";
+// Now Doctor HMS started
+import DoctorHMS from "./HMSComponents/Doctor/DoctorHMS";
+import DrDashboard from "./HMSComponents/Doctor/DrDashboard";
+import DrAppointments from "./HMSComponents/Doctor/DrAppointments";
+import DrPrescription from "./HMSComponents/Doctor/DrPrescription";
+import DrSchedule from "./HMSComponents/Doctor/DrSchedule";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -87,25 +92,27 @@ const theRoutes = createBrowserRouter(
         <Route path="others" element={<Others />} />
         <Route path="patients" element={<Patients />} />
         <Route path="departments" element={<Departments />}>
-          {/* <Route
-            path="all'ikhwa-management-system/departments/:departmentname"
-            element={<Departments />}
-          /> */}
-          {/* Departments  */}
-          <Route path="hmsemergency" element={<HMSEmergency />} />
-          <Route path="general" element={<General />} />
-          <Route path="endocrinology" element={<ENDOCRINOLOGY />} />
-          <Route path="cardiology" element={<Cardiology />} />
+          <Route
+            path="/all'ikhwa-management-system/departments/:departmentname"
+            element={<DepartmentHMS />}
+          ></Route>
+          <Route
+            path="/all'ikhwa-management-system/departments/department-doctors"
+            element={<DepartmentDoctors />}
+          />
+          <Route
+            path="/all'ikhwa-management-system/departments/department-nurses"
+            element={<DepartmentNurses />}
+          />
+          <Route
+            path="/all'ikhwa-management-system/departments/department-beds"
+            element={<DepartmentBeds />}
+          />
+
           {/* Departments Cards Information  */}
-          <Route
-            path="totaldepartmentdoctors"
-            element={<TotalDepartmentDoctors />}
-          />
-          <Route
-            path="totaldepartmentnurses"
-            element={<TotalDepartmentNurses />}
-          />
-          <Route path="totaldepartmentbeds" element={<TotalDepartmentBeds />} />
+          {/* <Route path="department-doctors" element={<DepartmentDoctors />} />
+          <Route path="department-nurses" element={<DepartmentNurses />} />
+          <Route path="department-beds" element={<DepartmentBeds />} /> */}
           {/* Departments Employee Card */}
           <Route
             path="informationcardforemployee"
@@ -115,6 +122,12 @@ const theRoutes = createBrowserRouter(
         <Route path="expenses" element={<Expenses />}>
           <Route path="expensedetails" element={<ExpenseDynamicDetails />} />
         </Route>
+      </Route>
+      <Route path="doctor-hms" element={<DoctorHMS />}>
+        <Route path="dr-dashboard" element={<DrDashboard />} />
+        <Route path="dr-appointments" element={<DrDashboard />} />
+        <Route path="dr-prescription" element={<DrDashboard />} />
+        <Route path="dr-schedule" element={<DrDashboard />} />
       </Route>
     </>
   )

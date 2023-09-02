@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
-import InformationCardForEmployee from "/home/ajay/Desktop/FYP/allikhwa/src/ForAll/InformationCardForEmployee";
 
 function InformationCards(props) {
-  // console.log(props);
   let departmentname = [props.data];
 
   return (
@@ -48,11 +46,11 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentdoctors"
+                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                // departmentname +
+                "department-doctors"
               }
-              // to={
-              //   "http://localhost:3000/all'ikhwa-management-system/departments/informationcardforemployee"
-              // }
+              // to={"department-doctors"}
               state={departmentname}
               className="linkk"
               style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
@@ -69,7 +67,9 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentnurses"
+                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                // departmentname +
+                "department-nurses"
               }
               state={departmentname}
               className="linkk"
@@ -87,7 +87,9 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentbeds"
+                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                // departmentname +
+                "department-beds"
               }
               state={departmentname}
               className="linkk"
@@ -105,7 +107,7 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentbeds"
+                "http://localhost:3000/all'ikhwa-management-system/departments/department-beds"
               }
               state={departmentname}
               className="linkk"
@@ -123,7 +125,7 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/totaldepartmentbeds"
+                "http://localhost:3000/all'ikhwa-management-system/departments/department-beds"
               }
               state={departmentname}
               className="linkk"

@@ -1,11 +1,10 @@
-import "./TotalDepartmentNurses.css";
-
+import "./DepartmentDoctors.css";
 import { useSelector, useDispatch } from "react-redux";
 import { props_from_depart_actions } from "../Store/Store";
 import { useLocation } from "react-router-dom";
 import InformationCardForEmployee from "/home/ajay/Desktop/FYP/allikhwa/src/ForAll/InformationCardForEmployee";
 
-function TotalDepartmentNurses() {
+function DepartmentDoctors() {
   const location = useLocation();
   const dispatch = useDispatch();
   // return <>{location.state && location.state}</>;
@@ -14,7 +13,7 @@ function TotalDepartmentNurses() {
   if (location.state) {
     departname = {
       employee_department: location.state[0],
-      employee_category: "NURSE",
+      employee_category: "DOCTOR",
     };
   }
   dispatch(props_from_depart_actions(departname));
@@ -24,4 +23,5 @@ function TotalDepartmentNurses() {
     </>
   );
 }
-export default TotalDepartmentNurses;
+
+export default DepartmentDoctors;
