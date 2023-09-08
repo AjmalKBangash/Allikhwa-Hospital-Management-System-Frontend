@@ -10,10 +10,23 @@ export const expenses_to_expensedynamic_form_display = createAction(
 export const allikhwa_department_infomation_dynamic_name = createAction(
   "allikhwa_department_infomation_dynamic_name"
 );
+export const cd_open_close = createAction("cd_open_close");
+export const cd_yess_no = createAction("cd_yess_no");
+export const prescription_show_patient_detail_rest_pres_form = createAction(
+  "prescription_show_patient_detail_rest_pres_form"
+);
+export const re_render_presc_upper_component = createAction(
+  "re_render_presc_upper_component"
+);
+
 const initialState = {
   props_from_depart_actions: [],
   expenses_to_expensedynamic_form_display: [],
   allikhwa_department_infomation_dynamic_name: "",
+  cd_open_close: false,
+  cd_yess_no: "",
+  prescription_show_patient_detail_rest_pres_form: false,
+  re_render_presc_upper_component: false,
 };
 // *
 // *
@@ -69,6 +82,21 @@ const sliceReducer = createReducer(initialState, (builder) => {
       state.allikhwa_department_infomation_dynamic_name = action.payload;
     }
   );
+  builder.addCase(cd_open_close, (state, action) => {
+    state.cd_open_close = action.payload;
+  });
+  builder.addCase(cd_yess_no, (state, action) => {
+    state.cd_yess_no = action.payload;
+  });
+  builder.addCase(
+    prescription_show_patient_detail_rest_pres_form,
+    (state, action) => {
+      state.prescription_show_patient_detail_rest_pres_form = action.payload;
+    }
+  );
+  builder.addCase(re_render_presc_upper_component, (state, action) => {
+    state.re_render_presc_upper_component = action.payload;
+  });
 });
 
 // *

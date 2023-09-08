@@ -70,7 +70,8 @@ function Patients() {
             <BsPersonFillExclamation />
           </span>
         </div>
-        <div className="dashboard_employee_card">
+        {/* This is not approriate because this leaks the protected routes  */}
+        {/* <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">324</span>
           <span
             className="dashboard_employee_card_name"
@@ -89,7 +90,7 @@ function Patients() {
           <span className="dashboard_employee_card_icon">
             <FcDepartment />
           </span>
-        </div>
+        </div> */}
       </div>
       {/* On Edit Each Patient Information  */}
       {showPatienDetails && (

@@ -1,0 +1,11 @@
+.drappointments_patient_details {
+  width: 95%;
+  margin: 10px auto;
+  box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+}
+
+.drappointments_patient_list {
+  padding: 50px;
+}

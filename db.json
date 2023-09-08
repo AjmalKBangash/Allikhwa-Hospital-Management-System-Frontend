@@ -648,7 +648,7 @@
       "id": 5
     }
   ],
-  "pharmacists": [
+  "employess": [
     {
       "employee_name": "Dr.Maaz Bangash",
       "employee_website": "",
@@ -867,512 +867,533 @@
       "id": 899
     }
   ],
+  "newpatients": [
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "House# 437 phase # 06",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "id": 1
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "ALL'Ikhwa",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "id": 2
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "Ajay Bangash",
+      "PID": "02dfbbab-8aa2-4db0-8681-e6cce88a001f",
+      "id": 3
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "I am having dirhea",
+      "name": "Safeer Kashmiri",
+      "PID": "18cc181a-ac01-4a9e-b95c-cba229f3e32e",
+      "id": 4
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "choose_doctor": "Angola",
+      "city": "Tirana",
+      "country": "Albania",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "pa ma graan beemar dee",
+      "name": "Janan",
+      "PID": "d650c63d-eb83-468a-99a6-b84ab4e661e4",
+      "id": 5
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "choose_doctor": "Angola",
+      "city": "Tirana",
+      "country": "Albania",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "pa ma graan beemar dee",
+      "name": "Janan",
+      "PID": "0c154ed1-97ad-4270-a033-8629aa3f39b0",
+      "id": 6
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "",
+      "choose_doctor": "Hassan Khan",
+      "city": "Pretoria",
+      "country": "South Africa",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "hfjh fjhfj fjhfjh",
+      "name": "nbn",
+      "PID": "0443e412-cdd7-40bb-9d7f-8af2b46f8685",
+      "id": 7
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "",
+      "choose_doctor": "Hassan Khan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "jhjkj",
+      "name": "baba",
+      "PID": "7e562552-f255-40ea-9b5e-e14727192635",
+      "id": 8
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "choose_doctor": "Angola",
+      "city": "Luanda",
+      "country": "Andorra",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "dcdcdcdc",
+      "name": "sdcdcdcdcdcd",
+      "PID": "d8826fd0-14cb-41cc-8e4d-b63a3aea6887",
+      "id": 9
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
+      "address": "",
+      "choose_doctor": "Adnan Khan Bangash",
+      "city": "Tirana",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "hjgj fhjhfjhfh fhjfjhfjhf",
+      "name": "ALL'Ikhwa",
+      "PID": "8a66f6bc-d3bf-43ca-b087-8f5489ca587f",
+      "id": 10
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
+      "address": "",
+      "choose_doctor": "Adnan Khan Bangash",
+      "city": "Tirana",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "hjgj fhjhfjhfh fhjfjhfjhf",
+      "name": "ALL'Ikhwa",
+      "PID": "0f57cea4-47e5-4454-bd4a-cebc51adb11b",
+      "id": 11
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
+      "address": "",
+      "choose_doctor": "Adnan Khan Bangash",
+      "city": "Tirana",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "hjgj fhjhfjhfh fhjfjhfjhf",
+      "name": "ALL'Ikhwa",
+      "PID": "9339d37e-8818-4172-b4c3-8763a839978c",
+      "id": 12
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "choose_doctor": "Hassan Khan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "hghjhg jhgjhghfgh ",
+      "name": "ALL'Ikhwa",
+      "PID": "d20015e3-dcd7-44be-8122-342ba26a4e60",
+      "id": 13
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
+      "address": "",
+      "choose_doctor": "Husnain Bangash",
+      "city": "Tirana",
+      "country": "Albania",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "jhjkjhh jhkjjkhjk",
+      "name": "ALL'Ikhwa",
+      "PID": "b8826055-993e-458d-abe5-6b41dc787122",
+      "id": 14
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "choose_doctor": "Hassan Khan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "vvmvnnvnmvm",
+      "name": "vmvnmvnvn",
+      "PID": "b5a54f4e-fe31-4ed8-81c0-3e1b24e60ecc",
+      "id": 15
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "",
+      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "ajmal bemaarr  yjhjj",
+      "name": "ajmal",
+      "PID": "3bd78442-8ff7-48a0-8498-87ae014611df",
+      "id": 16
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "",
+      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "ajmal bemaarr  yjhjj",
+      "name": "ajmal",
+      "PID": "520e1751-8c73-462e-84a8-c1d01166e9bd",
+      "id": 17
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "",
+      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "jhjhjhjh jhhjjh hghjgggg",
+      "name": "ajmal",
+      "PID": "fa10a06e-f21c-4d53-96e0-52bf9cb29a9c",
+      "id": 18
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
+      "address": "",
+      "choose_doctor": "Hassan Khan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "patient_dis": "kjhgjhg ghjgjhgjh",
+      "name": "sdcdcdcdcdcd",
+      "PID": "12128ec8-202c-48e1-b9e8-018b08bacf09",
+      "id": 19
+    }
+  ],
+  "appointments": [
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "House# 437 phase # 06",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "department": "Cardiology",
+      "doctor": "DrHassan",
+      "id": 1
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "ALL'Ikhwa",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "department": "endocrinology",
+      "doctor": "DrHassan",
+      "id": 2
+    },
+    {
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "Ajay Bangash",
+      "PID": "02dfbbab-8aa2-4db0-8681-e6cce88a001f",
+      "department": "Emergency",
+      "doctor": "DrMaazKhanBangash",
+      "id": 3
+    }
+  ],
+  "prescriptions": [
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "House# 437 phase # 06",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "department": "Cardiology",
+      "doctor": "DrHassan",
+      "id": 1
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "ALL'Ikhwa",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "department": "endocrinology",
+      "doctor": "DrHassan",
+      "id": 2
+    }
+  ],
+  "rejectedappointments": [
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "House# 437 phase # 06",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "department": "Cardiology",
+      "doctor": "DrHassan",
+      "id": 1
+    },
+    {
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "ALL'Ikhwa",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "department": "endocrinology",
+      "doctor": "DrHassan",
+      "id": 2
+    }
+  ],
+  "refferedtoadmission": [
+    {
+      "presc_print_refer_to_admission": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "id": 2
+    },
+    {
+      "presc_print_refer_to_admission": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "id": 3
+    }
+  ],
   "patients": [
     {
-      "PID": 1,
-      "name": "Maaz Khan Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "no",
-      "date": "14 August 1947",
-      "department": "general",
-      "city": "Peshawar",
-      "bed_no": null,
-      "doctor": "Dr Maaz Khan Bangash",
-      "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-      "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment.Follow-up instructions: Doctors will typically give patients instructions on when to come back for follow-up appointments. They may also provide instructions on how to contact them if they have any questions or concerns.",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 2,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 3,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 4,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 5,
-          "date": "14 August 1947"
-        }
-      ]
+      "gender": "male",
+      "date": "2023-09-06",
+      "blood_pressure": "",
+      "diabetes": "",
+      "family_member": "Abdul Wahab",
+      "patient_disease": "Temperature and diarhea",
+      "medicine": "flygel,\npanadol",
+      "dosage_frequency": "3 times in a day 2 tablets,\n3times in a day 1 tablet",
+      "instructions": "Eat bananas, mutter and do not drink milk untill you get ok",
+      "id": 2
     },
     {
-      "PID": 11,
-      "name": "Maaz Khan Bangash",
+      "gender": "male",
+      "date": "2023-09-07",
+      "blood_pressure": "",
+      "diabetes": "",
+      "family_member": "Abdul Wahab",
+      "patient_disease": "diarhea",
+      "medicine": "flygel",
+      "dosage_frequency": "3 times in a day",
+      "instructions": "eat banana",
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
+      "address": "House# 437 phase # 06",
+      "city": "Kabul",
+      "country": "Afghanistan",
       "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "yess",
-      "date": "14 August 1947",
-      "department": "plasticsurgery",
-      "city": "Peshawar",
-      "bed_no": 7,
-      "doctor": "Dr Maaz Khan Bangash",
-      "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-      "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment.Follow-up instructions: Doctors will typically give patients instructions on when to come back for follow-up appointments. They may also provide instructions on how to contact them if they have any questions or concerns.",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 2,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 3,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 4,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 5,
-          "date": "14 August 1947"
-        }
-      ]
-    },
-    {
-      "PID": 111,
-      "name": "Maaz Khan Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "yess",
-      "date": "14 August 1947",
-      "department": "plasticsurgery",
-      "city": "Peshawar",
-      "bed_no": 4,
-      "doctor": "Dr Maaz Khan Bangash",
-      "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-      "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment.Follow-up instructions: Doctors will typically give patients instructions on when to come back for follow-up appointments. They may also provide instructions on how to contact them if they have any questions or concerns.",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 2,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 3,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 4,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 5,
-          "date": "14 August 1947"
-        }
-      ]
-    },
-    {
-      "PID": 3333,
-      "name": "Maaz Khan Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "Yess",
-      "date": "14 August 1947",
-      "department": "Emergency",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 2,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 3,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 4,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 5,
-          "date": "14 August 1947"
-        }
-      ]
-    },
-    {
-      "PID": 2,
-      "name": "Maaz  Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "No",
-      "date": "14 August 1947",
-      "department": "ENT",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": "14 August 1947",
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "Instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 2,
-          "date": "14 August 1947",
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "Instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 3,
-          "date": "14 August 1947",
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "Instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 4,
-          "date": "14 August 1947",
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "Instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 5,
-          "date": "14 August 1947",
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "Instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        }
-      ]
-    },
-    {
-      "PID": 3,
-      "name": "Maaz Khan ",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "No",
-      "date": "14 August 1947",
+      "contact_num": 923334483486,
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
       "department": "Cardiology",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 2,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 3,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 4,
-          "date": "14 August 1947"
-        },
-        {
-          "appointment": 5,
-          "date": "14 August 1947"
-        }
-      ]
-    },
-    {
-      "PID": 4,
-      "name": " Khan Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "Yess",
-      "date": null,
-      "department": "Cardiology",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": null
-        },
-        {
-          "appointment": 2,
-          "date": null
-        },
-        {
-          "appointment": 3,
-          "date": null
-        },
-        {
-          "appointment": 4,
-          "date": null
-        },
-        {
-          "appointment": 5,
-          "date": null
-        }
-      ]
-    }
-  ],
-  "admitted_patients": [
-    {
-      "PID": 1,
-      "name": "Humna Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "yess",
-      "date": null,
-      "department": "cardiology",
-      "city": "Peshawar",
-      "bed_no": 5,
-      "doctor": "Dr Maaz Khan Bangash",
-      "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-      "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment.Follow-up instructions: Doctors will typically give patients instructions on when to come back for follow-up appointments. They may also provide instructions on how to contact them if they have any questions or concerns.",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 2,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 3,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 4,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 5,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        }
-      ]
-    },
-    {
-      "PID": 2,
-      "name": "Hoorain Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "Yess",
-      "date": null,
-      "department": "general",
-      "city": "Peshawar",
-      "bed_no": 4,
-      "doctor": "Dr Maaz Khan Bangash",
-      "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-      "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment.Follow-up instructions: Doctors will typically give patients instructions on when to come back for follow-up appointments. They may also provide instructions on how to contact them if they have any questions or concerns.",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 2,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 3,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 4,
-          "date": "14 August 1947",
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 5,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        }
-      ]
-    },
-    {
-      "PID": 11,
-      "name": "Hassan Khan Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "yess",
-      "date": null,
-      "department": "general",
-      "city": "Peshawar",
-      "bed_no": 7,
-      "doctor": "Dr Maaz Khan Bangash",
-      "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-      "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment.Follow-up instructions: Doctors will typically give patients instructions on when to come back for follow-up appointments. They may also provide instructions on how to contact them if they have any questions or concerns.",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 2,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 3,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 4,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 5,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        }
-      ]
-    },
-    {
-      "PID": 111,
-      "name": "Maaz Khan Bangash",
-      "email": "ak1489007@gmail.com",
-      "contact": "00923334483486",
-      "age": 24,
-      "admitted_status": "yess",
-      "date": null,
-      "department": "plasticsurgery",
-      "city": "Peshawar",
-      "bed_no": 4,
-      "doctor": "Dr Maaz Khan Bangash",
-      "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-      "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment.Follow-up instructions: Doctors will typically give patients instructions on when to come back for follow-up appointments. They may also provide instructions on how to contact them if they have any questions or concerns.",
-      "appointments": [
-        {
-          "appointment": 1,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 2,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 3,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 4,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        },
-        {
-          "appointment": 5,
-          "date": null,
-          "medicine": "Panadol, SurbexZ, Ponstan,  Flygel, Insaid",
-          "instructions": "Medication instructions: Doctors will typically provide patients with instructions on how to take their medication, including the dosage, frequency, and time of day to take it. They may also provide instructions on how to store the medication and what to do if a dose is missed.Dietary instructions: Doctors may give patients dietary instructions if their condition requires them to make changes to their diet. These instructions may include avoiding certain foods or drinks, increasing their intake of certain nutrients, or following a specific diet plan. Activity instructions: Doctors may give patients activity instructions if their condition requires them to limit their physical activity. These instructions may include avoiding strenuous activity, resting more often, or using adaptive equipment",
-          "nextappointmentdate": "14 July 2024"
-        }
-      ]
-    }
-  ],
-  "totalbeds": [
-    {
-      "depart_name": "general",
-      "total_beds": 23,
-      "free_beds": 5,
-      "beds_in_use": 17,
-      "broken_beds": 1,
-      "beds_description": "Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server."
-    },
-    {
-      "depart_name": "cardiology",
-      "total_beds": 13,
-      "free_beds": 3,
-      "beds_in_use": 9,
-      "broken_beds": 1,
-      "beds_description": "Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server."
-    },
-    {
-      "depart_name": "endocrinilogy",
-      "total_beds": 13,
-      "free_beds": 3,
-      "beds_in_use": 9,
-      "broken_beds": 1,
-      "beds_description": "Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server."
-    },
-    {
-      "depart_name": "gynae",
-      "total_beds": 13,
-      "free_beds": 3,
-      "beds_in_use": 9,
-      "broken_beds": 1,
-      "beds_description": "Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server."
-    },
-    {
-      "depart_name": "plasticsurgery",
-      "total_beds": 13,
-      "free_beds": 3,
-      "beds_in_use": 9,
-      "broken_beds": 1,
-      "beds_description": "Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server.Patients beds are available for the patients on the basis of first come first server."
+      "doctor": "DrHassan",
+      "id": 1
     }
   ],
   "expenses": [

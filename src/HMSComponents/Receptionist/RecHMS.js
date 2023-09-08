@@ -1,4 +1,4 @@
-import "./DoctorHMS.css";
+// import "./DoctorHMS.css";
 
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { cd_open_close } from "../../Store/Store";
@@ -29,66 +29,66 @@ import { AiFillWechat } from "react-icons/ai";
 import { IoMdNotifications } from "react-icons/io";
 import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
-const doctorhmsobjs = [
+const rechmsobjs = [
   {
     id: "1",
     name: "DASHBOARD",
-    path: "dr-dashboard",
+    path: "rec-dashboard",
     logo: RiDashboardFill,
   },
   {
     id: "2",
     name: "PROFILE",
-    path: "dr-profile",
+    path: "rec-profile",
     logo: BsFillPersonLinesFill,
   },
   {
     id: "3",
-    name: "APPOINTMENTS",
-    path: "dr-appointments",
+    name: "eAPPOINTMENTS",
+    path: "rec-e-appointments",
     logo: RiAdminFill,
   },
   {
-    id: "4",
-    name: "PRESCRIPTION",
-    path: "dr-prescription",
-    logo: FaPrescription,
+    id: "5",
+    name: "mAPPOINTMENTS",
+    path: "rec-make-appointments",
+    logo: RiAdminFill,
   },
   {
-    id: "5",
-    name: "Dr SCHEDULE",
-    path: "dr-schedule",
+    id: "6",
+    name: "REC_SCHEDULE",
+    path: "rec-schedule",
     logo: AiFillSchedule,
   },
   {
-    id: "12",
+    id: "7",
     name: "PATIENTS",
-    path: "dr-patients",
+    path: "rec-patients",
     logo: BsPersonFillExclamation,
   },
   {
-    id: "13",
+    id: "8",
     name: "DEPARTMENTS",
-    path: "dr-departments",
+    path: "rec-departments",
     logo: FcDepartment,
   },
   {
-    id: "14",
+    id: "9",
     name: "COMPLAINTS",
-    path: "dr-schedule",
-    logo: BiSolidCommentAdd,
+    path: "rec-complaints",
+    logo: BsPersonFillExclamation,
   },
   {
-    id: "15",
+    id: "10",
     name: "CHAT",
-    path: "dr-schedule",
-    logo: AiFillWechat,
+    path: "rec-chat",
+    logo: FcDepartment,
   },
 ];
 let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
 
-function DoctorHMS() {
+function RecHMS() {
   const [displayDashboard, setDisplayDashboard] = useState(false);
   const [displayHmsMenu, setDisplayHmsMenu] = useState(true);
   const only_hms_icons = useRef();
@@ -105,7 +105,7 @@ function DoctorHMS() {
             className="hmscontainercol02_img"
             // src={} dynamic
             src="https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
-            alt="Doctor"
+            alt="Receptionist"
           />
           <IoMdNotifications style={{ fontSize: "30px", color: "#fe4200" }} />
         </div>
@@ -118,7 +118,7 @@ function DoctorHMS() {
             }}
           >
             <ul>
-              {doctorhmsobjs.map((hmsobjs, id) => {
+              {rechmsobjs.map((hmsobjs, id) => {
                 return (
                   <NavLink
                     key={id}
@@ -147,19 +147,4 @@ function DoctorHMS() {
   );
 }
 
-export default DoctorHMS;
-
-// function DoctorHMS() {
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     navigate("dr-dashboard");
-//   }, []);
-//   return (
-//     <>
-//       <Outlet />
-//     </>
-//   );
-// }
-
-// export default DoctorHMS;
+export default RecHMS;

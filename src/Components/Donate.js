@@ -2,7 +2,7 @@ import "./Donate.css";
 import NavBar from "./AppLayout/NavBar";
 import Footer from "./AppLayout/Footer";
 import { Zoom } from "react-reveal";
-import CountryList from "./JSX/CountryList";
+import ConfirmDialogue from "../ForAll/ConfirmDialogue";
 
 const countries = [
   {
@@ -70,6 +70,8 @@ const countries = [
 function Donate() {
   return (
     <>
+      <ConfirmDialogue />
+
       <NavBar />
       <div className="donatetop">
         {/* the class statisticsonlineconsul has been taken from statistics .css file  */}
@@ -125,7 +127,7 @@ function Donate() {
           transplant. Which we are in severe need due to currently evolving
           number of patients.
         </p>
-        <h3>Submit Your Donation</h3>
+        <h3 style={{ margin: "10px auto" }}>Fill Your Donation Form</h3>
         <form id="donationForm" className="donationformclass">
           <label for="name">Name</label>
           <input id="name" type="text" placeholder="Enter Your Name" />

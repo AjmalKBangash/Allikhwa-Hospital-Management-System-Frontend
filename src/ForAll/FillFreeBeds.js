@@ -66,7 +66,6 @@ import Medicines from "./Medicines";
 // jjjjjjjjjjjjjjjjjj?
 
 function FillFreeBeds(props) {
-  console.log(props.total_beds);
   const [fillFreeBedsPatients, setfillFreeBedsPatients] = useState();
   const [
     fillfreebeds_display_patient_details,
@@ -78,7 +77,6 @@ function FillFreeBeds(props) {
   const fillfreebeds_table_details_beds = useRef();
   let x = 0;
 
-  let hhh = 90;
   const fillfreebeds_validation_schema = Yup.object().shape({
     // Sign Up Form Validation
     bed_no: Yup.number()
