@@ -1,0 +1,60 @@
+/* .go_to_prescription {
+  width: 160px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.go_to_prescription:hover {
+  color: #fe4200;
+} */
+.printing_component_prescription {
+  width: 95%;
+  margin: 10px auto;
+}
+
+/* Prescription  */
+.prescription_top {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 0%;
+  padding: 5px;
+  font-size: 15px;
+  box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+}
+.presc_allikhwa_logo {
+  height: 60px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.prescription_top .presc_div01 {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+.presc_first,
+.presc_third {
+  border-right: 2px solid #fe4200;
+}
+.presc_1234 {
+  padding: 5px;
+}
+.prescription_h2 {
+  padding: 4px;
+  font-size: 15px;
+  color: #fe4200;
+}
+.presc_print_refer_to_admission_div {
+  position: relative;
+  padding: 10px;
+  box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
+}
+.prescription_editing_to_form_of_patient input[type="text"],
+.prescription_editing_to_form_of_patient input[type="password"],
+.prescription_editing_to_form_of_patient input[type="date"],
+.prescription_editing_to_form_of_patient input[type="file"] {
+  border: none;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.103);
+}

@@ -1,3 +1,4 @@
 1***** The appointment should be having a separate form for uploading or editing data because the appoitments is made by doctors there it need more fields in future that is why i will add it in future fillfreebeds.js
 2***** expensedynamicdetails.js has th esearching in the database for type of an expense which should be changed into case insensitive after the creation of backend django
 3***** expense.js addd expense button causes expendynamicdetails.js rerenders fix it later or the other solution is to make th html form in the expense.js file
+4***** departments (for every employee related department will be displayed after backend creation because not all departments data is good for every employee for admin all departments for others related departments will be displayed)

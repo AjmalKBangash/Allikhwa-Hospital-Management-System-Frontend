@@ -11,7 +11,7 @@ import axios from "axios";
 // importing icons from react-icons
 import { useEffect, useState } from "react";
 
-function Profile() {
+function Profile(props) {
   let data = "";
   // str.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
   // this upper regex is for converting paargraphs into sentences and then we have to store it in list and we have to convert it into ul li childs through map function
@@ -34,9 +34,9 @@ function Profile() {
     employee_experience: Yup.string()
       .max(200, "Must be 200 characters or less")
       .required("Experience is Required"),
-    employee_department: Yup.string()
-      .max(20, "Must be 20 characters or less")
-      .required("Department is Required"),
+    // employee_department: Yup.string()
+    //   .max(20, "Must be 20 characters or less")
+    //   .required("Department is Required"),
     employee_email: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required"),
@@ -45,9 +45,13 @@ function Profile() {
       .min(200, "Minimum characters should be 200")
       .max(800, "Characters should not be more than 800"),
     //   .matches("", "should not be spaces"), here i should write regex which will exclude more than two whitespaces
+    employee_phone: Yup.number()
+      .required("Phone num is required")
+      .typeError("Phone num is required"),
   });
 
   const {
+    setValue,
     reset,
     register,
     formState: { errors },
@@ -62,16 +66,51 @@ function Profile() {
     set_AddUpdate_Form_Data(data);
     reset();
   };
+  useEffect(() => {
+    if (props.data) {
+      setValue("employee_name", props.data.employee_name);
+      // setValue("employee_jobtitle", props.data.employee_jobtitle);
 
+      // setValue("employee_category", props.data.employee_category);
+
+      setValue("employee_experience", props.data.employee_experience);
+
+      // setValue("employee_department", props.data.employee_department); This should not be editable or updatable because through this later we are going to assign departments to the current employee in which he is working
+
+      setValue("employee_email", props.data.employee_email);
+
+      setValue("employee_description", props.data.employee_description);
+
+      setValue("employee_website", props.data.employee_website);
+
+      setValue("employee_photo", props.data.employee_photo);
+
+      setValue("employee_education", props.data.employee_education);
+
+      setValue("employee_surgeries", props.data.employee_surgeries);
+
+      setValue("employee_appointments", props.data.employee_appointments);
+
+      setValue("employee_awards", props.data.employee_awards);
+
+      setValue("employee_address", props.data.employee_address);
+
+      setValue("employee_phone", props.data.employee_phone);
+
+      setValue("employee_facebook", props.data.employee_facebook);
+
+      setValue("employee_linkedin", props.data.employee_linkedin);
+      // setValue("employee_id", props.data.employee_id); it should not be editable
+    }
+  });
   // useEffect(() => {  this will be un-commentedd when bckend created
+  // this axios willl be update (patch) http request because the employee will be added in according sessions in admin
   //   {
   //     addUpdate_Form_Data &&
   //       axios
   //         .post(
-  //           `http://localhost:3100/` +
-  //             data__employee_category.toLowerCase() +
-  //             "s",
-  //           { addUpdate_Form_Data }
+  //           `http://localhost:3100/employess` +
+  //           { ...addUpdate_Form_Data }
   //         )
   //         .then((response) => {
   //           console.log(response);
@@ -110,10 +149,19 @@ function Profile() {
               {...register("employee_name")}
               id="employee_name"
               type="text"
-              defaultValue={data.employee_name}
               placeholder="Enter Your Name"
             ></input>
             <p className="pForForm">{errors.employee_name?.message}</p>
+          </div>
+          <div className="profile_label_input">
+            <label>Your Hospital ID</label>
+            <input
+              type="text"
+              id="employee_id"
+              name="employee_id"
+              value={props.data?.employee_id}
+              {...register("employee_id")}
+            ></input>
           </div>
           <div className="profile_label_input ">
             <label
@@ -126,7 +174,6 @@ function Profile() {
               id="employee_website"
               type="text"
               {...register("employee_website")}
-              defaultValue={data.employee_website}
               placeholder="Enter Your Website"
             ></input>
           </div>
@@ -162,7 +209,7 @@ function Profile() {
                 }}
               >
                 <select
-                  {...register("employee_website")}
+                  {...register("employee_description")}
                   defaultValue={"Normal text"}
                   style={{
                     fontSize: "15px",
@@ -243,10 +290,10 @@ function Profile() {
               id="employee_jobtitle"
               type="text"
               {...register("employee_jobtitle")}
-              defaultValue={data.employee_jobtitle}
+              value={data.employee_jobtitle}
               placeholder="Enter Your Job Title"
             ></input>
-            <p className="pForForm">{errors.employee_jobtitle?.message}</p>
+            {/* <p className="pForForm">{errors.employee_jobtitle?.message}</p> */}
           </div>
           <div className="profile_label_input ">
             <label
@@ -259,10 +306,10 @@ function Profile() {
               id="employee_category"
               type="text"
               {...register("employee_category")}
-              defaultValue={data.employee_category}
+              value={data.employee_category}
               placeholder="Enter Your Job Category"
             ></input>
-            <p className="pForForm">{errors.employee_category?.message}</p>
+            {/* <p className="pForForm">{errors.employee_category?.message}</p> */}
           </div>
           <div className="profile_label_input ">
             <label
@@ -275,7 +322,6 @@ function Profile() {
               {...register("employee_education")}
               id="employee_education"
               type="text"
-              defaultValue={data.employee_education}
               placeholder="Enter Youe Education Details"
             ></input>
           </div>
@@ -291,7 +337,6 @@ function Profile() {
               {...register("employee_experience")}
               id="employee_experience"
               type="text"
-              defaultValue={data.employee_experience}
               placeholder="Enter Your Experience"
             ></input>
             <p className="pForForm">{errors.employee_experience?.message}</p>
@@ -308,10 +353,10 @@ function Profile() {
               {...register("employee_department")}
               id="employee_department"
               type="text"
-              defaultValue={data.employee_department}
+              value={data.employee_department}
               placeholder="Enter Your Department Name You Are Working "
             ></input>
-            <p className="pForForm">{errors.employee_department?.message}</p>
+            {/* <p className="pForForm">{errors.employee_department?.message}</p> */}
           </div>
           <div className="profile_label_input ">
             <label
@@ -325,7 +370,6 @@ function Profile() {
               {...register("employee_surgeries")}
               id="employee_surgeries"
               type="text"
-              defaultValue={data.employee_surgeries}
               placeholder="Enter The Number Of Surgeries You Performed"
             ></input>
           </div>
@@ -340,7 +384,6 @@ function Profile() {
               {...register("employee_appointments")}
               id="employee_appointments"
               type="text"
-              defaultValue={data.employee_appointments}
               placeholder="Enter Your Appointments Per Month"
             ></input>
           </div>
@@ -355,7 +398,6 @@ function Profile() {
               {...register("employee_awards")}
               id="employee_awards"
               type="text"
-              defaultValue={data.employee_awards}
               placeholder="Enter Your Awards"
             ></input>
           </div>
@@ -371,7 +413,6 @@ function Profile() {
               {...register("employee_address")}
               id="employee_address"
               type="text"
-              defaultValue={data.employee_address}
               placeholder="Enter Your Address"
             ></input>
             <p className="pForForm">{errors.employee_address?.message}</p>
@@ -387,7 +428,6 @@ function Profile() {
               {...register("employee_phone")}
               id="employee_phone"
               type="text"
-              defaultValue={data.employee_phone}
               placeholder="Enter Your Phone"
             ></input>
             <p className="pForForm">{errors.employee_phone?.message}</p>
@@ -403,7 +443,6 @@ function Profile() {
               {...register("employee_email")}
               id="employee_email"
               type="text"
-              defaultValue={data.employee_email}
               placeholder="Enter Your Email"
             ></input>
             <p className="pForForm">{errors.employee_email?.message}</p>
@@ -419,7 +458,6 @@ function Profile() {
               {...register("employee_facebook")}
               id="employee_facebook"
               type="text"
-              defaultValue={data.employee_facebook}
               placeholder="Enter Your Facebook ID"
             ></input>
           </div>
@@ -434,14 +472,13 @@ function Profile() {
               {...register("employee_linkedin")}
               id="employee_linkedin"
               type="text"
-              defaultValue={data.employee_linkedin}
               placeholder="Enter Your LinkedIn ID"
             ></input>
           </div>
           <input
             type="submit"
             className="admin_buttons_add_update_from_add_update_form"
-            value="Submit Your Form"
+            value="SUBMIT TO UPDATE YOUR PROFILE"
             style={{
               margin: "10px 25% 20px 25%",
               width: "50%",

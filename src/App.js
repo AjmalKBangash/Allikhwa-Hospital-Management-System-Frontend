@@ -48,9 +48,23 @@ import ExpenseDynamicDetails from "./ForAll/ExpenseDynamicDetails";
 // Now Doctor HMS started
 import DoctorHMS from "./HMSComponents/Doctor/DoctorHMS";
 import DrDashboard from "./HMSComponents/Doctor/DrDashboard";
+import DrProfile from "./HMSComponents/Doctor/DrProfile";
+import DrPatients from "./HMSComponents/Doctor/DrPatients";
+import DrDepartments from "./HMSComponents/Doctor/DrDepartments";
 import DrAppointments from "./HMSComponents/Doctor/DrAppointments";
 import DrPrescription from "./HMSComponents/Doctor/DrPrescription";
 import DrSchedule from "./HMSComponents/Doctor/DrSchedule";
+// NOW RECEPTIONNIST HMS STARTED
+import RecHMS from "./HMSComponents/Receptionist/RecHMS";
+import RecDashboard from "./HMSComponents/Receptionist/RecDashboard";
+import RecComplaints from "./HMSComponents/Receptionist/RecComplaints";
+import RecDepartments from "./HMSComponents/Receptionist/RecDepartments";
+import ReceAppointments from "./HMSComponents/Receptionist/ReceAppointments";
+import RecmAppointments from "./HMSComponents/Receptionist/RecmAppointments";
+import RecPatients from "./HMSComponents/Receptionist/RecPatients";
+import RecProfile from "./HMSComponents/Receptionist/RecProfile";
+import RecSchedule from "./HMSComponents/Receptionist/RecSchedule";
+import RecChat from "./HMSComponents/Receptionist/RecChat";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -123,11 +137,27 @@ const theRoutes = createBrowserRouter(
           <Route path="expensedetails" element={<ExpenseDynamicDetails />} />
         </Route>
       </Route>
+      {/* Doctor HMS  */}
       <Route path="doctor-hms" element={<DoctorHMS />}>
         <Route path="dr-dashboard" element={<DrDashboard />} />
-        <Route path="dr-appointments" element={<DrDashboard />} />
-        <Route path="dr-prescription" element={<DrDashboard />} />
-        <Route path="dr-schedule" element={<DrDashboard />} />
+        <Route path="dr-profile" element={<DrProfile />} />
+        <Route path="dr-patients" element={<DrPatients />} />
+        <Route path="dr-departments" element={<DrDepartments />} />
+        <Route path="dr-appointments" element={<DrAppointments />} />
+        <Route path="dr-prescription" element={<DrPrescription />} />
+        <Route path="dr-schedule" element={<DrSchedule />} />
+      </Route>
+      {/* Receptionist HMS */}
+      <Route path="rec-hms" element={<RecHMS />}>
+        <Route path="rec-dashboard" element={<RecDashboard />} />
+        <Route path="rec-profile" element={<RecProfile />} />
+        <Route path="rec-e-appointments" element={<ReceAppointments />} />
+        <Route path="rec-make-appointments" element={<RecmAppointments />} />
+        <Route path="rec-patients" element={<RecPatients />} />
+        <Route path="rec-departments" element={<RecDepartments />} />
+        <Route path="rec-complaints" element={<RecComplaints />} />
+        <Route path="rec-schedule" element={<RecSchedule />} />
+        <Route path="rec-chat" element={<RecSchedule />} />
       </Route>
     </>
   )
