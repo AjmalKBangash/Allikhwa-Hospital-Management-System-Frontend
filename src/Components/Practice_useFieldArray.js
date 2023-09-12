@@ -9,6 +9,19 @@ const Practice_useFieldArray = () => {
       list: [{ firstName: "", lastName: "", disease: "", instruction: "" }],
     },
   });
+
+  // employee_departments: [
+  // {
+  //   employee_department_name: [
+  //     data.employee_departments
+  //       ? data.employee_departments.map(
+  //           (index, id) => index.employee_department_name
+  //         )
+  //       : { employee_department_name: "" },
+  //   ],
+  // },
+  // ],
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: "list",

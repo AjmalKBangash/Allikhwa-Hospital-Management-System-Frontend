@@ -18,7 +18,10 @@ export const prescription_show_patient_detail_rest_pres_form = createAction(
 export const re_render_presc_upper_component = createAction(
   "re_render_presc_upper_component"
 );
-
+export const recmappointment_patient_billing_price = createAction(
+  "recmappointment_patient_billing_price"
+);
+export const submit_bill_price_work = createAction("submit_bill_price_work");
 const initialState = {
   props_from_depart_actions: [],
   expenses_to_expensedynamic_form_display: [],
@@ -27,49 +30,11 @@ const initialState = {
   cd_yess_no: "",
   prescription_show_patient_detail_rest_pres_form: false,
   re_render_presc_upper_component: false,
+  recmappointment_patient_billing_price: "",
+  submit_bill_price_work: false,
 };
-// *
-// *
-// *
-// * Through createSlice method,
-// *
-// *
-// const sliceReducer = createSlice({
-//   name: "firstSlice",
-//   initialState,
-//   reducer: {
-//     dataStateFunction(state, action) {
-//       state.dataState = state.dataState + action.payload;
-//     },
-//     general(state) {
-//       state.dataState = state.dataState + 5;
-//     },
-//   },
-// });
-// *
-// *
-// *
-// * The map object notation
-// *
-// *
-// const sliceReducer = createReducer(initialState, {
-//   [dataStateFunction]: (state, action) => {
-//     state.dataState = state.dataState + action.payload;
-//   },
-//   [general]: (state) => {
-//     state.dataState = state.dataState + 5;
-//   },
-// });
-// *
-// *
-// *
-// * The builder callback notation
-// *
-// *
+
 const sliceReducer = createReducer(initialState, (builder) => {
-  //   builder.addCase(dataStateFunction, (state, action) => {
-  //     state.dataStateWholeSale = action.payload;
-  //   });
   builder.addCase(props_from_depart_actions, (state, action) => {
     state.props_from_depart_actions = action.payload;
   });
@@ -96,6 +61,12 @@ const sliceReducer = createReducer(initialState, (builder) => {
   );
   builder.addCase(re_render_presc_upper_component, (state, action) => {
     state.re_render_presc_upper_component = action.payload;
+  });
+  builder.addCase(recmappointment_patient_billing_price, (state, action) => {
+    state.recmappointment_patient_billing_price = action.payload;
+  });
+  builder.addCase(submit_bill_price_work, (state, action) => {
+    state.submit_bill_price_work = action.payload;
   });
 });
 

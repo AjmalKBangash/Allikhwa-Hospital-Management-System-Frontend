@@ -193,29 +193,39 @@ function CardForAll(props) {
                   <tbody>
                     <tr>
                       <td style={{ border: "none" }}>
-                        <div
-                          className="statisticsonlineconsul"
+                        {" "}
+                        <h2
+                          className="fillfreebeds_h2"
                           style={{
-                            width: "fit-content",
-                            margin: "auto",
+                            margin: "5px auto 5px 0px",
+                            color: "red",
                           }}
                         >
-                          ADMIN DETAILS{" "}
-                        </div>
+                          DETAILS{" "}
+                        </h2>
                       </td>
                       <td style={{ border: "none" }}>
                         {" "}
-                        <button
+                        {/* <button
                           // ref={toggle_display_canceldetails_button}
                           className="admin_buttons_add_update_from_add_update_form"
+                          style={{ backgroundColor: "red" }}
+                        >
+                          CLOSE DETAILS
+                        </button> */}
+                        <h2
+                          className="fillfreebeds_h2"
                           onClick={() => {
                             showdetailsref.current.style.display = "none";
                             setpropfromshodetailsdoctorcard("");
                           }}
-                          style={{ backgroundColor: "red" }}
+                          style={{
+                            margin: "5px 0px 5px auto",
+                            cursor: "pointer",
+                          }}
                         >
-                          CLOSE DETAILS
-                        </button>
+                          &#10060;
+                        </h2>
                       </td>
                     </tr>
                     <tr>
@@ -239,7 +249,6 @@ function CardForAll(props) {
                     <tr>
                       <td>Department</td>
                       <td>
-                        {" "}
                         {propfromshodetailsdoctorcard.employee_department}
                       </td>
                     </tr>

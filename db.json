@@ -544,6 +544,69 @@
       "employee_facebook": "",
       "employee_linkedin": "",
       "id": 9
+    },
+    {
+      "employee_department": "ENT A,Cardiology, Radiology",
+      "employee_name": "Dr Faraz Khan",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "Dr faraz is a plastic surgeon. His speciality maily is in the hair loss and drrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ffffffffffffffffffffffaaaaaaaaaaaaaaaaarrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzz",
+      "employee_jobtitle": "Assistent Director",
+      "employee_category": "Doctor",
+      "employee_education": "",
+      "employee_experience": "5 years",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489007@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "PID": "0726cb84-74e8-4755-88c9-2c6a7829a1ce",
+      "id": 10
+    },
+    {
+      "employee_department": "Cardiology",
+      "employee_name": "Dr Faraz Khan",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "Dr faraz is a plastic surgeon. His speciality maily is in the hair loss and drrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ffffffffffffffffffffffaaaaaaaaaaaaaaaaarrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzz",
+      "employee_jobtitle": "Assistent Director",
+      "employee_category": "Doctor",
+      "employee_education": "",
+      "employee_experience": "5 years",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489007@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "PID": "c0a59894-4fa6-4174-8836-74dc31868088",
+      "id": 11
+    },
+    {
+      "employee_department": "Emergency",
+      "employee_name": "Dr Faraz Khan",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "Dr faraz is a plastic surgeon. His speciality maily is in the hair loss and drrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ffffffffffffffffffffffaaaaaaaaaaaaaaaaarrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzz",
+      "employee_jobtitle": "Assistent Director",
+      "employee_category": "Doctor",
+      "employee_education": "",
+      "employee_experience": "5 years",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489007@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "PID": "db8ed0b2-6b4e-491b-99f1-fb7ff33294fa",
+      "id": 12
     }
   ],
   "nurses": [
@@ -869,12 +932,8 @@
   ],
   "newpatients": [
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -882,17 +941,12 @@
       "contact_num": 923334483486,
       "name": "Ajmal Bangash",
       "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
-      "id": 1
+      "id": 1,
+      "date": "2023-09-08T19:30:00.000Z"
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail",
-        "informsms",
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informemail", "informsms", "informphone"],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -903,12 +957,8 @@
       "id": 2
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -919,12 +969,8 @@
       "id": 3
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "choose_doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
@@ -937,12 +983,8 @@
       "id": 4
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "choose_doctor": "Angola",
       "city": "Tirana",
@@ -955,12 +997,8 @@
       "id": 5
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "choose_doctor": "Angola",
       "city": "Tirana",
@@ -973,12 +1011,8 @@
       "id": 6
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "",
       "choose_doctor": "Hassan Khan",
       "city": "Pretoria",
@@ -991,12 +1025,8 @@
       "id": 7
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "",
       "choose_doctor": "Hassan Khan",
       "city": "Kabul",
@@ -1009,12 +1039,8 @@
       "id": 8
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "choose_doctor": "Angola",
       "city": "Luanda",
@@ -1027,12 +1053,8 @@
       "id": 9
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informsms"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informsms"],
       "address": "",
       "choose_doctor": "Adnan Khan Bangash",
       "city": "Tirana",
@@ -1045,12 +1067,8 @@
       "id": 10
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informsms"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informsms"],
       "address": "",
       "choose_doctor": "Adnan Khan Bangash",
       "city": "Tirana",
@@ -1063,12 +1081,8 @@
       "id": 11
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informsms"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informsms"],
       "address": "",
       "choose_doctor": "Adnan Khan Bangash",
       "city": "Tirana",
@@ -1081,12 +1095,8 @@
       "id": 12
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "choose_doctor": "Hassan Khan",
       "city": "Kabul",
@@ -1099,12 +1109,8 @@
       "id": 13
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informsms"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informsms"],
       "address": "",
       "choose_doctor": "Husnain Bangash",
       "city": "Tirana",
@@ -1117,12 +1123,8 @@
       "id": 14
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "choose_doctor": "Hassan Khan",
       "city": "Kabul",
@@ -1135,12 +1137,8 @@
       "id": 15
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "",
       "choose_doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
@@ -1153,12 +1151,8 @@
       "id": 16
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "",
       "choose_doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
@@ -1171,12 +1165,8 @@
       "id": 17
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "",
       "choose_doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
@@ -1189,12 +1179,8 @@
       "id": 18
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informsms"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informsms"],
       "address": "",
       "choose_doctor": "Hassan Khan",
       "city": "Kabul",
@@ -1205,16 +1191,44 @@
       "name": "sdcdcdcdcdcd",
       "PID": "12128ec8-202c-48e1-b9e8-018b08bacf09",
       "id": 19
+    },
+    {
+      "date": "2023-09-08T19:30:00.000Z",
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informemail"],
+      "address": "House# 437, phase # 06",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "jamaludeenmama@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...\n",
+      "name": "Ali Gul Khan",
+      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "PID": "91a30fc5-94cf-4530-994c-dca01ce8817b",
+      "id": 20
+    },
+    {
+      "date": "2023-09-08T19:30:00.000Z",
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informsms"],
+      "address": "jhvjv jhgjhgjh jhggjh",
+      "city": "Pretoria",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "nmvbnvbnv",
+      "name": "ghgjhgjh",
+      "choose_doctor": "Hassan Khan",
+      "PID": "2cb2fd1c-66c7-4e4f-9397-2cde49ba2f97",
+      "id": 21
     }
   ],
   "appointments": [
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1227,14 +1241,8 @@
       "id": 1
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail",
-        "informsms",
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informemail", "informsms", "informphone"],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1247,12 +1255,8 @@
       "id": 2
     },
     {
-      "physical_online_appointment": [
-        "onlineappointment"
-      ],
-      "email_sms_phone": [
-        "informemail"
-      ],
+      "physical_online_appointment": ["onlineappointment"],
+      "email_sms_phone": ["informemail"],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1263,16 +1267,573 @@
       "department": "Emergency",
       "doctor": "DrMaazKhanBangash",
       "id": 3
+    },
+    {
+      "department": "",
+      "date": "2023-09-08T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "new patient 001",
+      "PID": "11054fbb-476b-4a5b-8bdf-a6d8d82a8c85",
+      "id": 31
+    },
+    {
+      "department": "Plastice Surgery",
+      "date": "2023-09-08T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "city": "Peshawar",
+      "country": "Pakistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "Hair Loss!",
+      "name": "Ageen Chachuu",
+      "PID": "976fac9c-86a5-4c12-920c-990917054351",
+      "id": 32
+    },
+    {
+      "department": "Plastice Surgery",
+      "date": "2023-09-08T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "city": "Peshawar",
+      "country": "Pakistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "Hair Loss!",
+      "name": "Ageen Chachuu",
+      "PID": "976fac9c-86a5-4c12-920c-990917054351",
+      "id": 33
+    },
+    {
+      "department": "",
+      "date": "2023-09-08T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "Pakistan",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "hair Loss!",
+      "name": "ALL'Ikhwa Baba",
+      "PID": "e314e9f2-1a2b-4012-94cf-e72f3f458818",
+      "id": 34
+    },
+    {
+      "department": "Plastice Surgery",
+      "date": "2023-09-28T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Angola",
+      "city": "Tirana",
+      "country": "Pakistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "pa ma graan beemar dee",
+      "name": "Janan",
+      "PID": "d650c63d-eb83-468a-99a6-b84ab4e661e4",
+      "adress": "",
+      "id": 35
+    },
+    {
+      "department": "Plastice Surgery",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba 22",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "Hair Loss!",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 36
+    },
+    {
+      "department": "Plastice Surgery",
+      "date": "2023-09-28T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba 33",
+      "city": "Peshawar",
+      "country": "Pakistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "Hair Loss!",
+      "name": "Ajmalai Khanai",
+      "PID": "0063dc17-b1a0-4c6d-b9af-d0d09975a7ca",
+      "id": 37
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "nbn",
+      "PID": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 38
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba 22",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "ALL'Ikhwa Baba Jaan",
+      "PID": "d6e7056e-ef33-40e2-973c-61b2c801f19b",
+      "id": 39
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "ALL'Ikhwa Jaanu",
+      "PID": "28b67baa-e8c7-41aa-ad64-b9a5c25d071d",
+      "id": 40
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "ALL'Ikhwa",
+      "PID": "6f6b06dd-7c8b-4f50-af1e-804bb52054e6",
+      "id": 41
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba 33",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "nbn",
+      "PID": "6b584d49-5320-4674-9fdd-68879b42ef03",
+      "id": 42
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "nbn",
+      "PID": "f82611e8-1feb-4b50-a2ce-b2de10f7b334",
+      "id": 43
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "sdcdcdcdcdcd",
+      "PID": "9953b4cb-52bc-46ee-afce-a76ef448c1d0",
+      "id": 44
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "sdcdcdcdcdcd",
+      "PID": "c2fe47cd-94b0-41b8-bacf-fa717fdf587b",
+      "id": 45
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "baba",
+      "PID": "30256807-6460-4448-abce-863cd32c5ea5",
+      "id": 46
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "ALL'Ikhwa Baba",
+      "PID": "7b01f972-fda4-41a5-851e-a460a64324ac",
+      "id": 47
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "nbn",
+      "PID": "ca72b199-a58c-4e52-8f21-02360e019991",
+      "id": 48
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba 33",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "sdcdcdcdcdcd",
+      "PID": "b74af0df-f681-47d4-9dd6-2387080d9d12",
+      "id": 49
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "baba",
+      "PID": "94571b82-1ce0-41a0-8f61-36ecc89cf020",
+      "id": 50
+    },
+    {
+      "department": "",
+      "date": "2023-09-09T19:30:00.000Z",
+      "address": "",
+      "choose_doctor": "Dr.Adnan Khan Baba 22",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "jvbnvn",
+      "PID": "056c223a-abcf-4819-ad41-f71b624f7817",
+      "id": 51
+    }
+  ],
+  "patientbills": [
+    {
+      "bills": [
+        {
+          "billname": "dr vappointment",
+          "billprice": "1000"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "bills": [
+        {
+          "billname": "dr appointment",
+          "billprice": "2222"
+        }
+      ],
+      "id": 4
+    },
+    {
+      "bills": [
+        {
+          "billname": "dr appointment",
+          "billprice": "2222"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "0": "[",
+      "patient_id": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 6
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "9000"
+        }
+      ],
+      "patient_id": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 7
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "9000"
+        }
+      ],
+      "PID": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 8
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "4567"
+        }
+      ],
+      "PID": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 9
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "4567"
+        }
+      ],
+      "PID": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 10
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "123321"
+        }
+      ],
+      "PID": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 11
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "123321"
+        }
+      ],
+      "PID": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 12
+    },
+    {
+      "bills": [
+        {
+          "billname": "",
+          "billprice": ""
+        }
+      ],
+      "PID": "16ecd02a-2d05-4416-aca5-4f91ae78d9d4",
+      "id": 13
+    },
+    {
+      "bills": [
+        {
+          "billname": "",
+          "billprice": ""
+        }
+      ],
+      "PID": "d6e7056e-ef33-40e2-973c-61b2c801f19b",
+      "id": 14
+    },
+    {
+      "bills": [
+        {
+          "billname": "",
+          "billprice": ""
+        }
+      ],
+      "PID": "28b67baa-e8c7-41aa-ad64-b9a5c25d071d",
+      "id": 15
+    },
+    {
+      "bills": [
+        {
+          "billname": "",
+          "billprice": ""
+        }
+      ],
+      "PID": "6f6b06dd-7c8b-4f50-af1e-804bb52054e6",
+      "id": 16
+    },
+    {
+      "bills": [
+        {
+          "billname": "767676",
+          "billprice": "87897689"
+        }
+      ],
+      "PID": "6b584d49-5320-4674-9fdd-68879b42ef03",
+      "id": 17
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "vhvhbvjhv"
+        }
+      ],
+      "PID": "f82611e8-1feb-4b50-a2ce-b2de10f7b334",
+      "id": 18
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "987897678576453645"
+        }
+      ],
+      "PID": "c2fe47cd-94b0-41b8-bacf-fa717fdf587b",
+      "id": 19
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "87868"
+        }
+      ],
+      "PID": "30256807-6460-4448-abce-863cd32c5ea5",
+      "id": 20
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "98989"
+        }
+      ],
+      "PID": "20b06e33-0e3f-4096-82f5-b77cd081ac78",
+      "id": 21
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "778787"
+        }
+      ],
+      "PID": "20b06e33-0e3f-4096-82f5-b77cd081ac78",
+      "id": 22
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "98989"
+        }
+      ],
+      "PID": "7b01f972-fda4-41a5-851e-a460a64324ac",
+      "id": 23
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "987897678576453645"
+        }
+      ],
+      "PID": "ca72b199-a58c-4e52-8f21-02360e019991",
+      "id": 24
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "89787"
+        }
+      ],
+      "PID": "b74af0df-f681-47d4-9dd6-2387080d9d12",
+      "id": 25
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "989"
+        }
+      ],
+      "PID": "94571b82-1ce0-41a0-8f61-36ecc89cf020",
+      "id": 26
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Appointment",
+          "billprice": "8787979"
+        }
+      ],
+      "PID": "056c223a-abcf-4819-ad41-f71b624f7817",
+      "id": 27
     }
   ],
   "prescriptions": [
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1285,14 +1846,8 @@
       "id": 1
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail",
-        "informsms",
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informemail", "informsms", "informphone"],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1305,14 +1860,219 @@
       "id": 2
     }
   ],
+  "labtests": [
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 7
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 8
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 10
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 12
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 13
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 14
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 15
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 16
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 17
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 18
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 19
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 20
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": "Do it with care,"
+        }
+      ],
+      "id": 21
+    },
+    {
+      "id": 22
+    },
+    {
+      "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "id": 25
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": ""
+        }
+      ],
+      "id": 26
+    },
+    {
+      "tests": [
+        {
+          "test_name": "Hail Fall test",
+          "test_discription": ""
+        }
+      ],
+      "id": 27
+    }
+  ],
   "rejectedappointments": [
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1325,14 +2085,8 @@
       "id": 1
     },
     {
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail",
-        "informsms",
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informemail", "informsms", "informphone"],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1378,12 +2132,8 @@
       "medicine": "flygel",
       "dosage_frequency": "3 times in a day",
       "instructions": "eat banana",
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informphone"
-      ],
+      "physical_online_appointment": ["physicalappointment"],
+      "email_sms_phone": ["informphone"],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1433,6 +2183,36 @@
       "date": null,
       "details": "This cost has been made for the improvement of healthy life for patients and all hospital employees.The food service includes all pure ...",
       "added_by": "Director"
+    }
+  ],
+  "departmentnames": [
+    {
+      "name": "Cardiology",
+      "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
+    },
+    {
+      "name": "ENT",
+      "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
+    },
+    {
+      "name": "Radiology",
+      "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
+    },
+    {
+      "name": "Endocrinology",
+      "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
+    },
+    {
+      "name": "Gynae",
+      "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
+    },
+    {
+      "name": "Emergency",
+      "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
+    },
+    {
+      "name": "General",
+      "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
     }
   ]
 }
