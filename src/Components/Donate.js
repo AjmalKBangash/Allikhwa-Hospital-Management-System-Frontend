@@ -1,8 +1,6 @@
 import "./Donate.css";
 import NavBar from "./AppLayout/NavBar";
 import Footer from "./AppLayout/Footer";
-import { Zoom } from "react-reveal";
-import ConfirmDialogue from "../ForAll/ConfirmDialogue";
 
 const countries = [
   {
@@ -70,8 +68,6 @@ const countries = [
 function Donate() {
   return (
     <>
-      <ConfirmDialogue />
-
       <NavBar />
       <div className="donatetop">
         {/* the class statisticsonlineconsul has been taken from statistics .css file  */}

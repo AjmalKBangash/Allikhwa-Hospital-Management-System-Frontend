@@ -12,12 +12,12 @@ function ConfirmDialogue() {
           <AiFillCloseCircle
             onClick={() => dispatch(cd_open_close(false))}
             style={{
-              fontSize: "45px",
+              fontSize: "35px",
               cursor: "pointer",
               color: "red",
               position: "absolute",
-              top: "-16%",
-              right: "-8%",
+              top: "-12%",
+              right: "-6%",
               backgroundColor: "white",
               borderRadius: "50px",
             }}

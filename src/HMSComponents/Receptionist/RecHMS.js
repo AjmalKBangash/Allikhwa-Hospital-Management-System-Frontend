@@ -17,7 +17,11 @@ import { RiDashboardFill, RiAdminFill } from "react-icons/ri";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaUserDoctor, FaPrescription } from "react-icons/fa6";
 import { FaUserNurse } from "react-icons/fa";
-import { AiFillMedicineBox, AiFillSchedule } from "react-icons/ai";
+import {
+  AiFillWechat,
+  AiFillMedicineBox,
+  AiFillSchedule,
+} from "react-icons/ai";
 import { MdPersonalInjury } from "react-icons/md";
 import { MdLocalPharmacy } from "react-icons/md";
 import { FaBuildingCircleArrowRight } from "react-icons/fa6";
@@ -25,7 +29,6 @@ import { BsPersonFillExclamation } from "react-icons/bs";
 import { FcDepartment } from "react-icons/fc";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { BiSolidCommentAdd } from "react-icons/bi";
-import { AiFillWechat } from "react-icons/ai";
 import { IoMdNotifications } from "react-icons/io";
 import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
@@ -82,7 +85,7 @@ const rechmsobjs = [
     id: "10",
     name: "CHAT",
     path: "rec-chat",
-    logo: FcDepartment,
+    logo: AiFillWechat,
   },
 ];
 let strr = "";

@@ -58,3 +58,24 @@
   font-size: 14px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.103);
 }
+.testFrom_presc_dr_css {
+  display: flex;
+  flex-direction: column;
+}
+.testFrom_presc_dr_css input {
+  width: 70%;
+  border: none;
+  height: 35px;
+  font-size: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.315);
+
+  padding: 5px;
+}
+.testFrom_presc_dr_css textarea {
+  width: 70%;
+  border: none;
+  height: 35px;
+  font-size: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.315);
+  padding: 5px;
+}

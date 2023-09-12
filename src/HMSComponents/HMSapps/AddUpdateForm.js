@@ -1,7 +1,9 @@
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { MultiSelect } from "react-multi-select-component";
 import * as Yup from "yup";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 // importing react-router-dom for routing
 import { useLocation } from "react-router-dom";
@@ -9,9 +11,16 @@ import { useLocation } from "react-router-dom";
 import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
+// const options_dropdown = [
+//   { label: "Grapes 🍇", value: "grapes" },
+//   { label: "Mango 🥭", value: "mango" },
+//   { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+// ];
 function AddUpdateForm(props) {
   const { data__employee_category, data } = props;
   let [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
+  const [selected_dropdown, setSelected_dropdown] = useState([]);
+  const [options_dropdown, setoptions_dropdown] = useState([]);
   const location = useLocation();
 
   const psswd = /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/;
@@ -32,8 +41,12 @@ function AddUpdateForm(props) {
       .max(200, "Must be 200 characters or less")
       .required("Experience is Required"),
     employee_department: Yup.string()
-      .max(20, "Must be 20 characters or less")
-      .required("Department is Required"),
+      .max(300, "Must be 300 characters or less")
+      .required("Department is Required")
+      .matches(
+        /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g,
+        " Department names should be sparated by comma and should exclude all other digits, numbers, special characters. Example: Cardiology,ENT A,Gynae B,Radiology etc"
+      ),
     employee_email: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required"),
@@ -45,6 +58,7 @@ function AddUpdateForm(props) {
   });
 
   const {
+    control,
     reset,
     register,
     formState: { errors },
@@ -60,7 +74,25 @@ function AddUpdateForm(props) {
     console.log(data);
     reset();
   };
-
+  let valueee = [];
+  let propertyName = "label";
+  useEffect(() => {
+    axios
+      .get("http://localhost:3100/departmentnames")
+      .then((res) => {
+        // setoptions_dropdown(res.data);
+        for (let x in res.data) {
+          valueee.push(res.data[x].name);
+        }
+        console.log(valueee);
+        console.log(res.data.name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  console.log(options_dropdown);
+  console.log(valueee);
   useEffect(() => {
     {
       addUpdate_Form_Data &&
@@ -69,7 +101,7 @@ function AddUpdateForm(props) {
             `http://localhost:3100/` +
               data__employee_category.toLowerCase() +
               "s",
-            { ...addUpdate_Form_Data }
+            { ...addUpdate_Form_Data, PID: uuidv4() }
           )
           .then((response) => {
             console.log(response);
@@ -79,6 +111,27 @@ function AddUpdateForm(props) {
           });
     }
   }, [addUpdate_Form_Data]);
+
+  let regex_for_depart_nmae_validation = /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g;
+
+  // useEffect(() => {
+  //   {
+  //     addUpdate_Form_Data &&
+  //       axios
+  //         .post(
+  //           `http://localhost:3100/` +
+  //             data__employee_category.toLowerCase() +
+  //             "s",
+  //           { ...addUpdate_Form_Data, PID: uuidv4() }
+  //         )
+  //         .then((response) => {
+  //           console.log(response);
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         });
+  //   }
+  // }, [addUpdate_Form_Data]);
   return (
     <div
       className="profile_information_all"
@@ -103,8 +156,39 @@ function AddUpdateForm(props) {
         {data__employee_category}
       </h2>
       <form onSubmit={handleSubmit(handle_addupdateformsubmit)}>
+        {data.PID ? (
+          <div className="profile_label_input">
+            <label htmlFor="PID">
+              PID:<span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              {...register("PID")}
+              id="PID"
+              type="text"
+              value={data.PID}
+              placeholder="Enter Your PID"
+            ></input>
+          </div>
+        ) : (
+          <div className="profile_label_input">
+            <label htmlFor="PID">
+              PID:<span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              {...register("PID")}
+              id="PID"
+              type="text"
+              value={uuidv4()}
+              placeholder="Enter Your PID"
+            ></input>
+          </div>
+        )}
+
         <div className="profile_label_input">
-          <label htmlFor="employee_name"> Name:</label>
+          <label htmlFor="employee_name">
+            {" "}
+            Name:<span style={{ color: "red", margin: "4px" }}>*</span>
+          </label>
 
           <input
             {...register("employee_name")}
@@ -145,7 +229,9 @@ function AddUpdateForm(props) {
         <div className="profile_label_input ">
           <span>
             <p>
-              <label htmlFor="employee_description">Your Bio:</label>
+              <label htmlFor="employee_description">
+                Your Bio:<span style={{ color: "red", margin: "4px" }}>*</span>
+              </label>
             </p>
             <p>Write a Short Introduction:</p>
             <p className="pForForm">{errors.employee_description?.message}</p>
@@ -234,7 +320,7 @@ function AddUpdateForm(props) {
             htmlFor="employee_jobtitle"
             className="profile_lanel_input_label"
           >
-            Job Title:
+            Job Title:<span style={{ color: "red", margin: "4px" }}>*</span>
           </label>
           <input
             id="employee_jobtitle"
@@ -250,7 +336,7 @@ function AddUpdateForm(props) {
             htmlFor="employee_category"
             className="profile_lanel_input_label"
           >
-            Job Category:
+            Job Category:<span style={{ color: "red", margin: "4px" }}>*</span>
           </label>
           <input
             id="employee_category"
@@ -282,7 +368,7 @@ function AddUpdateForm(props) {
             className="profile_lanel_input_label"
           >
             {" "}
-            Experience:
+            Experience:<span style={{ color: "red", margin: "4px" }}>*</span>
           </label>
           <input
             {...register("employee_experience")}
@@ -293,7 +379,7 @@ function AddUpdateForm(props) {
           ></input>
           <p className="pForForm">{errors.employee_experience?.message}</p>
         </div>
-        <div className="profile_label_input ">
+        {/* <div className="profile_label_input ">
           <label
             htmlFor="employee_department"
             className="profile_lanel_input_label"
@@ -306,9 +392,17 @@ function AddUpdateForm(props) {
             id="employee_department"
             type="text"
             defaultValue={data.employee_department}
-            placeholder="Enter Your Department Name You Are Working "
+            placeholder="Enter department names with comma separated!"
           ></input>
           <p className="pForForm">{errors.employee_department?.message}</p>
+        </div> */}
+        <div className="profile_label_input ">
+          <MultiSelect
+            options={options_dropdown}
+            value={selected_dropdown}
+            onChange={setSelected_dropdown}
+            labelledBy="Select"
+          />
         </div>
         <div className="profile_label_input ">
           <label
@@ -388,7 +482,7 @@ function AddUpdateForm(props) {
         </div>
         <div className="profile_label_input ">
           <label htmlFor="employee_email" className="profile_lanel_input_label">
-            Email:
+            Email:<span style={{ color: "red", margin: "4px" }}>*</span>
           </label>
           <input
             {...register("employee_email")}

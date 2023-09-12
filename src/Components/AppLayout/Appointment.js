@@ -166,13 +166,14 @@ function Appointment() {
     // Sign Up Form Validation
     name: Yup.string().required("Name is Required"),
     patient_dis: Yup.string().required("Describe your problem"),
+    age: Yup.number().required("Age is required").typeError("Age is required"),
     contact_num: Yup.number()
       .required("Contact Number is required")
       .typeError("Contact Number is required"),
     email: Yup.string().email("Enter Valid Email Address"),
     country: Yup.string().required("Country is required"),
     city: Yup.string().required("City is required"),
-    choose_doctor: Yup.string().required("Doctor is required"),
+    // choose_doctor: Yup.string().required("Doctor is required"),
     address: Yup.string().max(
       100,
       "Adress should not be greater than 100 characters"
@@ -184,6 +185,13 @@ function Appointment() {
     physical_online_appointment: Yup.array()
       .min(1, "Please select only one of your choice")
       .typeError("Please select only one of your choice"),
+    date: Yup.date(new Date().toISOString().split("T")[0], "Date is required")
+      .typeError("Date is required")
+      .min(
+        new Date().toISOString().split("T")[0],
+        "Date should not be less than the current Date!"
+      )
+      .required("Date is Required"),
   });
   const {
     reset,
@@ -286,6 +294,15 @@ function Appointment() {
           <p className="pForForm pForForm_appointment">
             {errors.patient_dis?.message}
           </p>
+          <label htmlFor="age">Age</label>
+          <input
+            id="age"
+            name="age"
+            type="text"
+            placeholder="Enter Your Contact Number"
+            {...register("age")}
+          />
+          <p className="pForForm pForForm_appointment">{errors.age?.message}</p>
           <label htmlFor="choose_doctor">Choose Doctor</label>
           <select
             type="select"
@@ -384,6 +401,16 @@ function Appointment() {
           />
           <p className="pForForm pForForm_appointment">
             {errors.address?.message}
+          </p>
+          <label htmlFor="date">Enter Date for an Appointment:</label>
+          <input
+            {...register("date")}
+            id="date"
+            type="date"
+            placeholder="Enter Date For an Appointment"
+          ></input>
+          <p className="pForForm pForForm_appointment">
+            {errors.date?.message}
           </p>
           {/* 
           <label htmlFor="postcode">Postcode</label>

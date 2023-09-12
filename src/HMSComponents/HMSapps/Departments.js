@@ -218,7 +218,11 @@ function Departments() {
   const department_adding_validation_schema = Yup.object().shape({
     depart_name: Yup.string()
       .max(50, "Must be less than 50 characters!")
-      .required("Department Name is Required"),
+      .required("Department Name is Required")
+      .matches(
+        /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g,
+        "Department name should not inculde any digits, numbers, special characters. Example (ENT A) or (Cardiology)  etc"
+      ),
     depart_description: Yup.string()
       .min(200, "Must be greater than 200 characters!")
       .required("Department Description is Required"),
@@ -364,7 +368,6 @@ function Departments() {
                     }}
                     onClick={() => setDisplay_adding_depart(false)}
                   >
-                    {" "}
                     &#10060;
                   </p>
                 </div>

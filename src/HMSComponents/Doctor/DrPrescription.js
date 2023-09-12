@@ -6,13 +6,14 @@ import axios from "axios";
 import ReactToPrint from "react-to-print";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import {
   cd_open_close,
   cd_yess_no,
   prescription_show_patient_detail_rest_pres_form,
   re_render_presc_upper_component,
+  show_lab_test_form,
 } from "../../Store/Store";
 
 // icons
@@ -250,10 +251,6 @@ function DrPrescription() {
 export default DrPrescription;
 
 const Prescription = React.forwardRef((props, ref) => {
-  const [
-    fillfreebeds_display_patient_details,
-    setfillfreebeds_display_patient_details,
-  ] = useState(false);
   const [from_prescription_to_patients, setfrom_prescription_to_patients] =
     useState(false);
   const [presc_print_refer_to_admission, setpresc_print_refer_to_admission] =
@@ -262,6 +259,7 @@ const Prescription = React.forwardRef((props, ref) => {
     submission_before_reset_will_work,
     setsubmission_before_reset_will_work,
   ] = useState(false);
+  const [show_lab_test_form, setshow_lab_test_form] = useState(false);
   const cd_yess_no_var = useSelector((state) => state.cd_yess_no);
   const prescription_show_patient_detail_rest_pres_form_var = useSelector(
     (state) => state.prescription_show_patient_detail_rest_pres_form
@@ -301,25 +299,14 @@ const Prescription = React.forwardRef((props, ref) => {
     dispatch(re_render_presc_upper_component(true));
   }
   function reset_the_prescription_formFun() {
-    console.log(submission_before_reset_will_work);
-    console.log("rest but clicked");
-    console.log(cd_yess_no_var);
     if (submission_before_reset_will_work && cd_yess_no_var) {
       dispatch(prescription_show_patient_detail_rest_pres_form(false));
       setsubmission_before_reset_will_work(false);
       reset();
     }
   }
+
   useEffect(() => {
-    // if (from_prescription_to_patients) {
-    //   console.log("presc true", { ...{ ...from_prescription_to_patients } });
-    // }
-    // console.log(cd_yess_no_var);
-    // if (prescription_show_patient_detail_rest_pres_form_var) {
-    //   console.log("res_pres true", {
-    //     ...{ ...prescription_show_patient_detail_rest_pres_form_var },
-    //   });
-    // }
     if (
       from_prescription_to_patients &&
       cd_yess_no_var &&
@@ -620,20 +607,169 @@ const Prescription = React.forwardRef((props, ref) => {
           </button>
         </div>
       </form>
-
-      <button
-        className="admin_buttons_add_update_from_add_update_form"
-        onClick={() => {
-          setpresc_print_refer_to_admission(
-            prescription_show_patient_detail_rest_pres_form_var.PID
-          );
-          dispatch(cd_open_close(true));
-        }}
-        style={{ margin: "10px 0px 10px auto", display: "block" }}
-      >
-        REFER TO ADMISSION
-      </button>
-      {/* This admission form should not be here with doctor it should be withe department mafia  */}
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <button
+          className="admin_buttons_add_update_from_add_update_form"
+          style={{ display: "inline" }}
+          onClick={() => {
+            setshow_lab_test_form(!show_lab_test_form);
+          }}
+        >
+          REFER TO LAB TEST
+        </button>
+        <button
+          className="admin_buttons_add_update_from_add_update_form"
+          onClick={() => {
+            setpresc_print_refer_to_admission(
+              prescription_show_patient_detail_rest_pres_form_var.PID
+            );
+            dispatch(cd_open_close(true));
+          }}
+        >
+          REFER TO ADMISSION
+        </button>
+      </div>
+      {show_lab_test_form && <Test_from_dr_to_lab />}
     </>
   );
 });
+
+function Test_from_dr_to_lab() {
+  const [data_for_lab, setdata_for_lab] = useState();
+  const prescription_show_patient_detail_rest_pres_form_var = useSelector(
+    (state) => state.prescription_show_patient_detail_rest_pres_form
+  );
+  const {
+    control,
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
+    defaultValues: {
+      tests: [{ test_name: "", test_discription: "" }],
+    },
+  });
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "tests",
+  });
+
+  function handle_lab_testFun(data) {
+    setdata_for_lab(data);
+    console.log("test formm");
+    reset();
+  }
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:3100/labtests", { ...data_for_lab })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+  return (
+    <>
+      <form
+        onSubmit={handleSubmit(handle_lab_testFun)}
+        style={{
+          borderRadius: "8px",
+          margin: "10px auto 10px auto",
+          padding: "20px",
+          boxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+          webkitboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+          mozboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+          boxSizing: "border-box",
+          width: "70%",
+        }}
+        className="testFrom_presc_dr_css"
+      >
+        <h2 className="fillfreebeds_h2">SUBMIT THE FORM FOR LAB TECHNICIAN </h2>
+
+        <div className="profile_label_input ">
+          <label className="profile_lanel_input_label">Patient ID:</label>
+          <p>{prescription_show_patient_detail_rest_pres_form_var.PID}</p>
+        </div>
+        <div className="profile_label_input ">
+          <label className="profile_lanel_input_label">Patient Name:</label>
+          <p>{prescription_show_patient_detail_rest_pres_form_var.name}</p>
+        </div>
+        <div className="profile_label_input ">
+          <label className="profile_lanel_input_label">Patient Age:</label>
+          <p>{prescription_show_patient_detail_rest_pres_form_var.age}</p>
+        </div>
+        <div className="profile_label_input ">
+          <label className="profile_lanel_input_label">Patient Doctor:</label>
+          <p>{prescription_show_patient_detail_rest_pres_form_var.doctor}</p>
+        </div>
+        <div className="profile_label_input ">
+          <label className="profile_lanel_input_label">Date:</label>
+          <input name="date" value={new Date().toISOString().split("T")[0]} />
+        </div>
+        <div className="profile_label_input ">
+          <label className="profile_lanel_input_label">Time:</label>
+          <input
+            // value={new Date().toLocaleString("en-US", {
+            //   timeFormat: "HH:mm:ss",
+            // })}
+            name="time"
+            value={new Date().toLocaleTimeString()}
+          />
+        </div>
+        {fields.map((field, index) => (
+          <div key={field.id}>
+            <div className="profile_label_input ">
+              <label className="profile_lanel_input_label">
+                Enter Test Name:
+              </label>
+              <input
+                placeholder="Enter Test Name"
+                {...register(`tests.${index}.test_name`, {
+                  required: "Test Name is required",
+                })}
+              />
+            </div>
+            <div className="profile_label_input ">
+              <label className="profile_lanel_input_label">
+                Enter Test Discription
+              </label>
+              <textarea
+                cols={10}
+                rows={3}
+                name="test_discription"
+                {...register(`tests.${index}.test_discription`)}
+                placeholder="Enter Test Description"
+              ></textarea>
+            </div>
+            {fields.length !== 1 && (
+              <button className="pricing_button" onClick={() => remove(index)}>
+                Remove the test
+              </button>
+            )}
+            {fields.length - 1 === index && (
+              <button
+                className="pricing_button"
+                onClick={() => append({ test_name: "", test_discription: "" })}
+              >
+                Add another test
+              </button>
+            )}
+          </div>
+        ))}
+        {/* </div> */}
+
+        <input
+          type="submit"
+          className="admin_buttons_add_update_from_add_update_form"
+          value="SUBMIT YOUR FORM"
+          style={{
+            margin: "10px 25% 20px 25%",
+            width: "50%",
+            border: "none",
+          }}
+        />
+      </form>
+    </>
+  );
+}

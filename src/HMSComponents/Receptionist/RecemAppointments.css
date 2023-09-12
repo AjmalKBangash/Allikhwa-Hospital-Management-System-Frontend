@@ -1,0 +1,75 @@
+.rec_e_appointments_top {
+  width: 95%;
+  margin: 10px auto;
+}
+
+/* pricing listing for appointment and medical tests started  */
+.appointment_pricing_top {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 0 auto;
+  padding: 10px;
+}
+.recmAppointment_form {
+  box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -webkit-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -moz-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+}
+.appointment_pricing_top_row01 {
+  border-bottom: 2px solid #fe4200;
+}
+.appointment_pricing_top_row02 {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+.appointment_pricing_top_row02_col01 {
+  margin: 15px 0;
+}
+.appointment_pricing_top_row02_col02_dynamic_fields {
+  display: grid;
+  grid-template-columns: 35% 65%;
+}
+.appointment_pricing_top_row02_col02_dynamic_fields input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 10px;
+}
+.pricing_button {
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(128, 128, 128, 0.13);
+  padding: 4px 6px;
+  font-size: 13px;
+  margin: 5px 25px;
+  color: #fe440071;
+  cursor: pointer;
+}
+.pricing_button:hover {
+  color: #fe4200;
+  transition: all 0.3s;
+}
+.recmAppointment_pricing_bills_footer {
+  background-color: #fe4400b9;
+  height: 100px;
+  margin: 10px 0px;
+  padding: 10px;
+  border-top-right-radius: 16px;
+  border-bottom-left-radius: 16px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  color: white;
+}
+.recmAppointment_pricing_bills_footer_ul {
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 5px;
+}
+.recmAppointment_pricing_bills_footer_ul li {
+  list-style-type: disc;
+  margin: 2px;
+}
