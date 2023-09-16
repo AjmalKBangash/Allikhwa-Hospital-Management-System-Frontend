@@ -1,4 +1,5 @@
-import { useForm, useFieldArray } from "react-hook-form";
+import "./AddUpdateForm.css";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MultiSelect } from "react-multi-select-component";
 import * as Yup from "yup";
@@ -6,25 +7,15 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
 // importing react-router-dom for routing
-import { useLocation } from "react-router-dom";
 // importing icons from react-icons
 import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
-// const options_dropdown = [
-//   { label: "Grapes 🍇", value: "grapes" },
-//   { label: "Mango 🥭", value: "mango" },
-//   { label: "Strawberry 🍓", value: "strawberry", disabled: true },
-// ];
 function AddUpdateForm(props) {
   const { data__employee_category, data } = props;
   let [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
-  const [selected_dropdown, setSelected_dropdown] = useState([]);
-  const [options_dropdown, setoptions_dropdown] = useState([]);
-  const location = useLocation();
-
-  const psswd = /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/;
-  const exclude_spaces_regex = /^[\d\w]*$/;
+  const [options_dropdown, setoptions_dropdown] = useState("");
+  let [selected, setSelected] = useState([]);
 
   const adduppdateschema = Yup.object().shape({
     // Sign Up Form Validation
@@ -34,27 +25,31 @@ function AddUpdateForm(props) {
     employee_jobtitle: Yup.string()
       .max(50, "Must be 50 characters or less")
       .required("Job title is Required"),
-    employee_category: Yup.string()
-      .max(50, "Must be 50 characters or less")
-      .required("Job category is Required"),
     employee_experience: Yup.string()
       .max(200, "Must be 200 characters or less")
       .required("Experience is Required"),
-    employee_department: Yup.string()
-      .max(300, "Must be 300 characters or less")
-      .required("Department is Required")
-      .matches(
-        /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g,
-        " Department names should be sparated by comma and should exclude all other digits, numbers, special characters. Example: Cardiology,ENT A,Gynae B,Radiology etc"
-      ),
+    employee_department: Yup.array()
+      .min(1, "Pick at least 1 Department")
+      .required("Department Selection is required"),
+    // .matches(
+    //   /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g,
+    //   " Department names should be sparated by comma and should exclude all other digits, numbers, special characters. Example: Cardiology,ENT A,Gynae B,Radiology etc"
+    // ),
+    employee_phone: Yup.string("Enter Phone Number in Digits")
+      .required("Phone Number is required")
+      .matches(/^\d{14}$/, "Enter 14 digit International Cell Phone Number")
+      .typeError("Enter Phone Number in Digits"),
     employee_email: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required"),
     employee_description: Yup.string()
       .required("Description is Required")
-      .min(200, "Minimum characters should be 200")
-      .max(800, "Characters should not be more than 800"),
-    //   .matches("", "should not be spaces"), here i should write regex which will exclude more than two whitespaces
+      .min(20, "Minimum characters should be 200")
+      .max(800, "Characters should not be more than 800")
+      .matches(
+        /^(?!.*\s{2}).+$/g,
+        "should not be more than one white space in paragraph"
+      ), //here i should write regex which will exclude more than two whitespaces
   });
 
   const {
@@ -71,28 +66,26 @@ function AddUpdateForm(props) {
   const handle_addupdateformsubmit = (data) => {
     alert(JSON.stringify(data));
     set_AddUpdate_Form_Data(data);
-    console.log(data);
     reset();
   };
-  let valueee = [];
-  let propertyName = "label";
   useEffect(() => {
+    let array_for_options_in_dropdown = [];
     axios
       .get("http://localhost:3100/departmentnames")
       .then((res) => {
-        // setoptions_dropdown(res.data);
-        for (let x in res.data) {
-          valueee.push(res.data[x].name);
+        for (let i = 0; i < res.data.length; i++) {
+          array_for_options_in_dropdown.push({
+            label: res.data[i].name,
+            value: res.data[i].name,
+          });
         }
-        console.log(valueee);
-        console.log(res.data.name);
+        setoptions_dropdown(array_for_options_in_dropdown);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  console.log(options_dropdown);
-  console.log(valueee);
+
   useEffect(() => {
     {
       addUpdate_Form_Data &&
@@ -101,7 +94,11 @@ function AddUpdateForm(props) {
             `http://localhost:3100/` +
               data__employee_category.toLowerCase() +
               "s",
-            { ...addUpdate_Form_Data, PID: uuidv4() }
+            {
+              ...addUpdate_Form_Data,
+              PID: uuidv4(),
+              employee_category: data__employee_category,
+            }
           )
           .then((response) => {
             console.log(response);
@@ -112,26 +109,19 @@ function AddUpdateForm(props) {
     }
   }, [addUpdate_Form_Data]);
 
-  let regex_for_depart_nmae_validation = /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g;
-
-  // useEffect(() => {
-  //   {
-  //     addUpdate_Form_Data &&
-  //       axios
-  //         .post(
-  //           `http://localhost:3100/` +
-  //             data__employee_category.toLowerCase() +
-  //             "s",
-  //           { ...addUpdate_Form_Data, PID: uuidv4() }
-  //         )
-  //         .then((response) => {
-  //           console.log(response);
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
+  // useEffect(() => { This useeffect is for defaultvalues in multi selectedn option
+  //   let array_dropdown_departments = [];
+  //   if (data.employee_department) {
+  //     data.employee_department.map(({ label, value }) => {
+  //       array_dropdown_departments.push({
+  //         label: label,
+  //         value: value,
+  //       });
+  //       console.log(value, label);
+  //     });
   //   }
-  // }, [addUpdate_Form_Data]);
+  //   setselected_options_dropdown(array_dropdown_departments);
+  // }, [data.employee_department]);
   return (
     <div
       className="profile_information_all"
@@ -254,6 +244,7 @@ function AddUpdateForm(props) {
                   borderRadius: "4px",
                   padding: "10px",
                   marginRight: "5px",
+                  outline: "none",
                 }}
               >
                 <option>Normal text</option>
@@ -311,10 +302,10 @@ function AddUpdateForm(props) {
               rows="6"
               cols="60"
               defaultValue={data.employee_description}
+              style={{ width: "74%", padding: "5px", outline: "none" }}
             />
           </div>
         </div>
-        {/* <h1>Personal Information</h1> */}
         <div className="profile_label_input ">
           <label
             htmlFor="employee_jobtitle"
@@ -330,22 +321,6 @@ function AddUpdateForm(props) {
             placeholder="Enter Your Job Title"
           ></input>
           <p className="pForForm">{errors.employee_jobtitle?.message}</p>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_category"
-            className="profile_lanel_input_label"
-          >
-            Job Category:<span style={{ color: "red", margin: "4px" }}>*</span>
-          </label>
-          <input
-            id="employee_category"
-            type="text"
-            {...register("employee_category")}
-            defaultValue={data.employee_category}
-            placeholder="Enter Your Job Category"
-          ></input>
-          <p className="pForForm">{errors.employee_category?.message}</p>
         </div>
         <div className="profile_label_input ">
           <label
@@ -379,30 +354,32 @@ function AddUpdateForm(props) {
           ></input>
           <p className="pForForm">{errors.employee_experience?.message}</p>
         </div>
-        {/* <div className="profile_label_input ">
+        <div className="profile_label_input ">
           <label
             htmlFor="employee_department"
             className="profile_lanel_input_label"
           >
-            {" "}
-            Department:
+            Select Departments:
           </label>
-          <input
-            {...register("employee_department")}
-            id="employee_department"
-            type="text"
-            defaultValue={data.employee_department}
-            placeholder="Enter department names with comma separated!"
-          ></input>
-          <p className="pForForm">{errors.employee_department?.message}</p>
-        </div> */}
-        <div className="profile_label_input ">
-          <MultiSelect
-            options={options_dropdown}
-            value={selected_dropdown}
-            onChange={setSelected_dropdown}
-            labelledBy="Select"
+          <Controller
+            name="employee_department"
+            control={control}
+            defaultValue={[]}
+            render={({ field }) => (
+              <MultiSelect
+                {...field}
+                hasSelectAll={false}
+                options={options_dropdown && options_dropdown}
+                // value={field.value}
+                // onChange={(selected) => { This is for default values not having that much experties in js now i am having later future task this is
+                //   field.onChange(selected);
+                //   setValue("employee_department", selected);
+                // }}
+                className="custom-multi-select"
+              />
+            )}
           />
+          <p className="pForForm">{errors.employee_department?.message}</p>
         </div>
         <div className="profile_label_input ">
           <label

@@ -1,15 +1,8 @@
 import "./HmsAppLayout.css";
-import Dashboard from "./HMSapps/Dashboard";
+// import Dashboard from "./HMSapps/Dashboard";
 
 import React, { useEffect, useRef, useState } from "react";
-import {
-  NavLink,
-  Outlet,
-  useLocation,
-  useMatch,
-  useMatches,
-  matchPath,
-} from "react-router-dom";
+import { NavLink, Outlet, useLocation, matchPath } from "react-router-dom";
 
 // HMS Icons
 import { RiDashboardFill, RiAdminFill } from "react-icons/ri";
@@ -103,7 +96,7 @@ let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
 
 function HmsAppLayout() {
-  const [displayDashboard, setDisplayDashboard] = useState(false);
+  // const [displayDashboard, setDisplayDashboard] = useState(false);
   const [displayHmsMenu, setDisplayHmsMenu] = useState(true);
   const only_hms_icons = useRef();
   const hms_outlet = useRef();
@@ -111,10 +104,10 @@ function HmsAppLayout() {
   // only_hms_icons.current.style.display = "none";
 
   // matching path for displaying dashboard otherwise not
-  const pathhh = matchPath("/all'ikhwa-management-system/", location.pathname);
-  useEffect(() => {
-    pathhh ? setDisplayDashboard(true) : setDisplayDashboard(false);
-  }, [pathhh]);
+  // const pathhh = matchPath("/all'ikhwa-management-system/", location.pathname);
+  // useEffect(() => {
+  //   pathhh ? setDisplayDashboard(true) : setDisplayDashboard(false);
+  // }, [pathhh]);
   // matching path for displaying dashboard otherwise not
   const path_depart = matchPath(
     "/all'ikhwa-management-system/departments/",
@@ -145,13 +138,15 @@ function HmsAppLayout() {
     <>
       <div className="hmstop">
         <div className="hmscontainercol02_menu">
-          <img // onClick={() => setDisplayDashboard(false)}
+          <p>Salammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+
+          {/* <img // onClick={() => setDisplayDashboard(false)}
             className="hmscontainercol02_img"
             // src={} dynamic
             src="https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
             alt="Doctor"
-          />
-          <IoMdNotifications style={{ fontSize: "30px", color: "#fe4200" }} />
+          /> */}
+          {/* <IoMdNotifications style={{ fontSize: "30px", color: "#fe4200" }} /> */}
         </div>
         <div className="hmscontainer">
           <div className="hmscontainercol01" ref={only_hms_icons}>
@@ -183,7 +178,7 @@ function HmsAppLayout() {
             </ul>
           </div>
           <div className="hmscontainercol02" ref={hms_outlet}>
-            {displayDashboard && <Dashboard />}
+            {/* {displayDashboard && <Dashboard />} */}
 
             <Outlet />
           </div>

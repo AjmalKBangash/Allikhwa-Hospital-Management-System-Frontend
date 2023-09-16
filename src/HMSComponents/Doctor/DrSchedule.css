@@ -1,0 +1,60 @@
+.schedule_top {
+  width: 95%;
+  margin: 0 auto;
+}
+.calender_top {
+  margin: 20px 0;
+}
+.rbc-events-container {
+  z-index: 1;
+}
+.rbc-event {
+  width: fit-content;
+  height: fit-content;
+  background-color: #013737;
+  font-weight: 400;
+}
+.rbc-event-content {
+  font-size: 12px;
+}
+.event-popup p {
+  font-size: 12px;
+}
+
+/* popup  */
+.drschedule_popup_top {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.411);
+  position: fixed;
+  z-index: 10000;
+}
+.drschedule_popup_top_container {
+  position: relative;
+  display: block;
+  /* height: 175px; */
+  height: fit-content;
+  width: 350px;
+  margin: 33vh 70vw 40vh 30vw;
+  background-color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.drschedule_popup_top_items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+}
+.drschedule_popup_top_items p {
+  margin: 5px;
+}
+.drschedule_popup_top_items span {
+  position: absolute;
+  right: 3%;
+  top: 4%;
+  font-size: 13px;
+  cursor: pointer;
+}

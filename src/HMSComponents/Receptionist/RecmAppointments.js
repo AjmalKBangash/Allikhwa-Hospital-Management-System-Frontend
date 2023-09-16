@@ -106,7 +106,7 @@ function RecmAppointments() {
     country: Yup.string(),
     // .required("Country is required"),
     city: Yup.string().required("City is required"),
-    choose_doctor: Yup.string().required("Doctor is required"),
+    doctor: Yup.string().required("Doctor is required"),
     address: Yup.string().max(
       100,
       "Adress should not be greater than 100 characters"
@@ -270,19 +270,16 @@ function RecmAppointments() {
             <p className="pForForm ">{errors.patient_dis?.message}</p>
           </div>
           <div className="profile_label_input ">
-            <label
-              htmlFor="choose_doctor"
-              className="profile_lanel_input_label"
-            >
+            <label htmlFor="doctor" className="profile_lanel_input_label">
               Doctor:<span style={{ color: "red", margin: "0 4px" }}>*</span>
             </label>
             <input
               id="age"
               type="text"
-              {...register("choose_doctor")}
+              {...register("doctor")}
               placeholder="Enter Patient Age"
             ></input>
-            <p className="pForForm ">{errors.choose_doctor?.message}</p>
+            <p className="pForForm ">{errors.doctor?.message}</p>
           </div>
           <div className="profile_label_input ">
             <label htmlFor="department" className="profile_lanel_input_label">
@@ -533,7 +530,7 @@ const Prescription = forwardRef((props, ref) => {
               </div>
               <div className="appointment_pricing_top_row02_col01">
                 DOCTOR:&nbsp; &nbsp;{" "}
-                {recmappointment_patient_billing_price_var.choose_doctor}
+                {recmappointment_patient_billing_price_var.doctor}
               </div>
               <div className="appointment_pricing_top_row02_col01">
                 DATE:&nbsp;&nbsp;

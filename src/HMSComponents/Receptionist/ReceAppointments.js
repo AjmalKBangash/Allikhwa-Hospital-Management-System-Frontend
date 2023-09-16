@@ -98,7 +98,7 @@ function ReceAppointments() {
     email: Yup.string().email("Enter Valid Email Address"),
     country: Yup.string().required("Country is required"),
     city: Yup.string().required("City is required"),
-    choose_doctor: Yup.string().required("Doctor is required"),
+    doctor: Yup.string().required("Doctor is required"),
     address: Yup.string().max(
       100,
       "Adress should not be greater than 100 characters"
@@ -249,19 +249,16 @@ function ReceAppointments() {
               <p className="pForForm ">{errors.patient_dis?.message}</p>
             </div>
             <div className="profile_label_input ">
-              <label
-                htmlFor="choose_doctor"
-                className="profile_lanel_input_label"
-              >
+              <label htmlFor="doctor" className="profile_lanel_input_label">
                 Doctor
               </label>
               <input
                 id="age"
                 type="text"
-                {...register("choose_doctor")}
+                {...register("doctor")}
                 placeholder="Enter Patient Age"
               ></input>
-              <p className="pForForm ">{errors.choose_doctor?.message}</p>
+              <p className="pForForm ">{errors.doctor?.message}</p>
             </div>
             <div className="profile_label_input ">
               <label htmlFor="department" className="profile_lanel_input_label">
@@ -447,7 +444,7 @@ function ReceAppointments() {
                             setValue("PID", patdet.PID);
                             setValue("city", patdet.city);
                             setValue("country", patdet.country);
-                            setValue("choose_doctor", patdet.choose_doctor);
+                            setValue("doctor", patdet.doctor);
                             setValue("adress", patdet.address);
                             setValue("contact_num", patdet.contact_num);
                             setValue("age", patdet.age);
