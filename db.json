@@ -1,939 +1,607 @@
 {
-  "wholesaledrugs": [
-    {
-      "id": "1",
-      "name": "Vigoor",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
-      "description": "Used in men who do not make enough of a natural substance called testosterone ",
-      "price": 700,
-      "discount": 10,
-      "category": "wholeSale"
-    },
-    {
-      "id": "2",
-      "name": "Alatrol",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 700,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "3",
-      "name": "Sildenafil",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 400,
-      "discount": 50,
-      "category": "wholeSale"
-    },
-    {
-      "id": "4",
-      "name": "Azythromycin",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 150,
-      "discount": 32,
-      "category": "wholeSale"
-    },
-    {
-      "id": "5",
-      "name": "Physica",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 650,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "6",
-      "name": "Sperex",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
-      "description": "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
-      "price": 30,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "7",
-      "name": "Avetex",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 90,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "8",
-      "name": "Zolpidem",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 700,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "9",
-      "name": "Xtandi",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill09.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 700,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "10",
-      "name": "Avandia",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 700,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "11",
-      "name": "carol",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 400,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "12",
-      "name": "dawai",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 150,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "13",
-      "name": "Euphrene",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 650,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "14",
-      "name": "Fault",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
-      "description": "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
-      "price": 300,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "15",
-      "name": "golai",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 950,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "16",
-      "name": "Holland",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 730,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "17",
-      "name": "InterTablets",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill09.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 290,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "18",
-      "name": "JoliDawai",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 520,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "19",
-      "name": "kolalampoorGolai",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 650,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "20",
-      "name": "LahoLohaanDawai",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 460,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "21",
-      "name": "monarch",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 400,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "22",
-      "name": "namanam",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 150,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "23",
-      "name": "openAI",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 650,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "24",
-      "name": "pills",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
-      "description": "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
-      "price": 230,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "25",
-      "name": "qataw",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 90,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "26",
-      "name": "rowal",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 730,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "27",
-      "name": "Slamin",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill09.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 555,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "28",
-      "name": "Toor",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 600,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "29",
-      "name": "Uoaan",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 980,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "30",
-      "name": "zurbex",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 896,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "31",
-      "name": "Venom Namnam",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 545,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "32",
-      "name": "zoor Sharbaat",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 111,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "33",
-      "name": "kolam",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 102,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "34",
-      "name": "Loram",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 291,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "35",
-      "name": "Manama Namnam",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 879,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "36",
-      "name": "nawa Sharbaatai",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill10.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 654,
-      "discount": 20,
-      "category": "wholeSale"
-    }
-  ],
-  "dailyuseDrugs": [
-    {
-      "id": "1",
-      "name": "Vigorex",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
-      "description": "Used in men who do not make enough of a natural substance called testosterone ",
-      "price": 700,
-      "discount": 10,
-      "category": "wholeSale"
-    },
-    {
-      "id": "2",
-      "name": "Alatrol",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 700,
-      "discount": 20,
-      "category": "wholeSale"
-    },
-    {
-      "id": "3",
-      "name": "Sildenafil",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 400,
-      "discount": 50,
-      "category": "wholeSale"
-    },
-    {
-      "id": "4",
-      "name": "Azythromycin",
-      "pic": "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
-      "description": "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-      "price": 150,
-      "discount": 32,
-      "category": "wholeSale"
-    }
-  ],
   "details": [],
   "doctors": [
     {
-      "employee_name": "Dr.Maaz Bangash",
+      "PID": "b27f5188-2cff-4f5f-b3c4-a961febfac79",
+      "employee_name": "Ajayyyyyy",
       "employee_website": "",
       "employee_photo": {},
-      "employee_description": "Dr.Maaz Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
       "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "general",
+      "employee_experience": "5 year",
       "employee_surgeries": "",
       "employee_appointments": "",
       "employee_awards": "",
       "employee_address": "",
       "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
+      "employee_email": "ak1489004@gmail.com",
       "employee_facebook": "",
       "employee_linkedin": "",
-      "id": 1
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 15
     },
     {
-      "employee_name": "Dr.Maaz ",
+      "PID": "275dd7d2-f10b-4486-95d9-638c3be99a75",
+      "employee_name": "Ajayyyyyy",
       "employee_website": "",
       "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
       "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "Emergency",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 2
-    },
-    {
-      "employee_name": "Dr.Bangash",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": " Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "general",
+      "employee_experience": "5 year",
       "employee_surgeries": "",
       "employee_appointments": "",
       "employee_awards": "",
       "employee_address": "",
       "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
+      "employee_email": "ak1489004@gmail.com",
       "employee_facebook": "",
       "employee_linkedin": "",
-      "id": 3
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 16
     },
     {
-      "employee_name": "Dr.Hassan Khan Bangash",
+      "PID": "f1791395-3256-4171-a08a-7a7c1392f6fe",
+      "employee_name": "Ajayyyyyy",
       "employee_website": "",
       "employee_photo": {},
-      "employee_description": "Hassan Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
       "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "Emergency",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 4
-    },
-    {
-      "employee_name": "Dr.Maaz Ud Din",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "Emergency",
-      "employee_surgeries": "546",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 5
-    },
-    {
-      "employee_name": "Dr.Maaz Ud Din",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "Emergency",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 6
-    },
-    {
-      "employee_name": "Dr.Maaz Ud Din",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "plasticsurgery",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 7
-    },
-    {
-      "employee_name": "Dr.Maaz Ud Din",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "gynae",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 8
-    },
-    {
-      "employee_name": "Dr.Maaz Ud Din",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "ent",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 9
-    },
-    {
-      "employee_department": "ENT A,Cardiology, Radiology",
-      "employee_name": "Dr Faraz Khan",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr faraz is a plastic surgeon. His speciality maily is in the hair loss and drrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ffffffffffffffffffffffaaaaaaaaaaaaaaaaarrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzz",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
+      "employee_experience": "5 year",
       "employee_surgeries": "",
       "employee_appointments": "",
       "employee_awards": "",
       "employee_address": "",
       "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
+      "employee_email": "ak1489004@gmail.com",
       "employee_facebook": "",
       "employee_linkedin": "",
-      "PID": "0726cb84-74e8-4755-88c9-2c6a7829a1ce",
-      "id": 10
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 17
     },
     {
-      "employee_department": "Cardiology",
-      "employee_name": "Dr Faraz Khan",
+      "PID": "a3b6e34e-5608-41b4-9422-de7424064013",
+      "employee_name": "Ajayyyyyy",
       "employee_website": "",
       "employee_photo": {},
-      "employee_description": "Dr faraz is a plastic surgeon. His speciality maily is in the hair loss and drrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ffffffffffffffffffffffaaaaaaaaaaaaaaaaarrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzz",
-      "employee_jobtitle": "Assistent Director",
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489004@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 18
+    },
+    {
+      "PID": "60304af0-272c-45d3-80ce-0db4e87fdca9",
+      "employee_name": "Ajayyyyyy",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489004@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 19
+    },
+    {
+      "PID": "3f132ea4-624d-4103-96dd-a76a5a53ad22",
+      "employee_name": "Ajayyyyyy",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489004@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 20
+    },
+    {
+      "PID": "4b73aa03-e1c9-4617-8525-8264cb3ea6e4",
+      "employee_name": "Ajayyyyyy",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489004@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 21
+    },
+    {
+      "PID": "dd9c4742-959b-4b52-b2b7-3df337abe248",
+      "employee_name": "Ajayyyyyy",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "uiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_jobtitle": "ass",
+      "employee_category": "doctor",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "",
+      "employee_email": "ak1489004@gmail.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        }
+      ],
+      "id": 22
+    },
+    {
+      "employee_description": "Last Khan Bangash is veri intellegent boy buddyyyyyyyyyyyyyy iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
+      "employee_email": "ak1489007@gmail.com",
+      "employee_phone": 923334483486,
+      "employee_department": [
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        },
+        {
+          "label": "Endocrinology",
+          "value": "Endocrinology"
+        },
+        {
+          "label": "Gynae",
+          "value": "Gynae"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        },
+        {
+          "label": "General",
+          "value": "General"
+        }
+      ],
+      "employee_experience": "13 years in Plastic surgery",
       "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_surgeries": "",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "PID": "c0a59894-4fa6-4174-8836-74dc31868088",
-      "id": 11
-    },
-    {
-      "employee_department": "Emergency",
-      "employee_name": "Dr Faraz Khan",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr faraz is a plastic surgeon. His speciality maily is in the hair loss and drrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ffffffffffffffffffffffaaaaaaaaaaaaaaaaarrrrrrrrrrrrrrrrrrrraaaaaaaaaaaaaaaaaazzzzzzzzzzzzzzzzzzzz",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Doctor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_surgeries": "",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "PID": "db8ed0b2-6b4e-491b-99f1-fb7ff33294fa",
-      "id": 12
-    }
-  ],
-  "nurses": [
-    {
-      "employee_name": "Dr.Maaz Bangash",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Nurse",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "Cardiology",
-      "employee_surgeries": "",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 1
-    },
-    {
-      "employee_name": "Dr.Maaz ",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Nurse",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "emergency",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 2
-    },
-    {
-      "employee_name": "Dr.Bangash",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": " Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Nurse",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "cardiology",
-      "employee_surgeries": "",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 3
-    },
-    {
-      "employee_name": "Dr.Hassan Khan Bangash",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Hassan Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Nurse",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "emergency",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 4
-    },
-    {
-      "employee_name": "Dr.Robeena Naaz",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Hassan Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Nurse",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "emergency",
-      "employee_surgeries": "324",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 5
-    }
-  ],
-  "employess": [
-    {
-      "employee_name": "Dr.Maaz Bangash",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Pharmacist",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "cardiology",
-      "employee_surgeries": "",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 1
-    },
-    {
-      "employee_name": "Dr.Maaz ",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "Dr.Maaz is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Pharmacist",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "emergency",
-      "employee_surgeries": "",
-      "employee_appointments": "675",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 2
-    },
-    {
-      "employee_name": "Dr.Bangash",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": " Bangash is a specialist in treating patients with care and patience. Maaz Bangash is a specialist in treating patients with care and patience.Maaz Bangash is a specialist in treating patients with care and patience.",
-      "employee_jobtitle": "Assistent Director",
-      "employee_category": "Pharmacist",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "cardiology",
-      "employee_surgeries": "",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 3
-    }
-  ],
-  "admins": [
-    {
-      "employee_name": "Admin01",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
       "employee_jobtitle": "Assistent Professor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "IT",
-      "employee_surgeries": "aa",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 1
-    },
-    {
-      "employee_name": "Admin02",
+      "employee_name": "Last Khan",
+      "PID": "c10d5e01-c166-4f7c-a8cc-1508e9726d5b",
       "employee_website": "",
       "employee_photo": {},
-      "employee_description": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
-      "employee_jobtitle": "Assistent Professor",
       "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "IT",
-      "employee_surgeries": "aa",
+      "employee_surgeries": "",
       "employee_appointments": "",
       "employee_awards": "",
       "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
       "employee_facebook": "",
       "employee_linkedin": "",
-      "id": 2
+      "id": 23
     },
     {
-      "employee_name": "Admin03",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
-      "employee_jobtitle": "Assistent Professor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "IT",
-      "employee_surgeries": "aa",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
+      "employee_description": "Last Khan Bangash is veri intellegent boy buddyyyyyyyyyyyyyy iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii",
       "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 3
-    },
-    {
-      "employee_name": "Meo",
-      "employee_website": "www.al'ikhwa.com",
-      "employee_photo": {},
-      "employee_description": "Meon is from china with the vision of bring health to Pakistan and withe vision of eradication of corruption, looting, spoil mafia in the field of Medicine and pharmacy.\nEverything which comes under the umbrella of medical field.",
-      "employee_jobtitle": " Professor From China",
-      "employee_education": "MBBS, FCPS (Part I, part II)",
-      "employee_experience": "12 years of experience in the department of cardiology with patient care.",
-      "employee_department": "Plastic Surgeon",
-      "employee_surgeries": "324",
-      "employee_appointments": "2300",
-      "employee_awards": "Best Communication award, Hard Coin Surgery Award",
-      "employee_address": "House 437",
-      "employee_phone": "00923334483486",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "Meon Bangash",
-      "employee_linkedin": "MeonKBangash",
-      "id": 4
-    },
-    {
-      "employee_name": "Hassan Khan Bangash",
-      "employee_website": "Normal text",
-      "employee_photo": {},
-      "employee_description": "I am licensed health professional who maintain and restore human health through the practice of medicine. I examine patients, review their medical history, diagnose illnesses or injuries, administer treatment, and counsel patients on their health and well-being.tks",
-      "employee_jobtitle": "Director of Emergency Department",
+      "employee_phone": 923334483486,
+      "employee_department": [
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        },
+        {
+          "label": "Endocrinology",
+          "value": "Endocrinology"
+        },
+        {
+          "label": "Gynae",
+          "value": "Gynae"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        },
+        {
+          "label": "General",
+          "value": "General"
+        }
+      ],
+      "employee_experience": "13 years in Plastic surgery",
       "employee_category": "Doctor",
-      "employee_education": "MBBS, FCPS (Part I, part II), Certificates in Medicine Research",
-      "employee_experience": "5 years",
-      "employee_department": "Emergency",
-      "employee_surgeries": "57",
-      "employee_appointments": "5000",
-      "employee_awards": "Rich Coin Surgery International Award",
-      "employee_address": "Peshawar, Pakistan",
-      "employee_phone": "00923334483486",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "Hassan Khan Bangash",
-      "employee_linkedin": "HassanKBangash",
-      "id": 5
-    },
-    {
-      "employee_name": "Admin01",
-      "employee_website": "",
-      "employee_photo": {},
-      "employee_description": "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
       "employee_jobtitle": "Assistent Professor",
-      "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "IT",
-      "employee_surgeries": "aa",
-      "employee_appointments": "",
-      "employee_awards": "",
-      "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
-      "employee_facebook": "",
-      "employee_linkedin": "",
-      "id": 6
-    },
-    {
-      "employee_name": "Ajay Kan",
+      "employee_name": "Last Khan",
+      "PID": "df066942-f09d-44f7-867a-4ac7dc0c4759",
       "employee_website": "",
       "employee_photo": {},
-      "employee_description": "intrrrrrrrrrrrrrrrrrrooooooodddddducccccccccccccccccccccccccccccccttttttttitoooooo nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
-      "employee_jobtitle": "marge",
-      "employee_category": "marge ba raze",
       "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "Computer Science",
       "employee_surgeries": "",
       "employee_appointments": "",
       "employee_awards": "",
       "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
       "employee_facebook": "",
       "employee_linkedin": "",
-      "id": 77
+      "id": 24
     },
     {
-      "employee_name": "Ajayyy kahan",
+      "employee_description": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+      "employee_email": "ak1489007@gmail.com",
+      "employee_phone": 923334483486,
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        },
+        {
+          "label": "Gynae",
+          "value": "Gynae"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        },
+        {
+          "label": "General",
+          "value": "General"
+        }
+      ],
+      "employee_experience": "55 year",
+      "employee_category": "Doctor",
+      "employee_jobtitle": "Director",
+      "employee_name": "Aji Khan",
+      "PID": "c77b6bae-ed9f-42c6-b90d-a88ffc4849fe",
       "employee_website": "",
       "employee_photo": {},
-      "employee_description": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiinnnnnnnnnnntttttttttrrrrrrrrrrrrrooooooooooodddducccccttttttttttttiiiiiiiiiiiiiiiooooooonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
-      "employee_jobtitle": "marge",
-      "employee_category": "marge ba raze",
       "employee_education": "",
-      "employee_experience": "5 years",
-      "employee_department": "Computer Science",
+      "employee_surgeries": "56",
+      "employee_appointments": "657",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "id": 25
+    },
+    {
+      "employee_description": "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj",
+      "employee_email": "ak1489007@gmail.com",
+      "employee_phone": 923334483486,
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Radiology",
+          "value": "Radiology"
+        },
+        {
+          "label": "Gynae",
+          "value": "Gynae"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        },
+        {
+          "label": "General",
+          "value": "General"
+        }
+      ],
+      "employee_experience": "55 year",
+      "employee_category": "Doctor",
+      "employee_jobtitle": "Director",
+      "employee_name": "Aji Khan",
+      "PID": "140d6420-afa3-40a3-bddb-ac0fc0289833",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_education": "",
+      "employee_surgeries": "56",
+      "employee_appointments": "657",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "id": 26
+    },
+    {
+      "PID": "d1093c57-3600-4ae6-a89c-acb3abe60c89",
+      "employee_name": "Last Khan",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "dr is hay jo loremipsum shi dij s idnied d,dnidjeicnhinincin.",
+      "employee_jobtitle": "Director",
+      "employee_category": "Doctor",
+      "employee_education": "",
+      "employee_experience": "5 year",
       "employee_surgeries": "",
       "employee_appointments": "",
       "employee_awards": "",
       "employee_address": "",
-      "employee_phone": "",
-      "employee_email": "ak1489007@gmail.com",
+      "employee_phone": "00927676756464",
+      "employee_email": "desrxr34454@gamil.com",
       "employee_facebook": "",
       "employee_linkedin": "",
-      "id": 899
+      "employee_department": [
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Gynae",
+          "value": "Gynae"
+        },
+        {
+          "label": "General",
+          "value": "General"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        }
+      ],
+      "id": 27
+    },
+    {
+      "PID": "fffd390d-752f-41c6-aced-3cbd260e79c4",
+      "employee_name": "Last Khan",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "dr is hay jo loremipsum shi dij s idnied d,dnidjeicnhinincin.",
+      "employee_jobtitle": "Director",
+      "employee_category": "Doctor",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "00927676756464",
+      "employee_email": "desrxr34454@gamil.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        },
+        {
+          "label": "Gynae",
+          "value": "Gynae"
+        },
+        {
+          "label": "General",
+          "value": "General"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        }
+      ],
+      "id": 28
+    },
+    {
+      "PID": "42056a88-d240-4ba7-95c5-648f727f8b2c",
+      "employee_name": "Dr.Last Khan ",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "I am doctor last with the utmost care of patients in surgeries",
+      "employee_jobtitle": "Director",
+      "employee_education": "Metric Pass",
+      "employee_experience": "5 year",
+      "employee_surgeries": "76",
+      "employee_appointments": "667",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "00975445678878",
+      "employee_email": "desrxr34454@gamil.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        }
+      ],
+      "employee_category": "DOCTOR",
+      "id": 29
+    },
+    {
+      "PID": "7c7bd615-1434-4351-8efe-bb45ebc3b79b",
+      "employee_name": "Dr.Last Khan Gul",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "njnkn klnlk jnjkn jknjkn jnjknjkn jnkjnkjn jknjknjknjknniojoi ionoinoi",
+      "employee_jobtitle": "Director",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "08989786756457",
+      "employee_email": "desrxr34454@gamil.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "Cardiology",
+          "value": "Cardiology"
+        }
+      ],
+      "employee_category": "DOCTOR",
+      "id": 30
     }
   ],
   "newpatients": [
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -945,8 +613,14 @@
       "date": "2023-09-08T19:30:00.000Z"
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informemail", "informsms", "informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -954,11 +628,16 @@
       "contact_num": 923334483486,
       "name": "ALL'Ikhwa",
       "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "date": "2023-09-08T19:30:00.000Z",
       "id": 2
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -966,13 +645,18 @@
       "contact_num": 923334483486,
       "name": "Ajay Bangash",
       "PID": "02dfbbab-8aa2-4db0-8681-e6cce88a001f",
+      "date": "2023-09-08T19:30:00.000Z",
       "id": 3
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
-      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ak1489007@gmail.com",
@@ -980,13 +664,18 @@
       "patient_dis": "I am having dirhea",
       "name": "Safeer Kashmiri",
       "PID": "18cc181a-ac01-4a9e-b95c-cba229f3e32e",
+      "date": "2023-09-08T19:30:00.000Z",
       "id": 4
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
-      "choose_doctor": "Angola",
+      "doctor": "Angola",
       "city": "Tirana",
       "country": "Albania",
       "email": "ak1489007@gmail.com",
@@ -994,13 +683,18 @@
       "patient_dis": "pa ma graan beemar dee",
       "name": "Janan",
       "PID": "d650c63d-eb83-468a-99a6-b84ab4e661e4",
+      "date": "2023-09-08T19:30:00.000Z",
       "id": 5
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
-      "choose_doctor": "Angola",
+      "doctor": "Angola",
       "city": "Tirana",
       "country": "Albania",
       "email": "ak1489007@gmail.com",
@@ -1011,10 +705,14 @@
       "id": 6
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "",
-      "choose_doctor": "Hassan Khan",
+      "doctor": "Hassan Khan",
       "city": "Pretoria",
       "country": "South Africa",
       "email": "ajay1489007@gmail.com",
@@ -1025,10 +723,14 @@
       "id": 7
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "",
-      "choose_doctor": "Hassan Khan",
+      "doctor": "Hassan Khan",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ak1489007@gmail.com",
@@ -1039,10 +741,14 @@
       "id": 8
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
-      "choose_doctor": "Angola",
+      "doctor": "Angola",
       "city": "Luanda",
       "country": "Andorra",
       "email": "ajay1489007@gmail.com",
@@ -1053,10 +759,14 @@
       "id": 9
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informsms"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
       "address": "",
-      "choose_doctor": "Adnan Khan Bangash",
+      "doctor": "Adnan Khan Bangash",
       "city": "Tirana",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1067,10 +777,14 @@
       "id": 10
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informsms"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
       "address": "",
-      "choose_doctor": "Adnan Khan Bangash",
+      "doctor": "Adnan Khan Bangash",
       "city": "Tirana",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1081,10 +795,14 @@
       "id": 11
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informsms"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
       "address": "",
-      "choose_doctor": "Adnan Khan Bangash",
+      "doctor": "Adnan Khan Bangash",
       "city": "Tirana",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1095,10 +813,14 @@
       "id": 12
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
-      "choose_doctor": "Hassan Khan",
+      "doctor": "Hassan Khan",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1109,10 +831,14 @@
       "id": 13
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informsms"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
       "address": "",
-      "choose_doctor": "Husnain Bangash",
+      "doctor": "Husnain Bangash",
       "city": "Tirana",
       "country": "Albania",
       "email": "ak1489007@gmail.com",
@@ -1123,10 +849,14 @@
       "id": 14
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
-      "choose_doctor": "Hassan Khan",
+      "doctor": "Hassan Khan",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1137,10 +867,14 @@
       "id": 15
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "",
-      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1151,10 +885,14 @@
       "id": 16
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "",
-      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1165,10 +903,14 @@
       "id": 17
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "",
-      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "doctor": "Dr.Dur Kamil Bangash",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1179,10 +921,14 @@
       "id": 18
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informsms"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
       "address": "",
-      "choose_doctor": "Hassan Khan",
+      "doctor": "Hassan Khan",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ajay1489007@gmail.com",
@@ -1194,8 +940,12 @@
     },
     {
       "date": "2023-09-08T19:30:00.000Z",
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "House# 437, phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1204,14 +954,18 @@
       "age": 24,
       "patient_dis": "I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...\n",
       "name": "Ali Gul Khan",
-      "choose_doctor": "Dr.Dur Kamil Bangash",
+      "doctor": "Dr.Dur Kamil Bangash",
       "PID": "91a30fc5-94cf-4530-994c-dca01ce8817b",
       "id": 20
     },
     {
       "date": "2023-09-08T19:30:00.000Z",
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informsms"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informsms"
+      ],
       "address": "jhvjv jhgjhgjh jhggjh",
       "city": "Pretoria",
       "country": "Afghanistan",
@@ -1220,15 +974,19 @@
       "age": 24,
       "patient_dis": "nmvbnvbnv",
       "name": "ghgjhgjh",
-      "choose_doctor": "Hassan Khan",
+      "doctor": "Hassan Khan",
       "PID": "2cb2fd1c-66c7-4e4f-9397-2cde49ba2f97",
       "id": 21
     }
   ],
   "appointments": [
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1238,11 +996,18 @@
       "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
       "department": "Cardiology",
       "doctor": "DrHassan",
+      "date": "2023-09-08T19:30:00.000Z",
       "id": 1
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informemail", "informsms", "informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1252,11 +1017,16 @@
       "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
       "department": "endocrinology",
       "doctor": "DrHassan",
+      "date": "2023-09-08T19:30:00.000Z",
       "id": 2
     },
     {
-      "physical_online_appointment": ["onlineappointment"],
-      "email_sms_phone": ["informemail"],
+      "physical_online_appointment": [
+        "onlineappointment"
+      ],
+      "email_sms_phone": [
+        "informemail"
+      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1266,13 +1036,14 @@
       "PID": "02dfbbab-8aa2-4db0-8681-e6cce88a001f",
       "department": "Emergency",
       "doctor": "DrMaazKhanBangash",
+      "date": "2023-09-08T19:30:00.000Z",
       "id": 3
     },
     {
       "department": "",
       "date": "2023-09-08T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "doctor": "Dr.Adnan Khan Bangash",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1287,7 +1058,7 @@
       "department": "Plastice Surgery",
       "date": "2023-09-08T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "doctor": "Dr.Adnan Khan Bangash",
       "city": "Peshawar",
       "country": "Pakistan",
       "email": "ak1489007@gmail.com",
@@ -1302,7 +1073,7 @@
       "department": "Plastice Surgery",
       "date": "2023-09-08T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "doctor": "Dr.Adnan Khan Bangash",
       "city": "Peshawar",
       "country": "Pakistan",
       "email": "ak1489007@gmail.com",
@@ -1317,7 +1088,7 @@
       "department": "",
       "date": "2023-09-08T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "Dr.Adnan Khan Baba",
       "city": "Peshawar",
       "country": "Pakistan",
       "email": "",
@@ -1332,7 +1103,7 @@
       "department": "Plastice Surgery",
       "date": "2023-09-28T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Angola",
+      "doctor": "DrMaazKhanBangash",
       "city": "Tirana",
       "country": "Pakistan",
       "email": "ak1489007@gmail.com",
@@ -1348,7 +1119,7 @@
       "department": "Plastice Surgery",
       "date": "2023-09-07T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba 22",
+      "doctor": "DrMaazKhanBangash",
       "city": "Kabul",
       "country": "Afghanistan",
       "email": "ak1489007@gmail.com",
@@ -1364,7 +1135,7 @@
       "department": "Plastice Surgery",
       "date": "2023-09-28T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba 33",
+      "doctor": "DrMaazKhanBangash",
       "city": "Peshawar",
       "country": "Pakistan",
       "email": "ak1489007@gmail.com",
@@ -1379,7 +1150,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "DrMaazKhanBangash",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1394,7 +1165,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba 22",
+      "doctor": "DrMaazKhanBangash",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1409,7 +1180,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "DrMaazKhanBangash",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1424,7 +1195,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "Dr.Adnan Khan Baba",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1439,7 +1210,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba 33",
+      "doctor": "Dr.Adnan Khan Baba 33",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1454,7 +1225,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "Dr.Adnan Khan Baba",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1469,7 +1240,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "Dr.Adnan Khan Baba",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1484,7 +1255,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "doctor": "Dr.Adnan Khan Bangash",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1499,7 +1270,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "Dr.Adnan Khan Baba",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1514,7 +1285,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "Dr.Adnan Khan Baba",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1529,7 +1300,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Bangash",
+      "doctor": "Dr.Adnan Khan Bangash",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1544,7 +1315,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba 33",
+      "doctor": "Dr.Adnan Khan Baba 33",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1559,7 +1330,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba",
+      "doctor": "Dr.Adnan Khan Baba",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1574,7 +1345,7 @@
       "department": "",
       "date": "2023-09-09T19:30:00.000Z",
       "address": "",
-      "choose_doctor": "Dr.Adnan Khan Baba 22",
+      "doctor": "Dr.Adnan Khan Baba 22",
       "city": "Peshawar",
       "country": "",
       "email": "",
@@ -1832,8 +1603,12 @@
   ],
   "prescriptions": [
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1846,8 +1621,14 @@
       "id": 1
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informemail", "informsms", "informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -2067,12 +1848,49 @@
         }
       ],
       "id": 27
+    },
+    {
+      "id": 28
+    },
+    {
+      "id": 29
+    },
+    {
+      "id": 30
+    },
+    {
+      "id": 31
+    },
+    {
+      "id": 32
+    },
+    {
+      "id": 33
+    },
+    {
+      "id": 34
+    },
+    {
+      "id": 35
+    },
+    {
+      "id": 36
+    },
+    {
+      "id": 37
+    },
+    {
+      "id": 38
     }
   ],
   "rejectedappointments": [
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -2085,8 +1903,14 @@
       "id": 1
     },
     {
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informemail", "informsms", "informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -2132,8 +1956,12 @@
       "medicine": "flygel",
       "dosage_frequency": "3 times in a day",
       "instructions": "eat banana",
-      "physical_online_appointment": ["physicalappointment"],
-      "email_sms_phone": ["informphone"],
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informphone"
+      ],
       "address": "House# 437 phase # 06",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -2187,32 +2015,140 @@
   ],
   "departmentnames": [
     {
+      "id": 1,
       "name": "Cardiology",
       "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
     },
     {
+      "id": 2,
       "name": "ENT",
       "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
     },
     {
+      "id": 3,
       "name": "Radiology",
       "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
     },
     {
+      "id": 4,
       "name": "Endocrinology",
       "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
     },
     {
+      "id": 5,
       "name": "Gynae",
       "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
     },
     {
+      "id": 6,
       "name": "Emergency",
       "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
     },
     {
+      "id": 7,
       "name": "General",
       "discription": "We are having all the latest technology for the cardiology patient and and we are also having top class phd scholars for the treatemnt of patients"
+    }
+  ],
+  "totalbeds": [
+    {
+      "depart_name": "general",
+      "total_beds": "19",
+      "free_beds": "3",
+      "beds_in_use": "14",
+      "broken_beds": "7",
+      "beds_description": "The General department is about treating normal patients with normal diseases.The General department is about treating normal patients with normal diseases.The General department is about treating normal patients with normal diseases.The General department is about treating normal patients with normal diseases.",
+      "id": 1
+    },
+    {
+      "depart_name": "gastroenterology",
+      "total_beds": "12",
+      "free_beds": "1",
+      "beds_in_use": "11",
+      "broken_beds": "0",
+      "beds_description": "This is Gastreology department.This is Gastreology department.This is Gastreology department.This is Gastreology department.This is Gastreology department.This is Gastreology department.This is Gastreology department.This is Gastreology department.",
+      "id": 2
+    },
+    {
+      "depart_name": "endocrinology",
+      "total_beds": "66",
+      "free_beds": "20",
+      "beds_in_use": "40",
+      "broken_beds": "6",
+      "beds_description": "This is the endocrinology department where we are having ...This is the endocrinology department where we are having ...This is the endocrinology department where we are having ...This is the endocrinology department where we are having ...This is the endocrinology department where we are having ...",
+      "id": 3
+    },
+    {
+      "depart_name": "eye",
+      "total_beds": "8",
+      "free_beds": "2",
+      "beds_in_use": "4",
+      "broken_beds": "0",
+      "beds_description": "This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...",
+      "id": 4
+    },
+    {
+      "depart_name": "eye",
+      "total_beds": "8",
+      "free_beds": "2",
+      "beds_in_use": "4",
+      "broken_beds": "0",
+      "beds_description": "This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...",
+      "id": 5
+    },
+    {
+      "depart_name": "eye",
+      "total_beds": "8",
+      "free_beds": "2",
+      "beds_in_use": "4",
+      "broken_beds": "0",
+      "beds_description": "This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...This is ENT department where are treating patients ...",
+      "id": 6
+    },
+    {
+      "depart_name": "ent",
+      "total_beds": "22",
+      "free_beds": "2",
+      "beds_in_use": "20",
+      "broken_beds": "0",
+      "beds_description": "Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...",
+      "id": 7
+    },
+    {
+      "depart_name": "ent",
+      "total_beds": "22",
+      "free_beds": "2",
+      "beds_in_use": "20",
+      "broken_beds": "0",
+      "beds_description": "Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...Thisis ent department of Husnain ...",
+      "id": 8
+    },
+    {
+      "depart_name": "peads",
+      "total_beds": "30",
+      "free_beds": "2",
+      "beds_in_use": "28",
+      "broken_beds": "0",
+      "beds_description": "This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...",
+      "id": 9
+    },
+    {
+      "depart_name": "peads",
+      "total_beds": "30",
+      "free_beds": "2",
+      "beds_in_use": "28",
+      "broken_beds": "0",
+      "beds_description": "This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...This is Paeds ward ...",
+      "id": 10
+    },
+    {
+      "depart_name": "plasticsurgery",
+      "total_beds": "7",
+      "free_beds": "3",
+      "beds_in_use": "4",
+      "broken_beds": "0",
+      "beds_description": "This is plastic surgery department where ...This is plastic surgery department where ...This is plastic surgery department where ...This is plastic surgery department where ...This is plastic surgery department where ...This is plastic surgery department where ...This is plastic surgery department where ...This is plastic surgery department where ...",
+      "id": 11
     }
   ]
 }

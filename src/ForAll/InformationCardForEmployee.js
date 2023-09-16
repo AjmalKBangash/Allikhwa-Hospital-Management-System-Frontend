@@ -1,7 +1,7 @@
 import "/home/ajay/Desktop/FYP/allikhwa/src/HMSComponents/HMSapps/CardForAll.css";
 import AddUpdateForm from "/home/ajay/Desktop/FYP/allikhwa/src/HMSComponents/HMSapps/AddUpdateForm";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { UseSelector } from "react-redux/es/hooks/useSelector";
 import { useSelector } from "react-redux";
 import { BiLogoFacebookCircle } from "react-icons/bi";
@@ -33,7 +33,7 @@ const empty_data_for_adupdate_component = [
   },
 ];
 
-function InformationCardForEmployee(props) {
+function InformationCardForEmployee() {
   // const location = useLocation()
   const props_from_depart_actions = useSelector(
     (state) => state.props_from_depart_actions
@@ -70,6 +70,7 @@ function InformationCardForEmployee(props) {
   };
 
   useEffect(() => {
+    // if (props_from_depart_actions) {
     axios
       .get(
         "http://localhost:3100/" +
@@ -86,6 +87,9 @@ function InformationCardForEmployee(props) {
       .catch((error) => {
         console.log(error);
       });
+    // } else {
+    // Navigate(`/doctor`)
+    // }
   }, []);
   return (
     <>
@@ -171,7 +175,7 @@ function InformationCardForEmployee(props) {
                   </h6>
                   <br />
                   <h5 className="byprofessionincard">
-                    {propfromshodetailsdoctorcard.employee_department}
+                    {/* {propfromshodetailsdoctorcard.employee_department} */}
                   </h5>
                   <div style={{ display: "flex", flexDirection: "row" }}>
                     <Link className="linkk">
@@ -255,10 +259,10 @@ function InformationCardForEmployee(props) {
                       </td>
                     </tr>
                     <tr>
-                      <td>Department</td>
+                      <td>Departments</td>
                       <td>
                         {" "}
-                        {propfromshodetailsdoctorcard.employee_department}
+                        {/* {propfromshodetailsdoctorcard.employee_department} */}
                       </td>
                     </tr>
                     <tr>
@@ -320,7 +324,7 @@ function InformationCardForEmployee(props) {
                     </h6>
                     <br />
                     <h5 className="byprofessionincard">
-                      {employee.employee_department}
+                      {/* {employee.employee_department} */}
                     </h5>
                     <div style={{ display: "flex", flexDirection: "row" }}>
                       <Link className="linkk">

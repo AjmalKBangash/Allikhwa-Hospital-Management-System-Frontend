@@ -1,9 +1,8 @@
 import "./DepartmentHMS.css";
 import InformationCards from "../../../ForAll/InformationCards";
-import { Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { allikhwa_department_infomation_dynamic_name } from "../../../Store/Store";
-import { useEffect } from "react";
 
 function DepartmentHMS() {
   const location = useLocation();
@@ -25,7 +24,9 @@ function DepartmentHMS() {
   }
 
   dispatch(
-    allikhwa_department_infomation_dynamic_name(department_name.toUpperCase())
+    allikhwa_department_infomation_dynamic_name(
+      location.state[0]?.toUpperCase()
+    )
   );
 
   return (

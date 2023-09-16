@@ -75,13 +75,13 @@ const doctorhmsobjs = [
   {
     id: "14",
     name: "COMPLAINTS",
-    path: "dr-schedule",
+    path: "jjjj",
     logo: BiSolidCommentAdd,
   },
   {
     id: "15",
     name: "CHAT",
-    path: "dr-schedule",
+    path: "jjjj",
     logo: AiFillWechat,
   },
 ];

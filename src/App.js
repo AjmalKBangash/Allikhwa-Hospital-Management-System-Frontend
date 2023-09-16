@@ -21,7 +21,7 @@ import Jaan from "./Components/Jaan";
 // import HMSroutes from "./HMSComponents/HMSapps/HMSroutes";
 
 // Now management system started
-import HmsAppLayout from "./HMSComponents/HmsAppLayout";
+import HmsAppLayout from "./HMSComponents/HMSapps/HmsAppLayout";
 import Dashboard from "./HMSComponents/HMSapps/Dashboard";
 // import CardForAll from "./HMSComponents/HMSapps/CardForAll";
 import Profile from "./HMSComponents/HMSapps/Profile";
@@ -54,6 +54,7 @@ import DrDepartments from "./HMSComponents/Doctor/DrDepartments";
 import DrAppointments from "./HMSComponents/Doctor/DrAppointments";
 import DrPrescription from "./HMSComponents/Doctor/DrPrescription";
 import DrSchedule from "./HMSComponents/Doctor/DrSchedule";
+import DrDepartmentHMS from "./HMSComponents/Doctor/DrDepartmentHMS";
 // NOW RECEPTIONNIST HMS STARTED
 import RecHMS from "./HMSComponents/Receptionist/RecHMS";
 import RecDashboard from "./HMSComponents/Receptionist/RecDashboard";
@@ -76,6 +77,7 @@ import {
   createRoutesFromElements,
   Route,
   Routes,
+  Outlet,
 } from "react-router-dom";
 
 const theRoutes = createBrowserRouter(
@@ -111,25 +113,19 @@ const theRoutes = createBrowserRouter(
             element={<DepartmentHMS />}
           ></Route>
           <Route
-            path="/all'ikhwa-management-system/departments/department-doctors"
+            path="/all'ikhwa-management-system/departments/:departmentname/department-doctors"
             element={<DepartmentDoctors />}
           />
           <Route
-            path="/all'ikhwa-management-system/departments/department-nurses"
+            path="/all'ikhwa-management-system/departments/:departmentname/department-nurses"
             element={<DepartmentNurses />}
           />
           <Route
-            path="/all'ikhwa-management-system/departments/department-beds"
+            path="/all'ikhwa-management-system/departments/:departmentname/department-beds"
             element={<DepartmentBeds />}
           />
-
-          {/* Departments Cards Information  */}
-          {/* <Route path="department-doctors" element={<DepartmentDoctors />} />
-          <Route path="department-nurses" element={<DepartmentNurses />} />
-          <Route path="department-beds" element={<DepartmentBeds />} /> */}
-          {/* Departments Employee Card */}
           <Route
-            path="informationcardforemployee"
+            path="/all'ikhwa-management-system/departments/:departmentname/informationcardforemployee"
             element={<InformationCardForEmployee />}
           />
         </Route>
@@ -146,6 +142,24 @@ const theRoutes = createBrowserRouter(
         <Route path="dr-appointments" element={<DrAppointments />} />
         <Route path="dr-prescription" element={<DrPrescription />} />
         <Route path="dr-schedule" element={<DrSchedule />} />
+        <Route path="dr-departments" element={<DrDepartments />}>
+          <Route
+            path="/doctor-hms/dr-departments/:departmentname"
+            element={<DrDepartmentHMS />}
+          ></Route>
+          <Route
+            path="/doctor-hms/dr-departments/:departmentname/department-doctors"
+            element={<DepartmentDoctors />}
+          />
+          <Route
+            path="/doctor-hms/dr-departments/:departmentname/department-nurses"
+            element={<DepartmentNurses />}
+          />
+          <Route
+            path="/doctor-hms/dr-departments/:departmentname/department-beds"
+            element={<DepartmentBeds />}
+          />
+        </Route>
       </Route>
       {/* Receptionist HMS */}
       <Route path="rec-hms" element={<RecHMS />}>

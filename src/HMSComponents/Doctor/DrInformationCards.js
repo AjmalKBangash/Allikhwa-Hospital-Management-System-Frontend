@@ -1,10 +1,8 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
-import { Routes, Route } from "react-router-dom";
-import DepartmentDoctors from "./DepartmentDoctors";
 
-function InformationCards(props) {
+function DrInformationCards(props) {
   let departmentname = [props.data];
 
   return (
@@ -48,7 +46,7 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                "http://localhost:3000/doctor-hms/dr-departments/" +
                 departmentname +
                 "/department-doctors"
               }
@@ -69,7 +67,7 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                "http://localhost:3000/doctor-hms/dr-departments/" +
                 departmentname +
                 "/department-nurses"
               }
@@ -89,7 +87,7 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                "http://localhost:3000/doctor-hms/dr-departments/" +
                 departmentname +
                 "/department-beds"
               }
@@ -109,7 +107,7 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                "http://localhost:3000/doctor-hms/dr-departments/" +
                 departmentname +
                 "/department-beds"
               }
@@ -129,7 +127,7 @@ function InformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                "http://localhost:3000/doctor-hms/dr-departments/" +
                 departmentname +
                 "/department-beds"
               }
@@ -149,4 +147,4 @@ function InformationCards(props) {
   );
 }
 
-export default InformationCards;
+export default DrInformationCards;

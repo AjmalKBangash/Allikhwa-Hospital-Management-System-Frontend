@@ -173,7 +173,7 @@ function Appointment() {
     email: Yup.string().email("Enter Valid Email Address"),
     country: Yup.string().required("Country is required"),
     city: Yup.string().required("City is required"),
-    // choose_doctor: Yup.string().required("Doctor is required"),
+    // doctor: Yup.string().required("Doctor is required"),
     address: Yup.string().max(
       100,
       "Adress should not be greater than 100 characters"
@@ -303,13 +303,13 @@ function Appointment() {
             {...register("age")}
           />
           <p className="pForForm pForForm_appointment">{errors.age?.message}</p>
-          <label htmlFor="choose_doctor">Choose Doctor</label>
+          <label htmlFor="doctor">Choose Doctor</label>
           <select
             type="select"
-            id="choose_doctor"
-            name="choose_doctor"
+            id="doctor"
+            name="doctor"
             form="donationForm"
-            {...register("choose_doctor")}
+            {...register("doctor")}
           >
             <option value={""} disabled selected>
               ..select an option..
@@ -323,7 +323,7 @@ function Appointment() {
             })}
           </select>
           <p className="pForForm pForForm_appointment">
-            {errors.choose_doctor?.message}
+            {errors.doctor?.message}
           </p>
           <label htmlFor="contact_num">Contact Number</label>
           <input

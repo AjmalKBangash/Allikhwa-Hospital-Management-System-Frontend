@@ -1,0 +1,49 @@
+/* YourComponent.css */
+
+/* Style the main multi-select container */
+.custom-multi-select {
+  width: 74%;
+  background-color: #f0f0f0;
+  outline: none;
+}
+.custom-multi-select select {
+  border: 1px solid #fe4200;
+  outline: none;
+}
+/* Style the selected options container */
+.custom-multi-select .selected {
+  background-color: #fff;
+  /* border: 1px solid #fe4200; */
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Style the dropdown options */
+.custom-multi-select .options-container {
+  max-height: 200px;
+  overflow-y: auto;
+  outline: none;
+}
+
+/* Style the individual option items */
+.custom-multi-select .option {
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Style the selected option items */
+.custom-multi-select .selected .selected-item {
+  background-color: #013737;
+  color: #fff;
+}
+.custom-multi-select:focus {
+  outline: none;
+  border-color: #fe4200; /* Change the border color when focused */
+  box-shadow: 0 0 5px #013737; /* Apply a box shadow when focused */
+}
+
+/* Style the focused state of the dropdown container */
+.custom-multi-select:focus .options-container {
+  border-color: #fe4200; /* Change the border color of the dropdown when focused */
+  box-shadow: 0 4px 8px #013737; /* Apply a box shadow to the dropdown when focused */
+}

@@ -96,36 +96,37 @@ function Patients() {
       {showPatienDetails && (
         <div
           className="col2indocdetails"
-          style={{ margin: "30px auto 30px auto", width: "70%" }}
+          style={{
+            width: "75%",
+            position: "relative",
+            margin: "30px auto",
+            padding: "10px",
+            boxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+            webkitboxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+            mozBoxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+          }}
         >
+          <span>
+            <h2 className="fillfreebeds_h2" style={{ width: "125px" }}>
+              PATIENT DETAILS
+            </h2>
+            <h2
+              className="fillfreebeds_h2"
+              style={{
+                position: "absolute",
+                top: "1%",
+                right: "3%",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setShowPatientDetails(false);
+              }}
+            >
+              &#10060;
+            </h2>
+          </span>
           <table className="employee_GeneratedTable">
             <tbody>
-              <tr>
-                <td>
-                  {" "}
-                  <div
-                    className="statisticsonlineconsul"
-                    style={{
-                      width: "fit-content",
-                      margin: "auto",
-                    }}
-                  >
-                    PATIENT DETAILS
-                  </div>
-                </td>
-                <td>
-                  <button
-                    // ref={toggle_display_canceldetails_button}
-                    className="admin_buttons_add_update_from_add_update_form"
-                    onClick={() => {
-                      setShowPatientDetails(false);
-                    }}
-                    style={{ margin: " 0 30%", backgroundColor: "red" }}
-                  >
-                    CLOSE DETAILS
-                  </button>
-                </td>
-              </tr>
               {patientDataDetails ? (
                 <>
                   <tr>

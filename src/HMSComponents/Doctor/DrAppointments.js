@@ -86,12 +86,42 @@ function DrAppointments() {
         <h2 className="fillfreebeds_h2">TODAY APPOINTMENTS </h2>
         {drdashboard_showPatient_Details && (
           <div
-            className="col2indocdetails"
-            style={{ margin: "30px auto 30px auto", width: "70%" }}
+            style={{
+              width: "75%",
+              position: "relative",
+              margin: "0 auto",
+              padding: "10px",
+              boxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+              webkitboxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+              mozBoxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+            }}
           >
-            <table className="employee_GeneratedTable">
-              <tbody>
-                <tr>
+            <span>
+              <h2 className="fillfreebeds_h2" style={{ width: "125px" }}>
+                PATIENT DETAILS
+              </h2>
+              <h2
+                className="fillfreebeds_h2"
+                style={{
+                  position: "absolute",
+                  top: "1%",
+                  right: "3%",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  setdrdashboard_showPatient_Details(false);
+                }}
+              >
+                &#10060;
+              </h2>
+            </span>
+            <div
+              className="col2indocdetails"
+              style={{ margin: "30px auto 30px auto", width: "95%" }}
+            >
+              <table className="employee_GeneratedTable">
+                <tbody>
+                  {/* <tr>
                   <td>
                     <h2 className="fillfreebeds_h2" style={{ width: "125px" }}>
                       PATIENT DETAILS
@@ -99,7 +129,6 @@ function DrAppointments() {
                   </td>
                   <td>
                     <button
-                      // ref={toggle_display_canceldetails_button}
                       className="admin_buttons_add_update_from_add_update_form"
                       onClick={() => {
                         setdrdashboard_showPatient_Details(false);
@@ -112,63 +141,64 @@ function DrAppointments() {
                       CLOSE DETAILS
                     </button>
                   </td>
-                </tr>
-                {/* {patientDataDetails ? (
+                </tr> */}
+                  {/* {patientDataDetails ? (
                   <> */}
-                <tr>
-                  <td>PID</td>
-                  <td>{drdashboard_showPatient_Details.PID}</td>
-                </tr>
-                <tr>
-                  <td>Name</td>
-                  <td> {drdashboard_showPatient_Details.name}</td>
-                </tr>
-                <tr>
-                  <td>Age</td>
-                  <td>{drdashboard_showPatient_Details.age}</td>
-                </tr>
-                <tr>
-                  <td>Last Appointment Date</td>
-                  <td>{drdashboard_showPatient_Details.date}</td>
-                </tr>
-                <tr>
-                  <td>Contact</td>
-                  <td>{drdashboard_showPatient_Details.contact}</td>
-                </tr>
-                <tr>
-                  <td>City</td>
-                  <td> {drdashboard_showPatient_Details.city}</td>
-                </tr>
-                <tr>
-                  <td>Department</td>
-                  <td>{drdashboard_showPatient_Details.department}</td>
-                </tr>
-                <tr>
-                  <td>Admitted Status</td>
-                  <td>{drdashboard_showPatient_Details.admitted_status}</td>
-                </tr>
-                <tr>
-                  <td>Bed No</td>
-                  <td>{drdashboard_showPatient_Details.bed_no}</td>
-                </tr>
-                <tr>
-                  <td>Patient Doctor</td>
-                  <td>{drdashboard_showPatient_Details.doctor}</td>
-                </tr>
-                <tr>
-                  <td>Medicine</td>
-                  <td>{drdashboard_showPatient_Details.medicine}</td>
-                </tr>
-                <tr>
-                  <td>Instructions</td>
-                  <td>{drdashboard_showPatient_Details.instructions}</td>
-                </tr>
-                {/* </>
+                  <tr>
+                    <td>PID</td>
+                    <td>{drdashboard_showPatient_Details.PID}</td>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td> {drdashboard_showPatient_Details.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Age</td>
+                    <td>{drdashboard_showPatient_Details.age}</td>
+                  </tr>
+                  <tr>
+                    <td>Last Appointment Date</td>
+                    <td>{drdashboard_showPatient_Details.date}</td>
+                  </tr>
+                  <tr>
+                    <td>Contact</td>
+                    <td>{drdashboard_showPatient_Details.contact}</td>
+                  </tr>
+                  <tr>
+                    <td>City</td>
+                    <td> {drdashboard_showPatient_Details.city}</td>
+                  </tr>
+                  <tr>
+                    <td>Department</td>
+                    <td>{drdashboard_showPatient_Details.department}</td>
+                  </tr>
+                  <tr>
+                    <td>Admitted Status</td>
+                    <td>{drdashboard_showPatient_Details.admitted_status}</td>
+                  </tr>
+                  <tr>
+                    <td>Bed No</td>
+                    <td>{drdashboard_showPatient_Details.bed_no}</td>
+                  </tr>
+                  <tr>
+                    <td>Patient Doctor</td>
+                    <td>{drdashboard_showPatient_Details.doctor}</td>
+                  </tr>
+                  <tr>
+                    <td>Medicine</td>
+                    <td>{drdashboard_showPatient_Details.medicine}</td>
+                  </tr>
+                  <tr>
+                    <td>Instructions</td>
+                    <td>{drdashboard_showPatient_Details.instructions}</td>
+                  </tr>
+                  {/* </>
                 ) : (
                   <h6>Loading ...</h6>
                 )} */}
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </div>
@@ -235,6 +265,10 @@ function DrAppointments() {
                         onClick={() => {
                           // PatientDetailsFun(patdet);
                           setdrdashboard_showPatient_Details(patdet);
+                          window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                          });
                         }}
                       >
                         <MdDetails className="patient_details_edit_icon" />

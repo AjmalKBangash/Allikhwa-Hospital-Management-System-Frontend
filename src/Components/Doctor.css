@@ -25,6 +25,8 @@
 .byprofessionincard {
   font-size: 10px;
   color: #000000a8;
+  height: 22px;
+  overflow: hidden;
 }
 
 /* Doctor Details Table */
@@ -44,11 +46,13 @@ table.employee_GeneratedTable th {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  border-collapse: separate;
 }
 .doctorcard {
   display: flex;
   flex-direction: column;
+  flex: auto;
   height: 300px;
   width: 220px;
   margin: 20px;

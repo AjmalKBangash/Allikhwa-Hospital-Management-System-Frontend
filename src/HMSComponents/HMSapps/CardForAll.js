@@ -19,7 +19,7 @@ const empty_data_for_adupdate_component = [
     employee_category: "",
     employee_education: "",
     employee_experience: "",
-    employee_department: "",
+    employee_department: [],
     employee_surgeries: "",
     employee_appointments: "",
     employee_awards: "",
@@ -39,7 +39,6 @@ function CardForAll(props) {
     useState();
   const [displayFormForAddUpdate, setDisplayFormForAddUpdate] = useState(false);
   const [displayFormForUpdate, setDisplayFormForUpdate] = useState(false);
-
   const [admin_add_button_display, set_admin_add_button_display] =
     useState(true);
 
@@ -71,6 +70,7 @@ function CardForAll(props) {
         console.log(error);
       });
   }, []);
+
   return (
     <>
       <ScrollToTop />
@@ -153,7 +153,18 @@ function CardForAll(props) {
                   </h6>
                   <br />
                   <h5 className="byprofessionincard">
-                    {propfromshodetailsdoctorcard.employee_department}
+                    {" "}
+                    {propfromshodetailsdoctorcard.employee_department.map(
+                      ({ label, value }) => {
+                        return (
+                          <li key={value}>
+                            {value}
+                            {propfromshodetailsdoctorcard.employee_department
+                              ?.length > 1 && <p>...</p>}
+                          </li>
+                        );
+                      }
+                    )}
                   </h5>
                   <div style={{ display: "flex", flexDirection: "row" }}>
                     <Link className="linkk">
@@ -247,9 +258,13 @@ function CardForAll(props) {
                       </td>
                     </tr>
                     <tr>
-                      <td>Department</td>
+                      <td>Departments</td>
                       <td>
-                        {propfromshodetailsdoctorcard.employee_department}
+                        {propfromshodetailsdoctorcard.employee_department?.map(
+                          ({ label, value }) => {
+                            return <li key={value}>{value}</li>;
+                          }
+                        )}
                       </td>
                     </tr>
                     <tr>
@@ -294,8 +309,6 @@ function CardForAll(props) {
                   <img
                     className="doctorimgincard"
                     src={
-                      //   "https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvY3RvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-
                       "https://southfloridahospitalnews.com/wp-content/uploads/2023/02/Dawkins-Bryan.jpg"
                     }
                   />
@@ -311,7 +324,20 @@ function CardForAll(props) {
                     </h6>
                     <br />
                     <h5 className="byprofessionincard">
-                      {employee.employee_department}
+                      <ul>
+                        {employee.employee_department?.map(
+                          ({ label, value }) => {
+                            return (
+                              <li key={value}>
+                                {value}
+                                {employee.employee_department?.length > 1 && (
+                                  <p>...</p>
+                                )}
+                              </li>
+                            );
+                          }
+                        )}
+                      </ul>
                     </h5>
                     <div style={{ display: "flex", flexDirection: "row" }}>
                       <Link className="linkk">
