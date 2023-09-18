@@ -1355,6 +1355,69 @@
       "name": "jvbnvn",
       "PID": "056c223a-abcf-4819-ad41-f71b624f7817",
       "id": 51
+    },
+    {
+      "department": "",
+      "date": "2023-09-16T19:30:00.000Z",
+      "address": "",
+      "doctor": "zdzdzd",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "",
+      "name": "ALL'Ikhwa Baba",
+      "PID": "28cc7af3-0180-4435-ada3-6509f3eada53",
+      "id": 52
+    },
+    {
+      "department": "Cardiology",
+      "date": "2023-09-17T19:30:00.000Z",
+      "address": "",
+      "doctor": "Dr.Dur Kamil Bangash",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "jamaludeenmama@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...\n",
+      "name": "Ali Gul Khan De Nuuu",
+      "PID": "91a30fc5-94cf-4530-994c-dca01ce8817b",
+      "adress": "House# 437, phase # 06",
+      "id": 53
+    },
+    {
+      "department": "ent",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 23,
+      "patient_dis": "sxsxwsxsx",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 54
+    },
+    {
+      "department": "ent",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 23,
+      "patient_dis": "sxsxwsxsx",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 55
     }
   ],
   "patientbills": [
@@ -1599,6 +1662,16 @@
       ],
       "PID": "056c223a-abcf-4819-ad41-f71b624f7817",
       "id": 27
+    },
+    {
+      "bills": [
+        {
+          "billname": "Dr Fee",
+          "billprice": "1000"
+        }
+      ],
+      "PID": "28cc7af3-0180-4435-ada3-6509f3eada53",
+      "id": 28
     }
   ],
   "prescriptions": [
@@ -1639,248 +1712,22 @@
       "department": "endocrinology",
       "doctor": "DrHassan",
       "id": 2
-    }
-  ],
-  "labtests": [
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 1
     },
     {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 5
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 6
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 7
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 8
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 9
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 10
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 11
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 12
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 13
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 14
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 15
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 16
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 17
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 18
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 19
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 20
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": "Do it with care,"
-        }
-      ],
-      "id": 21
-    },
-    {
-      "id": 22
-    },
-    {
-      "id": 23
-    },
-    {
-      "id": 24
-    },
-    {
-      "id": 25
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": ""
-        }
-      ],
-      "id": 26
-    },
-    {
-      "tests": [
-        {
-          "test_name": "Hail Fall test",
-          "test_discription": ""
-        }
-      ],
-      "id": 27
-    },
-    {
-      "id": 28
-    },
-    {
-      "id": 29
-    },
-    {
-      "id": 30
-    },
-    {
-      "id": 31
-    },
-    {
-      "id": 32
-    },
-    {
-      "id": 33
-    },
-    {
-      "id": 34
-    },
-    {
-      "id": 35
-    },
-    {
-      "id": 36
-    },
-    {
-      "id": 37
-    },
-    {
-      "id": 38
+      "department": "ent",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 23,
+      "patient_dis": "sxsxwsxsx",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 54
     }
   ],
   "rejectedappointments": [
@@ -1931,6 +1778,110 @@
     {
       "presc_print_refer_to_admission": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
       "id": 3
+    }
+  ],
+  "labnewtests": [
+    {
+      "tests": [
+        {
+          "test_name": "nmbnmbmnb",
+          "test_discription": "n mbnbnmbmnb"
+        }
+      ],
+      "later_checkup_discription": "nbnbmnb",
+      "department": "ent",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 23,
+      "patient_dis": "sxsxwsxsx",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 54
+    },
+    {
+      "tests": [
+        {
+          "test_name": "mmmmmm",
+          "test_discription": "mmmmmm"
+        }
+      ],
+      "later_checkup_discription": "mmmmmm",
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "ALL'Ikhwa",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "department": "endocrinology",
+      "doctor": "DrHassan",
+      "id": 2
+    }
+  ],
+  "waitingpatientsforlabtests": [
+    {
+      "tests": [
+        {
+          "test_name": "nmbnmbmnb",
+          "test_discription": "n mbnbnmbmnb"
+        }
+      ],
+      "later_checkup_discription": "nbnbmnb",
+      "department": "ent",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 23,
+      "patient_dis": "sxsxwsxsx",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 54
+    },
+    {
+      "tests": [
+        {
+          "test_name": "mmmmmm",
+          "test_discription": "mmmmmm"
+        }
+      ],
+      "later_checkup_discription": "mmmmmm",
+      "physical_online_appointment": [
+        "physicalappointment"
+      ],
+      "email_sms_phone": [
+        "informemail",
+        "informsms",
+        "informphone"
+      ],
+      "address": "",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ajay1489007@gmail.com",
+      "contact_num": 923334483486,
+      "name": "ALL'Ikhwa",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d63b",
+      "department": "endocrinology",
+      "doctor": "DrHassan",
+      "id": 2
     }
   ],
   "patients": [

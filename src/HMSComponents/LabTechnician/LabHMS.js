@@ -1,5 +1,3 @@
-// import "./DoctorHMS.css";
-
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { cd_open_close } from "../../Store/Store";
 import React, { useEffect, useRef, useState } from "react";
@@ -12,81 +10,59 @@ import { ImHome } from "react-icons/im";
 import { MdDateRange } from "react-icons/md";
 import { PiTimerFill } from "react-icons/pi";
 import { IoMdLogOut } from "react-icons/io";
-import {
-  AiFillWechat,
-  AiFillMedicineBox,
-  AiFillSchedule,
-} from "react-icons/ai";
-import { MdPersonalInjury } from "react-icons/md";
-import { MdLocalPharmacy } from "react-icons/md";
-import { FaBuildingCircleArrowRight } from "react-icons/fa6";
+import { AiFillWechat } from "react-icons/ai";
 import { BsPersonFillExclamation } from "react-icons/bs";
-import { FcDepartment } from "react-icons/fc";
-import { FaMoneyCheckDollar } from "react-icons/fa6";
-import { BiSolidCommentAdd } from "react-icons/bi";
-import { IoMdNotifications } from "react-icons/io";
+import { GiTestTubes } from "react-icons/gi";
 import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
 const rechmsobjs = [
   {
     id: "1",
     name: "DASHBOARD",
-    path: "rec-dashboard",
+    path: "lab-dashboard",
     logo: RiDashboardFill,
   },
   {
     id: "2",
     name: "PROFILE",
-    path: "rec-profile",
+    path: "lab-profile",
     logo: BsFillPersonLinesFill,
   },
   {
     id: "3",
-    name: "eAPPOINTMENTS",
-    path: "rec-e-appointments",
-    logo: RiAdminFill,
+    name: "SAMPLES",
+    path: "lab-patient-tests",
+    logo: GiTestTubes,
   },
+  {
+    id: "4",
+    name: "PATIENTS",
+    path: "lab-patients",
+    logo: BsPersonFillExclamation,
+  },
+  //   {
+  //     id: "8",
+  //     name: "DEPARTMENTS",
+  //     path: "rec-departments",
+  //     logo: FcDepartment,
+  //   },
   {
     id: "5",
-    name: "mAPPOINTMENTS",
-    path: "rec-make-appointments",
-    logo: RiAdminFill,
-  },
-  // {
-  //   id: "6",
-  //   name: "REC_SCHEDULE",
-  //   path: "rec-schedule",
-  //   logo: AiFillSchedule,
-  // },
-  {
-    id: "7",
-    name: "PATIENTS",
-    path: "rec-patients",
-    logo: BsPersonFillExclamation,
-  },
-  {
-    id: "8",
-    name: "DEPARTMENTS",
-    path: "rec-departments",
-    logo: FcDepartment,
-  },
-  {
-    id: "9",
     name: "COMPLAINTS",
-    path: "rec-complaints",
+    path: "lab-complaints",
     logo: BsPersonFillExclamation,
   },
   {
-    id: "10",
+    id: "6",
     name: "CHAT",
-    path: "rec-chat",
+    path: "lab-chat",
     logo: AiFillWechat,
   },
 ];
 let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
 
-function RecHMS() {
+function LabHMS() {
   const [displayDashboard, setDisplayDashboard] = useState(false);
   const [displayHmsMenu, setDisplayHmsMenu] = useState(true);
   const only_hms_icons = useRef();
@@ -228,4 +204,4 @@ function RecHMS() {
   );
 }
 
-export default RecHMS;
+export default LabHMS;

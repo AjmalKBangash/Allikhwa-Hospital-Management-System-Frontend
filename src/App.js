@@ -66,6 +66,12 @@ import RecPatients from "./HMSComponents/Receptionist/RecPatients";
 import RecProfile from "./HMSComponents/Receptionist/RecProfile";
 import RecSchedule from "./HMSComponents/Receptionist/RecSchedule";
 import RecChat from "./HMSComponents/Receptionist/RecChat";
+import RecDepartmentHMS from "./HMSComponents/Receptionist/RecDepartmentHMS";
+// NOW LAB TECHNICIAN STARTED
+import LabHMS from "./HMSComponents/LabTechnician/LabHMS";
+import LabProfile from "./HMSComponents/LabTechnician/LabProfile";
+import LabDashboard from "./HMSComponents/LabTechnician/LabDashboard";
+import LabPatients from "./HMSComponents/LabTechnician/LabPatients";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -168,10 +174,35 @@ const theRoutes = createBrowserRouter(
         <Route path="rec-e-appointments" element={<ReceAppointments />} />
         <Route path="rec-make-appointments" element={<RecmAppointments />} />
         <Route path="rec-patients" element={<RecPatients />} />
-        <Route path="rec-departments" element={<RecDepartments />} />
         <Route path="rec-complaints" element={<RecComplaints />} />
         <Route path="rec-schedule" element={<RecSchedule />} />
         <Route path="rec-chat" element={<RecSchedule />} />
+        <Route path="rec-departments" element={<RecDepartments />}>
+          <Route
+            path="/rec-hms/rec-departments/:departmentname"
+            element={<RecDepartmentHMS />}
+          ></Route>
+          <Route
+            path="/rec-hms/rec-departments/:departmentname/department-doctors"
+            element={<DepartmentDoctors />}
+          />
+          <Route
+            path="/rec-hms/rec-departments/:departmentname/department-nurses"
+            element={<DepartmentNurses />}
+          />
+          <Route
+            path="/rec-hms/rec-departments/:departmentname/department-beds"
+            element={<DepartmentBeds />}
+          />
+        </Route>
+      </Route>
+      {/* Lab-Technician HMS */}
+      <Route path="lab-hms" element={<LabHMS />}>
+        <Route path="lab-dashboard" element={<LabDashboard />} />
+        <Route path="lab-profile" element={<LabProfile />} />
+        <Route path="lab-patients" element={<LabPatients />} />
+        {/* <Route path="lab-complaints" element={<LabComplaints />} /> */}
+        {/* <Route path="lab-chat" element={<LabSchedule />} /> */}
       </Route>
     </>
   )

@@ -7,7 +7,6 @@ function DrInformationCards(props) {
 
   return (
     <>
-      {" "}
       <div className="dashboard_top">
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">1224</span>
@@ -46,7 +45,7 @@ function DrInformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/doctor-hms/dr-departments/" +
+                "http://localhost:3000/rec-hms/rec-departments/" +
                 departmentname +
                 "/department-doctors"
               }
@@ -67,7 +66,7 @@ function DrInformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/doctor-hms/dr-departments/" +
+                "http://localhost:3000/rec-hms/rec-departments/" +
                 departmentname +
                 "/department-nurses"
               }
@@ -87,7 +86,7 @@ function DrInformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/doctor-hms/dr-departments/" +
+                "http://localhost:3000/rec-hms/rec-departments/" +
                 departmentname +
                 "/department-beds"
               }
@@ -107,7 +106,7 @@ function DrInformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/doctor-hms/dr-departments/" +
+                "http://localhost:3000/rec-hms/rec-departments/" +
                 departmentname +
                 "/department-beds"
               }
@@ -127,7 +126,7 @@ function DrInformationCards(props) {
           <span className="dashboard_employee_card_name">
             <Link
               to={
-                "http://localhost:3000/doctor-hms/dr-departments/" +
+                "http://localhost:3000/rec-hms/rec-departments/" +
                 departmentname +
                 "/department-beds"
               }

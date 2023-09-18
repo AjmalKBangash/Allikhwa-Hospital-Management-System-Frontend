@@ -10,6 +10,7 @@ import { cd_open_close, cd_yess_no } from "../../Store/Store";
 // Icons
 import { AiFillCloseCircle } from "react-icons/ai";
 import { MdDetails } from "react-icons/md";
+import { RiCreativeCommonsZeroLine } from "react-icons/ri";
 
 const doctors_from_backend = [
   {
@@ -136,9 +137,15 @@ function ReceAppointments() {
   }, []);
   useEffect(() => {
     if (newpatients_to_appoint && cd_yess_no_var) {
+      const {
+        physical_online_appointment: physical_online_appointment,
+        email_sms_phone: email_sms_phone,
+        ...restfor_appointments
+      } = newpatients_to_appoint;
+      console.log(restfor_appointments);
       axios
         .post("http://localhost:3100/appointments", {
-          ...newpatients_to_appoint,
+          ...restfor_appointments,
         })
         .catch((error) => {
           console.log(error);

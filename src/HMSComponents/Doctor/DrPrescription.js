@@ -117,6 +117,7 @@ function DrPrescription() {
                     <button
                       // ref={toggle_display_canceldetails_button}
                       className="admin_buttons_add_update_from_add_update_form"
+                      useEffect
                       onClick={() => {
                         setdrdashboard_showPatient_Details(false);
                       }}
@@ -343,7 +344,7 @@ const Prescription = React.forwardRef((props, ref) => {
     if (presc_print_refer_to_admission && cd_yess_no_var) {
       axios
         .post("http://localhost:3100/refferedtoadmission", {
-          presc_print_refer_to_admission,
+          presc_print_refer_to_admission, // the pid has been passed to data model refferedtoadmission, now from data model we will access the patient in the prescribed department for admission
         })
         .catch((error) => {
           console.log(error);
@@ -580,6 +581,17 @@ const Prescription = React.forwardRef((props, ref) => {
             </div>
           </div>
         </div>
+        <p
+          style={{
+            color: "red",
+            fontSize: "12px",
+            margin: "10px auto",
+            padding: "10px",
+            width: "fit-content",
+          }}
+        >
+          *SUBMIT AND PRINT THE FORM BEFORE RESETTING!
+        </p>
         <div>
           <input
             type="submit"
@@ -624,6 +636,10 @@ const Prescription = React.forwardRef((props, ref) => {
               prescription_show_patient_detail_rest_pres_form_var.PID
             );
             dispatch(cd_open_close(true));
+            alert(
+              "Patient has been successfully refered to admission by " +
+                prescription_show_patient_detail_rest_pres_form_var.doctor
+            );
           }}
         >
           REFER TO ADMISSION
@@ -639,6 +655,7 @@ function Test_from_dr_to_lab() {
   const prescription_show_patient_detail_rest_pres_form_var = useSelector(
     (state) => state.prescription_show_patient_detail_rest_pres_form
   );
+  const dispatch = useDispatch();
   const {
     control,
     reset,
@@ -658,17 +675,64 @@ function Test_from_dr_to_lab() {
 
   function handle_lab_testFun(data) {
     setdata_for_lab(data);
+    alert(
+      "Test has been transfered to lab technician and waiting patientsfor test"
+    );
     console.log("test formm");
-    reset();
   }
+  useEffect(() => {
+    if (data_for_lab && prescription_show_patient_detail_rest_pres_form_var) {
+      //the patient will be uploaded to labnewtests for lab technician and it is also uploaded to waiting patients for tests for this doctor and it is also deleted from the prescription data model, after this the lab technician will update the patient data table from lab while uploading(updating) test results
+      axios
+        .post("http://localhost:3100/labnewtests", {
+          ...data_for_lab,
+          ...prescription_show_patient_detail_rest_pres_form_var, //localhost:3100/labnewtests
+          // janan: "nbnbnvbnvbnvbnv",
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log("uploaded to labnewtests");
+    }
+  }, [data_for_lab]);
 
   useEffect(() => {
-    axios
-      .post("http://localhost:3100/labtests", { ...data_for_lab })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+    if (data_for_lab && prescription_show_patient_detail_rest_pres_form_var) {
+      axios
+        .post("http://localhost:3100/waitingpatientsforlabtests", {
+          ...data_for_lab,
+          ...prescription_show_patient_detail_rest_pres_form_var,
+        })
+        .then((res) => {
+          // dispatch(prescription_show_patient_detail_rest_pres_form(false));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log("uploaded to waiting pats");
+    }
+  }, [data_for_lab]);
+  useEffect(() => {
+    if (data_for_lab && prescription_show_patient_detail_rest_pres_form_var) {
+      axios
+        .delete(
+          "http://localhost:3100/prescriptions/?PID=" +
+            prescription_show_patient_detail_rest_pres_form_var.PID
+        )
+        .then((res) => {
+          dispatch(prescription_show_patient_detail_rest_pres_form_var(false));
+          console.log("deleted from prescription and form");
+          console.log(prescription_show_patient_detail_rest_pres_form_var);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      reset();
+    }
+  }, [data_for_lab]);
   return (
     <>
       <form
@@ -715,7 +779,21 @@ function Test_from_dr_to_lab() {
             // })}
             name="time"
             value={new Date().toLocaleTimeString()}
+            readOnly
           />
+        </div>
+        <div className="profile_label_input ">
+          <label className="profile_lanel_input_label">
+            Enter Discription For Later Checkup After Lab Tests!
+          </label>
+          <textarea
+            cols={10}
+            rows={3}
+            name="later_checkup_discription"
+            {...register("later_checkup_discription")}
+            placeholder="Enter description for later Checkup after test results!"
+            style={{ height: "100px", maxWidth: "70%" }}
+          ></textarea>
         </div>
         {fields.map((field, index) => (
           <div key={field.id}>

@@ -383,7 +383,7 @@ function Gallary() {
       <div className="Gallary">
         {photos.map((photo, id) => {
           return (
-            <Fade top distance="100%" duration="3000">
+            <div top distance="100%" duration="3000">
               <div
                 //   key={id}
                 className="pics"
@@ -401,7 +401,7 @@ function Gallary() {
                   }}
                 ></img>
               </div>
-            </Fade>
+            </div>
           );
         })}
       </div>
