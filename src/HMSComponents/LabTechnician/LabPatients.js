@@ -1,5 +1,6 @@
 import Patients from "../HMSapps/Patients";
-function RecPatients() {
+
+function LabPatients() {
   return (
     <>
       <Patients />
@@ -7,4 +8,4 @@ function RecPatients() {
   );
 }
 
-export default RecPatients;
+export default LabPatients;

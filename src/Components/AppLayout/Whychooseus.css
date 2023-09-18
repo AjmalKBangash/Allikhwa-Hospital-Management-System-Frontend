@@ -19,6 +19,9 @@ h1 {
 .whychooseus h4 {
   margin-bottom: 10px;
 }
+.whychooseus img {
+  height: 200px;
+}
 .whychooseus p {
   margin: 5% 5%;
   padding: 5%;

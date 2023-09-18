@@ -68,9 +68,7 @@
 .hmscontainercol02_menu {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 0% 10px;
   box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
   -webkit-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
   -moz-box-shadow: 0px 2px 5px 0px rgba(1, 55, 55, 0.7);
@@ -82,9 +80,28 @@
   z-index: 2;
   background-color: white;
 }
+.hmscontainercol02_menu .linkk {
+  margin: 0 20px;
+}
+.time_date_top_hms_menu {
+  padding: 5px 10px;
+  background-color: rgba(128, 128, 128, 0.089);
+  border-radius: 4px;
+  margin-left: auto !important;
+  display: flex;
+  align-items: center;
+}
+.img_name_top_hms_menu {
+  padding: 1px 10px;
+  width: fit-content;
+  background-color: rgba(128, 128, 128, 0.089);
+  border-radius: 4px;
+  display: flex;
+  align-items: center !important;
+}
 .hmscontainercol02_img {
-  height: 60px;
-  width: 60px;
+  height: 44px;
+  width: 44px;
   border-radius: 50px;
 }
 

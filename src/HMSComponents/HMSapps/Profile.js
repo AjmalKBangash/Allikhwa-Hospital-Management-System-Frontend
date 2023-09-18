@@ -102,7 +102,7 @@ function Profile(props) {
       setValue("employee_linkedin", props.data.employee_linkedin);
       // setValue("employee_id", props.data.employee_id); it should not be editable
     }
-  });
+  }, []);
   // useEffect(() => {  this will be un-commentedd when bckend created
   // this axios willl be update (patch) http request because the employee will be added in according sessions in admin
   //   {
@@ -124,7 +124,7 @@ function Profile(props) {
     <div className="profile_top">
       <div className="profile_profile_pic_card">
         <img
-          src="https://southfloridahospitalnews.com/wp-content/uploads/2023/02/Dawkins-Bryan.jpg"
+          src="https://pakobserver.net/wp-content/uploads/2021/09/4-75.jpg"
           alt="Doctor"
         />
         <div className="profile_name_speciality_jobtitile">

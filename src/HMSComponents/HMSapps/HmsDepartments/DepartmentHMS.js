@@ -17,16 +17,14 @@ function DepartmentHMS() {
   function Replacing(text) {
     const replaced = [];
     for (let i = 0; i < text.length; i++) {
-      const path = text[i].replace(" ", "");
+      const path = text[i].replace(" ", "-");
       replaced.push(path);
     }
     return replaced.join("");
   }
 
   dispatch(
-    allikhwa_department_infomation_dynamic_name(
-      location.state[0]?.toUpperCase()
-    )
+    allikhwa_department_infomation_dynamic_name(department_name.toUpperCase())
   );
 
   return (

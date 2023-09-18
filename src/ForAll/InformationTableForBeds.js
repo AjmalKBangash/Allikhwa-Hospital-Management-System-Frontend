@@ -111,7 +111,6 @@ function InformationTableForBeds(props) {
             ...add_Form_Data,
           })
           .then((response) => {
-            // console.log(response);
             setstate_for_axios_post_torun(true);
             setshow_adding_beds_form(false);
           })

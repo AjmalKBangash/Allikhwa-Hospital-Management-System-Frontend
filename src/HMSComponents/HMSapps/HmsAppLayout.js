@@ -2,7 +2,13 @@ import "./HmsAppLayout.css";
 // import Dashboard from "./HMSapps/Dashboard";
 
 import React, { useEffect, useRef, useState } from "react";
-import { NavLink, Outlet, useLocation, matchPath } from "react-router-dom";
+import {
+  NavLink,
+  Link,
+  Outlet,
+  useLocation,
+  matchPath,
+} from "react-router-dom";
 
 // HMS Icons
 import { RiDashboardFill, RiAdminFill } from "react-icons/ri";
@@ -10,7 +16,7 @@ import { BsFillPersonLinesFill } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
 import { FaUserNurse } from "react-icons/fa";
 import { AiFillMedicineBox } from "react-icons/ai";
-import { MdPersonalInjury } from "react-icons/md";
+import { MdPersonalInjury, MdDateRange } from "react-icons/md";
 import { MdLocalPharmacy } from "react-icons/md";
 import { FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { BsPersonFillExclamation } from "react-icons/bs";
@@ -18,7 +24,9 @@ import { FcDepartment } from "react-icons/fc";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { BiSolidCommentAdd } from "react-icons/bi";
 import { AiFillWechat } from "react-icons/ai";
-import { IoMdNotifications } from "react-icons/io";
+import { IoMdLogOut } from "react-icons/io";
+import { ImHome } from "react-icons/im";
+import { PiTimerFill } from "react-icons/pi";
 
 const departments = [
   {
@@ -138,15 +146,96 @@ function HmsAppLayout() {
     <>
       <div className="hmstop">
         <div className="hmscontainercol02_menu">
-          <p>Salammmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
-
-          {/* <img // onClick={() => setDisplayDashboard(false)}
-            className="hmscontainercol02_img"
-            // src={} dynamic
-            src="https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
-            alt="Doctor"
-          /> */}
-          {/* <IoMdNotifications style={{ fontSize: "30px", color: "#fe4200" }} /> */}
+          <Link className="linkk" to={"/all'ikhwa-management-system/"}>
+            <ImHome
+              style={{
+                fontSize: "28px",
+                color: "#013737",
+                padding: "5px",
+              }}
+            />
+          </Link>
+          <span
+            className="linkk img_name_top_hms_menu"
+            // style={{ marginLeft: "auto" }}
+          >
+            <Link
+              className="linkk"
+              to={"/all'ikhwa-management-system/profile"}
+              style={{ marginRight: "0px" }}
+            >
+              <img // onClick={() => setDisplayDashboard(false)}
+                className="hmscontainercol02_img"
+                src="https://pakobserver.net/wp-content/uploads/2021/09/4-75.jpg"
+                alt="Doctor"
+              />
+            </Link>
+            <span
+              className="linkk"
+              style={{ fontSize: "15px", fontWeight: "500" }}
+            >
+              WELCOME&nbsp;&nbsp;
+              <span
+                style={{
+                  color: "#fe4200",
+                  fontSize: "15px",
+                  fontWeight: "500",
+                }}
+              >
+                "SAFEER KASHMIRI"
+              </span>
+            </span>
+          </span>
+          <span
+            className="linkk time_date_top_hms_menu"
+            // style={{ marginLeft: "auto" }}
+          >
+            <span>
+              <MdDateRange
+                style={{
+                  fontSize: "28px",
+                  color: "#013737",
+                }}
+              />
+              &nbsp;
+            </span>
+            <span
+              style={{
+                fontSize: "15px",
+                fontWeight: "500",
+                marginRight: "20px",
+              }}
+            >
+              {new Date().toLocaleDateString()}
+            </span>
+            <span>
+              {" "}
+              <PiTimerFill
+                style={{
+                  fontSize: "28px",
+                  color: "#013737",
+                }}
+              />
+              &nbsp;
+            </span>
+            <span style={{ fontSize: "15px", fontWeight: "500" }}>
+              {new Date().toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: true,
+              })}
+            </span>
+          </span>
+          <span className="linkk">
+            <IoMdLogOut
+              style={{
+                fontSize: "28px",
+                color: "red",
+                padding: "5px",
+                cursor: "pointer",
+              }}
+            />
+          </span>
         </div>
         <div className="hmscontainer">
           <div className="hmscontainercol01" ref={only_hms_icons}>

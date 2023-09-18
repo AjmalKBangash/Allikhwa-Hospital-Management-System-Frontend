@@ -1,13 +1,10 @@
-import DrInformationCards from "./DrInformationCards";
+import DrInformationCards from "../Doctor/DrInformationCards";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {
-  allikhwa_department_infomation_dynamic_name,
-  dr_nurse_beds_refresh,
-} from "../../Store/Store";
+import { allikhwa_department_infomation_dynamic_name } from "../../Store/Store";
 
-function DrDepartmentHMS() {
+function RecDepartmentHMS() {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,10 +29,9 @@ function DrDepartmentHMS() {
       allikhwa_department_infomation_dynamic_name(department_name.toUpperCase())
     );
   }
-  dispatch(dr_nurse_beds_refresh(`/doctor-hms/dr-departments`));
   useEffect(() => {
     if (location.state === null) {
-      navigate(`/doctor-hms/dr-departments`);
+      navigate(`/rec-hms/rec-departments`);
     }
   }, [location.state]);
   return (
@@ -53,4 +49,4 @@ function DrDepartmentHMS() {
   );
 }
 
-export default DrDepartmentHMS;
+export default RecDepartmentHMS;
