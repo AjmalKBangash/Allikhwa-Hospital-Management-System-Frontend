@@ -1,98 +1,55 @@
-import "./DoctorHMS.css";
-
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import React, { useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import React, { useRef } from "react";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 // HMS Icons
 import { RiDashboardFill } from "react-icons/ri";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { BiSolidCommentAdd } from "react-icons/bi";
-import { FaPrescription } from "react-icons/fa6";
-import { AiFillSchedule } from "react-icons/ai";
-import { BsPersonFillExclamation } from "react-icons/bs";
-import { FcDepartment } from "react-icons/fc";
-import { AiFillWechat } from "react-icons/ai";
-import { FaBookMedical } from "react-icons/fa6";
-import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
+import { IoMdLogOut } from "react-icons/io";
 import { ImHome } from "react-icons/im";
 import { MdDateRange } from "react-icons/md";
 import { PiTimerFill } from "react-icons/pi";
-import { IoMdLogOut } from "react-icons/io";
+import { GiDespair } from "react-icons/gi";
+import { FaBookMedical } from "react-icons/fa6";
+import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
-const doctorhmsobjs = [
+const rechmsobjs = [
   {
     id: "1",
     name: "DASHBOARD",
-    path: "dr-dashboard",
+    path: "pat-dashboard",
     logo: RiDashboardFill,
   },
   {
     id: "2",
-    name: "PROFILE",
-    path: "dr-profile",
-    logo: BsFillPersonLinesFill,
-  },
-  {
-    id: "3",
     name: "APPOINTMENTS",
-    path: "dr-appointments",
+    path: "pat-appointments",
     logo: FaBookMedical,
   },
+  //   {
+  //     id: "2",
+  //     name: "DOCUMENTS",
+  //     path: "pat-documents",
+  //     logo: IoDocumentsSharp,
+  //   },
   {
-    id: "4",
-    name: "PRESCRIPTION",
-    path: "dr-prescription",
-    logo: FaPrescription,
-  },
-  {
-    id: "5",
-    name: "Dr SCHEDULE",
-    path: "dr-schedule",
-    logo: AiFillSchedule,
-  },
-  {
-    id: "12",
-    name: "PATIENTS",
-    path: "dr-patients",
-    logo: BsPersonFillExclamation,
-  },
-  {
-    id: "13",
-    name: "DEPARTMENTS",
-    path: "dr-departments",
-    logo: FcDepartment,
-  },
-  {
-    id: "14",
+    id: "2",
     name: "COMPLAINTS",
-    path: "jjjj",
-    logo: BiSolidCommentAdd,
-  },
-  {
-    id: "15",
-    name: "CHAT",
-    path: "jjjj",
-    logo: AiFillWechat,
+    path: "pat-complaints",
+    logo: GiDespair,
   },
 ];
-let strr = "";
-const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
 
-function DoctorHMS() {
-  const [displayDashboard, setDisplayDashboard] = useState(false);
-  const [displayHmsMenu, setDisplayHmsMenu] = useState(true);
+function PatHMS() {
   const only_hms_icons = useRef();
   const hms_outlet = useRef();
   const cd_open_close_var = useSelector((state) => state.cd_open_close);
-  const location = useLocation();
 
   return (
     <>
       {cd_open_close_var && <ConfirmDialogue />}
       <div className="hmstop">
         <div className="hmscontainercol02_menu">
-          <Link className="linkk" to={"/doctor-hms/"}>
+          <Link className="linkk" to={"/pat-hms/"}>
             <ImHome
               style={{
                 fontSize: "30px",
@@ -101,19 +58,16 @@ function DoctorHMS() {
               }}
             />
           </Link>
-          <span
-            className="linkk img_name_top_hms_menu"
-            // style={{ marginLeft: "auto" }}
-          >
+          <span className="linkk img_name_top_hms_menu">
             <Link
               className="linkk"
-              to={"/doctor-hms/dr-profile"}
+              //   to={"/pat-hms/pat-profile"}
               style={{ marginRight: "0px" }}
             >
-              <img // onClick={() => setDisplayDashboard(false)}
+              <img
                 className="hmscontainercol02_img"
-                src="https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
-                alt="Doctor"
+                src="https://static.thenounproject.com/png/6103374-200.png"
+                alt="Patient"
               />
             </Link>
             <span
@@ -132,10 +86,7 @@ function DoctorHMS() {
               </span>
             </span>
           </span>
-          <span
-            className="linkk time_date_top_hms_menu"
-            // style={{ marginLeft: "auto" }}
-          >
+          <span className="linkk time_date_top_hms_menu">
             <span>
               <MdDateRange
                 style={{
@@ -192,7 +143,7 @@ function DoctorHMS() {
             }}
           >
             <ul>
-              {doctorhmsobjs.map((hmsobjs, id) => {
+              {rechmsobjs.map((hmsobjs, id) => {
                 return (
                   <NavLink
                     key={id}
@@ -221,19 +172,4 @@ function DoctorHMS() {
   );
 }
 
-export default DoctorHMS;
-
-// function DoctorHMS() {
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     navigate("dr-dashboard");
-//   }, []);
-//   return (
-//     <>
-//       <Outlet />
-//     </>
-//   );
-// }
-
-// export default DoctorHMS;
+export default PatHMS;

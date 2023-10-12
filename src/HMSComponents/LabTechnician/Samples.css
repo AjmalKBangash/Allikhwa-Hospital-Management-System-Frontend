@@ -1,0 +1,10 @@
+.handle_lab_test_result_form {
+  font-size: 15px;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -webkit-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  -moz-box-shadow: 0px 1px 4px 0px rgb(1, 55, 55);
+  width: 95%;
+}

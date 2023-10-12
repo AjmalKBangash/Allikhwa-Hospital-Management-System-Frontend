@@ -210,36 +210,35 @@ function InformationCardForEmployee() {
                 </div>
               </div>
               {/* )} */}
-              <div className="col2indocdetails">
+              <div
+                className="col2indocdetails"
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  borderRadius: "8px",
+                  boxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+                  webkitboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+                  mozboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+                }}
+              >
+                <h2 className="fillfreebeds_h2">DETAILS</h2>
+                <h2
+                  className="fillfreebeds_h2"
+                  style={{
+                    position: "absolute",
+                    right: "2%",
+                    top: "0%",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => {
+                    showdetailsref.current.style.display = "none";
+                    setpropfromshodetailsdoctorcard("");
+                  }}
+                >
+                  &#10060;{" "}
+                </h2>
                 <table className="employee_GeneratedTable">
                   <tbody>
-                    <tr>
-                      <td style={{ border: "none" }}>
-                        <div
-                          className="statisticsonlineconsul"
-                          style={{
-                            width: "fit-content",
-                            margin: "auto",
-                          }}
-                        >
-                          ADMIN DETAILS{" "}
-                        </div>
-                      </td>
-                      <td style={{ border: "none" }}>
-                        {" "}
-                        <button
-                          // ref={toggle_display_canceldetails_button}
-                          className="admin_buttons_add_update_from_add_update_form"
-                          onClick={() => {
-                            showdetailsref.current.style.display = "none";
-                            setpropfromshodetailsdoctorcard("");
-                          }}
-                          style={{ backgroundColor: "red" }}
-                        >
-                          CLOSE DETAILS
-                        </button>
-                      </td>
-                    </tr>
                     <tr>
                       <td>Name</td>
                       <td> {propfromshodetailsdoctorcard.employee_name}</td>

@@ -69,9 +69,16 @@ import RecChat from "./HMSComponents/Receptionist/RecChat";
 import RecDepartmentHMS from "./HMSComponents/Receptionist/RecDepartmentHMS";
 // NOW LAB TECHNICIAN STARTED
 import LabHMS from "./HMSComponents/LabTechnician/LabHMS";
-import LabProfile from "./HMSComponents/LabTechnician/LabProfile";
 import LabDashboard from "./HMSComponents/LabTechnician/LabDashboard";
+import LabProfile from "./HMSComponents/LabTechnician/LabProfile";
+import Samples from "./HMSComponents/LabTechnician/Samples";
 import LabPatients from "./HMSComponents/LabTechnician/LabPatients";
+// NOW PATIENT HMS STARTED
+import PatHMS from "./HMSComponents/Patient/PatHMS";
+import PatDashboard from "./HMSComponents/Patient/PatDashboard";
+import PatDocuments from "./HMSComponents/Patient/PatDocuments";
+import PatComplaints from "./HMSComponents/Patient/PatComplaints";
+import PatAppointments from "./HMSComponents/Patient/PatAppointments";
 
 // This is material ui imports
 import { Container } from "@mui/material";
@@ -102,7 +109,11 @@ const theRoutes = createBrowserRouter(
       </Route>
       <Route path="/doctors" element={<Doctor />} />
       <Route path="signup" element={<SignUpIn />} />
-      <Route path="all'ikhwa-management-system" element={<HmsAppLayout />}>
+      <Route
+        path="all'ikhwa-management-system"
+        // element={<ProtectedRoutesHmsAppLayout Component={HmsAppLayout} />}
+        element={<HmsAppLayout />}
+      >
         <Route index path="dashboard" element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />
         <Route path="admins" element={<Admins />} />
@@ -201,8 +212,15 @@ const theRoutes = createBrowserRouter(
         <Route path="lab-dashboard" element={<LabDashboard />} />
         <Route path="lab-profile" element={<LabProfile />} />
         <Route path="lab-patients" element={<LabPatients />} />
+        <Route path="lab-patient-samples" element={<Samples />} />
         {/* <Route path="lab-complaints" element={<LabComplaints />} /> */}
         {/* <Route path="lab-chat" element={<LabSchedule />} /> */}
+      </Route>
+      <Route path="pat-hms" element={<PatHMS />}>
+        <Route path="pat-dashboard" element={<PatDashboard />} />
+        <Route path="pat-documents" element={<PatDocuments />} />
+        <Route path="pat-complaints" element={<PatComplaints />} />
+        <Route path="pat-appointments" element={<PatAppointments />} />
       </Route>
     </>
   )

@@ -27,12 +27,17 @@ function DrPrescription() {
   const [drdashboard_showPatient_Details, setdrdashboard_showPatient_Details] =
     useState();
   const [go_to_prescription_state, setgo_to_prescription_state] = useState();
+  const [waiting_patients_data, setwaiting_patients_data] = useState();
+  const [waiting_list_deletion_work, setwaiting_list_deletion_work] =
+    useState(false);
+
   // const [
   //   deletion_from_prescription_data_model,
   //   setdeletion_from_prescription_data_model,
   // ] = useState();
   const presc_ref_for_printing_component = useRef(null);
   const presc_ref_for_Rx_scrolltoview = useRef(null);
+  const detail_column_patient_list = useRef();
   const re_render_presc_upper_component_ver = useSelector(
     (state) => state.re_render_presc_upper_component
   );
@@ -49,19 +54,19 @@ function DrPrescription() {
         console.log(error);
       });
   }, [re_render_presc_upper_component_ver]);
-  // useEffect(() => {
-  //   {
-  //     deletion_from_prescription_data_model &&
-  //       axios
-  //         .delete(
-  //           "http://localhost:3100/prescriptions?PID=" +
-  //             deletion_from_prescription_data_model
-  //         )
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
-  //   }
-  // }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3100/waitingpatientsforlabtests")
+      .then((res) => {
+        setwaiting_patients_data(res.data);
+        // dispatch(prescription_show_patient_detail_rest_pres_form(false));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log("geted from waiting pats");
+  }, []);
   return (
     <>
       {/* details  */}
@@ -70,7 +75,7 @@ function DrPrescription() {
         <div className="printing_component_prescription">
           <div>
             <Prescription
-              data={go_to_prescription_state}
+              data={waiting_list_deletion_work}
               ref={presc_ref_for_printing_component}
             />
           </div>
@@ -94,6 +99,7 @@ function DrPrescription() {
           <div
             className="col2indocdetails"
             style={{ margin: "30px auto 30px auto", width: "70%" }}
+            ref={detail_column_patient_list}
           >
             <table className="employee_GeneratedTable">
               <tbody>
@@ -190,6 +196,7 @@ function DrPrescription() {
         )}
       </div>
       <div className="drappointments_patient_details">
+        <h2 className="fillfreebeds_h2">CURRENT PATIENTS LIST </h2>
         <div className="drappointments_patient_list">
           {" "}
           <table class="patient_GeneratedTable_details">
@@ -217,6 +224,72 @@ function DrPrescription() {
                       <td
                         onClick={() => {
                           setdrdashboard_showPatient_Details(patdet);
+                          setwaiting_list_deletion_work(false);
+                          detail_column_patient_list.current?.scrollIntoView({
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        <MdDetails className="patient_details_edit_icon" />
+                      </td>
+
+                      {/* <td
+                        onClick={() => {
+                          setdeletion_from_prescription_data_model(patdet.PID); //this is for deletion from prescription
+                        }}
+                      >
+                        <AiFillCheckCircle
+                          style={{
+                            fontSize: "25px",
+                            // margin: "0 0 0 30px",
+                            color: "green",
+                            cursor: "pointer",
+                          }}
+                        />
+                      </td> */}
+                    </tr>
+                  );
+                })
+              ) : (
+                <h6>Loading ...</h6>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="drappointments_patient_details">
+        <h2 className="fillfreebeds_h2">WAITING PATIENTS LIST (LAB TESTS) </h2>
+        <div className="drappointments_patient_list">
+          {" "}
+          <table class="patient_GeneratedTable_details">
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Date</th>
+                <th>City</th>
+                <th>Admitted Status</th>
+                <th>View</th>
+                {/* <th>Done</th> */}
+              </tr>
+            </thead>
+            <tbody>
+              {waiting_patients_data ? (
+                waiting_patients_data.map((patdet, id) => {
+                  return (
+                    <tr key={id}>
+                      <td>{patdet.name}</td>
+                      <td>{patdet.age}</td>
+                      <td>{patdet.date}</td>
+                      <td>{patdet.city}</td>
+                      <td>{patdet.admitted_status}</td>
+                      <td
+                        onClick={() => {
+                          setdrdashboard_showPatient_Details(patdet);
+                          setwaiting_list_deletion_work(true);
+                          detail_column_patient_list.current?.scrollIntoView({
+                            behavior: "smooth",
+                          });
                         }}
                       >
                         <MdDetails className="patient_details_edit_icon" />
@@ -252,6 +325,7 @@ function DrPrescription() {
 export default DrPrescription;
 
 const Prescription = React.forwardRef((props, ref) => {
+  const waiting_list_deletion_work = props.data;
   const [from_prescription_to_patients, setfrom_prescription_to_patients] =
     useState(false);
   const [presc_print_refer_to_admission, setpresc_print_refer_to_admission] =
@@ -581,17 +655,20 @@ const Prescription = React.forwardRef((props, ref) => {
             </div>
           </div>
         </div>
-        <p
-          style={{
-            color: "red",
-            fontSize: "12px",
-            margin: "10px auto",
-            padding: "10px",
-            width: "fit-content",
-          }}
-        >
-          *SUBMIT AND PRINT THE FORM BEFORE RESETTING!
-        </p>
+        {!submission_before_reset_will_work && !cd_yess_no_var && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "12px",
+              margin: "10px auto",
+              padding: "10px",
+              width: "fit-content",
+            }}
+          >
+            *SUBMIT AND PRINT THE FORM BEFORE RESETTING!
+          </p>
+        )}
+
         <div>
           <input
             type="submit"
@@ -645,12 +722,16 @@ const Prescription = React.forwardRef((props, ref) => {
           REFER TO ADMISSION
         </button>
       </div>
-      {show_lab_test_form && <Test_from_dr_to_lab />}
+      {show_lab_test_form && (
+        <Test_from_dr_to_lab data={waiting_list_deletion_work} />
+      )}
     </>
   );
 });
 
-function Test_from_dr_to_lab() {
+function Test_from_dr_to_lab(props) {
+  const waiting_list_deletion_work = props.data;
+  console.log(waiting_list_deletion_work);
   const [data_for_lab, setdata_for_lab] = useState();
   const prescription_show_patient_detail_rest_pres_form_var = useSelector(
     (state) => state.prescription_show_patient_detail_rest_pres_form
@@ -687,7 +768,6 @@ function Test_from_dr_to_lab() {
         .post("http://localhost:3100/labnewtests", {
           ...data_for_lab,
           ...prescription_show_patient_detail_rest_pres_form_var, //localhost:3100/labnewtests
-          // janan: "nbnbnvbnvbnvbnv",
         })
         .then((res) => {
           console.log(res);
@@ -700,23 +780,31 @@ function Test_from_dr_to_lab() {
   }, [data_for_lab]);
 
   useEffect(() => {
-    if (data_for_lab && prescription_show_patient_detail_rest_pres_form_var) {
+    if (
+      data_for_lab &&
+      prescription_show_patient_detail_rest_pres_form_var &&
+      waiting_list_deletion_work
+    ) {
       axios
-        .post("http://localhost:3100/waitingpatientsforlabtests", {
-          ...data_for_lab,
-          ...prescription_show_patient_detail_rest_pres_form_var,
-        })
+        .delete(
+          "http://localhost:3100/waitingpatientsforlabtests/?PID+" +
+            prescription_show_patient_detail_rest_pres_form_var.PID
+        )
         .then((res) => {
-          // dispatch(prescription_show_patient_detail_rest_pres_form(false));
+          dispatch(prescription_show_patient_detail_rest_pres_form(false));
         })
         .catch((error) => {
           console.log(error);
         });
-      console.log("uploaded to waiting pats");
+      console.log("deleted from waiting pats");
     }
   }, [data_for_lab]);
   useEffect(() => {
-    if (data_for_lab && prescription_show_patient_detail_rest_pres_form_var) {
+    if (
+      data_for_lab &&
+      prescription_show_patient_detail_rest_pres_form_var &&
+      !waiting_list_deletion_work
+    ) {
       axios
         .delete(
           "http://localhost:3100/prescriptions/?PID=" +
@@ -769,7 +857,11 @@ function Test_from_dr_to_lab() {
         </div>
         <div className="profile_label_input ">
           <label className="profile_lanel_input_label">Date:</label>
-          <input name="date" value={new Date().toISOString().split("T")[0]} />
+          <input
+            name="date"
+            value={new Date().toISOString().split("T")[0]}
+            readOnly
+          />
         </div>
         <div className="profile_label_input ">
           <label className="profile_lanel_input_label">Time:</label>
