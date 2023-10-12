@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 const departments = [
   {
     id: "111",
-    name: " GENERAL",
+    name: "GENERAL",
     pic: "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
     description:
       "Used in men who do not make enough of a natural substance called testosterone ",

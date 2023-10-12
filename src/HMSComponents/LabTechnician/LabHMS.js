@@ -30,8 +30,8 @@ const rechmsobjs = [
   },
   {
     id: "3",
-    name: "SAMPLES",
-    path: "lab-patient-tests",
+    name: "TEST SAMPLES",
+    path: "lab-patient-samples",
     logo: GiTestTubes,
   },
   {

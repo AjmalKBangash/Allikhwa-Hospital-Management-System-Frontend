@@ -592,6 +592,40 @@
       ],
       "employee_category": "DOCTOR",
       "id": 30
+    },
+    {
+      "PID": "0c7b0235-3137-4985-bb4d-0cd3dcbd8d8c",
+      "employee_name": "Last Khan",
+      "employee_website": "",
+      "employee_photo": {},
+      "employee_description": "dr is hay jo loremipsum shi dij s idnied d,dnidjeicnhinincin.",
+      "employee_jobtitle": "Director",
+      "employee_education": "",
+      "employee_experience": "5 year",
+      "employee_surgeries": "",
+      "employee_appointments": "",
+      "employee_awards": "",
+      "employee_address": "",
+      "employee_phone": "00927676756464",
+      "employee_email": "desrxr34454@gamil.com",
+      "employee_facebook": "",
+      "employee_linkedin": "",
+      "employee_department": [
+        {
+          "label": "ENT",
+          "value": "ENT"
+        },
+        {
+          "label": "Endocrinology",
+          "value": "Endocrinology"
+        },
+        {
+          "label": "Emergency",
+          "value": "Emergency"
+        }
+      ],
+      "employee_category": "DOCTOR",
+      "id": 31
     }
   ],
   "newpatients": [
@@ -1802,7 +1836,7 @@
       "name": "Ajmal Bangash",
       "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
       "adress": "House# 437 phase # 06",
-      "id": 54
+      "id": 1
     },
     {
       "tests": [
@@ -1812,14 +1846,6 @@
         }
       ],
       "later_checkup_discription": "mmmmmm",
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail",
-        "informsms",
-        "informphone"
-      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1864,14 +1890,6 @@
         }
       ],
       "later_checkup_discription": "mmmmmm",
-      "physical_online_appointment": [
-        "physicalappointment"
-      ],
-      "email_sms_phone": [
-        "informemail",
-        "informsms",
-        "informphone"
-      ],
       "address": "",
       "city": "Kabul",
       "country": "Afghanistan",
@@ -1882,6 +1900,30 @@
       "department": "endocrinology",
       "doctor": "DrHassan",
       "id": 2
+    },
+    {
+      "tests": [
+        {
+          "test_name": "nmbnmbmnb",
+          "test_discription": "n mbnbnmbmnb"
+        }
+      ],
+      "date": "2023-09-07T19:30:00.000Z",
+      "time": "00:53",
+      "later_checkup_discription": "nbnbmnb",
+      "department": "ent",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 23,
+      "patient_dis": "sxsxwsxsx",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 1
     }
   ],
   "patients": [
