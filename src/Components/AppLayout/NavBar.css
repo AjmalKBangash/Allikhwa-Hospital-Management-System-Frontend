@@ -26,8 +26,8 @@
   box-sizing: border-box;
 }
 .navbar04loginup:hover {
-  /* background-color: #013737; */
-  border-bottom: 2px solid #013737;
+  background-color: #013737;
+  /* border-bottom: 2px solid #013737; */
 }
 .active {
   background-color: #fe4200;

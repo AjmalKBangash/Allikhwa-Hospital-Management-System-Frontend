@@ -20,7 +20,8 @@ import Footer from "./Components/AppLayout/Footer";
 import Jaan from "./Components/Jaan";
 // import HMSroutes from "./HMSComponents/HMSapps/HMSroutes";
 
-// Now management system started
+// Now allikhwa management system started
+import ProtectedRoutesHmsAppLayout from "./HMSComponents/HMSapps/ProtectedRoutesHmsAppLayout";
 import HmsAppLayout from "./HMSComponents/HMSapps/HmsAppLayout";
 import Dashboard from "./HMSComponents/HMSapps/Dashboard";
 // import CardForAll from "./HMSComponents/HMSapps/CardForAll";
@@ -34,7 +35,6 @@ import Staff from "./HMSComponents/HMSapps/Staff";
 import Others from "./HMSComponents/HMSapps/Others";
 import Patients from "./HMSComponents/HMSapps/Patients";
 import Expenses from "./HMSComponents/HMSapps/Expenses";
-// Departments Started
 import Departments from "./HMSComponents/HMSapps/Departments";
 // import HMSEmergency from "./HMSComponents/HMSapps/HmsDepartments/HMSEmergency";
 import DepartmentHMS from "./HMSComponents/HMSapps/HmsDepartments/DepartmentHMS";
@@ -111,8 +111,8 @@ const theRoutes = createBrowserRouter(
       <Route path="signup" element={<SignUpIn />} />
       <Route
         path="all'ikhwa-management-system"
-        // element={<ProtectedRoutesHmsAppLayout Component={HmsAppLayout} />}
-        element={<HmsAppLayout />}
+        element={<ProtectedRoutesHmsAppLayout Component={HmsAppLayout} />}
+        // element={<HmsAppLayout />}
       >
         <Route index path="dashboard" element={<Dashboard />} />
         <Route path="profile" element={<Profile />} />

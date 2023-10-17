@@ -4,7 +4,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import axios from "axios";
-import { v4 as uuidv4, validate } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   cd_open_close,
@@ -139,6 +139,7 @@ function RecmAppointments() {
     if (newpatients_to_appoint && cd_yess_no_var) {
       axios
         .post("http://localhost:3100/appointments", {
+          // again this should be uploaded to patients for an appointment with the doctor
           ...newpatients_to_appoint,
         })
         .catch((error) => {
@@ -414,7 +415,6 @@ const Prescription = forwardRef((props, ref) => {
       bills: [{ billname: "", billprice: "" }],
     },
     mode: "onBlur",
-    // resolver: yupResolver(bills_schema),
   });
 
   const { fields, append, remove } = useFieldArray({
