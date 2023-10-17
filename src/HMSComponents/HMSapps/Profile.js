@@ -108,7 +108,7 @@ function Profile(props) {
   //   {
   //     addUpdate_Form_Data &&
   //       axios
-  //         .post(
+  //         .patch(
   //           `http://localhost:3100/employess` +
   //           { ...addUpdate_Form_Data }
   //         )
@@ -274,7 +274,7 @@ function Profile(props) {
                 placeholder="Your short introduction!"
                 rows="6"
                 cols="60"
-                defaultValue={data.employee_description}
+                value={data.employee_description}
               />
             </div>
           </div>

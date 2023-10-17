@@ -1452,6 +1452,53 @@
       "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
       "adress": "House# 437 phase # 06",
       "id": 55
+    },
+    {
+      "department": "",
+      "date": "2023-10-16T19:30:00.000Z",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Peshawar",
+      "country": "",
+      "email": "",
+      "contact_num": 3334483486,
+      "age": 23,
+      "patient_dis": "",
+      "name": "Ali Gul Khan De Nuuu",
+      "PID": "06d4f208-d35b-459f-8a5d-37a5e87f20c4",
+      "id": 56
+    },
+    {
+      "department": "ent",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "doctor": "DrHassan",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "ak1489007@gmail.com",
+      "contact_num": 923334483486,
+      "age": 23,
+      "patient_dis": "ill ymaa",
+      "name": "Ajmal Bangash",
+      "PID": "b0f07faf-06f5-43ee-8003-fbf9d144d66b",
+      "adress": "House# 437 phase # 06",
+      "id": 57
+    },
+    {
+      "department": "ent",
+      "date": "2023-09-07T19:30:00.000Z",
+      "address": "",
+      "doctor": "Dr.Dur Kamil Bangash",
+      "city": "Kabul",
+      "country": "Afghanistan",
+      "email": "jamaludeenmama@gmail.com",
+      "contact_num": 923334483486,
+      "age": 24,
+      "patient_dis": "I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...I am suffering from hair loss, and i want to make it stronger so that i can ...\n",
+      "name": "Ali Gul Khan",
+      "PID": "91a30fc5-94cf-4530-994c-dca01ce8817b",
+      "adress": "House# 437, phase # 06",
+      "id": 58
     }
   ],
   "patientbills": [
@@ -1706,6 +1753,16 @@
       ],
       "PID": "28cc7af3-0180-4435-ada3-6509f3eada53",
       "id": 28
+    },
+    {
+      "bills": [
+        {
+          "billname": "Apointment",
+          "billprice": "234/-"
+        }
+      ],
+      "PID": "06d4f208-d35b-459f-8a5d-37a5e87f20c4",
+      "id": 29
     }
   ],
   "prescriptions": [

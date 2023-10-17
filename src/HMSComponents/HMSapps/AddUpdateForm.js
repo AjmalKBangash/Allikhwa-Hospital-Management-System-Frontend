@@ -96,7 +96,7 @@ function AddUpdateForm(props) {
               "s",
             {
               ...addUpdate_Form_Data,
-              PID: uuidv4(),
+              employee_PID: uuidv4(),
               employee_category: data__employee_category,
             }
           )

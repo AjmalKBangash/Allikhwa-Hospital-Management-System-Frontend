@@ -12,6 +12,8 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
+import Practice from "./Practice";
+
 const doctors_from_backend = [
   {
     id: 1,
@@ -228,6 +230,7 @@ function Appointment() {
   }, [appointment_new_patient_data, cd_yess_no_var]);
   return (
     <>
+      {/* <Practice /> */}
       {cd_open_close_var && <ConfirmDialogue />}
       <NavBar />
       <div className="donatetop">

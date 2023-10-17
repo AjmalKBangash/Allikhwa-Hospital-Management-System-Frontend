@@ -145,6 +145,7 @@ function ReceAppointments() {
       console.log(restfor_appointments);
       axios
         .post("http://localhost:3100/appointments", {
+          //  this sould be uploaded to patients for an appointment from eAppointments
           ...restfor_appointments,
         })
         .catch((error) => {

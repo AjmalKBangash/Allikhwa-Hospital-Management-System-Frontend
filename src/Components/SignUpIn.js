@@ -36,6 +36,7 @@ function SignUpIn() {
     nameelogin: Yup.string().required("Name is required!"),
     passwordlogin: Yup.string().required("Password is required!"),
   });
+
   const signupSchema1 = Yup.object().shape({
     // Sign Up Form Validation
     namee: Yup.string()
@@ -54,8 +55,9 @@ function SignUpIn() {
     confirmpassword: Yup.string()
       .required("Confirm Password is required!")
       .oneOf([Yup.ref("password"), null], "Passwords must match!"),
-    address: Yup.string().required("Adress is required!"),
+    // address: Yup.string().required("Adress is required!"),
   });
+
   const signupSchema2 = Yup.object().shape({
     // Sign Up Form Validation
     namee: Yup.string()
@@ -67,15 +69,15 @@ function SignUpIn() {
     phone: Yup.string().required("Phone num is required!").matches("123"),
     IDcard: Yup.number().required("Id Card num is required!").min(3).max(3),
     bloodgrplist: Yup.string().required("Blood grp is required!"),
-    password: Yup.string()
-      .required("Password is required!")
-      .matches(
-        "321",
-        "Minimum eight characters, at least one letter, one number and one special character!"
-      ),
-    confirmpassword: Yup.string()
-      .required("Confirm Password is required!")
-      .oneOf([Yup.ref("password"), null], "Passwords must match!"),
+    // password: Yup.string()
+    //   .required("Password is required!")
+    //   .matches(
+    //     "321",
+    //     "Minimum eight characters, at least one letter, one number and one special character!"
+    //   ),
+    // confirmpassword: Yup.string()
+    //   .required("Confirm Password is required!")
+    //   .oneOf([Yup.ref("password"), null], "Passwords must match!"),
     address: Yup.string().required("Adress is required!"),
   });
 
@@ -219,8 +221,8 @@ function SignUpIn() {
                   onChange={RegisterFunForOptions}
                 >
                   {/* <option value={""} disabled >
-                Register Yourself As..
-              </option> */}
+                    Register Yourself As..
+                 </option> */}
                   <option key="patient" value="patient" name="patient">
                     Patient
                   </option>
@@ -269,14 +271,14 @@ function SignUpIn() {
                   {...register2("confirmpassword")}
                 ></input>
                 <p className="pForForm">{errors2.confirmpassword?.message}</p>
-                <input
+                {/* <input
                   type="text"
                   className="inputFieldinOverlayForm"
                   name="address"
                   placeholder="Enter Your Address"
                   {...register2("address")}
                 ></input>
-                <p className="pForForm">{errors2.address?.message}</p>
+                <p className="pForForm">{errors2.address?.message}</p> */}
                 <br />
                 <br />
                 <p
@@ -403,22 +405,22 @@ function SignUpIn() {
                   </option>
                 </select>
                 <p className="pForForm">{errors3.bloodgrplist?.message}</p>
-                <input
+                {/* <input
                   type="password"
                   className="inputFieldinOverlayForm"
                   name="password"
                   placeholder="Password"
                   {...register3("password")}
                 ></input>
-                <p className="pForForm">{errors3.password?.message}</p>
-                <input
+                <p className="pForForm">{errors3.password?.message}</p> */}
+                {/* <input
                   type="password"
                   className="inputFieldinOverlayForm"
                   name="confirmpassword"
                   placeholder="Confirm Passowrd"
                   {...register3("confirmpassword")}
                 ></input>
-                <p className="pForForm">{errors3.confirmpassword?.message}</p>
+                <p className="pForForm">{errors3.confirmpassword?.message}</p> */}
                 <input
                   type="text"
                   className="inputFieldinOverlayForm"
