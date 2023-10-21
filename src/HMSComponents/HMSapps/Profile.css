@@ -119,9 +119,11 @@ table.profile_GeneratedTable thead {
 .profile_label_input input[type="password"],
 .profile_label_input input[type="date"],
 .profile_label_input input[type="time"],
-.profile_label_input input[type="file"] {
+.profile_label_input input[type="file"],
+.dr-names-css-class {
   height: 20px;
   width: 70%;
+  max-width: 70%;
   padding: 10px;
   font-size: 16px;
   position: relative;

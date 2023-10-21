@@ -140,6 +140,7 @@ const countries = [
 ];
 
 function Appointment() {
+  const [doctor_names, setDoctor_names] = useState();
   const [isChecked_physical_appointment, setisChecked_physical_appointment] =
     useState(false);
   const [isChecked_online_appointment, setisChecked_online_appointment] =
@@ -166,28 +167,33 @@ function Appointment() {
 
   const appointment_validation_schema = Yup.object().shape({
     // Sign Up Form Validation
-    name: Yup.string().required("Name is Required"),
-    patient_dis: Yup.string().required("Describe your problem"),
-    age: Yup.number().required("Age is required").typeError("Age is required"),
-    contact_num: Yup.number()
+    patient_name: Yup.string().required("Name is Required"),
+    patient_problem: Yup.string().required("Describe your problem"),
+    patient_age: Yup.number()
+      .required("Age is required")
+      .typeError("Age is required"),
+    patient_contact: Yup.number()
       .required("Contact Number is required")
       .typeError("Contact Number is required"),
-    email: Yup.string().email("Enter Valid Email Address"),
-    country: Yup.string().required("Country is required"),
-    city: Yup.string().required("City is required"),
+    patient_email: Yup.string().email("Enter Valid Email Address"),
+    patient_country: Yup.string().required("Country is required"),
+    patient_city: Yup.string().required("City is required"),
     // doctor: Yup.string().required("Doctor is required"),
-    address: Yup.string().max(
+    patient_address: Yup.string().max(
       100,
       "Adress should not be greater than 100 characters"
     ),
     // postcode: Yup.number().typeError("Postcode must be a number"),
-    email_sms_phone: Yup.array()
+    patient_emailsmsphone: Yup.array()
       .min(1, "Please select atleast one of your choice")
       .typeError("Please select atleast one of your choice"),
-    physical_online_appointment: Yup.array()
+    patient_physicalonlineappointment: Yup.array()
       .min(1, "Please select only one of your choice")
       .typeError("Please select only one of your choice"),
-    date: Yup.date(new Date().toISOString().split("T")[0], "Date is required")
+    patient_eappointmentdate: Yup.date(
+      new Date().toISOString().split("T")[0],
+      "Date is required"
+    )
       .typeError("Date is required")
       .min(
         new Date().toISOString().split("T")[0],
@@ -195,6 +201,7 @@ function Appointment() {
       )
       .required("Date is Required"),
   });
+
   const {
     reset,
     register,
@@ -205,22 +212,70 @@ function Appointment() {
     resolver: yupResolver(appointment_validation_schema),
   });
 
+  // this function is for formating date into YYY-MM-DDD format to properly send it to django backend in the 2023-10-19 date format
+  function formatDateToYYYYMMDD(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
   const handle_appointment_fun = (data) => {
-    setappointment_new_patient_data(data);
+    let {
+      patient_name,
+      patient_problem,
+      patient_age,
+      patient_contact,
+      patient_country,
+      patient_city,
+      patient_address,
+      patient_email,
+      patient_eappointmentdate,
+      patient_emailsmsphone,
+      patient_physicalonlineappointment,
+      patient_doctor,
+    } = data;
+
+    setappointment_new_patient_data({
+      patient_name: patient_name,
+      patient_problem: patient_problem,
+      patient_age: patient_age,
+      patient_contact: patient_contact,
+      patient_country: patient_country,
+      patient_city: patient_city,
+      patient_address: patient_address,
+      patient_email: patient_email,
+      patient_doctor,
+      patient_eappointmentdate: formatDateToYYYYMMDD(patient_eappointmentdate),
+      patient_emailsmsphone: patient_emailsmsphone[0],
+      patient_physicalonlineappointment: patient_physicalonlineappointment[0],
+    });
     dispatch(cd_open_close(true));
   };
-  // if (cd_yess_no_var) {
-  //   console.log("resett");
-  // }
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/allikhwa-hms/doctor-names/")
+      .then((res) => {
+        setDoctor_names(res.data);
+      });
+  }, []);
   useEffect(() => {
     if (cd_yess_no_var && appointment_new_patient_data) {
       reset();
-      console.log("rest and upload");
       axios
-        .post("http://localhost:3100/newpatients", {
+        .post("http://localhost:8000/allikhwa-hms/e-appointments/", {
           ...appointment_new_patient_data,
-          PID: uuidv4(),
+          patient_UID: uuidv4(),
+        })
+        .then((res) => {
+          console.log("runnnnnnnnnnnnnnnnnnnnn showwwwwwwwwwwwwwwwwww");
+          setisChecked_physical_appointment(false);
+          setisChecked_online_appointment(false);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -269,93 +324,95 @@ function Appointment() {
           className="donationformclass"
           style={{ overflow: "scroll" }}
         >
-          <label htmlFor="name">Name</label>
+          <label htmlFor="patient_name">Name</label>
           <input
-            id="name"
+            id="patient_name"
             type="text"
             placeholder="Enter Your Name"
-            {...register("name")}
+            {...register("patient_name")}
           />
           <p className="pForForm pForForm_appointment">
-            {errors.name?.message}
+            {errors.patient_name?.message}
           </p>
-          <label htmlFor="patient_dis">Write about your Problem!</label>
+          <label htmlFor="patient_problem">Write about your Problem!</label>
           <div>
             <textarea
-              name="patient_dis"
-              id="patient_dis"
+              name="patient_problem"
+              id="patient_problem"
               rows="3"
               cols="10"
-              {...register("patient_dis")}
+              {...register("patient_problem")}
               placeholder="Write about your problem"
               style={{
                 margin: "10px",
-                width: "96%",
+                width: "95%",
+                maxWidth: "95%",
               }}
             />
           </div>
           <p className="pForForm pForForm_appointment">
-            {errors.patient_dis?.message}
+            {errors.patient_problem?.message}
           </p>
-          <label htmlFor="age">Age</label>
+          <label htmlFor="patient_age">Age</label>
           <input
-            id="age"
-            name="age"
+            id="patient_age"
+            name="patient_age"
             type="text"
-            placeholder="Enter Your Contact Number"
-            {...register("age")}
+            placeholder="Enter Your Age"
+            {...register("patient_age")}
           />
           <p className="pForForm pForForm_appointment">{errors.age?.message}</p>
-          <label htmlFor="doctor">Choose Doctor</label>
+          <label htmlFor="patient_doctor">Choose Doctor</label>
           <select
             type="select"
-            id="doctor"
-            name="doctor"
+            id="patient_doctor"
+            name="patient_doctor"
             form="donationForm"
-            {...register("doctor")}
+            {...register("patient_doctor")}
           >
             <option value={""} disabled selected>
               ..select an option..
             </option>
-            {doctors_from_backend.map((doctor, id) => {
-              return (
-                <option key={id} value={doctor.name}>
-                  {doctor.name}
-                </option>
-              );
-            })}
+            {doctor_names &&
+              doctor_names.map((doctor, id) => {
+                return (
+                  <option key={id} value={doctor.doctor_names}>
+                    {doctor.doctor_names}
+                  </option>
+                );
+              })}
           </select>
           <p className="pForForm pForForm_appointment">
-            {errors.doctor?.message}
+            {errors.patient_doctor?.message}
           </p>
-          <label htmlFor="contact_num">Contact Number</label>
+          <label htmlFor="patient_contact">Contact Number</label>
           <input
-            id="contact_num"
-            name="contact_num"
+            id="patient_contact"
+            name="patient_contact"
             type="text"
             placeholder="Enter Your Contact Number"
-            {...register("contact_num")}
+            {...register("patient_contact")}
           />
           <p className="pForForm pForForm_appointment">
-            {errors.contact_num?.message}
+            {errors.patient_contact?.message}
           </p>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="patient_email">Email</label>
           <input
-            id="email"
-            type="email"
+            id="patient_email"
+            type="patient_email"
             placeholder="Enter Your Email"
-            {...register("email")}
+            {...register("empatient_emaill")}
           ></input>
           <p className="pForForm pForForm_appointment">
-            {errors.email?.message}
+            {errors.patient_email?.message}
           </p>
-          <label htmlFor="city">Choose Country</label>
+          <label htmlFor="patient_country">Choose Country</label>
           <select
             type="select"
-            id="country"
-            name="country"
+            id="patient_country"
+            name="patient_country"
             form="donationForm"
-            {...register("country")}
+            {...register("patient_country")}
           >
             <option value={""} disabled selected>
               ..select an option..
@@ -369,15 +426,15 @@ function Appointment() {
             })}
           </select>
           <p className="pForForm pForForm_appointment">
-            {errors.country?.message}
+            {errors.patient_country?.message}
           </p>
-          <label htmlFor="city">Choose City</label>
+          <label htmlFor="patient_city">Choose City</label>
           <select
             type="select"
-            id="city"
-            name="city"
+            id="patient_city"
+            name="patient_city"
             form="donationForm"
-            {...register("city")}
+            {...register("patient_city")}
           >
             <option value={""} disabled selected>
               {" "}
@@ -392,28 +449,30 @@ function Appointment() {
             })}
           </select>
           <p className="pForForm pForForm_appointment">
-            {errors.city?.message}
+            {errors.patient_city?.message}
           </p>
 
-          <label htmlFor="address">Address</label>
+          <label htmlFor="patient_address">Address</label>
           <input
-            id="address"
+            id="patient_address"
             type="text"
             placeholder="Enter Your Address"
-            {...register("address")}
+            {...register("patient_address")}
           />
           <p className="pForForm pForForm_appointment">
-            {errors.address?.message}
+            {errors.patient_address?.message}
           </p>
-          <label htmlFor="date">Enter Date for an Appointment:</label>
+          <label htmlFor="patient_eappointmentdate">
+            Enter Date for an Appointment:
+          </label>
           <input
-            {...register("date")}
-            id="date"
+            {...register("patient_eappointmentdate")}
+            id="patient_eappointmentdate"
             type="date"
             placeholder="Enter Date For an Appointment"
           ></input>
           <p className="pForForm pForForm_appointment">
-            {errors.date?.message}
+            {errors.patient_eappointmentdate?.message}
           </p>
           {/* 
           <label htmlFor="postcode">Postcode</label>
@@ -424,7 +483,7 @@ function Appointment() {
             {...register("postcode")}
           ></input>
           <p className="pForForm pForForm_appointment">
-            {errors.postcode?.message}
+            {errors.postcode?.message}date
           </p> */}
 
           <div className="emailingduringdonation">
@@ -437,15 +496,14 @@ function Appointment() {
             </p>
             <span>
               <label htmlFor="informingemail">
-                {" "}
                 May we contact you by email?*
               </label>
               <input
                 type="checkbox"
                 id="informingemail"
-                name="email_sms_phone"
+                name="patient_emailsmsphone"
                 value="informemail"
-                {...register("email_sms_phone")}
+                {...register("patient_emailsmsphone")}
               />
             </span>
             <span>
@@ -453,9 +511,9 @@ function Appointment() {
               <input
                 type="checkbox"
                 id="informingsms"
-                name="email_sms_phone"
+                name="patient_emailsmsphone"
                 value="informsms"
-                {...register("email_sms_phone")}
+                {...register("patient_emailsmsphone")}
               ></input>
             </span>
             <span>
@@ -465,12 +523,12 @@ function Appointment() {
               <input
                 type="checkbox"
                 id="informingphone"
-                name="email_sms_phone"
+                name="patient_emailsmsphone"
                 value="informphone"
-                {...register("email_sms_phone")}
+                {...register("patient_emailsmsphone")}
               />
               <p className="pForForm pForForm_appointment">
-                {errors.email_sms_phone?.message}
+                {errors.patient_emailsmsphone?.message}
               </p>
             </span>
           </div>
@@ -489,29 +547,28 @@ function Appointment() {
               <input
                 type="checkbox"
                 id="physicalappointment"
-                name="physical_online_appointment"
+                name="patient_physicalonlineappointment"
                 value="physicalappointment"
                 checked={isChecked_physical_appointment}
-                {...register("physical_online_appointment")}
+                {...register("patient_physicalonlineappointment")}
                 onChange={handleChangePhysical}
               />
-              <p className="pForForm pForForm_appointment">
-                {errors.physicalappointment?.message}
-              </p>
             </span>
             <span>
-              <label htmlFor="onlineappointment"> Online Appointment </label>
+              <label htmlFor="patient_onlineappointment">
+                Online Appointment
+              </label>
               <input
                 type="checkbox"
-                id="onlineappointment"
-                name="physical_online_appointment"
+                id="patient_onlineappointment"
+                name="patient_physicalonlineappointment"
                 value="onlineappointment"
                 checked={isChecked_online_appointment}
-                {...register("physical_online_appointment")}
+                {...register("patient_physicalonlineappointment")}
                 onChange={handleChangeOnline}
               />
               <p className="pForForm pForForm_appointment">
-                {errors.physical_online_appointment?.message}
+                {errors.patient_physicalonlineappointment?.message}
               </p>
             </span>
           </div>

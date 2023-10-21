@@ -78,7 +78,8 @@ function SignUpIn() {
     // confirmpassword: Yup.string()
     //   .required("Confirm Password is required!")
     //   .oneOf([Yup.ref("password"), null], "Passwords must match!"),
-    address: Yup.string().required("Adress is required!"),
+    address: Yup.string().required("Address is required!"),
+    age: Yup.string().required("Age is required!"),
   });
 
   // react hook form
@@ -429,6 +430,14 @@ function SignUpIn() {
                   {...register3("address")}
                 ></input>
                 <p className="pForForm">{errors3.address?.message}</p>
+                <input
+                  type="text"
+                  className="inputFieldinOverlayForm"
+                  name="age"
+                  placeholder="Enter Your Age"
+                  {...register3("age")}
+                ></input>
+                <p className="pForForm">{errors3.age?.message}</p>
                 <br />
                 <br />
                 <p
