@@ -89,15 +89,18 @@ const doctors_from_backend = [
 
 function RecmAppointments() {
   const [newpatients_to_appoint, setnewpatients_to_appoint] = useState("");
+  const [newpatients_to_appoint02, setnewpatients_to_appoint02] = useState("");
   const [submit_true_for_print, setsubmit_true_for_print] = useState(false);
+  const [uuids_for_appointment, setuuids_for_appointment] = useState();
+  const [doctor_names, setDoctor_names] = useState();
   const cd_yess_no_var = useSelector((state) => state.cd_yess_no);
   const pricing_ref_for_printing_component = useRef();
   const dispatch = useDispatch();
 
   const newpatient_to_appoint_schema = Yup.object().shape({
+    PID: Yup.string().required("Patient ID is required"),
     name: Yup.string().required("Name is Required"),
-    patient_dis: Yup.string(),
-    // .required("Describe your problem"),
+    patient_dis: Yup.string().required("Describe your problem"),
     age: Yup.number().required("Age is required").typeError("Age is required"),
     contact_num: Yup.number()
       // .required("Contact Number is required")
@@ -130,22 +133,61 @@ function RecmAppointments() {
     mode: "onBlur",
     resolver: yupResolver(newpatient_to_appoint_schema),
   });
-
+  function formatDateToYYYYMMDD(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
   function Newpatient_to_appointFun(data) {
     dispatch(cd_open_close(true));
-    setnewpatients_to_appoint(data);
+    let {
+      PID,
+      name,
+      patient_dis,
+      age,
+      contact_num,
+      email,
+      country,
+      city,
+      doctor,
+      address,
+      date,
+      department,
+    } = data;
+    setnewpatients_to_appoint02(data);
+    setnewpatients_to_appoint({
+      patient_name: name,
+      patient_problem: patient_dis,
+      patient_age: age,
+      patient_contact: contact_num,
+      patient_country: country,
+      patient_city: city,
+      patient_address: address,
+      patient_email: email,
+      patient_doctor: doctor,
+      patient_eappointmentdate: formatDateToYYYYMMDD(date),
+      patient_department: department,
+      patient_UID: PID,
+      // patient_NID: "",
+      // patient_bloodgrp: "",
+    });
+    setuuids_for_appointment({
+      patient_UID: PID,
+      patient_eappointmentdate: formatDateToYYYYMMDD(date),
+    });
   }
   useEffect(() => {
     if (newpatients_to_appoint && cd_yess_no_var) {
       axios
-        .post("http://localhost:3100/appointments", {
+        .post("http://localhost:8000/allikhwa-hms/patients/", {
           // again this should be uploaded to patients for an appointment with the doctor
           ...newpatients_to_appoint,
         })
         .catch((error) => {
           console.log(error);
         });
-      dispatch(recmappointment_patient_billing_price(newpatients_to_appoint));
+      dispatch(recmappointment_patient_billing_price(newpatients_to_appoint02));
       setsubmit_true_for_print(true);
       dispatch(cd_yess_no(false));
       reset();
@@ -155,18 +197,26 @@ function RecmAppointments() {
       });
     }
   }, [newpatients_to_appoint, cd_yess_no_var]);
+
   useEffect(() => {
-    if (newpatients_to_appoint && cd_yess_no_var) {
+    if (uuids_for_appointment && cd_yess_no_var) {
       axios
-        .delete(
-          "http://localhost:3100/newpatients/?PID=" + newpatients_to_appoint.PID
+        .post(
+          "http://localhost:8000/allikhwa-hms/uuids-for-appointments/",
+          uuids_for_appointment
         )
         .catch((error) => {
           console.log(error);
         });
-      dispatch(cd_yess_no(false));
     }
-  }, [newpatients_to_appoint, cd_yess_no_var]);
+  }, [uuids_for_appointment, cd_yess_no_var]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/allikhwa-hms/doctor-names/")
+      .then((res) => {
+        setDoctor_names(res.data);
+      });
+  }, []);
   return (
     <>
       <h2 className="fillfreebeds_h2">MAKE AN APPOINTMENT</h2>
@@ -256,6 +306,7 @@ function RecmAppointments() {
           <div className="profile_label_input ">
             <label htmlFor="patient_dis" className="profile_lanel_input_label">
               Write about your Problem!
+              <span style={{ color: "red", margin: "0 4px" }}>*</span>
             </label>
             <textarea
               name="patient_dis"
@@ -266,6 +317,7 @@ function RecmAppointments() {
               placeholder="Write about your problem"
               style={{
                 width: "73%",
+                maxWidth: "73%",
               }}
             />
             <p className="pForForm ">{errors.patient_dis?.message}</p>
@@ -274,12 +326,42 @@ function RecmAppointments() {
             <label htmlFor="doctor" className="profile_lanel_input_label">
               Doctor:<span style={{ color: "red", margin: "0 4px" }}>*</span>
             </label>
-            <input
+            {/* <input
               id="age"
               type="text"
               {...register("doctor")}
               placeholder="Enter Patient Age"
-            ></input>
+            ></input> */}
+            <select
+              type="select"
+              id="doctor"
+              name="doctor"
+              form="donationForm"
+              {...register("doctor")}
+              // className="dr-names-css-class"
+              style={{
+                height: "40px",
+                width: "74%",
+                padding: "3px",
+                fontSize: "16px",
+                position: "relative",
+                border: "1px solid rgba(0, 0, 0, 0.103)",
+                borderRadius: "4px",
+                outline: "none",
+              }}
+            >
+              <option value={""} disabled selected>
+                ..select an option..
+              </option>
+              {doctor_names &&
+                doctor_names.map((doctor, id) => {
+                  return (
+                    <option key={id} value={doctor.doctor_names}>
+                      {doctor.doctor_names}
+                    </option>
+                  );
+                })}
+            </select>
             <p className="pForForm ">{errors.doctor?.message}</p>
           </div>
           <div className="profile_label_input ">
@@ -389,12 +471,14 @@ const Prescription = forwardRef((props, ref) => {
     setrecmappointment_patient_pricing_bills_data,
   ] = useState();
   const [print_warning, setprint_warning] = useState(false);
+  const [billsdata, setbillsdata] = useState();
   const recmappointment_patient_billing_price_var = useSelector(
     (state) => state.recmappointment_patient_billing_price
   );
   const submit_bill_price_work_var = useSelector(
     (state) => state.submit_bill_price_work
   );
+
   const dispatch = useDispatch();
   // const bills_schema = Yup.array().of(
   //   Yup.object().shape({
@@ -421,11 +505,20 @@ const Prescription = forwardRef((props, ref) => {
     control,
     name: "bills",
   });
+  let PID = recmappointment_patient_billing_price_var.PID;
 
+  let listt = [];
   function handle_pricing_bill_Fun(data) {
     setprint_warning(true);
+    data.bills.map((name, index) => {
+      listt.push(name.billname, name.billprice);
+    });
+    const result = listt.join(" > ");
     if (submit_bill_price_work_var) {
-      setrecmappointment_patient_pricing_bills_data({ ...data });
+      setrecmappointment_patient_pricing_bills_data({
+        patient: PID,
+        patient_bills: result,
+      });
       window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -434,14 +527,13 @@ const Prescription = forwardRef((props, ref) => {
     }
   }
 
-  let PID = recmappointment_patient_billing_price_var.PID;
   useEffect(() => {
     if (recmappointment_patient_pricing_bills_data && PID) {
       axios
-        .post("http://localhost:3100/patientbills", {
-          ...recmappointment_patient_pricing_bills_data,
-          PID,
-        })
+        .post(
+          "http://localhost:8000/allikhwa-hms/patientbills/",
+          recmappointment_patient_pricing_bills_data
+        )
         .catch((error) => {
           console.log(error);
         });
@@ -665,6 +757,7 @@ const Prescription = forwardRef((props, ref) => {
           style={{
             margin: "20px 25% 10px 25%",
             width: "50%",
+            height: "fit-content",
           }}
         >
           SUBMIT THE BILLS FOR PATIENT HISTORY IF NEEDED

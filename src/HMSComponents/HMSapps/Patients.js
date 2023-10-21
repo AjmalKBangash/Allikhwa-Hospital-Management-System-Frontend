@@ -26,9 +26,8 @@ function Patients() {
   }
   useEffect(() => {
     axios
-      .get("http://localhost:3100/patients")
+      .get("http://localhost:8000/allikhwa-hms/patients")
       .then((res) => {
-        // console.log(res.data);
         setPatientData(res.data);
       })
       .catch((error) => {
@@ -103,7 +102,7 @@ function Patients() {
             padding: "10px",
             boxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
             webkitboxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
-            mozBoxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+            MozBoxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
           }}
         >
           <span>
@@ -131,35 +130,35 @@ function Patients() {
                 <>
                   <tr>
                     <td>PID</td>
-                    <td>{patientDataDetails.PID}</td>
+                    <td>{patientDataDetails.patient_UID}</td>
                   </tr>
                   <tr>
                     <td>Name</td>
-                    <td> {patientDataDetails.name}</td>
+                    <td> {patientDataDetails.patient_name}</td>
                   </tr>
                   <tr>
                     <td>Age</td>
-                    <td>{patientDataDetails.age}</td>
+                    <td>{patientDataDetails.patient_age}</td>
                   </tr>
                   <tr>
                     <td>Last Appointment Date</td>
-                    <td>{patientDataDetails.date}</td>
+                    <td>{patientDataDetails.patient_eappointmentdate}</td>
                   </tr>
                   <tr>
                     <td>Contact</td>
-                    <td>{patientDataDetails.contact}</td>
+                    <td>{patientDataDetails.patient_contact}</td>
                   </tr>
                   <tr>
                     <td>City</td>
-                    <td> {patientDataDetails.city}</td>
+                    <td> {patientDataDetails.patient_city}</td>
                   </tr>
                   <tr>
                     <td>Department</td>
-                    <td>{patientDataDetails.department}</td>
+                    <td>{patientDataDetails.patient_department}</td>
                   </tr>
                   <tr>
                     <td>Admitted Status</td>
-                    <td>{patientDataDetails.admitted_status}</td>
+                    <td>{patientDataDetails.patient_admittedStatus}</td>
                   </tr>
                   <tr>
                     <td>Bed No</td>
@@ -167,15 +166,7 @@ function Patients() {
                   </tr>
                   <tr>
                     <td>Patient Doctor</td>
-                    <td>{patientDataDetails.doctor}</td>
-                  </tr>
-                  <tr>
-                    <td>Medicine</td>
-                    <td>{patientDataDetails.medicine}</td>
-                  </tr>
-                  <tr>
-                    <td>Instructions</td>
-                    <td>{patientDataDetails.instructions}</td>
+                    <td>{patientDataDetails.patient_doctor}</td>
                   </tr>
                 </>
               ) : (
@@ -197,7 +188,7 @@ function Patients() {
         >
           ALL PATIENTS
         </div>
-        <table class="patient_GeneratedTable_details">
+        <table className="patient_GeneratedTable_details">
           <thead>
             <tr>
               <th>Patient Name</th>
@@ -215,14 +206,15 @@ function Patients() {
               patientData.map((patdet, id) => {
                 return (
                   <tr key={id}>
-                    <td>{patdet.name}</td>
-                    <td>{patdet.age}</td>
-                    <td>{patdet.date}</td>
-                    <td>{patdet.contact}</td>
-                    <td>{patdet.city}</td>
-                    <td>{patdet.department}</td>
-                    <td>{patdet.admitted_status}</td>
+                    <td key={id + 1}>{patdet.patient_name}</td>
+                    <td key={id + 2}>{patdet.patient_age}</td>
+                    <td key={id + 3}>{id + 4}</td>
+                    <td key={id + 5}>{patdet.patient_contact}</td>
+                    <td key={id + 6}>{patdet.patient_city}</td>
+                    <td key={id + 7}>{patdet.patient_department}</td>
+                    <td key={id + 8}>{patdet.patient_admittedStatus}</td>
                     <td
+                      key={id + 9}
                       onClick={() => {
                         PatientDetailsFun(patdet);
                       }}
@@ -233,7 +225,12 @@ function Patients() {
                 );
               })
             ) : (
-              <h6>Loading ...</h6>
+              <tr>
+                <td>
+                  {" "}
+                  <div>Loading ...</div>
+                </td>
+              </tr>
             )}
           </tbody>
         </table>

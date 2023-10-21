@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { cd_open_close, cd_yess_no } from "../../Store/Store";
+import { v4 as uuidv4 } from "uuid";
 
 // Icons
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -77,37 +78,45 @@ const doctors_from_backend = [
 
 function ReceAppointments() {
   const [patientData, setpatientData] = useState();
+  const [render_getmethod_on_deletion, setrender_getmethod_on_deletion] =
+    useState(false);
   const [show_patient_details, setshow_patient_details] = useState(false);
   const [physical_online_appointment, setphysical_online_appointment] =
     useState("");
   const [email_sms_phone, setemail_sms_phone] = useState("");
   useState("");
+  const [patient_UIDD, setpatient_UID] = useState("");
+  useState("");
   const [newpatients_to_appoint, setnewpatients_to_appoint] = useState();
   const [newpatients_to_appoint_delete, setnewpatients_to_appoint_delete] =
     useState();
+  const [uuids_for_appointment, setuuids_for_appointment] = useState();
+  const [DeletionAppointment, setDeletionAppointment] = useState(false);
   const cd_yess_no_var = useSelector((state) => state.cd_yess_no);
   const dispatch = useDispatch();
-  const prescription_show_patient_detail_rest_pres_form = useRef();
 
   const newpatient_to_appoint_schema = Yup.object().shape({
-    name: Yup.string().required("Name is Required"),
-    patient_dis: Yup.string().required("Describe your problem"),
-    age: Yup.number().required("Age is required").typeError("Age is required"),
-    contact_num: Yup.number()
+    patient_UID: Yup.string().required("Patient ID is required"),
+    patient_name: Yup.string().required("Name is Required"),
+    patient_problem: Yup.string().required("Describe your problem"),
+    patient_age: Yup.number()
+      .required("Age is required")
+      .typeError("Age is required"),
+    patient_contact: Yup.number()
       .required("Contact Number is required")
       .typeError("Contact Number is required"),
-    email: Yup.string().email("Enter Valid Email Address"),
-    country: Yup.string().required("Country is required"),
-    city: Yup.string().required("City is required"),
-    doctor: Yup.string().required("Doctor is required"),
-    address: Yup.string().max(
+    patient_email: Yup.string().email("Enter Valid Email Address"),
+    patient_country: Yup.string().required("Country is required"),
+    patient_city: Yup.string().required("City is required"),
+    patient_doctor: Yup.string().required("Doctor is required"),
+    patient_address: Yup.string().max(
       100,
       "Adress should not be greater than 100 characters"
     ),
-    date: Yup.date("Date is required")
+    patient_eappointmentdate: Yup.date("Date is required")
       .typeError("Date is required")
       .required("Date is Required"),
-    department: Yup.string()
+    patient_department: Yup.string()
       .max(20, "Must be 20 characters or less")
       .required("Department is Required"),
   });
@@ -122,59 +131,117 @@ function ReceAppointments() {
     resolver: yupResolver(newpatient_to_appoint_schema),
   });
 
+  function formatDateToYYYYMMDD(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
   function Newpatient_to_appoint(data) {
     dispatch(cd_open_close(true));
-    setnewpatients_to_appoint(data);
+    let {
+      patient_name,
+      patient_problem,
+      patient_age,
+      patient_contact,
+      patient_country,
+      patient_city,
+      patient_address,
+      patient_email,
+      patient_eappointmentdate,
+      patient_doctor,
+      patient_department,
+    } = data;
+
+    setnewpatients_to_appoint({
+      // emailsms_phone and other physical_online fielda is not registered with react hook form so that will never be traaced and send to the stste
+      patient_name: patient_name,
+      patient_problem: patient_problem,
+      patient_age: patient_age,
+      patient_contact: patient_contact,
+      patient_country: patient_country,
+      patient_city: patient_city,
+      patient_address: patient_address,
+      patient_email: patient_email,
+      patient_doctor: patient_doctor,
+      patient_eappointmentdate: formatDateToYYYYMMDD(patient_eappointmentdate),
+      patient_department: patient_department,
+      patient_UID: patient_UIDD,
+      // patient_NID: "",
+      // patient_bloodgrp: "",
+    });
+    setuuids_for_appointment({
+      patient_UID: patient_UIDD,
+      patient_eappointmentdate: formatDateToYYYYMMDD(patient_eappointmentdate),
+    });
   }
+
   ////////////////////////
   useEffect(() => {
     axios
-      .get("http://localhost:3100/newpatients")
-      .then((res) => [setpatientData(res.data)])
+      .get("http://localhost:8000/allikhwa-hms/e-appointments/")
+      .then((res) => setpatientData(res.data))
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+    setrender_getmethod_on_deletion(false);
+  }, [render_getmethod_on_deletion]);
   useEffect(() => {
     if (newpatients_to_appoint && cd_yess_no_var) {
-      const {
-        physical_online_appointment: physical_online_appointment,
-        email_sms_phone: email_sms_phone,
-        ...restfor_appointments
-      } = newpatients_to_appoint;
-      console.log(restfor_appointments);
       axios
-        .post("http://localhost:3100/appointments", {
+        .post(
+          "http://localhost:8000/allikhwa-hms/patients/",
           //  this sould be uploaded to patients for an appointment from eAppointments
-          ...restfor_appointments,
+          // keep in mind while uploading data must check that you are sending data in the key value json format
+          // and
+          newpatients_to_appoint
+        )
+        .then((res) => {
+          setnewpatients_to_appoint_delete(patient_UIDD);
+          setDeletionAppointment(true);
         })
         .catch((error) => {
           console.log(error);
         });
       reset();
+      setshow_patient_details(false);
       dispatch(cd_yess_no(false));
     }
   }, [newpatients_to_appoint, cd_yess_no_var]);
   useEffect(() => {
-    if (newpatients_to_appoint_delete && cd_yess_no_var) {
+    if (newpatients_to_appoint && cd_yess_no_var) {
+      axios
+        .post(
+          "http://localhost:8000/allikhwa-hms/uuids-for-appointments/",
+          uuids_for_appointment
+        )
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [uuids_for_appointment, cd_yess_no_var]);
+  useEffect(() => {
+    if (newpatients_to_appoint_delete && DeletionAppointment) {
       axios
         .delete(
-          "http://localhost:3100/newpatients/?PID=" +
+          "http://localhost:8000/allikhwa-hms/e-appointments/" +
             newpatients_to_appoint_delete
         )
         .catch((error) => {
           console.log(error);
         });
-      dispatch(cd_yess_no(false));
+      setrender_getmethod_on_deletion(true);
+      setDeletionAppointment(false);
+      setnewpatients_to_appoint_delete(false);
     }
-  }, [newpatients_to_appoint_delete, cd_yess_no_var]);
+  }, [newpatients_to_appoint_delete, DeletionAppointment]);
   return (
     <>
       <h2 className="fillfreebeds_h2">APPOINTMENT REQUESTS FROM WEB</h2>
 
       {show_patient_details && (
         <div
-          ref={prescription_show_patient_detail_rest_pres_form} // this ref is for ecrolling to this div element from edit details scrollintoview
           className="profile_information_all"
           style={{
             borderRadius: "8px",
@@ -184,10 +251,7 @@ function ReceAppointments() {
             mozboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
           }}
         >
-          <h2 className="fillfreebeds_h2">
-            Submit the Details for an Appointment with the Doctor or Update the
-            Details
-          </h2>
+          <h2 className="fillfreebeds_h2">SUBMIT FOR AN APPOINTMENT</h2>
           <h2
             className="fillfreebeds_h2"
             style={{
@@ -202,156 +266,184 @@ function ReceAppointments() {
           </h2>
           <form onSubmit={handleSubmit(Newpatient_to_appoint)}>
             <div className="profile_label_input ">
-              <label htmlFor="PID" className="profile_lanel_input_label">
+              <label
+                htmlFor="patient_UID"
+                className="profile_lanel_input_label"
+              >
                 PID:
               </label>
               <input
-                {...register("PID")}
-                id="contact"
+                name="patient_UID"
+                {...register("patient_UID")}
+                defaultValue={patient_UIDD}
+                id="patient_UID"
                 type="text"
                 placeholder="Enter Patient ID Given By Hospital"
               ></input>
             </div>
             <div className="profile_label_input ">
-              <label htmlFor="name" className="profile_lanel_input_label">
+              <label
+                htmlFor="patient_name"
+                className="profile_lanel_input_label"
+              >
                 Name:
               </label>
               <input
-                id="name"
+                id="patient_name"
                 type="text"
-                {...register("name")}
+                {...register("patient_name")}
                 placeholder="Enter Name of the patient"
               ></input>
-              <p className="pForForm">{errors.name?.message}</p>
-            </div>
-            <div className="profile_label_input ">
-              <label htmlFor="Age" className="profile_lanel_input_label">
-                Age:
-              </label>
-              <input
-                id="age"
-                type="text"
-                {...register("age")}
-                placeholder="Enter Patient Age"
-              ></input>
-              <p className="pForForm">{errors.age?.message}</p>
+              <p className="pForForm">{errors.patient_name?.message}</p>
             </div>
             <div className="profile_label_input ">
               <label
-                htmlFor="patient_dis"
+                htmlFor="patient_age"
+                className="profile_lanel_input_label"
+              >
+                Age:
+              </label>
+              <input
+                id="patient_age"
+                type="text"
+                {...register("patient_age")}
+                placeholder="Enter Patient Age"
+              ></input>
+              <p className="pForForm">{errors.patient_age?.message}</p>
+            </div>
+            <div className="profile_label_input ">
+              <label
+                htmlFor="patient_problem"
                 className="profile_lanel_input_label"
               >
                 Write about your Problem!
               </label>
               <textarea
-                name="patient_dis"
-                id="patient_dis"
+                name="patient_problem"
+                id="patient_problem"
                 rows="3"
                 cols="5"
-                {...register("patient_dis")}
+                {...register("patient_problem")}
                 placeholder="Write about your problem"
                 style={{
                   width: "73%",
                 }}
               />
-              <p className="pForForm ">{errors.patient_dis?.message}</p>
-            </div>
-            <div className="profile_label_input ">
-              <label htmlFor="doctor" className="profile_lanel_input_label">
-                Doctor
-              </label>
-              <input
-                id="age"
-                type="text"
-                {...register("doctor")}
-                placeholder="Enter Patient Age"
-              ></input>
-              <p className="pForForm ">{errors.doctor?.message}</p>
-            </div>
-            <div className="profile_label_input ">
-              <label htmlFor="department" className="profile_lanel_input_label">
-                Department:
-              </label>
-              <input
-                {...register("department")}
-                id="department"
-                type="text"
-                placeholder="Enter Patient Department"
-              ></input>
-              <p className="pForForm">{errors.department?.message}</p>
+              <p className="pForForm ">{errors.patient_problem?.message}</p>
             </div>
             <div className="profile_label_input ">
               <label
-                htmlFor="contact_num"
+                htmlFor="patient_doctor"
+                className="profile_lanel_input_label"
+              >
+                Doctor
+              </label>
+              <input
+                id="patient_doctor"
+                type="text"
+                {...register("patient_doctor")}
+                placeholder="Enter Doctor for Patient"
+              ></input>
+              <p className="pForForm ">{errors.patient_doctor?.message}</p>
+            </div>
+            <div className="profile_label_input ">
+              <label
+                htmlFor="patient_department"
+                className="profile_lanel_input_label"
+              >
+                Department:
+              </label>
+              <input
+                {...register("patient_department")}
+                id="patient_department"
+                type="text"
+                placeholder="Enter Patient Department"
+              ></input>
+              <p className="pForForm">{errors.patient_department?.message}</p>
+            </div>
+            <div className="profile_label_input ">
+              <label
+                htmlFor="patient_contact"
                 className="profile_lanel_input_label"
               >
                 {" "}
                 Contact:
               </label>
               <input
-                {...register("contact_num")}
-                id="contact_num"
+                {...register("patient_contact")}
+                id="patient_contact "
                 type="text"
                 placeholder="Enter Contact Information of Patient"
               ></input>
-              <p className="pForForm">{errors.contact_num?.message}</p>
+              <p className="pForForm">{errors.patient_contact?.message}</p>
             </div>
             <div className="profile_label_input ">
-              <label htmlFor="email" className="profile_lanel_input_label">
+              <label
+                htmlFor="patient_email"
+                className="profile_lanel_input_label"
+              >
                 Email:
               </label>
               <input
-                {...register("email")}
-                id="email"
+                {...register("patient_email")}
+                id="patient_email"
                 type="text"
-                placeholder="Enter Free Available Beds"
+                placeholder="Enter Your Email Address"
               ></input>
-              <p className="pForForm">{errors.email?.message}</p>
+              <p className="pForForm">{errors.patient_email?.message}</p>
             </div>
             <div className="profile_label_input ">
-              <label htmlFor="country">Country:</label>
+              <label htmlFor="patient_country">Country:</label>
               <input
-                id="country"
+                id="patient_country"
                 type="text"
-                {...register("country")}
-                placeholder="Enter Patient Age"
+                {...register("patient_country")}
+                placeholder="Enter Patient Country"
               ></input>
-              <p className="pForForm ">{errors.country?.message}</p>
+              <p className="pForForm ">{errors.patient_country?.message}</p>
             </div>
             <div className="profile_label_input ">
-              <label htmlFor="city">City:</label>
+              <label htmlFor="patient_city">City:</label>
               <input
-                id="city"
+                id="patient_city"
                 type="text"
-                {...register("city")}
-                placeholder="Enter Patient Age"
+                {...register("patient_city")}
+                placeholder="Enter Patient City"
               ></input>
-              <p className="pForForm ">{errors.city?.message}</p>
+              <p className="pForForm ">{errors.patient_city?.message}</p>
             </div>
             <div className="profile_label_input ">
-              <label htmlFor="address" className="profile_lanel_input_label">
+              <label
+                htmlFor="patient_address"
+                className="profile_lanel_input_label"
+              >
                 {" "}
                 Address:
               </label>
               <input
-                {...register("address")}
-                id="address"
+                {...register("patient_address")}
+                id="patient_address"
                 type="text"
                 placeholder="Enter Patient Address"
               ></input>
-              <p className="pForForm">{errors.address?.message}</p>
+              <p className="pForForm">{errors.patient_address?.message}</p>
             </div>
             <div className="profile_label_input ">
-              <label htmlFor="date" className="profile_lanel_input_label">
+              <label
+                htmlFor="patient_eappointmentdate"
+                className="profile_lanel_input_label"
+              >
                 Date:
               </label>
               <input
-                {...register("date")}
-                id="date"
+                {...register("patient_eappointmentdate")}
+                id="patient_eappointmentdate"
                 type="date"
-                placeholder="Enter Patient Admission Date"
+                placeholder="Enter Patient Appointment Date Apponted by the patient"
               ></input>
-              <p className="pForForm">{errors.date?.message}</p>
+              <p className="pForForm">
+                {errors.patient_eappointmentdate?.message}
+              </p>
             </div>
             <div className="profile_label_input ">
               <label
@@ -424,12 +516,13 @@ function ReceAppointments() {
                   patientData.map((patdet, id) => {
                     return (
                       <tr key={id}>
-                        <td>{patdet.name}</td>
-                        <td>{patdet.age}</td>
-                        <td>{patdet.doctor}</td>
-                        <td>{patdet.contact_num}</td>
-                        <td>{patdet.city}</td>
-                        <td>{patdet.date?.split("T")[0]}</td>
+                        <td>{patdet.patient_name}</td>
+                        <td>{patdet.patient_age}</td>
+                        <td>{patdet.patient_doctor}</td>
+                        <td>{patdet.patient_contact}</td>
+                        <td>{patdet.patient_city}</td>
+                        {/* <td>{patdet.date?.split("T")[0]}</td> */}
+                        <td>{patdet.patient_eappointmentdate}</td>
                         <td>
                           <span
                             style={{
@@ -438,8 +531,17 @@ function ReceAppointments() {
                               cursor: "pointer",
                             }}
                             onClick={() => {
-                              dispatch(cd_open_close(true));
-                              setnewpatients_to_appoint_delete(patdet.PID);
+                              // dispatch(cd_open_close(true));
+                              const result = window.confirm(
+                                "Are you sure you want to delete an appointment?"
+                              );
+                              if (result) {
+                                setDeletionAppointment(result);
+                              }
+
+                              setnewpatients_to_appoint_delete(
+                                patdet.patient_UID
+                              );
                             }}
                           >
                             <AiFillCloseCircle />
@@ -448,22 +550,30 @@ function ReceAppointments() {
                         <td
                           onClick={() => {
                             setshow_patient_details(true);
-                            setValue("name", patdet.name);
-                            setValue("PID", patdet.PID);
-                            setValue("city", patdet.city);
-                            setValue("country", patdet.country);
-                            setValue("doctor", patdet.doctor);
-                            setValue("adress", patdet.address);
-                            setValue("contact_num", patdet.contact_num);
-                            setValue("age", patdet.age);
-                            setValue("patient_dis", patdet.patient_dis);
-                            setValue("date", patdet.date?.split("T")[0]);
-                            setValue("email", patdet.email);
-                            setphysical_online_appointment(
-                              patdet.physical_online_appointment
+                            setValue("patient_name", patdet.patient_name);
+                            // setValue("PID", patdet.patient_UID); we are commenting it because we want to no one can generate it,
+                            setpatient_UID(patdet.patient_UID);
+                            setValue("patient_city", patdet.patient_city);
+                            setValue("patient_country", patdet.patient_country);
+                            setValue("patient_doctor", patdet.patient_doctor);
+                            setValue("patient_address", patdet.patient_address);
+                            setValue("patient_contact", patdet.patient_contact);
+                            setValue("patient_age", patdet.patient_age);
+                            setValue("patient_problem", patdet.patient_problem);
+                            // setValue("date", patdet.date?.split("T")[0]);
+                            setValue(
+                              "patient_eappointmentdate",
+                              patdet.patient_eappointmentdate
                             );
-                            setemail_sms_phone(patdet.email_sms_phone);
-                            prescription_show_patient_detail_rest_pres_form.current?.scrollIntoView();
+                            setValue("patient_email", patdet.patient_email);
+                            setphysical_online_appointment(
+                              patdet.patient_physicalonlineappointment
+                            );
+                            setemail_sms_phone(patdet.patient_emailsmsphone);
+                            window.scrollTo({
+                              top: 0,
+                              behavior: "smooth",
+                            });
                           }}
                         >
                           <MdDetails className="patient_details_edit_icon" />
