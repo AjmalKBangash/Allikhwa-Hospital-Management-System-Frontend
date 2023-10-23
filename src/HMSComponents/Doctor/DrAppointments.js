@@ -21,28 +21,78 @@ function DrAppointments() {
     rejected_reception_from_appointments,
     setrejected_reception_from_appointments,
   ] = useState(null);
+  const [uuids_for_appointments, setuuids_for_appointments] = useState();
+  const [rerendertwo_axios_gets, setrerendertwo_axios_gets] = useState(false);
+
+  // FETCHING DATA FROM SERVER OF APPOINTMENTS MADE BY THE CURRENT DOCTOR
   useEffect(() => {
     axios
-      .get("http://localhost:3100/appointments?doctor=DrHassan")
+      .get(
+        "http://localhost:8000/allikhwa-hms/uuids-for-appointments/Ajmal Bangash"
+      )
       .then((res) => {
-        // console.log(res.data);
-        setPatientData(res.data);
+        setuuids_for_appointments(res.data);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.log(err);
       });
-  }, [deletion_for_appointments]);
+  }, [rerendertwo_axios_gets]);
+
+  useEffect(() => {
+    if (uuids_for_appointments) {
+      try {
+        const fetchPatients = async () => {
+          const responses = await Promise.all(
+            uuids_for_appointments.map((uuid) => {
+              return axios.get(
+                "http://localhost:8000/allikhwa-hms/patients-list/",
+                { params: uuid }
+              );
+            })
+          );
+
+          const patients = responses.map((patient) => patient.data);
+          const arrayOfObjects = [].concat(...patients);
+          setPatientData(arrayOfObjects);
+          setrerendertwo_axios_gets(false);
+        };
+
+        fetchPatients();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }, [uuids_for_appointments, rerendertwo_axios_gets]);
+
+  // useEffect(() => {
+  //   // It is already implemented just above which is more concise while handling errors on ly in catch block after all data has been fetched
+  //   Promise.all(
+  //     uuids_for_appointments.map((uuid) => {
+  //       return axios.get("http://localhost:8000/allikhwa-hms/patients-list/", {
+  //         params: uuid,
+  //       });
+  //     })
+  //   )
+  //     .then((responses) => {
+  //       const patients = responses.map((patient) => patient.data);
+  //       console.log(patients);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   // );
+  // }, []);
+
   useEffect(() => {
     {
       prescription_from_appointments &&
         axios
-          .post("http://localhost:3100/prescriptions", {
+          .post("http://localhost:8000/allikhwa-hms/uuids-for-prescriptions/", {
             ...prescription_from_appointments,
           })
-          // .then((res) => {
-          // console.log(res.data);
-          // setPatientData(res.data);
-          // })
+          .then((res) => {
+            setprescription_from_appointments(false);
+          })
           .catch((error) => {
             console.log(error);
           });
@@ -53,16 +103,15 @@ function DrAppointments() {
       deletion_for_appointments &&
         axios
           .delete(
-            "http://localhost:3100/appointments/?PID=" +
+            "http://localhost:8000/allikhwa-hms/uuids-for-appointments/" +
               deletion_for_appointments
           )
           .then((res) => {
-            console.log(res.data);
-            console.log(deletion_for_appointments);
+            setrerendertwo_axios_gets(true);
+            setdeletion_for_appointments(false);
           })
           .catch((error) => {
             console.log(error);
-            console.log(deletion_for_appointments);
           });
     }
   }, [deletion_for_appointments]);
@@ -70,9 +119,15 @@ function DrAppointments() {
     {
       rejected_reception_from_appointments &&
         axios
-          .post("http://localhost:3100/rejectedappointments", {
-            // the new patients data model in databse(server) will be for newly patients which will be handled by receptionists
-            ...rejected_reception_from_appointments, //here i should also pass the doctor name to rejectedappointments database table Noo The doctor name is already added by the receptionist so need to add dr which is already in the appointment data table
+          .post(
+            "http://localhost:8000/allikhwa-hms/uuids-for-rejected-appointments/",
+            {
+              // the new patients data model in databse(server) will be for newly patients which will be handled by receptionists
+              ...rejected_reception_from_appointments, //here i should also pass the doctor name to rejectedappointments database table Noo The doctor name is already added by the receptionist so need to add dr which is already in the appointment data table
+            }
+          )
+          .then((res) => {
+            setrejected_reception_from_appointments(false);
           })
           .catch((error) => {
             console.log(error);
@@ -146,51 +201,53 @@ function DrAppointments() {
                   <> */}
                   <tr>
                     <td>PID</td>
-                    <td>{drdashboard_showPatient_Details.PID}</td>
+                    <td>{drdashboard_showPatient_Details.patient_UID}</td>
                   </tr>
                   <tr>
                     <td>Name</td>
-                    <td> {drdashboard_showPatient_Details.name}</td>
+                    <td> {drdashboard_showPatient_Details.patient_name}</td>
                   </tr>
                   <tr>
                     <td>Age</td>
-                    <td>{drdashboard_showPatient_Details.age}</td>
+                    <td>{drdashboard_showPatient_Details.patient_age}</td>
                   </tr>
                   <tr>
                     <td>Last Appointment Date</td>
-                    <td>{drdashboard_showPatient_Details.date}</td>
+                    <td>
+                      {drdashboard_showPatient_Details.patient_eappointmentdate}
+                    </td>
                   </tr>
                   <tr>
                     <td>Contact</td>
-                    <td>{drdashboard_showPatient_Details.contact}</td>
+                    <td>{drdashboard_showPatient_Details.patient_contact}</td>
                   </tr>
                   <tr>
                     <td>City</td>
-                    <td> {drdashboard_showPatient_Details.city}</td>
+                    <td> {drdashboard_showPatient_Details.patient_city}</td>
+                  </tr>
+                  <tr>
+                    <td>Patient Problem</td>
+                    <td> {drdashboard_showPatient_Details.patient_problem}</td>
                   </tr>
                   <tr>
                     <td>Department</td>
-                    <td>{drdashboard_showPatient_Details.department}</td>
+                    <td>
+                      {drdashboard_showPatient_Details.patient_department}
+                    </td>
                   </tr>
                   <tr>
                     <td>Admitted Status</td>
-                    <td>{drdashboard_showPatient_Details.admitted_status}</td>
+                    {/* <td>{drdashboard_showPatient_Details.patient_admitted_status}</td> */}
+                    <td>admitted_status</td>
                   </tr>
                   <tr>
                     <td>Bed No</td>
-                    <td>{drdashboard_showPatient_Details.bed_no}</td>
+                    {/* <td>{drdashboard_showPatient_Details.bed_no}</td> */}
+                    <td></td>
                   </tr>
                   <tr>
                     <td>Patient Doctor</td>
-                    <td>{drdashboard_showPatient_Details.doctor}</td>
-                  </tr>
-                  <tr>
-                    <td>Medicine</td>
-                    <td>{drdashboard_showPatient_Details.medicine}</td>
-                  </tr>
-                  <tr>
-                    <td>Instructions</td>
-                    <td>{drdashboard_showPatient_Details.instructions}</td>
+                    <td>{drdashboard_showPatient_Details.patient_doctor}</td>
                   </tr>
                   {/* </>
                 ) : (
@@ -204,7 +261,6 @@ function DrAppointments() {
       </div>
       <div className="drappointments_patient_details">
         <div className="drappointments_patient_list">
-          {" "}
           <table class="patient_GeneratedTable_details">
             <thead>
               <tr>
@@ -220,67 +276,108 @@ function DrAppointments() {
             </thead>
             <tbody>
               {patientData ? (
-                patientData.map((patdet, id) => {
-                  return (
-                    <tr key={id}>
-                      <td>{patdet.name}</td>
-                      <td>{patdet.age}</td>
-                      <td>{patdet.date}</td>
-                      <td>{patdet.city}</td>
-                      <td>{patdet.admitted_status}</td>
+                patientData.map(
+                  (patdet, index) => {
+                    // return (
+                    // <div key={index}>
+                    // {
+                    // patientData02.map((patdet, id) => {
+                    return (
+                      <tr key={index}>
+                        <td key={index + 1}>{patdet.patient_name}</td>
+                        <td key={index + 2}>{patdet.patient_age}</td>
+                        <td key={index + 3}>
+                          {patdet.patient_eappointmentdate}
+                        </td>
+                        <td key={index + 4}>{patdet.patient_city}</td>
+                        {/* <td>{patdet.admitted_status}</td> */}
+                        <td key={index + 5}>admitted_status</td>
 
-                      <td>
-                        <span
-                          style={{
-                            fontSize: "25px",
-                            color: "green",
-                            cursor: "pointer",
-                          }}
+                        <td key={index + 6}>
+                          <span
+                            style={{
+                              fontSize: "25px",
+                              color: "green",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              const result = window.confirm(
+                                "Are you sure you want to send the patient to Prescription?"
+                              );
+                              if (result) {
+                                let {
+                                  patient_UID,
+                                  patient_doctor,
+                                  patient_eappointmentdate,
+                                } = patdet;
+                                setprescription_from_appointments({
+                                  patient_UID: patient_UID,
+                                  patient_doctor: patient_doctor,
+                                  patient_eappointmentdate:
+                                    patient_eappointmentdate,
+                                });
+                                setdeletion_for_appointments(
+                                  patdet.patient_UID
+                                );
+                              }
+                            }}
+                          >
+                            <AiFillCheckCircle />
+                          </span>
+                        </td>
+                        <td key={index + 7}>
+                          <span
+                            style={{
+                              fontSize: "25px",
+                              color: "red",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              const result = window.confirm(
+                                "Are you sure you want to reject the Appointment?"
+                              );
+                              if (result) {
+                                setrejected_reception_from_appointments(patdet);
+                                setdeletion_for_appointments(
+                                  patdet.patient_UID
+                                );
+                              }
+                            }}
+                          >
+                            <AiFillCloseCircle />
+                          </span>
+                        </td>
+                        <td
+                          key={index + 8}
                           onClick={() => {
-                            setprescription_from_appointments(patdet);
-                            setdeletion_for_appointments(patdet.PID);
-                            console.log("clicked approved");
+                            // PatientDetailsFun(patdet);
+                            setdrdashboard_showPatient_Details(patdet);
+                            window.scrollTo({
+                              top: 0,
+                              behavior: "smooth",
+                            });
                           }}
                         >
-                          <AiFillCheckCircle />
-                        </span>
-                      </td>
-                      <td>
-                        {" "}
-                        <span
-                          style={{
-                            fontSize: "25px",
-                            color: "red",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            setrejected_reception_from_appointments(patdet);
-                            setdeletion_for_appointments(patdet.PID);
-                          }}
-                        >
-                          <AiFillCloseCircle />
-                        </span>
-                      </td>
-                      <td
-                        onClick={() => {
-                          // PatientDetailsFun(patdet);
-                          setdrdashboard_showPatient_Details(patdet);
-                          window.scrollTo({
-                            top: 0,
-                            behavior: "smooth",
-                          });
-                        }}
-                      >
-                        <MdDetails className="patient_details_edit_icon" />
-                      </td>
-                    </tr>
-                  );
-                })
+                          <MdDetails className="patient_details_edit_icon" />
+                        </td>
+                      </tr>
+                    );
+                    // });
+                  }
+                  //  </div>
+                )
               ) : (
-                <h6>Loading ...</h6>
+                // })
+                <td>
+                  {" "}
+                  <h6>Loading ...</h6>
+                </td>
               )}
             </tbody>
           </table>
+          {/* {patientData && patientData.map((patientData02, index) => {
+            return <div>{patientData02.map((patient, index) => {})}</div>;
+          })} */}
         </div>
       </div>
     </>

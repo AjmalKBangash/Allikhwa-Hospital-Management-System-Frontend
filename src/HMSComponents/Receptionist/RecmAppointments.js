@@ -174,6 +174,7 @@ function RecmAppointments() {
     });
     setuuids_for_appointment({
       patient_UID: PID,
+      patient_doctor: doctor,
       patient_eappointmentdate: formatDateToYYYYMMDD(date),
     });
   }

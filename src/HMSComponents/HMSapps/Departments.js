@@ -13,201 +13,14 @@ import BreadCrumbs from "../../ForAll/BreadCrumbs";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-const departments = [
-  {
-    id: "111",
-    name: "GENERAL",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
-    description:
-      "Used in men who do not make enough of a natural substance called testosterone ",
-  },
-  {
-    id: "1",
-    name: "CARDIOLOGY",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
-    description:
-      "Used in men who do not make enough of a natural substance called testosterone ",
-    price: 700,
-    discount: 10,
-    category: "wholeSale",
-  },
-  {
-    id: "2",
-    name: "ENDOCRINOLOGY",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 700,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "3",
-    name: "ENT",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 400,
-    discount: 50,
-    category: "wholeSale",
-  },
-  {
-    id: "4",
-    name: "EYE",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 150,
-    discount: 32,
-    category: "wholeSale",
-  },
-  {
-    id: "5",
-    name: "PHYSICA",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 650,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "6",
-    name: "GASTROENTEROLOGY",
-    description:
-      "24 Hour on call for all the patients from all the KPK as well as patients from abroad e.g. Afghanistan and some part of Punjab. GI Lab is open for patients throughout the week for routine procedures e.g. Upper & Lower GI Endoscopp, Banding, Scierotheraphy and Biopsy. Dilation, Stenting, Polypectomy, Sigmoidoscopy, Colonoscopy and m importantly ERCP etc. Patients are also admitted on daily basis for acute emergency, and for workup. Most of the Medicines are provided free from Hospital on daily basis. Doctors Nursing Staff Paramedics are present round o'clock for patients care.Gastroenterology Department consist of 35 beds but due to heavy flow of patients extra beds a given to patients which increases number of patients to fifty d sixty routinely. Patients Suffering from 3 and Hepatitis B are properly counseled about their disease and also help them how to get their treatment free from Pakistan Bait-Ui-Mall. Most of patients investigations are done in hospital laboratory free of cost. Gastroenterology Department has highly qualified consultant.",
-  },
-  {
-    id: "7",
-    name: "GYNAE",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-  },
-  {
-    id: "8",
-    name: "    MAXILLOFACIAL AND DENTISTRY",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-  },
-  {
-    id: "9",
-    name: "ORTHOPEDIC & SPINE SURGERY",
-    description:
-      "Used in men who do not make enough of a natural substance called testosterone ",
-  },
-  {
-    id: "10",
-    name: "PATHOLOGY",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-  },
-  {
-    id: "11",
-    name: "PEADS",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-  },
-  {
-    id: "12",
-    name: "PLASTIC SURGERY",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-  },
-  {
-    id: "13",
-    name: "RADIOLOGY",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill05.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-  },
-  {
-    id: "14",
-    name: "SURGICAL",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill06.png')",
-    description:
-      "Lalo roghlo za patal londe pategm aw za gadeegam jar shamma bachpana",
-    price: 30,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "15",
-    name: "HMSEMERGENCY",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill07.png')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 90,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "16",
-    name: "HUMAN RESOURCEY",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 700,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "17",
-    name: "ONCOLOGY",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill08.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 700,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "18",
-    name: "IT DEPARTMENT",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill01.png')",
-    description:
-      "Used in men who do not make enough of a natural substance called testosterone ",
-    price: 700,
-    discount: 10,
-    category: "wholeSale",
-  },
-  {
-    id: "19",
-    name: "BIOMEDICAL ENGINEERING",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill02.jpeg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 700,
-    discount: 20,
-    category: "wholeSale",
-  },
-  {
-    id: "20",
-    name: "PURCHASE AND PROCUREMENT",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill03.webp')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 400,
-    discount: 50,
-    category: "wholeSale",
-  },
-  {
-    id: "21",
-    name: "ANESTHESIA AND PAIN MANAGEMENT",
-    pic: "require('./src/Components/CarouselImages/PillsImages/pill04.jpg')",
-    description:
-      "Relief of symptoms associated with seasonal allergic rhinitis due to allergen",
-    price: 150,
-    discount: 32,
-    category: "wholeSale",
-  },
-];
-
 function Departments() {
+  const [departments, setdepartments] = useState();
   const [depart_name_for_bread, setDepart_name_for_bread] = useState();
   const [display_adding_depart, setDisplay_adding_depart] = useState(false);
   const [display_adding_depart_button, setDisplay_adding_depart_button] =
     useState(true);
-  const [sending_added_depart_data, setSending_added_depart_data] = useState();
+  const [sending_added_depart_data, setSending_added_depart_data] =
+    useState(false);
   const { departmentname } = useParams();
 
   const location = useLocation();
@@ -217,18 +30,17 @@ function Departments() {
   );
 
   const department_adding_validation_schema = Yup.object().shape({
-    depart_name: Yup.string()
-      .max(50, "Must be less than 50 characters!")
+    department_name: Yup.string()
+      .max(20, "Must be less than 50 characters!")
       .required("Department Name is Required")
       .matches(
         /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g,
         "Department name should not inculde any digits, numbers, special characters. Example (ENT A) or (Cardiology)  etc"
       ),
-    depart_description: Yup.string()
-      .min(200, "Must be greater than 200 characters!")
+    department_description: Yup.string()
+      .min(50, "Must be greater than 200 characters!")
       .required("Department Description is Required"),
   });
-
   const {
     reset,
     register,
@@ -241,7 +53,14 @@ function Departments() {
 
   const handle_department_adding_fun = (data) => {
     alert(JSON.stringify(data));
-    setSending_added_depart_data(data);
+    let {
+      department_name: department_name,
+      department_description: department_description,
+    } = data;
+    setSending_added_depart_data({
+      department_name: department_name.toUpperCase(),
+      department_description: department_description,
+    });
     reset();
   };
 
@@ -254,14 +73,19 @@ function Departments() {
     return replaced.join("");
   }
   useEffect(() => {
-    axios
-      .post("localhost:3100/departmentnames", { sending_added_depart_data })
-      // .then((res) => {
-      //   console.log(res);
-      // })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (sending_added_depart_data) {
+      axios
+        .post(
+          "http://localhost:8000/allikhwa-hms/departments/",
+          sending_added_depart_data
+        )
+        .then((res) => {
+          setSending_added_depart_data(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, [sending_added_depart_data]);
   const path_in_departments = matchPath(
     "/all'ikhwa-management-system/departments/",
@@ -283,45 +107,70 @@ function Departments() {
       setDisplay_adding_depart_button(false);
     }
   }, [path_in_departments]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/allikhwa-hms/departments/")
+      .then((res) => {
+        setdepartments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <div className="department_details_top_hmsapp">
         <BreadCrumbs data={location.pathname + "/" + depart_name_for_bread} />
         <div className="departdetails_container_hmsapps">
           {/* this is depart list column  */}
-          <div className="departdetails_column01_in_hmsapp">
+          <div
+            className="departdetails_column01_in_hmsapp"
+            style={{
+              height: "82vh",
+              backgroundColor: "#013737",
+            }}
+          >
             <ul>
-              {departments.map((department, id) => {
-                return (
-                  <NavLink
-                    to={
-                      "http://localhost:3000/all'ikhwa-management-system/departments/" +
-                      Replacing(department.name.toLowerCase().trim())
-                    }
-                    className={
-                      departmentname ===
-                      Replacing(department.name.toLowerCase().trim())
-                        ? "active linkk"
-                        : "linkk"
-                    }
-                    state={[department.name, department.description]}
-                    style={{ color: "white" }}
-                    onClick={() => {
-                      setDepart_name_for_bread(
-                        Replacing(department.name.trim())
-                      );
-                      setDisplay_adding_depart_button(false);
-                    }}
-                  >
-                    <li key={id}>
-                      <span> {department.name}</span>
-                      <span className="departdetail_column01_arrow_hmsapps">
-                        &#8594;
-                      </span>
-                    </li>
-                  </NavLink>
-                );
-              })}
+              {departments &&
+                departments.map((department, id) => {
+                  return (
+                    <NavLink
+                      to={
+                        "http://localhost:3000/all'ikhwa-management-system/departments/" +
+                        Replacing(
+                          department.department_name.toLowerCase().trim()
+                        )
+                      }
+                      className={
+                        departmentname ===
+                        Replacing(
+                          department.department_name.toLowerCase().trim()
+                        )
+                          ? "active linkk"
+                          : "linkk"
+                      }
+                      state={[
+                        department.department_name,
+                        department.department_description,
+                      ]}
+                      style={{ color: "white" }}
+                      onClick={() => {
+                        setDepart_name_for_bread(
+                          Replacing(department.department_name.trim())
+                        );
+                        setDisplay_adding_depart_button(false);
+                      }}
+                    >
+                      <li key={id}>
+                        <span> {department.department_name}</span>
+                        <span className="departdetail_column01_arrow_hmsapps">
+                          &#8594;
+                        </span>
+                      </li>
+                    </NavLink>
+                  );
+                })}
             </ul>
           </div>
           <div
@@ -398,23 +247,25 @@ function Departments() {
                       Your Department name:
                     </label>
                     <input
-                      id="depart_name"
+                      id="department_name"
                       type="text"
-                      {...register("depart_name")}
+                      {...register("department_name")}
                       placeholder="Enter Your Department Name"
                     ></input>
-                    <p className="pForForm">{errors.depart_name?.message}</p>
+                    <p className="pForForm">
+                      {errors.department_name?.message}
+                    </p>
                   </div>
                   <div className="profile_label_input ">
                     <span>
                       <p>
-                        <label htmlFor="depart_description">
+                        <label htmlFor="department_description">
                           Department Bio:
                         </label>
                       </p>
                       <p>Write Your Department Description:</p>
                       <p className="pForForm">
-                        {errors.depart_description?.message}
+                        {errors.department_description?.message}
                       </p>
                     </span>
                     <div>
@@ -485,12 +336,15 @@ function Departments() {
                         />
                       </div>
                       <textarea
-                        {...register("depart_description")}
-                        id="depart_description"
-                        name="depart_description"
+                        {...register("department_description")}
+                        id="department_description"
+                        name="department_description"
                         placeholder="Write Your Deaprtment Description"
                         rows="5"
                         cols="50"
+                        style={{
+                          maxWidth: "73%",
+                        }}
                       />
                     </div>
                   </div>

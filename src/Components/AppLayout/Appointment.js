@@ -14,68 +14,6 @@ import axios from "axios";
 
 import Practice from "./Practice";
 
-const doctors_from_backend = [
-  {
-    id: 1,
-    name: "Hassan Khan",
-    currency: "AFN",
-    phone: 93,
-    capital: "Kabul",
-    code: "AF",
-    code3: "AFG",
-    number: 4,
-  },
-  {
-    id: 2,
-    name: "Maaz Khan Bangash",
-    currency: "ZAR",
-    phone: 27,
-    capital: "Pretoria",
-    code: "ZA",
-    code3: "ZAF",
-    number: 710,
-  },
-  {
-    id: 3,
-    name: "Husnain Bangash",
-    currency: "ALL",
-    phone: 355,
-    capital: "Tirana",
-    code: "AL",
-    code3: "ALB",
-    number: 8,
-  },
-  {
-    id: 4,
-    name: "Adnan Khan Bangash",
-    currency: "EUR",
-    phone: 49,
-    capital: "Berlin",
-    code: "DE",
-    code3: "DEU",
-    number: 276,
-  },
-  {
-    id: 5,
-    name: "Dr.Dur Kamil Bangash",
-    currency: "EUR",
-    phone: 376,
-    capital: "Andorra la Vella",
-    code: "AD",
-    code3: "AND",
-    number: 20,
-  },
-  {
-    id: 6,
-    name: "Angola",
-    currency: "AOA",
-    phone: 244,
-    capital: "Luanda",
-    code: "AO",
-    code3: "AGO",
-    number: 24,
-  },
-];
 const countries = [
   {
     id: 1,
