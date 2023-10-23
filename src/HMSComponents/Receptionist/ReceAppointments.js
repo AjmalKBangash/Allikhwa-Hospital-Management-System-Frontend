@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid";
 // Icons
 import { AiFillCloseCircle } from "react-icons/ai";
 import { MdDetails } from "react-icons/md";
-import { RiCreativeCommonsZeroLine } from "react-icons/ri";
+import { RiContactsBookLine, RiCreativeCommonsZeroLine } from "react-icons/ri";
 
 const doctors_from_backend = [
   {
@@ -141,6 +141,7 @@ function ReceAppointments() {
   function Newpatient_to_appoint(data) {
     dispatch(cd_open_close(true));
     let {
+      patient_UID,
       patient_name,
       patient_problem,
       patient_age,
@@ -153,7 +154,6 @@ function ReceAppointments() {
       patient_doctor,
       patient_department,
     } = data;
-
     setnewpatients_to_appoint({
       // emailsms_phone and other physical_online fielda is not registered with react hook form so that will never be traaced and send to the stste
       patient_name: patient_name,
@@ -167,12 +167,13 @@ function ReceAppointments() {
       patient_doctor: patient_doctor,
       patient_eappointmentdate: formatDateToYYYYMMDD(patient_eappointmentdate),
       patient_department: patient_department,
-      patient_UID: patient_UIDD,
+      patient_UID: patient_UID,
       // patient_NID: "",
       // patient_bloodgrp: "",
     });
     setuuids_for_appointment({
-      patient_UID: patient_UIDD,
+      patient_UID: patient_UID,
+      patient_doctor: patient_doctor,
       patient_eappointmentdate: formatDateToYYYYMMDD(patient_eappointmentdate),
     });
   }
@@ -181,11 +182,13 @@ function ReceAppointments() {
   useEffect(() => {
     axios
       .get("http://localhost:8000/allikhwa-hms/e-appointments/")
-      .then((res) => setpatientData(res.data))
+      .then((res) => {
+        setpatientData(res.data);
+        setrender_getmethod_on_deletion(false);
+      })
       .catch((error) => {
         console.log(error);
       });
-    setrender_getmethod_on_deletion(false);
   }, [render_getmethod_on_deletion]);
   useEffect(() => {
     if (newpatients_to_appoint && cd_yess_no_var) {
@@ -228,12 +231,14 @@ function ReceAppointments() {
           "http://localhost:8000/allikhwa-hms/e-appointments/" +
             newpatients_to_appoint_delete
         )
+        .then((res) => {
+          setnewpatients_to_appoint_delete(false);
+          setrender_getmethod_on_deletion(true);
+        })
         .catch((error) => {
           console.log(error);
         });
-      setrender_getmethod_on_deletion(true);
       setDeletionAppointment(false);
-      setnewpatients_to_appoint_delete(false);
     }
   }, [newpatients_to_appoint_delete, DeletionAppointment]);
   return (
@@ -275,7 +280,8 @@ function ReceAppointments() {
               <input
                 name="patient_UID"
                 {...register("patient_UID")}
-                defaultValue={patient_UIDD}
+                // defaultValue={patient_UIDD}
+                // value={patient_UIDD}
                 id="patient_UID"
                 type="text"
                 placeholder="Enter Patient ID Given By Hospital"
@@ -551,7 +557,7 @@ function ReceAppointments() {
                           onClick={() => {
                             setshow_patient_details(true);
                             setValue("patient_name", patdet.patient_name);
-                            // setValue("PID", patdet.patient_UID); we are commenting it because we want to no one can generate it,
+                            setValue("patient_UID", patdet.patient_UID); // we are commenting it because we want to no one can generate it,
                             setpatient_UID(patdet.patient_UID);
                             setValue("patient_city", patdet.patient_city);
                             setValue("patient_country", patdet.patient_country);

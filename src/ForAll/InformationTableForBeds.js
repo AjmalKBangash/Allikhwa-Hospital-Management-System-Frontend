@@ -6,24 +6,22 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
-import { Link } from "react-router-dom";
 
 function InformationTableForBeds(props) {
-  console.log(props.depart_name);
   const [fetched_beds_data, setfetched_beds_data] = useState(false);
   const [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
-  const [add_Form_Data, set_Add_Form_Data] = useState();
+  const [add_Form_Data, set_Add_Form_Data] = useState(false);
   const [state_for_axios_post_torun, setstate_for_axios_post_torun] =
     useState(false);
   const [show_editing_beds_form, setshow_editing_beds_form] = useState(false);
   const [show_adding_beds_form, setshow_adding_beds_form] = useState(false);
   const table_details_beds = useRef(null);
 
-  const psswd = /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/;
-  const exclude_spaces_regex = /^[\d\w]*$/;
+  // const psswd = /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/;
+  // const exclude_spaces_regex = /^[\d\w]*$/;
   const adduppdateschema = Yup.object().shape({
     // Sign Up Form Validation
-    depart_name: Yup.string()
+    department_name: Yup.string()
       .max(25, "Must be 25 characters or less")
       .required("Name is Required!"),
     total_beds: Yup.string()
@@ -40,8 +38,8 @@ function InformationTableForBeds(props) {
       .required("No of Broken Beds is Required"),
     beds_description: Yup.string()
       .required("Description about department beds is Required")
-      .min(200, "Minimum characters should be 200")
-      .max(800, "Characters should not be more than 800"),
+      .min(50, "Minimum characters should be 200")
+      .max(1500, "Characters should not be more than 800"),
     //   .matches("", "should not be spaces"), here i should write regex which will exclude more than two whitespaces
   });
 
@@ -62,26 +60,21 @@ function InformationTableForBeds(props) {
     } else {
       set_Add_Form_Data(data);
     }
-    console.log(data);
-    reset();
   };
   useEffect(() => {
     console.log("wachaledoooo!");
     axios
       .get(
-        "http://localhost:3100/totalbeds?depart_name=" +
-          // * fetcing only beds which are in the department of general is willl be fetching after django backend ceated
-          //   "?" +
-          //   "depart_name" ==
-          props.depart_name
+        "http://localhost:8000/allikhwa-hms/department-beds/" +
+          props.department_name
       )
       .then((res) => {
-        setfetched_beds_data(...res.data);
+        setfetched_beds_data(res.data);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log(fetched_beds_data);
   }, [state_for_axios_post_torun]);
   // aDDUPDATEFORM
   useEffect(() => {
@@ -89,7 +82,8 @@ function InformationTableForBeds(props) {
       addUpdate_Form_Data &&
         axios
           .put(
-            `http://localhost:3100/totalbeds?depart_name` + props.depart_name, //currently it is not working in json server i will fix it after the creation of backend django
+            `http://localhost:8000/allikhwa-hms/department-beds/` +
+              props.department_name, //currently it is not working in json server i will fix it after the creation of backend django
             {
               ...addUpdate_Form_Data,
             }
@@ -107,9 +101,10 @@ function InformationTableForBeds(props) {
     {
       add_Form_Data &&
         axios
-          .post(`http://localhost:3100/totalbeds`, {
-            ...add_Form_Data,
-          })
+          .post(
+            `http://localhost:8000/allikhwa-hms/department-beds/`,
+            add_Form_Data
+          )
           .then((response) => {
             setstate_for_axios_post_torun(true);
             setshow_adding_beds_form(false);
@@ -117,15 +112,15 @@ function InformationTableForBeds(props) {
           .catch((error) => {
             console.log(error);
           });
+      reset();
+      set_Add_Form_Data(false);
     }
   }, [add_Form_Data]);
 
   let informationtablefrbedsprops_departname_totalbeds = {};
-  // let depart_name = "";
-  // let total_beds = "";
   if (fetched_beds_data) {
     informationtablefrbedsprops_departname_totalbeds = {
-      depart_name: props.depart_name,
+      department_name: props.department_name,
       total_beds: fetched_beds_data.total_beds,
     };
   }
@@ -156,8 +151,8 @@ function InformationTableForBeds(props) {
               mozboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
             }}
           >
-            {props.depart_name && props.depart_name.toUpperCase()} DEPARTMENT
-            BEDS
+            {props.department_name && props.department_name.toUpperCase()}{" "}
+            DEPARTMENT BEDS
           </h2>
           <h2
             style={{
@@ -193,14 +188,14 @@ function InformationTableForBeds(props) {
                 Name:
               </label>
               <input
-                id="depart_name"
+                id="department_name"
                 type="text"
-                {...register("depart_name")}
-                // defaultValue={fetched_beds_data?.depart_name}
-                value={props.depart_name}
+                {...register("department_name")}
+                // defaultValue={fetched_beds_data?.department_name}
+                value={props.department_name}
                 placeholder="Enter Department Name"
               ></input>
-              <p className="pForForm">{errors.depart_name?.message}</p>
+              <p className="pForForm">{errors.department_name?.message}</p>
             </div>
             <div className="profile_label_input ">
               <label htmlFor="total_beds" className="profile_lanel_input_label">
@@ -402,8 +397,8 @@ function InformationTableForBeds(props) {
               mozboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
             }}
           >
-            {props.depart_name && props.depart_name.toUpperCase()} DEPARTMENT
-            BEDS
+            {props.department_name && props.department_name.toUpperCase()}{" "}
+            DEPARTMENT BEDS
           </h2>
           <h2
             style={{
@@ -439,14 +434,14 @@ function InformationTableForBeds(props) {
                 Name:
               </label>
               <input
-                id="depart_name"
+                id="department_name"
                 type="text"
-                {...register("depart_name")}
-                // defaultValue={fetched_beds_data?.depart_name}
-                value={props.depart_name}
+                {...register("department_name")}
+                // defaultValue={fetched_beds_data?.department_name}
+                value={props.department_name}
                 placeholder="Enter Department Name"
               ></input>
-              <p className="pForForm">{errors.depart_name?.message}</p>
+              <p className="pForForm">{errors.department_name?.message}</p>
             </div>
             <div className="profile_label_input ">
               <label htmlFor="total_beds" className="profile_lanel_input_label">
@@ -625,7 +620,7 @@ function InformationTableForBeds(props) {
             <tbody>
               <tr>
                 <td>Department Name</td>
-                <td> {fetched_beds_data.depart_name}</td>
+                <td> {fetched_beds_data.department_name}</td>
               </tr>
               <tr>
                 <td>Total Beds</td>
