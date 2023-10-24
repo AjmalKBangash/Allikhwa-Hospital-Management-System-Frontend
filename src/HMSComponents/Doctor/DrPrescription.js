@@ -30,6 +30,10 @@ function DrPrescription() {
   const [waiting_patients_data, setwaiting_patients_data] = useState();
   const [waiting_list_deletion_work, setwaiting_list_deletion_work] =
     useState(false);
+  const [data_for_patients_fetching, setData_for_patients_fetching] =
+    useState();
+  const [data_for_patients_fetching02, setData_for_patients_fetching02] =
+    useState();
 
   // const [
   //   deletion_from_prescription_data_model,
@@ -45,10 +49,13 @@ function DrPrescription() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3100/prescriptions?doctor=DrHassan")
+      .get(
+        "http://localhost:8000/allikhwa-hms/uuids-for-prescriptions/?patient_doctor=Ajmal Bangash"
+      )
       .then((res) => {
         // console.log(res.data);
-        setPatientData(res.data);
+        setData_for_patients_fetching(res.data);
+        // setPatientData(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -56,17 +63,73 @@ function DrPrescription() {
   }, [re_render_presc_upper_component_ver]);
 
   useEffect(() => {
+    // we will fetch patient on the basis of UID and DOCTOR name but we will fetch patients on the basis of only patient_UID because it is unique and we only need it
+    if (data_for_patients_fetching) {
+      try {
+        const fetchPatients = async () => {
+          const responses = await Promise.all(
+            data_for_patients_fetching.map((uuid) => {
+              return axios.get(
+                "http://localhost:8000/allikhwa-hms/patients/" +
+                  uuid.patient_UID
+                // { params: uuid }
+              );
+            })
+          );
+
+          const patients = responses.map((patient) => patient.data);
+          const arrayOfObjects = [].concat(...patients);
+          // console.log(arrayOfObjects);
+          setPatientData(arrayOfObjects);
+          // setrerendertwo_axios_gets(false);
+        };
+
+        fetchPatients();
+      } catch (error) {
+        console.log(error);
+      } // rerendertwo_axios_gets
+    }
+  }, [data_for_patients_fetching]);
+
+  useEffect(() => {
     axios
-      .get("http://localhost:3100/waitingpatientsforlabtests")
+      .get(
+        "http://localhost:8000/allikhwa-hms/waiting-patients-of-lab/Ajmal Bangash"
+      )
       .then((res) => {
-        setwaiting_patients_data(res.data);
+        setData_for_patients_fetching02(res.data);
+        // setwaiting_patients_data(res.data);
         // dispatch(prescription_show_patient_detail_rest_pres_form(false));
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log("geted from waiting pats");
   }, []);
+  useEffect(() => {
+    // we will fetch patient on the basis of UID and DOCTOR name but we will fetch patients on the basis of only patient_UID because it is unique and we only need it
+    if (data_for_patients_fetching02) {
+      try {
+        const fetchPatients = async () => {
+          const responses = await Promise.all(
+            data_for_patients_fetching02.map((uuid) => {
+              return axios.get(
+                "http://localhost:8000/allikhwa-hms/patients/" +
+                  uuid.patient_UID
+                // { params: uuid }
+              );
+            })
+          );
+          const patients = responses.map((patient) => patient.data);
+          const arrayOfObjects = [].concat(...patients);
+          setwaiting_patients_data(arrayOfObjects);
+        };
+
+        fetchPatients();
+      } catch (error) {
+        console.log(error);
+      } // rerendertwo_axios_gets
+    }
+  }, [data_for_patients_fetching02]);
   return (
     <>
       {/* details  */}
@@ -139,7 +202,7 @@ function DrPrescription() {
                 {/* {patientDataDetails ? (
                   <> */}
                 <tr>
-                  <td>PID</td>
+                  <td>Patient ID</td>
                   <td>{drdashboard_showPatient_Details.PID}</td>
                 </tr>
                 <tr>
@@ -159,6 +222,10 @@ function DrPrescription() {
                   <td>{drdashboard_showPatient_Details.contact}</td>
                 </tr>
                 <tr>
+                  <td>Country</td>
+                  <td> {drdashboard_showPatient_Details.country}</td>
+                </tr>
+                <tr>
                   <td>City</td>
                   <td> {drdashboard_showPatient_Details.city}</td>
                 </tr>
@@ -168,28 +235,18 @@ function DrPrescription() {
                 </tr>
                 <tr>
                   <td>Admitted Status</td>
-                  <td>{drdashboard_showPatient_Details.admitted_status}</td>
+                  {/* <td>{drdashboard_showPatient_Details.admitted_status}</td> */}
+                  <td>Admitted Status</td>
                 </tr>
                 <tr>
                   <td>Bed No</td>
-                  <td>{drdashboard_showPatient_Details.bed_no}</td>
+                  {/* <td>{drdashboard_showPatient_Details.bed_no}</td> */}
+                  <td>Bed No</td>
                 </tr>
                 <tr>
                   <td>Patient Doctor</td>
                   <td>{drdashboard_showPatient_Details.doctor}</td>
                 </tr>
-                <tr>
-                  <td>Medicine</td>
-                  <td>{drdashboard_showPatient_Details.medicine}</td>
-                </tr>
-                <tr>
-                  <td>Instructions</td>
-                  <td>{drdashboard_showPatient_Details.instructions}</td>
-                </tr>
-                {/* </>
-                ) : (
-                  <h6>Loading ...</h6>
-                )} */}
               </tbody>
             </table>
           </div>
@@ -216,14 +273,36 @@ function DrPrescription() {
                 patientData.map((patdet, id) => {
                   return (
                     <tr key={id}>
-                      <td>{patdet.name}</td>
-                      <td>{patdet.age}</td>
-                      <td>{patdet.date}</td>
-                      <td>{patdet.city}</td>
-                      <td>{patdet.admitted_status}</td>
+                      <td>{patdet.patient_name}</td>
+                      <td>{patdet.patient_age}</td>
+                      <td>{patdet.patient_eappointmentdate}</td>
+                      <td>{patdet.patient_city}</td>
+                      {/* <td>{patdet.admitted_status}</td> */}
+                      <td>admitted status</td>
                       <td
                         onClick={() => {
-                          setdrdashboard_showPatient_Details(patdet);
+                          let {
+                            patient_UID,
+                            patient_name,
+                            patient_age,
+                            patient_eappointmentdate,
+                            patient_city,
+                            patient_country,
+                            patient_doctor,
+                            patient_contact,
+                            patient_department,
+                          } = patdet;
+                          setdrdashboard_showPatient_Details({
+                            PID: patient_UID,
+                            name: patient_name,
+                            age: patient_age,
+                            date: patient_eappointmentdate,
+                            contact: patient_contact,
+                            city: patient_city,
+                            country: patient_country,
+                            department: patient_department,
+                            doctor: patient_doctor,
+                          });
                           setwaiting_list_deletion_work(false);
                           detail_column_patient_list.current?.scrollIntoView({
                             behavior: "smooth",
@@ -278,15 +357,28 @@ function DrPrescription() {
                 waiting_patients_data.map((patdet, id) => {
                   return (
                     <tr key={id}>
-                      <td>{patdet.name}</td>
-                      <td>{patdet.age}</td>
-                      <td>{patdet.date}</td>
-                      <td>{patdet.city}</td>
-                      <td>{patdet.admitted_status}</td>
+                      <td>{patdet.patient_name}</td>
+                      <td>{patdet.patient_age}</td>
+                      <td>{patdet.patient_eappointmentdate}</td>
+                      <td>{patdet.patient_city}</td>
+                      {/* <td>{patdet.admitted_status}</td> */}
+                      <td>admitted status</td>
                       <td
                         onClick={() => {
-                          setdrdashboard_showPatient_Details(patdet);
+                          // setdrdashboard_showPatient_Details(patdet);
+                          setdrdashboard_showPatient_Details({
+                            PID: patdet.patient_UID,
+                            name: patdet.patient_name,
+                            age: patdet.patient_age,
+                            date: patdet.patient_eappointmentdate,
+                            contact: patdet.patient_contact,
+                            city: patdet.patient_city,
+                            country: patdet.patient_country,
+                            department: patdet.patient_department,
+                            doctor: patdet.patient_doctor,
+                          });
                           setwaiting_list_deletion_work(true);
+
                           detail_column_patient_list.current?.scrollIntoView({
                             behavior: "smooth",
                           });
@@ -324,6 +416,7 @@ function DrPrescription() {
 }
 export default DrPrescription;
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Prescription = React.forwardRef((props, ref) => {
   const waiting_list_deletion_work = props.data;
   const [from_prescription_to_patients, setfrom_prescription_to_patients] =
@@ -335,6 +428,8 @@ const Prescription = React.forwardRef((props, ref) => {
     setsubmission_before_reset_will_work,
   ] = useState(false);
   const [show_lab_test_form, setshow_lab_test_form] = useState(false);
+  const [show_form_for_patient_admission, setshow_form_for_patient_admission] =
+    useState(false);
   const cd_yess_no_var = useSelector((state) => state.cd_yess_no);
   const prescription_show_patient_detail_rest_pres_form_var = useSelector(
     (state) => state.prescription_show_patient_detail_rest_pres_form
@@ -357,22 +452,70 @@ const Prescription = React.forwardRef((props, ref) => {
     ),
     instructions: Yup.string().required("Instructions is required!"),
   });
+  const admission_validation_schema = Yup.object().shape({
+    patient_UID: Yup.string().required("Valid PatientID is required"),
+    patient_department: Yup.string().required(
+      "Department for Patient Admission is required"
+    ),
+    patient_admissiondate: Yup.date()
+      .typeError("Date is required")
+      .required("Patient Admission date is Required"),
+  });
   const {
     setValue,
     reset,
     register,
-    formState: { errors },
+    formState: { errors: errors },
     handleSubmit,
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(prescription_validation_schema),
   });
+  const {
+    setValue: setValue02,
+    reset: reset02,
+    register: register02,
+    formState: { errors: errors02 },
+    handleSubmit: handleSubmit02,
+  } = useForm({
+    mode: "onBlur",
+    resolver: yupResolver(admission_validation_schema),
+  });
 
-  function handle_edit_patiend_bed(data) {
-    setfrom_prescription_to_patients(data);
+  function FunDoctorPrescription(data) {
+    setfrom_prescription_to_patients({
+      patient_bloodpressure: data.blood_pressure,
+      patient_appointmentdate: data.date,
+      patient_diabetes: data.diabetes,
+      patient_dosagefrequency: data.dosage_frequency,
+      patient_familymem: data.family_member,
+      patient_gender: data.gender,
+      patient_instructions: data.instructions,
+      patient_medicine: data.medicine,
+      patient_disease: data.patient_disease,
+    });
+    console.log(data);
+    console.log(data.PID);
     dispatch(cd_open_close(true));
     dispatch(re_render_presc_upper_component(true));
   }
+
+  function formatDateToYYYYMMDD(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+  function FunReferToAdmission(data) {
+    dispatch(cd_open_close(true));
+    setpresc_print_refer_to_admission({
+      patient_UID: data.patient_UID,
+      patient_department: data.patient_department,
+      patient_admissiondate: formatDateToYYYYMMDD(data.patient_admissiondate),
+    });
+    console.log(data);
+  }
+
   function reset_the_prescription_formFun() {
     if (submission_before_reset_will_work && cd_yess_no_var) {
       dispatch(prescription_show_patient_detail_rest_pres_form(false));
@@ -388,13 +531,13 @@ const Prescription = React.forwardRef((props, ref) => {
       prescription_show_patient_detail_rest_pres_form_var
     ) {
       axios
-        .post("http://localhost:3100/patients", {
+        .post("http://localhost:8000/allikhwa-hms/appointments/", {
           ...from_prescription_to_patients,
-          ...prescription_show_patient_detail_rest_pres_form_var,
+          patient: prescription_show_patient_detail_rest_pres_form_var.PID,
         })
         .then((res) => {
           console.log(res);
-          console.log("from posting");
+          console.log("from posting 2nd class");
         })
         .catch((error) => {
           console.log(error);
@@ -403,22 +546,67 @@ const Prescription = React.forwardRef((props, ref) => {
     }
   }, [from_prescription_to_patients, cd_yess_no_var]);
   useEffect(() => {
-    if (from_prescription_to_patients && cd_yess_no_var) {
+    if (
+      from_prescription_to_patients &&
+      cd_yess_no_var &&
+      !waiting_list_deletion_work
+    ) {
+      //  DELETING FROM WAITING PATIENTS IS REMAINING OKAYYYYY
+      console.log("useffect for uuids-for-pres deletion inside");
+      console.log(from_prescription_to_patients.patient);
+
       axios
         .delete(
-          "http://localhost:3100/prescription/?PID=" +
-            from_prescription_to_patients.PID
+          "http://localhost:8000/allikhwa-hms/uuids-for-prescription-deletion/" +
+            prescription_show_patient_detail_rest_pres_form_var.PID
         )
+        .then((res) => {
+          console.log(res);
+          console.log(
+            "useffect for uuids-for-pres deletion 2nd class inside 02"
+          );
+          dispatch(cd_open_close(false));
+        })
         .catch((error) => {
           console.log(error);
         });
     }
-  }, [from_prescription_to_patients]);
+  }, [from_prescription_to_patients, cd_yess_no_var]);
+  useEffect(() => {
+    if (
+      from_prescription_to_patients &&
+      cd_yess_no_var &&
+      waiting_list_deletion_work
+    ) {
+      //  DELETING FROM WAITING PATIENTS IS REMAINING OKAYYYYY
+      console.log("useffect for uuids-for-pres deletion inside");
+      console.log(from_prescription_to_patients.patient);
+
+      axios
+        .delete(
+          "http://localhost:8000/allikhwa-hms/waiting-patients-of-lab-deletion/" +
+            prescription_show_patient_detail_rest_pres_form_var.PID
+        )
+        .then((res) => {
+          console.log(res);
+          console.log(
+            "useffect for uuids-for-pres deletion 2nd class inside 02"
+          );
+          dispatch(cd_open_close(false));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [from_prescription_to_patients, cd_yess_no_var]);
   useEffect(() => {
     if (presc_print_refer_to_admission && cd_yess_no_var) {
       axios
-        .post("http://localhost:3100/refferedtoadmission", {
+        .post("http://localhost:8000/allikhwa-hms/referred-to-admission/", {
           presc_print_refer_to_admission, // the pid has been passed to data model refferedtoadmission, now from data model we will access the patient in the prescribed department for admission
+        })
+        .then((res) => {
+          dispatch(cd_open_close(false));
         })
         .catch((error) => {
           console.log(error);
@@ -432,7 +620,7 @@ const Prescription = React.forwardRef((props, ref) => {
   return (
     <>
       <form
-        onSubmit={handleSubmit(handle_edit_patiend_bed)}
+        onSubmit={handleSubmit(FunDoctorPrescription)}
         id="prescription_form"
       >
         <div className="prescription_top" ref={ref}>
@@ -708,14 +896,22 @@ const Prescription = React.forwardRef((props, ref) => {
         </button>
         <button
           className="admin_buttons_add_update_from_add_update_form"
+          // onClick={() => {
+          //   setpresc_print_refer_to_admission({
+          //     patient_UID:
+          //       prescription_show_patient_detail_rest_pres_form_var.PID,
+          //     patient_department:
+          //       prescription_show_patient_detail_rest_pres_form_var.department,
+          //   });
+          //   dispatch(cd_open_close(true));
+          //   alert(
+          //     "Patient has been successfully refered to admission by " +
+          //       prescription_show_patient_detail_rest_pres_form_var.doctor
+          //   );
+          // }}
           onClick={() => {
-            setpresc_print_refer_to_admission(
-              prescription_show_patient_detail_rest_pres_form_var.PID
-            );
-            dispatch(cd_open_close(true));
-            alert(
-              "Patient has been successfully refered to admission by " +
-                prescription_show_patient_detail_rest_pres_form_var.doctor
+            setshow_form_for_patient_admission(
+              !show_form_for_patient_admission
             );
           }}
         >
@@ -725,10 +921,84 @@ const Prescription = React.forwardRef((props, ref) => {
       {show_lab_test_form && (
         <Test_from_dr_to_lab data={waiting_list_deletion_work} />
       )}
+      {show_form_for_patient_admission && (
+        <form
+          onSubmit={handleSubmit02(FunReferToAdmission)}
+          style={{
+            borderRadius: "8px",
+            margin: "10px auto 10px auto",
+            padding: "20px",
+            boxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+            webkitboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+            mozboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+            boxSizing: "border-box",
+            width: "70%",
+          }}
+        >
+          <div className="profile_label_input prescription_editing_to_form_of_patient">
+            <label htmlFor="patient_UID" className="profile_lanel_input_label">
+              Patient ID:
+            </label>
+            <input
+              {...register02("patient_UID")}
+              id="patient_UID"
+              type="text"
+              placeholder="Enter Patient ID"
+            ></input>
+            <p className="pForForm">{errors02.patient_UID?.message}</p>
+          </div>
+          <div className="profile_label_input prescription_editing_to_form_of_patient">
+            <label
+              htmlFor="patient_department"
+              className="profile_lanel_input_label"
+            >
+              Patient Department:
+            </label>
+            <input
+              {...register02("patient_department")}
+              id="patient_department"
+              type="text"
+              placeholder="Enter Patient Department"
+            ></input>
+            <p className="pForForm">{errors02.patient_department?.message}</p>
+          </div>
+          <div className="profile_label_input prescription_editing_to_form_of_patient">
+            <label
+              htmlFor="patient_admissiondate"
+              className="profile_lanel_input_label"
+            >
+              Patient Admission Date:
+            </label>
+            <input
+              {...register02("patient_admissiondate")}
+              id="patient_admissiondate"
+              name="patient_admissiondate"
+              type="date"
+              placeholder="Enter Patient Admission Date"
+            ></input>
+
+            <p className="pForForm">
+              {errors02.patient_admissiondate?.message}
+            </p>
+          </div>
+          <div>
+            <input
+              type="submit"
+              className="admin_buttons_add_update_from_add_update_form"
+              value="SUBMIT"
+              style={{
+                margin: "10px 25% 20px 25%",
+                width: "50%",
+              }}
+            />
+          </div>
+        </form>
+      )}
     </>
   );
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 function Test_from_dr_to_lab(props) {
   const waiting_list_deletion_work = props.data;
   console.log(waiting_list_deletion_work);
@@ -755,7 +1025,17 @@ function Test_from_dr_to_lab(props) {
   });
 
   function handle_lab_testFun(data) {
-    setdata_for_lab(data);
+    let listt = [];
+    data.tests.map((test) => {
+      listt.push(test.test_name, test.test_discription);
+    });
+    const result = listt.join(" > ");
+    console.log(result);
+    setdata_for_lab({
+      patient_checkupdescription: data.later_checkup_discription,
+      patient_tests: result,
+    });
+    console.log(data);
     alert(
       "Test has been transfered to lab technician and waiting patientsfor test"
     );
@@ -771,6 +1051,7 @@ function Test_from_dr_to_lab(props) {
         })
         .then((res) => {
           console.log(res);
+          // setdata_for_lab(false)   // added now
         })
         .catch((error) => {
           console.log(error);
@@ -785,18 +1066,22 @@ function Test_from_dr_to_lab(props) {
       prescription_show_patient_detail_rest_pres_form_var &&
       waiting_list_deletion_work
     ) {
-      axios
-        .delete(
-          "http://localhost:3100/waitingpatientsforlabtests/?PID+" +
-            prescription_show_patient_detail_rest_pres_form_var.PID
-        )
-        .then((res) => {
-          dispatch(prescription_show_patient_detail_rest_pres_form(false));
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-      console.log("deleted from waiting pats");
+      console.log(
+        "from uuids-for-prescriptions pppppppppppppppppppppppppppppppppppppppppppppppp"
+      );
+      // axios
+      //   .delete(
+      //     "http://localhost:8000/allikhwa-hms/uuids-of-waiting-patients/" +
+      //       // "http://localhost:3100/waitingpatientsforlabtests/?PID+" +
+      //       prescription_show_patient_detail_rest_pres_form_var.PID
+      //   )
+      //   .then((res) => {
+      //     dispatch(prescription_show_patient_detail_rest_pres_form(false));
+      //     // setdata_for_lab(false)   // added now
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
     }
   }, [data_for_lab]);
   useEffect(() => {
@@ -805,19 +1090,24 @@ function Test_from_dr_to_lab(props) {
       prescription_show_patient_detail_rest_pres_form_var &&
       !waiting_list_deletion_work
     ) {
-      axios
-        .delete(
-          "http://localhost:3100/prescriptions/?PID=" +
-            prescription_show_patient_detail_rest_pres_form_var.PID
-        )
-        .then((res) => {
-          dispatch(prescription_show_patient_detail_rest_pres_form_var(false));
-          console.log("deleted from prescription and form");
-          console.log(prescription_show_patient_detail_rest_pres_form_var);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      console.log(
+        "uuids-of-wating-patients  wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+      );
+      // axios
+      //   .delete(
+      //     "http://localhost:8000/allikhwa-hms/uuids-for-prescriptions/" +
+      //       // "http://localhost:3100/prescriptions/?PID=" +
+      //       prescription_show_patient_detail_rest_pres_form_var.PID
+      //   )
+      //   .then((res) => {
+      //     dispatch(prescription_show_patient_detail_rest_pres_form_var(false));
+      //     // setdata_for_lab(false)   // added now
+      //     console.log("deleted from prescription and form");
+      //     console.log(prescription_show_patient_detail_rest_pres_form_var);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
       reset();
     }
   }, [data_for_lab]);

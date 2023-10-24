@@ -134,6 +134,8 @@ table.profile_GeneratedTable thead {
 .profile_label_input textarea {
   height: fit-content;
   margin: 10px 0;
+  width: 70%;
+  max-width: 70%;
   font-family: Arial;
   font-size: 14px;
 }
