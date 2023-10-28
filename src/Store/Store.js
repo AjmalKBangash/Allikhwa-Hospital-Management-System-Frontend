@@ -23,6 +23,8 @@ export const recmappointment_patient_billing_price = createAction(
 );
 export const submit_bill_price_work = createAction("submit_bill_price_work");
 export const dr_nurse_beds_refresh = createAction("dr_nurse_beds_refresh");
+export const successpopup = createAction("successpopup");
+export const failurepopup = createAction("failurepopup");
 
 const initialState = {
   props_from_depart_actions: [],
@@ -35,6 +37,8 @@ const initialState = {
   recmappointment_patient_billing_price: "",
   submit_bill_price_work: false,
   dr_nurse_beds_refresh: "",
+  successpopup: false,
+  failurepopup: false,
 };
 
 const sliceReducer = createReducer(initialState, (builder) => {
@@ -73,6 +77,12 @@ const sliceReducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(dr_nurse_beds_refresh, (state, action) => {
     state.dr_nurse_beds_refresh = action.payload;
+  });
+  builder.addCase(successpopup, (state, action) => {
+    state.successpopup = action.payload;
+  });
+  builder.addCase(failurepopup, (state, action) => {
+    state.failurepopup = action.payload;
   });
 });
 

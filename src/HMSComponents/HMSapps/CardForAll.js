@@ -9,25 +9,26 @@ import { AiFillGooglePlusCircle } from "react-icons/ai";
 import ScrollToTop from "/home/ajay/Desktop/FYP/allikhwa/src/Components/ScrollToTop.js";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { FaLessThanEqual } from "react-icons/fa6";
 const empty_data_for_adupdate_component = [
   {
-    employee_name: "",
-    employee_website: "",
-    employee_photo: {},
-    employee_description: "",
-    employee_jobtitle: "",
-    employee_category: "",
-    employee_education: "",
-    employee_experience: "",
-    employee_department: [],
-    employee_surgeries: "",
-    employee_appointments: "",
-    employee_awards: "",
-    employee_address: "",
-    employee_phone: "",
-    employee_email: "",
-    employee_facebook: "",
-    employee_linkedin: "",
+    // employee_name: "",
+    // employee_website: "",
+    // employee_photo: "",
+    // employee_description: "",
+    // employee_jobtitle: "",
+    // employee_category: "",
+    // employee_education: "",
+    // employee_experience: "",
+    // employee_department: "",
+    // employee_surgeries: "",
+    // employee_appointments: "",
+    // employee_awards: "",
+    // employee_address: "",
+    // employee_phone: "",
+    // user: "cdcedced@gmail.com",
+    // employee_facebook: "",
+    // employee_linkedin: "",
   },
 ];
 
@@ -54,15 +55,19 @@ function CardForAll(props) {
   let data_editing = {
     data: propfromshodetailsdoctorcard,
     data__employee_category: props.data,
+    postpatch: true,
   };
   let data_adding = {
     data: empty_data_for_adupdate_component[0],
     data__employee_category: props.data,
+    postpatch: false,
   };
 
   useEffect(() => {
     axios
-      .get("http://localhost:3100/" + props.data.toLowerCase() + "s")
+      .get(
+        "http://localhost:8000/allikhwa-hms/" + props.data.toLowerCase() + "s"
+      )
       .then((res) => {
         setfetched_employee_data_for_card(res.data);
       })
@@ -136,7 +141,8 @@ function CardForAll(props) {
                 <img
                   className="doctorimgincard"
                   src={
-                    "https://media.istockphoto.com/id/1390000431/photo/shot-of-a-mature-doctor-using-a-digital-tablet-in-a-modern-hospital.webp?b=1&s=170667a&w=0&k=20&c=Jxhk_KZSo9oSZ01Nv8TxjCKKEVZQJFVWICZb64AEIMQ="
+                    propfromshodetailsdoctorcard.employee_photo
+                    // "https://media.istockphoto.com/id/1390000431/photo/shot-of-a-mature-doctor-using-a-digital-tablet-in-a-modern-hospital.webp?b=1&s=170667a&w=0&k=20&c=Jxhk_KZSo9oSZ01Nv8TxjCKKEVZQJFVWICZb64AEIMQ="
                   }
                 />
                 <div className="doctorcoverofimgtagsindoctorcard">
@@ -154,7 +160,8 @@ function CardForAll(props) {
                   <br />
                   <h5 className="byprofessionincard">
                     {" "}
-                    {propfromshodetailsdoctorcard.employee_department.map(
+                    {propfromshodetailsdoctorcard.employee_departments}
+                    {/* {propfromshodetailsdoctorcard.employee_department.map(
                       ({ label, value }) => {
                         return (
                           <li key={value}>
@@ -164,7 +171,7 @@ function CardForAll(props) {
                           </li>
                         );
                       }
-                    )}
+                    )} */}
                   </h5>
                   <div style={{ display: "flex", flexDirection: "row" }}>
                     <Link className="linkk">
@@ -242,6 +249,10 @@ function CardForAll(props) {
                     <tr>
                       <td>Name</td>
                       <td> {propfromshodetailsdoctorcard.employee_name}</td>
+                    </tr>{" "}
+                    <tr>
+                      <td>Bio</td>
+                      <td> {propfromshodetailsdoctorcard.employee_bio}</td>
                     </tr>
                     <tr>
                       <td>Job Title</td>
@@ -260,11 +271,12 @@ function CardForAll(props) {
                     <tr>
                       <td>Departments</td>
                       <td>
-                        {propfromshodetailsdoctorcard.employee_department?.map(
+                        {propfromshodetailsdoctorcard.employee_departments}
+                        {/* {propfromshodetailsdoctorcard.employee_department?.map(
                           ({ label, value }) => {
                             return <li key={value}>{value}</li>;
                           }
-                        )}
+                        )} */}
                       </td>
                     </tr>
                     <tr>
@@ -309,7 +321,8 @@ function CardForAll(props) {
                   <img
                     className="doctorimgincard"
                     src={
-                      "https://southfloridahospitalnews.com/wp-content/uploads/2023/02/Dawkins-Bryan.jpg"
+                      // "https://southfloridahospitalnews.com/wp-content/uploads/2023/02/Dawkins-Bryan.jpg"
+                      employee.employee_photo
                     }
                   />
                   <div className="doctorcoverofimgtagsindoctorcard">
@@ -320,24 +333,25 @@ function CardForAll(props) {
                       {employee.employee_jobtitle}
                     </h6>
                     <h6 className="jobtitleincard">
-                      {employee.employee_category}
+                      {employee.employee_experience}
                     </h6>
                     <br />
                     <h5 className="byprofessionincard">
-                      <ul>
-                        {employee.employee_department?.map(
+                      {/* <ul>
+                        {employee.employee_departments?.map(
                           ({ label, value }) => {
                             return (
                               <li key={value}>
                                 {value}
-                                {employee.employee_department?.length > 1 && (
+                                {employee.employee_departments?.length > 1 && (
                                   <p>...</p>
-                                )}
+                                )} 
                               </li>
                             );
                           }
                         )}
-                      </ul>
+                      </ul> */}
+                      {employee.employee_departments}
                     </h5>
                     <div style={{ display: "flex", flexDirection: "row" }}>
                       <Link className="linkk">

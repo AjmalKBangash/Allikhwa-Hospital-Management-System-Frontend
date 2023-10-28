@@ -13,7 +13,7 @@ function eventStyleGetter(event, start, end, isSelected) {
     backgroundColor,
     borderRadius: "5px",
     color: "white",
-    border: "1px solid #333",
+    // border: "1px solid #333",
     display: "block",
     padding: "5px",
     height: "fit-content",
@@ -65,58 +65,130 @@ function EventPopup({ event }) {
 function DrSchedule() {
   const [events, setEvents] = useState([]);
   const [show_popup, setshow_popup] = useState(false);
+  const [uuids_for_appointments, setuuids_for_appointments] = useState();
 
-  const events02 = [
-    {
-      title: "Event 1",
-      start: new Date(2023, 8, 25, 10, 0), // Year, Month (0-based), Day, Hour, Minute
-      end: new Date(2023, 8, 25, 12, 0),
-      data: {
-        PID: "s43535-ffsd454-5546dfdf",
-        Name: "Jamal Ud Din",
-        City: "Moscow",
-      },
-    },
-    {
-      title: "Dr. Smith - Checkup",
-      start: new Date(2023, 8, 25, 10, 0), // Year, Month (0-based), Day, Hour, Minute
-      end: new Date(2023, 8, 25, 11, 0),
-    },
-  ];
+  // const events02 = [
+  //   {
+  //     title: "Event 1",
+  //     start: new Date(2023, 8, 25, 10, 0), // Year, Month (0-based), Day, Hour, Minute
+  //     end: new Date(2023, 8, 25, 12, 0),
+  //     data: {
+  //       PID: "s43535-ffsd454-5546dfdf",
+  //       Name: "Jamal Ud Din",
+  //       City: "Moscow",
+  //     },
+  //   },
+  //   {
+  //     title: "Dr. Smith - Checkup",
+  //     start: new Date(2023, 8, 25, 10, 0), // Year, Month (0-based), Day, Hour, Minute
+  //     end: new Date(2023, 8, 25, 11, 0),
+  //   },
+  // ];
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8000/allikhwa-hms/uuids-for-appointments/Ajmal Bangash"
+      )
+      .then((res) => {
+        setuuids_for_appointments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     let events_from_api = [];
-    axios
-      .get("http://localhost:3100/appointments?doctor=DrMaazKhanBangash")
-      .then((res) => {
-        let x_no = 0;
-        res.data.map((item, id) => {
-          x_no += 1;
-          // Parse the original date string
-          const originalDate = new Date(item.date);
-          const year = originalDate.getFullYear();
-          const month = originalDate.getMonth(); // Note: Months are 0-based (0 for January, 1 for February, ...)
-          const day = originalDate.getDate();
-          const hours = originalDate.getHours();
-          const minutes = originalDate.getMinutes();
-          // Create the transformed string
-          // const transformedString = `${year}, ${month}, ${day}, ${hours}, ${minutes}`;
-          // console.log(transformedDate);
-          events_from_api.push({
-            title: "Appointment",
-            Appointment_No: "Appointment No: " + x_no,
-            name: item.name,
-            city: item.city,
-            start: new Date(year, month, day, hours, minutes),
-            end: new Date(year, month, day, hours, minutes),
+
+    if (uuids_for_appointments) {
+      try {
+        const fetchPatients = async () => {
+          const responses = await Promise.all(
+            uuids_for_appointments.map((uuid) => {
+              return axios.get(
+                "http://localhost:8000/allikhwa-hms/patients-list/",
+                { params: uuid }
+              );
+            })
+          );
+          let x_no = 0;
+
+          const patients = responses.map((patient) => patient.data);
+          const arrayOfObjects = [].concat(...patients);
+
+          arrayOfObjects.map((patient, id) => {
+            x_no += 1;
+            // Parse the original date string
+            const originalDate = new Date(patient.patient_eappointmentdate);
+            const year = originalDate.getFullYear();
+            const month = originalDate.getMonth(); // Note: Months are 0-based (0 for January, 1 for February, ...)
+            const day = originalDate.getDate();
+            // const hours = originalDate.getHours();
+            // const minutes = originalDate.getMinutes();
+            // Create the transformed string
+            // const transformedString = `${year}, ${month}, ${day}, ${hours}, ${minutes}`;
+            // console.log(transformedDate);
+            events_from_api.push({
+              // title: "Appointment",
+              Appointment_No: "Appointment No: " + x_no,
+              name: patient.patient_name,
+              city: patient.patient_city,
+              start: new Date(year, month, day),
+              // start: patient.patient_eappointmentdate,
+              end: new Date(year, month, day),
+              // end: patient.patient_eappointmentdate
+            });
+            // setEvents(events_from_api);
           });
-        });
-      })
-      .catch((error) => {
+        };
+
+        fetchPatients();
+      } catch (error) {
         console.log(error);
-      });
-    setEvents(events_from_api);
-  }, []);
+      }
+      setEvents(events_from_api);
+    }
+  }, [uuids_for_appointments]);
+
+  // useEffect(() => {
+  //   let events_from_api = [];
+  //   axios
+  //     .get(
+  //       "http://localhost:8000/allikhwa-hms/appointments-list/4a258545-97b3-434d-ac61-6243b9d1114b"
+  //       // "http://localhost:8000/allikhwa-hms/uuids-for-appointments/Ajmal Bangash"
+  //     )
+  //     .then((res) => {
+  //       let x_no = 0;
+  //       res.data.map((item, id) => {
+  //         x_no += 1;
+  //         // Parse the original date string
+  //         const originalDate = new Date(item.patient_appointmentdate);
+  //         const year = originalDate.getFullYear();
+  //         const month = originalDate.getMonth(); // Note: Months are 0-based (0 for January, 1 for February, ...)
+  //         const day = originalDate.getDate();
+  //         const hours = originalDate.getHours();
+  //         const minutes = originalDate.getMinutes();
+  //         // Create the transformed string
+  //         // const transformedString = `${year}, ${month}, ${day}, ${hours}, ${minutes}`;
+  //         // console.log(transformedDate);
+  //         events_from_api.push({
+  //           title: "Appointment",
+  //           Appointment_No: "Appointment No: " + x_no,
+  //           name: item.name,
+  //           city: item.city,
+  //           start: new Date(year, month, day, hours, minutes),
+  //           end: new Date(year, month, day, hours, minutes),
+  //         });
+  //         setEvents(events_from_api);
+
+  //       });
+
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   setEvents(events_from_api);
+  // }, []);
   // Define repetitive event data structure
   // const daysOfWeek = [0, 1, 2, 3, 4, 5, 6]; // 0 for Sunday, 1 for Monday, and so on
   // const allEvents = [];
@@ -135,13 +207,18 @@ function DrSchedule() {
         <div className="drschedule_popup_top">
           <div className="drschedule_popup_top_container">
             <div className="drschedule_popup_top_items">
-              <h2
+              {/* <h2
                 className="fillfreebeds_h2"
                 style={{ padding: "5px 5px", margin: "8px" }}
               >
                 {show_popup.title}
+              </h2> */}
+              <h2
+                className="fillfreebeds_h2"
+                style={{ fontSize: "12px", margin: "3px" }}
+              >
+                {show_popup.Appointment_No}
               </h2>
-              <p style={{ fontSize: "12px" }}>{show_popup.Appointment_No}</p>
               <p style={{ fontSize: "12px" }}>Name:{show_popup.name}</p>
               <p style={{ fontSize: "12px" }}>City:{show_popup.city}</p>
               <p style={{ fontSize: "12px" }}>
@@ -182,7 +259,6 @@ function DrSchedule() {
                     className="event-click-area"
                     onClick={() => {
                       setshow_popup(event);
-                      console.log(event);
                     }}
                     style={{
                       color: "#fff",

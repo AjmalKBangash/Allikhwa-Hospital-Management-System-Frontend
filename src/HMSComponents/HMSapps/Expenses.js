@@ -34,7 +34,13 @@ function Expenses() {
             margin: "0px 0 0px auto",
           }}
         >
-          ADD EXPENSES
+          <Link
+            to={"expensedetails"}
+            state={{ type: "" }}
+            style={{ color: "white", textDecoration: "none" }}
+          >
+            ADD EXPENSES
+          </Link>
         </button>
       </div>
       {/* // These classes are taken from Dshboard.css */}
@@ -46,7 +52,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "construction and renovation" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -66,7 +72,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "FOOD SERVICE" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -86,7 +92,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "              EMPLOYEE SALARIES" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -105,7 +111,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "              HOSPITAL AND MEDICAL EQUIPMENT" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -124,7 +130,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "              MEDICAL AND SURGICAL SUPPLIES" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -144,7 +150,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "PATINET MEDICATIONS " }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -163,7 +169,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "SOFTWARE AND INFORMATION TECHNOLOGY SOLUTIONS" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -182,7 +188,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "DIFFERENT BILLS" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
@@ -202,7 +208,7 @@ function Expenses() {
             <Link
               to={"expensedetails"}
               state={{ type: "others" }}
-              style={{ color: "#fe4200" }}
+              style={{ color: "#fe4200", textDecoration: "none" }}
               onClick={() => {
                 expensedynamicdetails_set_into_view.current?.scrollIntoView();
                 dispatch(expenses_to_expensedynamic_form_display(false));
