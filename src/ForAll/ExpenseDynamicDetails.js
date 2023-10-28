@@ -15,12 +15,17 @@ import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
 function ExpenseDynamicDetails(props) {
   const [expenses_editing_or_adding, setexpenses_editing_or_adding] =
     useState(false);
+  const [fetched_expenses_type, setfetched_expenses_type] = useState();
   const expensedynamic_ad_edit_html_form_intoscroll = useRef();
   const expenses_to_expensedynamic_form_display_var = useSelector(
     (state) => state.expenses_to_expensedynamic_form_display
   );
   const dispatch = useDispatch();
   const location = useLocation();
+
+  console.log(expenses_to_expensedynamic_form_display_var);
+  console.log(props);
+  console.log(location.state);
   // form validation and handling
   const expense_dynamic_schema = Yup.object().shape({
     // Sign Up Form Validation
@@ -72,9 +77,9 @@ function ExpenseDynamicDetails(props) {
   if (location.state) {
     expense_type = location.state.type.toLowerCase(); // Here i have to search for the type incase sensittive in the database  otherwise it will not work
   }
-
-  console.log(expenses_to_expensedynamic_form_display_var);
-  console.log(expenses_editing_or_adding);
+  console.log(expense_type);
+  // console.log(expenses_to_expensedynamic_form_display_var);
+  // console.log(expenses_editing_or_adding);
   console.log(location.state);
   if (expenses_to_expensedynamic_form_display_var == "add") {
     expensedynamic_ad_edit_html_form_intoscroll.current?.scrollIntoView({
@@ -87,11 +92,10 @@ function ExpenseDynamicDetails(props) {
     setValue("details", "");
     setValue("added_by", "");
   }
-  const [fetched_expenses_type, setfetched_expenses_type] = useState();
   useEffect(() => {
     if (expense_type) {
       axios
-        .get("http://localhost:3100/expenses?type=" + expense_type)
+        .get("http://localhost:8000/allikhwa-hms/expenses/" + expense_type)
         .then((res) => {
           setfetched_expenses_type(res.data);
         })
@@ -126,7 +130,9 @@ function ExpenseDynamicDetails(props) {
               mozboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
             }}
           >
-            {expenses_to_expensedynamic_form_display_var.toUpperCase()} EXPENSES
+            {expenses_to_expensedynamic_form_display_var &&
+              expenses_to_expensedynamic_form_display_var.toUpperCase()}{" "}
+            EXPENSES
           </h2>
           <h2
             style={{
@@ -335,20 +341,22 @@ function ExpenseDynamicDetails(props) {
               <th>Department</th>
               <th>Date</th>
               <th>Added By</th>
-              {/* <th>Details</th> */}
+              <th>Details</th>
               <th>View</th>
             </tr>
           </thead>
           <tbody>
             {fetched_expenses_type ? (
               fetched_expenses_type.map((expense_details, id) => {
+                console.log(fetched_expenses_type);
                 return (
                   <tr key={id}>
-                    <td>{expense_details.type}</td>
-                    <td>{expense_details.cost}</td>
-                    <td>{expense_details.department}</td>
-                    <td>{expense_details.date}</td>
-                    <td>{expense_details.added_by}</td>
+                    <td>{expense_details.expense_type}</td>
+                    <td>{expense_details.expense_cost}</td>
+                    <td>{expense_details.expense_department}</td>
+                    <td>{expense_details.expense_date}</td>
+                    <td>{expense_details.expense_details}</td>
+                    <td>{expense_details.expense_addedby}</td>
                     <td
                       onClick={() => {
                         expensedynamic_ad_edit_html_form_intoscroll.current?.scrollIntoView(
@@ -361,12 +369,15 @@ function ExpenseDynamicDetails(props) {
                             expense_details.type
                           )
                         );
-                        setValue("type", expense_details.type);
-                        setValue("cost", expense_details.cost);
-                        setValue("department", expense_details.department);
-                        setValue("date", expense_details.date);
-                        setValue("details", expense_details.details);
-                        setValue("added_by", expense_details.added_by);
+                        setValue("type", expense_details.expense_type);
+                        setValue("cost", expense_details.expense_cost);
+                        setValue(
+                          "department",
+                          expense_details.expense_department
+                        );
+                        setValue("date", expense_details.expense_date);
+                        setValue("details", expense_details.expense_details);
+                        setValue("added_by", expense_details.expense_addedby);
                       }}
                     >
                       <MdDetails className="patient_details_edit_icon" />

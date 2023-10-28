@@ -103,7 +103,7 @@ function DrAppointments() {
       deletion_for_appointments &&
         axios
           .delete(
-            "http://localhost:8000/allikhwa-hms/uuids-for-appointments/" +
+            "http://localhost:8000/allikhwa-hms/uuids-for-appointments-deletion/" +
               deletion_for_appointments
           )
           .then((res) => {
@@ -245,10 +245,10 @@ function DrAppointments() {
                     {/* <td>{drdashboard_showPatient_Details.bed_no}</td> */}
                     <td></td>
                   </tr>
-                  <tr>
+                  {/* <tr> depricated
                     <td>Patient Doctor</td>
                     <td>{drdashboard_showPatient_Details.patient_doctor}</td>
-                  </tr>
+                  </tr> */}
                   {/* </>
                 ) : (
                   <h6>Loading ...</h6>
@@ -307,12 +307,12 @@ function DrAppointments() {
                               if (result) {
                                 let {
                                   patient_UID,
-                                  patient_doctor,
+                                  // patient_doctor,
                                   patient_eappointmentdate,
                                 } = patdet;
                                 setprescription_from_appointments({
                                   patient_UID: patient_UID,
-                                  patient_doctor: patient_doctor,
+                                  patient_doctor: "Ajmal Bangash", // later it will be transformed to doctor in which he is
                                   patient_eappointmentdate:
                                     patient_eappointmentdate,
                                 });

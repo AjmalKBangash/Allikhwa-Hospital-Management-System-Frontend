@@ -12,9 +12,22 @@ import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
 import { useEffect, useState } from "react";
 
 function AddUpdateForm(props) {
-  const { data__employee_category, data } = props;
+  const { data__employee_category, data, postpatch } = props;
+  let departments_from_props_data02 = data.employee_departments?.replace(
+    /,([^,]*)$/,
+    "$1"
+  );
+  let departments_from_props_data = "";
+  if (departments_from_props_data02) {
+    departments_from_props_data = departments_from_props_data02
+      .split(",")
+      .map((department) => {
+        return { label: department, value: department };
+      });
+  }
   let [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
   const [options_dropdown, setoptions_dropdown] = useState("");
+  const [datastate, setdatastate] = useState({ employee_photo: "" });
   let [selected, setSelected] = useState([]);
 
   const adduppdateschema = Yup.object().shape({
@@ -28,21 +41,36 @@ function AddUpdateForm(props) {
     employee_experience: Yup.string()
       .max(200, "Must be 200 characters or less")
       .required("Experience is Required"),
-    employee_department: Yup.array()
+    employee_departments: Yup.array()
       .min(1, "Pick at least 1 Department")
       .required("Department Selection is required"),
-    // .matches(
-    //   /^[A-Za-z\s]+(?:,[a-zA-Z\s]+)*$/g,
-    //   " Department names should be sparated by comma and should exclude all other digits, numbers, special characters. Example: Cardiology,ENT A,Gynae B,Radiology etc"
-    // ),
+    employee_photo: Yup.mixed()
+      .test("fileSize", "File size is too large", (value) => {
+        if (value) {
+          return value && value.length && value[0].size <= 1024 * 1024 * 3; // Max file size is 3MB
+        } else {
+          return "";
+        }
+      })
+      .test("fileType", "Invalid file type", (value) => {
+        return (
+          value &&
+          value.length &&
+          ["image/jpeg", "image/png", "image/gif"].includes(value[0].type)
+        ); // Supported file types
+      }),
+    // .test("fileRequired", "File is required", (value) => {
+    //   return value && value.length > 0; // File must not be empty
+    // }),
+
     employee_phone: Yup.string("Enter Phone Number in Digits")
       .required("Phone Number is required")
       .matches(/^\d{14}$/, "Enter 14 digit International Cell Phone Number")
       .typeError("Enter Phone Number in Digits"),
-    employee_email: Yup.string()
+    user: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required"),
-    employee_description: Yup.string()
+    employee_bio: Yup.string()
       .required("Description is Required")
       .min(20, "Minimum characters should be 200")
       .max(800, "Characters should not be more than 800")
@@ -65,47 +93,96 @@ function AddUpdateForm(props) {
 
   const handle_addupdateformsubmit = (data) => {
     alert(JSON.stringify(data));
-    set_AddUpdate_Form_Data(data);
-    reset();
+    const departments = [];
+    let { employee_departments } = data;
+    employee_departments.map((department) => {
+      departments.push(department.value);
+    });
+    let departments02 = "";
+    for (let i = 0; departments.length > i; i++) {
+      departments02 = departments02 + departments[i].toUpperCase() + ",";
+    }
+    set_AddUpdate_Form_Data({
+      employee_name: data.employee_name,
+      employee_UID: data.employee_UID,
+      employee_website: data.employee_website,
+      employee_bio: data.employee_bio,
+      employee_jobtitle: data.employee_jobtitle,
+      employee_education: data.employee_education,
+      employee_experience: data.employee_experience,
+      employee_departments: departments02,
+      employee_photo: data.employee_photo[0],
+      employee_awards: data.employee_awards,
+      employee_address: data.employee_address,
+      employee_phone: data.employee_phone,
+      employee_facebook: data.employee_facebook,
+      employee_linkedin: data.employee_linkedin,
+      user: data.user,
+    });
   };
   useEffect(() => {
     let array_for_options_in_dropdown = [];
     axios
-      .get("http://localhost:3100/departmentnames")
+      .get("http://localhost:8000/allikhwa-hms/departments/")
       .then((res) => {
-        for (let i = 0; i < res.data.length; i++) {
-          array_for_options_in_dropdown.push({
-            label: res.data[i].name,
-            value: res.data[i].name,
-          });
-        }
-        setoptions_dropdown(array_for_options_in_dropdown);
+        // for (let i = 0; i < res.data.length; i++) {      // this is also correct but it takes much programmming
+        //   array_for_options_in_dropdown.push({
+        //     label: res.data[i].department_name,
+        //     value: res.data[i].department_name,
+        //   });
+        // }
+        // setoptions_dropdown(array_for_options_in_dropdown);
+        setoptions_dropdown(res.data);
+        reset();
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
+  // CREATING THE DATA
   useEffect(() => {
-    {
-      addUpdate_Form_Data &&
-        axios
-          .post(
-            `http://localhost:3100/` +
-              data__employee_category.toLowerCase() +
-              "s",
-            {
-              ...addUpdate_Form_Data,
-              employee_PID: uuidv4(),
-              employee_category: data__employee_category,
-            }
-          )
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+    if (addUpdate_Form_Data && !postpatch) {
+      axios
+        .post(
+          `http://localhost:8000/allikhwa-hms/` +
+            data__employee_category.toLowerCase() +
+            "s/",
+          addUpdate_Form_Data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+        .then((response) => {
+          // console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [addUpdate_Form_Data]);
+
+  // UPDATING THE DATA
+  useEffect(() => {
+    if (addUpdate_Form_Data && postpatch) {
+      axios
+        .put(
+          `http://localhost:8000/allikhwa-hms/` +
+            data__employee_category.toLowerCase() +
+            "s/",
+
+          addUpdate_Form_Data
+          // employee_UID: uuidv4(),
+          // employee_category: data__employee_category,
+        )
+        .then((response) => {
+          console.log("Successful");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [addUpdate_Form_Data]);
 
@@ -122,6 +199,10 @@ function AddUpdateForm(props) {
   //   }
   //   setselected_options_dropdown(array_dropdown_departments);
   // }, [data.employee_department]);
+  useEffect(() => {
+    setdatastate(data.employee_photo);
+  }, []);
+  console.log(data.employee_photo);
   return (
     <div
       className="profile_information_all"
@@ -146,40 +227,41 @@ function AddUpdateForm(props) {
         {data__employee_category}
       </h2>
       <form onSubmit={handleSubmit(handle_addupdateformsubmit)}>
-        {data.PID ? (
+        {data.employee_UID ? (
           <div className="profile_label_input">
-            <label htmlFor="PID">
-              PID:<span style={{ color: "red", margin: "4px" }}>*</span>
+            <label htmlFor="employee_UID">
+              Employee ID:<span style={{ color: "red", margin: "4px" }}>*</span>
             </label>
             <input
-              {...register("PID")}
-              id="PID"
+              {...register("employee_UID")}
+              id="employee_UID"
               type="text"
-              value={data.PID}
-              placeholder="Enter Your PID"
+              value={data.employee_UID}
+              placeholder="Enter Employee ID"
             ></input>
           </div>
         ) : (
           <div className="profile_label_input">
-            <label htmlFor="PID">
-              PID:<span style={{ color: "red", margin: "4px" }}>*</span>
+            <label htmlFor="employee_UID">
+              Empoyee ID:<span style={{ color: "red", margin: "4px" }}>*</span>
             </label>
             <input
-              {...register("PID")}
-              id="PID"
+              {...register("employee_UID")}
+              id="employee_UID"
               type="text"
               value={uuidv4()}
-              placeholder="Enter Your PID"
+              placeholder="Enter Employee ID"
             ></input>
           </div>
         )}
 
         <div className="profile_label_input">
+          {" "}
+          {/*  This field belongs to CustomUser not its associated foreign keys */}
           <label htmlFor="employee_name">
             {" "}
             Name:<span style={{ color: "red", margin: "4px" }}>*</span>
           </label>
-
           <input
             {...register("employee_name")}
             id="employee_name"
@@ -206,25 +288,50 @@ function AddUpdateForm(props) {
         </div>
         <div className="profile_label_input ">
           <label htmlFor="employee_photo" className="profile_lanel_input_label">
-            Photo:
+            Employee Photo:
+            <span style={{ color: "red", margin: "4px" }}>*</span>
           </label>
           <input
+            name="employee_photo"
+            {...register("employee_photo")}
+            type="file"
+          />
+          {errors.employee_photo && (
+            <p className="pForForm">{errors.employee_photo.message}</p>
+          )}
+          {/* Photo: */}
+          {/* <input
             id="employee_photo"
             type="file"
             {...register("employee_photo")}
+            // defaultValue={data.employee_photo && data.employee_photo}
             placeholder="Upload Your Photo"
-          ></input>
-          {/* placeholder={props.data.photo} here ia willl be displaying image with paragraph */}
+          ></input> */}
         </div>
+        {data.employee_photo && (
+          <div className="profile_label_input ">
+            <span>Image Preview</span>
+            <img
+              style={{
+                height: "100px",
+                width: "100px",
+                border: "2px solid #fe4200",
+              }}
+              src={data.employee_photo && data.employee_photo}
+              alt="Preview"
+            />
+          </div>
+        )}
         <div className="profile_label_input ">
           <span>
             <p>
-              <label htmlFor="employee_description">
-                Your Bio:<span style={{ color: "red", margin: "4px" }}>*</span>
+              <label htmlFor="employee_bio">
+                Employee Bio:
+                <span style={{ color: "red", margin: "4px" }}>*</span>
               </label>
             </p>
             <p>Write a Short Introduction:</p>
-            <p className="pForForm">{errors.employee_description?.message}</p>
+            <p className="pForForm">{errors.employee_bio?.message}</p>
           </span>
           <div>
             <div
@@ -295,13 +402,13 @@ function AddUpdateForm(props) {
               />
             </div>
             <textarea
-              {...register("employee_description")}
-              id="employee_description"
-              name="employee_description"
+              {...register("employee_bio")}
+              id="employee_bio"
+              name="employee_bio"
               placeholder="Your short introduction!"
               rows="6"
               cols="60"
-              defaultValue={data.employee_description}
+              defaultValue={data.employee_bio}
               style={{ width: "74%", padding: "5px", outline: "none" }}
             />
           </div>
@@ -356,30 +463,45 @@ function AddUpdateForm(props) {
         </div>
         <div className="profile_label_input ">
           <label
-            htmlFor="employee_department"
+            htmlFor="employee_departments"
             className="profile_lanel_input_label"
           >
             Select Departments:
           </label>
           <Controller
-            name="employee_department"
+            name="employee_departments"
             control={control}
-            defaultValue={[]}
+            // defaultValue={[
+            //   {
+            //     // label: data.employee_departments.toUpperCase(),
+            //     // value: data.employee_departments.toUpperCase(),
+            //   },
+            // ]}
+            // defaultValue={[{ label: "ENT,PAEDS", value: "ENT,PAEDS" }]}
+            defaultValue={
+              departments_from_props_data ? departments_from_props_data : []
+            }
             render={({ field }) => (
               <MultiSelect
                 {...field}
                 hasSelectAll={false}
-                options={options_dropdown && options_dropdown}
+                options={
+                  options_dropdown &&
+                  options_dropdown.map((option) => ({
+                    label: option.department_name,
+                    value: option.department_name,
+                  }))
+                }
                 // value={field.value}
                 // onChange={(selected) => { This is for default values not having that much experties in js now i am having later future task this is
                 //   field.onChange(selected);
-                //   setValue("employee_department", selected);
+                //   setValue("employee_departments", selected);
                 // }}
                 className="custom-multi-select"
               />
             )}
           />
-          <p className="pForForm">{errors.employee_department?.message}</p>
+          <p className="pForForm">{errors.employee_departments?.message}</p>
         </div>
         <div className="profile_label_input ">
           <label
@@ -446,7 +568,7 @@ function AddUpdateForm(props) {
         </div>
         <div className="profile_label_input ">
           <label htmlFor="employee_phone" className="profile_lanel_input_label">
-            Phone:
+            Phone:<span style={{ color: "red", margin: "4px" }}>*</span>
           </label>
           <input
             {...register("employee_phone")}
@@ -457,19 +579,39 @@ function AddUpdateForm(props) {
           ></input>
           <p className="pForForm">{errors.employee_phone?.message}</p>
         </div>
-        <div className="profile_label_input ">
-          <label htmlFor="employee_email" className="profile_lanel_input_label">
-            Email:<span style={{ color: "red", margin: "4px" }}>*</span>
-          </label>
-          <input
-            {...register("employee_email")}
-            id="employee_email"
-            type="text"
-            defaultValue={data.employee_email}
-            placeholder="Enter Your Email"
-          ></input>
-          <p className="pForForm">{errors.employee_email?.message}</p>
-        </div>
+        {data.user ? (
+          <div className="profile_label_input ">
+            <label htmlFor="user" className="profile_lanel_input_label">
+              Registered Email:
+              <span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              {...register("user")}
+              id="user"
+              type="text"
+              value={data.user}
+              placeholder="Enter Your Email"
+            ></input>
+            <p className="pForForm">{errors.user?.message}</p>
+          </div>
+        ) : (
+          <div className="profile_label_input ">
+            <label htmlFor="user" className="profile_lanel_input_label">
+              Registered Email:
+              <span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              name="user"
+              {...register("user")}
+              id="user"
+              type="text"
+              // defaultValue={data.user}
+              placeholder="Enter Your Email"
+            ></input>
+            <p className="pForForm">{errors.user?.message}</p>
+          </div>
+        )}
+
         <div className="profile_label_input ">
           <label
             htmlFor="employee_facebook"

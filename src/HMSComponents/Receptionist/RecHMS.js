@@ -76,12 +76,12 @@ const rechmsobjs = [
     path: "rec-complaints",
     logo: BsPersonFillExclamation,
   },
-  {
-    id: "10",
-    name: "CHAT",
-    path: "rec-chat",
-    logo: AiFillWechat,
-  },
+  // {
+  //   id: "10",
+  //   name: "CHAT",
+  //   path: "rec-chat",
+  //   logo: AiFillWechat,
+  // },
 ];
 let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");

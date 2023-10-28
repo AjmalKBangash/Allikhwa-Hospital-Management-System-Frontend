@@ -164,12 +164,9 @@ function ReceAppointments() {
       patient_city: patient_city,
       patient_address: patient_address,
       patient_email: patient_email,
-      patient_doctor: patient_doctor,
       patient_eappointmentdate: formatDateToYYYYMMDD(patient_eappointmentdate),
       patient_department: patient_department,
       patient_UID: patient_UID,
-      // patient_NID: "",
-      // patient_bloodgrp: "",
     });
     setuuids_for_appointment({
       patient_UID: patient_UID,
