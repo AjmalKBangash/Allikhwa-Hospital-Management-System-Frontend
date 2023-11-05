@@ -186,6 +186,27 @@ function Dashboard() {
               <PiBedFill />
             </span>
           </div>
+          <div
+            className="dashboard_employee_pat_card"
+            style={{ borderRight: "1px solid #fe44007e" }}
+          >
+            <span
+              className="dashboard_employee_card_num"
+              style={{ bottom: "10%", left: "0%" }}
+            >
+              21
+            </span>
+            <span
+              className="dashboard_employee_card_name"
+              style={{ bottom: "10%", left: "0%" }}
+            >
+              {" "}
+              Broken Beds
+            </span>{" "}
+            <span className="dashboard_employee_card_icon">
+              <PiBedFill />
+            </span>
+          </div>
         </div>
       </div>
       {/* General Like doctors, pharmacists, staf members others etc in totall numbers  */}

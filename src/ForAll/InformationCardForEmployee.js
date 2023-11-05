@@ -1,7 +1,7 @@
 import "/home/ajay/Desktop/FYP/allikhwa/src/HMSComponents/HMSapps/CardForAll.css";
 import AddUpdateForm from "/home/ajay/Desktop/FYP/allikhwa/src/HMSComponents/HMSapps/AddUpdateForm";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import { UseSelector } from "react-redux/es/hooks/useSelector";
 import { useSelector } from "react-redux";
 import { BiLogoFacebookCircle } from "react-icons/bi";
@@ -34,7 +34,6 @@ const empty_data_for_adupdate_component = [
 ];
 
 function InformationCardForEmployee() {
-  // const location = useLocation()
   const props_from_depart_actions = useSelector(
     (state) => state.props_from_depart_actions
   );
@@ -60,22 +59,22 @@ function InformationCardForEmployee() {
       behavior: "smooth",
     });
   }
-  let data_editing = {
-    data: propfromshodetailsdoctorcard,
-    data__employee_category: props_from_depart_actions.employee_category,
-  };
-  let data_adding = {
-    data: empty_data_for_adupdate_component[0],
-    data__employee_category: props_from_depart_actions.employee_category,
-  };
+  // let data_editing = {
+  //   data: propfromshodetailsdoctorcard,
+  //   data__employee_category: props_from_depart_actions.employee_category,
+  // };
+  // let data_adding = {
+  //   data: empty_data_for_adupdate_component[0],
+  //   data__employee_category: props_from_depart_actions.employee_category,
+  // };
 
   useEffect(() => {
     // if (props_from_depart_actions) {
     axios
       .get(
-        "http://localhost:3100/" +
+        "http://localhost:8000/allikhwa-hms/" +
           props_from_depart_actions.employee_category.toLowerCase() +
-          "s"
+          "s/"
         // * fetcing only doctors which are in the department of general is willl be fetching after django backend ceated
         // "?" +
         // "employee_department" ==
@@ -94,6 +93,7 @@ function InformationCardForEmployee() {
   return (
     <>
       <ScrollToTop />
+      {/* 
       <div className="admin_buttons_add_update">
         {admin_add_button_display && (
           <button
@@ -148,7 +148,7 @@ function InformationCardForEmployee() {
       {displayFormForAddUpdate && (
         // <AddUpdateForm data={empty_data_for_adupdate_component[0]} /> for sendinh only one prop with empty values to display in form foe adding employee
         <AddUpdateForm {...data_adding} />
-      )}
+      )} */}
       <div className="doctortop">
         <div className="doctordetails" ref={showdetailsref}>
           {/* first we will display card on right side for the dr details which users clixked on  */}
@@ -157,9 +157,7 @@ function InformationCardForEmployee() {
               <div className="doctorcard">
                 <img
                   className="doctorimgincard"
-                  src={
-                    "https://media.istockphoto.com/id/1390000431/photo/shot-of-a-mature-doctor-using-a-digital-tablet-in-a-modern-hospital.webp?b=1&s=170667a&w=0&k=20&c=Jxhk_KZSo9oSZ01Nv8TxjCKKEVZQJFVWICZb64AEIMQ="
-                  }
+                  src={propfromshodetailsdoctorcard.employee_photo}
                 />
                 <div className="doctorcoverofimgtagsindoctorcard">
                   <h3 className="doctornameincard">
@@ -175,7 +173,7 @@ function InformationCardForEmployee() {
                   </h6>
                   <br />
                   <h5 className="byprofessionincard">
-                    {/* {propfromshodetailsdoctorcard.employee_department} */}
+                    {propfromshodetailsdoctorcard.employee_departments}
                   </h5>
                   <div style={{ display: "flex", flexDirection: "row" }}>
                     <Link className="linkk">
@@ -261,7 +259,7 @@ function InformationCardForEmployee() {
                       <td>Departments</td>
                       <td>
                         {" "}
-                        {/* {propfromshodetailsdoctorcard.employee_department} */}
+                        {propfromshodetailsdoctorcard.employee_departments}
                       </td>
                     </tr>
                     <tr>
@@ -305,11 +303,7 @@ function InformationCardForEmployee() {
                 <div className="doctorcard" key={id}>
                   <img
                     className="doctorimgincard"
-                    src={
-                      //   "https://plus.unsplash.com/premium_photo-1661764878654-3d0fc2eefcca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRvY3RvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-
-                      "https://southfloridahospitalnews.com/wp-content/uploads/2023/02/Dawkins-Bryan.jpg"
-                    }
+                    src={employee.employee_photo}
                   />
                   <div className="doctorcoverofimgtagsindoctorcard">
                     <h3 className="doctornameincard">
@@ -323,7 +317,7 @@ function InformationCardForEmployee() {
                     </h6>
                     <br />
                     <h5 className="byprofessionincard">
-                      {/* {employee.employee_department} */}
+                      {employee.employee_departments}
                     </h5>
                     <div style={{ display: "flex", flexDirection: "row" }}>
                       <Link className="linkk">

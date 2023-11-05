@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-function RecComplaints() {
+function LabComplaints() {
   const [data_of_patient_appointments, setdata_of_patient_appointments] =
     useState();
   const [patient_complaint_data, setpatient_complaint_data] = useState();
 
   const newpatient_complaint_schema = Yup.object().shape({
-    patient_complaints: Yup.string()
+    employee_complaints: Yup.string()
       .required("Complaint is required")
       .min(150, "Complaint should not be less than 150 characters"),
   });
@@ -32,7 +32,7 @@ function RecComplaints() {
   useEffect(() => {
     axios
       .get(
-        "http://localhost:8000/allikhwa-hms/receptionists/3cc4b5a2-8298-4c79-bc2a-eb3749c658d7"
+        "http://localhost:8000/allikhwa-hms/pharmacists/203efcc5-7216-4857-83e7-44fedfdeb09f"
       )
       .then((res) => {
         setdata_of_patient_appointments(res.data);
@@ -42,7 +42,10 @@ function RecComplaints() {
       });
   }, []);
   useEffect(() => {
+    console.log("bvnmbnmb");
+
     if (patient_complaint_data) {
+      console.log("complain");
       axios
         .post("http://localhost:8000/allikhwa-hms/employee-complaints/", {
           ...patient_complaint_data,
@@ -56,7 +59,7 @@ function RecComplaints() {
           console.log(error);
         });
     }
-  }, patient_complaint_data);
+  }, [patient_complaint_data]);
   return (
     <>
       <div
@@ -93,14 +96,14 @@ function RecComplaints() {
           </div>
           <div className="profile_label_input ">
             <label
-              htmlFor="patient_complaints"
+              htmlFor="employee_complaints"
               className="profile_lanel_input_label"
             >
               Write about your Complaint!
             </label>
             <textarea
-              name="patient_complaints"
-              id="patient_dis"
+              name="employee_complaints"
+              id="employee_complaints"
               rows="3"
               cols="5"
               {...register("employee_complaints")}
@@ -127,4 +130,4 @@ function RecComplaints() {
   );
 }
 
-export default RecComplaints;
+export default LabComplaints;

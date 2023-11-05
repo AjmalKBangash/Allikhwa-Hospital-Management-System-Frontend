@@ -39,6 +39,13 @@ function DrPrescription() {
     useState();
   const [data_for_patients_fetching02, setData_for_patients_fetching02] =
     useState();
+  const [data_of_patient_appointments, setdata_of_patient_appointments] =
+    useState(false);
+  const [data_of_patient_labtests, setdata_of_patient_labtests] =
+    useState(false);
+  const [isTriangleRotated, setIsTriangleRotated] = useState(false);
+  const [show_appointments_labtest, set_show_appointments_labtest] =
+    useState(true);
 
   // const [
   //   deletion_from_prescription_data_model,
@@ -51,7 +58,10 @@ function DrPrescription() {
     (state) => state.re_render_presc_upper_component
   );
   const dispatch = useDispatch();
-
+  //  FUNCTION FOR TRIANGLE RORTATION
+  const handleTriangleRotation = () => {
+    setIsTriangleRotated(!isTriangleRotated);
+  };
   useEffect(() => {
     axios
       .get(
@@ -135,8 +145,44 @@ function DrPrescription() {
       } // rerendertwo_axios_gets
     }
   }, [data_for_patients_fetching02]);
-  let message = "Successsssssssssssssss";
-  useEffect(() => {}, []);
+
+  // PATIENT APPOINTMENT
+  useEffect(() => {
+    if (drdashboard_showPatient_Details) {
+      axios
+        .get(
+          "http://localhost:8000/allikhwa-hms/appointments/" +
+            drdashboard_showPatient_Details.PID
+        )
+        .then((res) => {
+          setdata_of_patient_appointments(res.data);
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [drdashboard_showPatient_Details]);
+  // PATIENT LAB TESTS
+  useEffect(() => {
+    if (drdashboard_showPatient_Details) {
+      axios
+        .get(
+          "http://localhost:8000/allikhwa-hms/patient-lab-tests/" +
+            drdashboard_showPatient_Details.PID
+        )
+        .then((res) => {
+          setdata_of_patient_labtests(res.data);
+
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [drdashboard_showPatient_Details]);
+  let x = 0;
+  let y = 0;
   return (
     <>
       <div>
@@ -255,6 +301,195 @@ function DrPrescription() {
                 </tr>
               </tbody>
             </table>
+            {/* ******************************************************************************************************************** */}
+            <div style={{ margin: "20px auto", width: "100%" }}>
+              {" "}
+              <h2
+                style={{
+                  cursor: "pointer",
+                  position: "relative",
+                  display: "inline",
+                  marginLeft: "30%",
+                }}
+                className={`fillfreebeds_h2 `}
+                onClick={() => {
+                  handleTriangleRotation();
+                  set_show_appointments_labtest(!show_appointments_labtest);
+                }}
+              >
+                APPOINTMENTS&nbsp;&nbsp;
+                <span
+                  style={{
+                    top: "33.333%",
+                    // right: ''
+                    position: "absolute",
+                    height: "0",
+                    width: "0",
+                    borderRight: "7px solid transparent",
+                    borderLeft: "7px solid transparent",
+                    borderBottom: "12px solid #fe4200",
+                  }}
+                  className={` ${
+                    isTriangleRotated ? "rotate-triangle" : "rotate-triangle02"
+                  }`}
+                ></span>
+                &nbsp;&nbsp;&nbsp;
+              </h2>
+              <h2
+                style={{
+                  cursor: "pointer",
+                  position: "relative",
+                  display: "inline",
+                  marginRight: "30%",
+                  marginLeft: "3%",
+                }}
+                className="fillfreebeds_h2"
+                onClick={() => {
+                  handleTriangleRotation();
+                  set_show_appointments_labtest(!show_appointments_labtest);
+                }}
+              >
+                LAB TESTS&nbsp;&nbsp;
+                <span
+                  style={{
+                    top: "33.333%",
+                    // right: ''
+                    position: "absolute",
+                    height: "0",
+                    width: "0",
+                    borderRight: "7px solid transparent",
+                    borderLeft: "7px solid transparent",
+                    borderBottom: "12px solid #fe4200",
+                  }}
+                  className={` ${
+                    isTriangleRotated ? "rotate-triangle02" : "rotate-triangle"
+                  }`}
+                ></span>
+                &nbsp;&nbsp;&nbsp;
+              </h2>
+            </div>
+            {show_appointments_labtest &&
+            data_of_patient_appointments.length > 0 ? (
+              <div
+                className="col2indocdetails"
+                style={{
+                  width: "75%",
+                  position: "relative",
+                  margin: "30px auto",
+                  padding: "10px",
+                  boxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+                  webkitboxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+                  mozBoxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+                }}
+              >
+                {data_of_patient_appointments.map((appointment, id) => {
+                  return (
+                    <>
+                      <span>
+                        <h2 className="fillfreebeds_h2">
+                          {" "}
+                          <span style={{ color: "#fe4200" }}>
+                            {drdashboard_showPatient_Details.name.toUpperCase()}
+                          </span>{" "}
+                          APPOINTMENT NO {(x = x + 1)}
+                        </h2>
+                      </span>
+                      <table className="employee_GeneratedTable" key={id}>
+                        <tbody key={id + 1}>
+                          <tr>
+                            <td>Family Member</td>
+                            <td> {appointment.patient_familymem}</td>
+                          </tr>
+                          <tr>
+                            <td>Appointment Date</td>
+                            <td>{appointment.patient_appointmentdate}</td>
+                          </tr>
+                          <tr>
+                            <td>Blood Pressure</td>
+                            <td>{appointment.patient_bloodpressure}</td>
+                          </tr>
+                          <tr>
+                            <td>Diabetes</td>
+                            <td>{appointment.patient_diabetes}</td>
+                          </tr>
+                          <tr>
+                            <td>My Problem</td>
+                            <td> {appointment.patient_disease}</td>
+                          </tr>
+                          <tr>
+                            <td>Instructions by Doctor</td>
+                            <td>{appointment.patient_instructions}</td>
+                          </tr>
+                          <tr>
+                            <td>Medicines</td>
+                            <td> {appointment.patient_medicine}</td>
+                          </tr>
+                          <tr>
+                            <td>Dosage Frequency</td>
+                            <td> {appointment.patient_dosagefrequency}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </>
+                  );
+                })}
+              </div>
+            ) : (
+              // <h2 className="fillfreebeds_h2">NO APPOINTMENTS</h2>
+              ""
+            )}
+            {/* ****************************************************************************************************************************** */}
+            {!show_appointments_labtest &&
+            data_of_patient_labtests.length > 0 ? (
+              <div
+                className="col2indocdetails"
+                style={{
+                  width: "75%",
+                  position: "relative",
+                  margin: "30px auto",
+                  padding: "10px",
+                  boxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+                  webkitboxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+                  mozBoxShadow: "0px 1px 4px 0px rgb(1, 55, 55)",
+                }}
+              >
+                {data_of_patient_labtests.map((test, id) => {
+                  return (
+                    <>
+                      <span>
+                        <h2 className="fillfreebeds_h2">
+                          {" "}
+                          <span style={{ color: "#fe4200" }}>
+                            {drdashboard_showPatient_Details.name.toUpperCase()}
+                          </span>{" "}
+                          TEST NO {(y = y + 1)}
+                        </h2>
+                      </span>
+                      <table className="employee_GeneratedTable" key={id}>
+                        <tbody key={id + 1}>
+                          <tr>
+                            <td>Test Date</td>
+                            <td> {test.patient_testdate}</td>
+                          </tr>
+                          <tr>
+                            <td>Test Time</td>
+                            <td> {test.patient_testtime}</td>
+                          </tr>
+                          <tr>
+                            <td>Patients Tests</td>
+                            <td>{test.patient_tests}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </>
+                  );
+                })}
+              </div>
+            ) : (
+              // <h2 className="fillfreebeds_h2">NO LAB TESTS</h2>
+              ""
+            )}
+            {/* ********************************************************************************************************* */}
           </div>
         )}
       </div>
@@ -549,7 +784,7 @@ const Prescription = React.forwardRef((props, ref) => {
         .post("http://localhost:8000/allikhwa-hms/appointments/", {
           ...from_prescription_to_patients,
           patient: prescription_show_patient_detail_rest_pres_form_var.PID,
-          doctor: "4a258545-97b3-434d-ac61-6243b9d1114b",
+          doctor: "cad5aad8-bf96-48ed-8c48-e1b190ac829a",
         })
         .then((res) => {
           console.log("added succfully!");
@@ -594,8 +829,6 @@ const Prescription = React.forwardRef((props, ref) => {
       waiting_list_deletion_work
     ) {
       //  DELETING FROM WAITING PATIENTS IS REMAINING OKAYYYYY
-      console.log("useffect for uuids-for-pres deletion inside");
-      console.log(from_prescription_to_patients.patient);
 
       axios
         .delete(
@@ -1078,7 +1311,6 @@ function Test_from_dr_to_lab(props) {
       patient_tests: result,
       patient_department: data.patient_department,
     });
-    console.log(data);
   }
 
   useEffect(() => {

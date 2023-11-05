@@ -52,12 +52,12 @@ const rechmsobjs = [
     path: "lab-complaints",
     logo: BsPersonFillExclamation,
   },
-  {
-    id: "6",
-    name: "CHAT",
-    path: "lab-chat",
-    logo: AiFillWechat,
-  },
+  // {
+  //   id: "6",
+  //   name: "CHAT",
+  //   path: "lab-chat",
+  //   logo: AiFillWechat,
+  // },
 ];
 let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");

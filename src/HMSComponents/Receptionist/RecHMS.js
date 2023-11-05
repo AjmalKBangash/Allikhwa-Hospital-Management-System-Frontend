@@ -28,12 +28,12 @@ import { IoMdNotifications } from "react-icons/io";
 import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
 const rechmsobjs = [
-  {
-    id: "1",
-    name: "DASHBOARD",
-    path: "rec-dashboard",
-    logo: RiDashboardFill,
-  },
+  // {
+  //   id: "1",
+  //   name: "DASHBOARD",
+  //   path: "rec-dashboard",
+  //   logo: RiDashboardFill,
+  // },
   {
     id: "2",
     name: "PROFILE",

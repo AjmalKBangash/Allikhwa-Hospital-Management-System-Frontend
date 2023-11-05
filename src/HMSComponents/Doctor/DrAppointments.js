@@ -32,11 +32,12 @@ function DrAppointments() {
       )
       .then((res) => {
         setuuids_for_appointments(res.data);
+        setrerendertwo_axios_gets(false);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [rerendertwo_axios_gets]);
+  }, [rerendertwo_axios_gets, rerendertwo_axios_gets]);
 
   useEffect(() => {
     if (uuids_for_appointments) {
@@ -54,7 +55,6 @@ function DrAppointments() {
           const patients = responses.map((patient) => patient.data);
           const arrayOfObjects = [].concat(...patients);
           setPatientData(arrayOfObjects);
-          setrerendertwo_axios_gets(false);
         };
 
         fetchPatients();
@@ -62,7 +62,7 @@ function DrAppointments() {
         console.log(error);
       }
     }
-  }, [uuids_for_appointments, rerendertwo_axios_gets]);
+  }, [uuids_for_appointments]);
 
   // useEffect(() => {
   //   // It is already implemented just above which is more concise while handling errors on ly in catch block after all data has been fetched

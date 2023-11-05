@@ -54,6 +54,7 @@ import DrDepartments from "./HMSComponents/Doctor/DrDepartments";
 import DrAppointments from "./HMSComponents/Doctor/DrAppointments";
 import DrPrescription from "./HMSComponents/Doctor/DrPrescription";
 import DrSchedule from "./HMSComponents/Doctor/DrSchedule";
+import DrComplaints from "./HMSComponents/Doctor/DrComplaints";
 import DrDepartmentHMS from "./HMSComponents/Doctor/DrDepartmentHMS";
 // NOW RECEPTIONNIST HMS STARTED
 import RecHMS from "./HMSComponents/Receptionist/RecHMS";
@@ -72,6 +73,7 @@ import LabHMS from "./HMSComponents/LabTechnician/LabHMS";
 import LabDashboard from "./HMSComponents/LabTechnician/LabDashboard";
 import LabProfile from "./HMSComponents/LabTechnician/LabProfile";
 import Samples from "./HMSComponents/LabTechnician/Samples";
+import LabComplaints from "./HMSComponents/LabTechnician/LabComplaints";
 import LabPatients from "./HMSComponents/LabTechnician/LabPatients";
 // NOW PATIENT HMS STARTED
 import PatHMS from "./HMSComponents/Patient/PatHMS";
@@ -159,6 +161,7 @@ const theRoutes = createBrowserRouter(
         <Route path="dr-appointments" element={<DrAppointments />} />
         <Route path="dr-prescription" element={<DrPrescription />} />
         <Route path="dr-schedule" element={<DrSchedule />} />
+        <Route path="dr-complaints" element={<DrComplaints />} />
         <Route path="dr-departments" element={<DrDepartments />}>
           <Route
             path="/doctor-hms/dr-departments/:departmentname"
@@ -213,7 +216,7 @@ const theRoutes = createBrowserRouter(
         <Route path="lab-profile" element={<LabProfile />} />
         <Route path="lab-patients" element={<LabPatients />} />
         <Route path="lab-patient-samples" element={<Samples />} />
-        {/* <Route path="lab-complaints" element={<LabComplaints />} /> */}
+        <Route path="lab-complaints" element={<LabComplaints />} />
         {/* <Route path="lab-chat" element={<LabSchedule />} /> */}
       </Route>
       <Route path="pat-hms" element={<PatHMS />}>

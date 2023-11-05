@@ -27,26 +27,20 @@ function Expenses() {
           className="admin_buttons_add_update_from_add_update_form"
           onClick={() => {
             dispatch(expenses_to_expensedynamic_form_display("add"));
-            // navigate("expensedetails");
+            navigate("expensedetails");
           }}
           style={{
             display: "block",
             margin: "0px 0 0px auto",
           }}
         >
-          <Link
-            to={"expensedetails"}
-            state={{ type: "" }}
-            style={{ color: "white", textDecoration: "none" }}
-          >
-            ADD EXPENSES
-          </Link>
+          ADD EXPENSES
         </button>
       </div>
       {/* // These classes are taken from Dshboard.css */}
       <div className="dashboard_top">
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">1224</span>
+          {/* <span className="dashboard_employee_card_num">1224</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             {" "}
             <Link
@@ -67,7 +61,7 @@ function Expenses() {
         </div>
 
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          {/* <span className="dashboard_employee_card_num">324</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             <Link
               to={"expensedetails"}
@@ -86,7 +80,7 @@ function Expenses() {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          {/* <span className="dashboard_employee_card_num">324</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             {" "}
             <Link
@@ -106,7 +100,7 @@ function Expenses() {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          {/* <span className="dashboard_employee_card_num">324</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             <Link
               to={"expensedetails"}
@@ -125,7 +119,7 @@ function Expenses() {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          {/* <span className="dashboard_employee_card_num">324</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             <Link
               to={"expensedetails"}
@@ -144,7 +138,7 @@ function Expenses() {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          {/* <span className="dashboard_employee_card_num">324</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             {" "}
             <Link
@@ -164,7 +158,7 @@ function Expenses() {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          {/* <span className="dashboard_employee_card_num">324</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             <Link
               to={"expensedetails"}
@@ -183,7 +177,7 @@ function Expenses() {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          {/* <span className="dashboard_employee_card_num">324</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             <Link
               to={"expensedetails"}
@@ -202,7 +196,7 @@ function Expenses() {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">1224</span>
+          {/* <span className="dashboard_employee_card_num">1224</span> */}
           <span className="dashboard_employee_card_name expenses_cards_fontsize">
             {" "}
             <Link

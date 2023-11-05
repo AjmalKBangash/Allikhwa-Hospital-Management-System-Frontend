@@ -10,7 +10,7 @@ function PatComplaints() {
   const [patient_complaint_data, setpatient_complaint_data] = useState();
 
   const newpatient_complaint_schema = Yup.object().shape({
-    patient_complaint: Yup.string()
+    patient_complaints: Yup.string()
       .required("Complaint is required")
       .min(150, "Complaint should not be less than 150 characters"),
   });
@@ -28,15 +28,14 @@ function PatComplaints() {
     if (confirmm) {
       setpatient_complaint_data(data);
     }
-    console.log(data);
   }
   useEffect(() => {
     axios
       .get(
-        "http://localhost:3100/patients/?PID=b0f07faf-06f5-43ee-8003-fbf9d144d66b"
+        "http://localhost:8000/allikhwa-hms/patients/31feb58e-8044-4cfc-b528-24829165eef4"
       )
       .then((res) => {
-        setdata_of_patient_appointments(...res.data);
+        setdata_of_patient_appointments(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -44,19 +43,18 @@ function PatComplaints() {
   }, []);
   useEffect(() => {
     if (patient_complaint_data) {
-      const data_of_patient_appointmentsPID = data_of_patient_appointments.PID;
       axios
-        .post("http://localhost:3100/patientcomplaints", {
-          patient_complaint_data,
-          data_of_patient_appointmentsPID,
+        .post("http://localhost:8000/allikhwa-hms/patient-complaints/", {
+          ...patient_complaint_data,
+          patient: data_of_patient_appointments.patient_UID,
         })
         .then((res) => {
-          setdata_of_patient_appointments(...res.data);
+          setpatient_complaint_data(false);
+          reset();
         })
         .catch((error) => {
           console.log(error);
         });
-      reset();
     }
   }, [patient_complaint_data]);
   return (
@@ -79,40 +77,40 @@ function PatComplaints() {
             <label htmlFor="PID" className="profile_lanel_input_label">
               PID:
             </label>
-            <p>{data_of_patient_appointments?.PID}</p>
+            <p>{data_of_patient_appointments?.patient_UID}</p>
           </div>
           <div className="profile_label_input ">
             <label htmlFor="name" className="profile_lanel_input_label">
               Name:
             </label>
-            <p>{data_of_patient_appointments?.name}</p>
+            <p>{data_of_patient_appointments?.patient_name}</p>
           </div>
           <div className="profile_label_input ">
             <label htmlFor="Age" className="profile_lanel_input_label">
               Age:
             </label>
-            <p>{data_of_patient_appointments?.age}</p>
+            <p>{data_of_patient_appointments?.patient_age}</p>
           </div>
           <div className="profile_label_input ">
             <label
-              htmlFor="patient_complaint"
+              htmlFor="patient_complaints"
               className="profile_lanel_input_label"
             >
               Write about your Complaint!
             </label>
             <textarea
-              name="patient_complaint"
+              name="patient_complaints"
               id="patient_dis"
               rows="3"
               cols="5"
-              {...register("patient_complaint")}
+              {...register("patient_complaints")}
               placeholder="Write about your problem"
               style={{
                 maxWidth: "80%",
                 padding: "5px",
               }}
             />
-            <p className="pForForm ">{errors.patient_complaint?.message}</p>
+            <p className="pForForm ">{errors.patient_complaints?.message}</p>
           </div>
           <input
             type="submit"

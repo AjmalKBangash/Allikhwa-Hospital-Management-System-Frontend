@@ -16,6 +16,8 @@ function ExpenseDynamicDetails(props) {
   const [expenses_editing_or_adding, setexpenses_editing_or_adding] =
     useState(false);
   const [fetched_expenses_type, setfetched_expenses_type] = useState();
+  const [expensesdata, setexpensesdata] = useState();
+  const [show_add_expense_btn, setshow_add_expense_btn] = useState(false);
   const expensedynamic_ad_edit_html_form_intoscroll = useRef();
   const expenses_to_expensedynamic_form_display_var = useSelector(
     (state) => state.expenses_to_expensedynamic_form_display
@@ -23,9 +25,6 @@ function ExpenseDynamicDetails(props) {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  console.log(expenses_to_expensedynamic_form_display_var);
-  console.log(props);
-  console.log(location.state);
   // form validation and handling
   const expense_dynamic_schema = Yup.object().shape({
     // Sign Up Form Validation
@@ -68,34 +67,51 @@ function ExpenseDynamicDetails(props) {
     mode: "onBlur",
     resolver: yupResolver(expense_dynamic_schema),
   });
+  function formatDateToYYYYMMDD(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
   const expense_dynamic_adding = (data) => {
     alert(JSON.stringify(data));
-    reset();
+    setexpensesdata({
+      expense_type: data.type.toUpperCase(),
+      expense_department: data.department.toUpperCase(),
+      expense_addedby: data.added_by,
+      expense_details: data.details,
+      expense_cost: data.cost,
+      expense_date: formatDateToYYYYMMDD(data.date),
+    });
   };
 
   let expense_type = "";
   if (location.state) {
     expense_type = location.state.type.toLowerCase(); // Here i have to search for the type incase sensittive in the database  otherwise it will not work
   }
-  console.log(expense_type);
-  // console.log(expenses_to_expensedynamic_form_display_var);
-  // console.log(expenses_editing_or_adding);
-  console.log(location.state);
-  if (expenses_to_expensedynamic_form_display_var == "add") {
-    expensedynamic_ad_edit_html_form_intoscroll.current?.scrollIntoView({
-      behavior: "smooth",
-    });
-    setValue("type", "");
-    setValue("cost", "");
-    setValue("department", "");
-    setValue("date", "");
-    setValue("details", "");
-    setValue("added_by", "");
-  }
+
+  useEffect(() => {
+    if (expenses_to_expensedynamic_form_display_var == "add") {
+      expensedynamic_ad_edit_html_form_intoscroll.current?.scrollIntoView({
+        behavior: "smooth",
+      });
+      setshow_add_expense_btn(true);
+      setValue("type", "");
+      setValue("cost", "");
+      setValue("department", "");
+      setValue("date", "");
+      setValue("details", "");
+      setValue("added_by", "");
+    }
+  }, [expenses_to_expensedynamic_form_display_var]);
+
   useEffect(() => {
     if (expense_type) {
       axios
-        .get("http://localhost:8000/allikhwa-hms/expenses/" + expense_type)
+        .get(
+          "http://localhost:8000/allikhwa-hms/expenses/" +
+            expense_type.toUpperCase()
+        )
         .then((res) => {
           setfetched_expenses_type(res.data);
         })
@@ -105,10 +121,24 @@ function ExpenseDynamicDetails(props) {
     }
   }, [expense_type]);
 
+  useEffect(() => {
+    if (expensesdata && show_add_expense_btn) {
+      axios
+        .post("http://localhost:8000/allikhwa-hms/expenses/", expensesdata)
+        .then((res) => {
+          setexpensesdata(false);
+          reset();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [expensesdata, show_add_expense_btn]);
+
   return (
     <>
       {/* editing or adding expenses  */}
-      {expenses_to_expensedynamic_form_display_var && (
+      {expenses_to_expensedynamic_form_display_var ? (
         <div
           ref={expensedynamic_ad_edit_html_form_intoscroll} // this ref is for ecrolling to this div element from edit details
           className="profile_information_all"
@@ -130,9 +160,7 @@ function ExpenseDynamicDetails(props) {
               mozboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
             }}
           >
-            {expenses_to_expensedynamic_form_display_var &&
-              expenses_to_expensedynamic_form_display_var.toUpperCase()}{" "}
-            EXPENSES
+            {expenses_to_expensedynamic_form_display_var.toUpperCase()} EXPENSES
           </h2>
           <h2
             style={{
@@ -153,10 +181,11 @@ function ExpenseDynamicDetails(props) {
               //   behavior: "smooth",
               // });
               dispatch(expenses_to_expensedynamic_form_display(false));
+              // setexpensesdata(false);
             }}
           >
             &#10060;
-          </h2>
+          </h2>{" "}
           <form onSubmit={handleSubmit(expense_dynamic_adding)}>
             {/* <h1>Personal Information</h1> */}
             <div className="profile_label_input ">
@@ -309,17 +338,21 @@ function ExpenseDynamicDetails(props) {
             </div>
 
             {/* done  */}
-            <input
-              type="submit"
-              className="admin_buttons_add_update_from_add_update_form"
-              value="Submit Your Form"
-              style={{
-                margin: "10px 25% 20px 25%",
-                width: "50%",
-              }}
-            />
+            {show_add_expense_btn && (
+              <input
+                type="submit"
+                className="admin_buttons_add_update_from_add_update_form"
+                value="Submit Your Form"
+                style={{
+                  margin: "10px 25% 20px 25%",
+                  width: "50%",
+                }}
+              />
+            )}
           </form>
         </div>
+      ) : (
+        <div></div>
       )}
 
       {/* ********* */}
@@ -355,7 +388,16 @@ function ExpenseDynamicDetails(props) {
                     <td>{expense_details.expense_cost}</td>
                     <td>{expense_details.expense_department}</td>
                     <td>{expense_details.expense_date}</td>
-                    <td>{expense_details.expense_details}</td>
+                    <td>
+                      <p
+                        style={{
+                          maxWidth: "200px",
+                          overflow: "scroll",
+                        }}
+                      >
+                        {expense_details.expense_details}
+                      </p>
+                    </td>
                     <td>{expense_details.expense_addedby}</td>
                     <td
                       onClick={() => {
@@ -366,9 +408,10 @@ function ExpenseDynamicDetails(props) {
                         );
                         dispatch(
                           expenses_to_expensedynamic_form_display(
-                            expense_details.type
+                            expense_details.expense_type
                           )
                         );
+                        setshow_add_expense_btn(false);
                         setValue("type", expense_details.expense_type);
                         setValue("cost", expense_details.expense_cost);
                         setValue(
