@@ -16,12 +16,14 @@ function Samples() {
   const [data_for_lab_test_result, setdata_for_lab_test_result] =
     useState(false);
   const [data_lab_test_result, setdata_lab_test_result] = useState();
+  const [rerender_uuids_forlabtests, setrerender_uuids_forlabtests] =
+    useState(false);
   const detail_column_patient_list = useRef();
 
   const prescription_validation_schema = Yup.object().shape({
     // Sign Up Form Validation
     date: Yup.string().required("Date is Required!"),
-    time: Yup.string().required("Time is required!"),
+    // time: Yup.string().required("Time is required!"),
     tests: Yup.array().of(
       Yup.object().shape({
         testdetails: Yup.string().required("Test Details is required!"),
@@ -29,9 +31,7 @@ function Samples() {
       })
     ),
   });
-  //   Yup.string()
-  //     .required("Textarea is required")
-  //     .min(10, "Textarea must be at least 10 characters long")
+
   const {
     control,
     setValue,
@@ -50,36 +50,55 @@ function Samples() {
     control,
     name: "tests",
   });
-
+  // function formatDateToYYYYMMDD(date) {
+  //   const year = date.getFullYear();
+  //   const month = String(date.getMonth() + 1).padStart(2, "0");
+  //   const day = String(date.getDate()).padStart(2, "0");
+  //   return `${year}-${month}-${day}`;
+  // }
+  let listt = [];
   function handle_lab_test_result(data) {
-    console.log(data);
-    const result = window.confirm(
+    data.tests.map((test, index) => {
+      listt.push(test.testdetails, test.testdescription);
+    });
+    const result = listt.join(" > ");
+    console.log(result, data.date);
+    const answer = window.confirm(
       "Are you sure you want to submit test resultg along with deleting patient from list?"
     );
-    if (result) {
-      setdata_lab_test_result(data);
+    if (answer) {
+      setdata_lab_test_result({
+        patient: data_for_lab_test_result.patient_UID,
+        patient_tests: result,
+        patient_testdate: data.date,
+      });
     }
-    // reset();
   }
+
+  // UUIDS FOR OF LAB TESTS PATIENTS
   useEffect(() => {
     axios
-      .get("http://localhost:3100/labnewtests")
+      .get("http://localhost:8000/allikhwa-hms/uuids-for-lab-tests/")
       .then((res) => {
         setlab_new_samples(res.data);
+        setrerender_uuids_forlabtests(false);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [rerender_uuids_forlabtests]);
+
+  // LAB TESTS OF PATIENTS
   useEffect(() => {
     if (data_lab_test_result) {
       axios
-        .post("http://localhost:3100/waitingpatientsforlabtests", {
-          ...data_lab_test_result,
-          ...data_for_lab_test_result,
-        })
+        .post(
+          "http://localhost:8000/allikhwa-hms/patient-lab-tests/",
+          data_lab_test_result
+        )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
+          // reset();
         })
         .catch((error) => {
           console.log(error);
@@ -90,17 +109,20 @@ function Samples() {
     if (data_lab_test_result) {
       axios
         .delete(
-          "http://localhost:3100/labnewtests/?PID+" +
-            data_for_lab_test_result.PID
+          "http://localhost:8000/allikhwa-hms/uuids-for-lab-tests/" +
+            data_for_lab_test_result.patient_UID
         )
         .then((res) => {
           //   dispatch(prescription_show_patient_detail_rest_pres_form(false));
+          setdata_for_lab_test_result(false);
+          setrerender_uuids_forlabtests(true);
+          set_showPatient_Details(false);
+
+          reset();
         })
         .catch((error) => {
           console.log(error);
         });
-      setdata_for_lab_test_result(false);
-      reset();
     }
   }, [data_lab_test_result]);
   return (
@@ -116,15 +138,21 @@ function Samples() {
           <h2 className="fillfreebeds_h2">PATIENT LAB TEST FORM</h2>
           <div className="profile_label_input prescription_editing_to_form_of_patient">
             <div>Patient ID:</div>
-            <div style={{ width: "70%" }}>{data_for_lab_test_result?.PID}</div>
+            <div style={{ width: "70%" }}>
+              {data_for_lab_test_result?.patient_UID}
+            </div>
           </div>
           <div className="profile_label_input prescription_editing_to_form_of_patient">
             <div>Name:</div>
-            <div style={{ width: "70%" }}>{data_for_lab_test_result?.name}</div>
+            <div style={{ width: "70%" }}>
+              {data_for_lab_test_result?.patient_name}
+            </div>
           </div>
           <div className="profile_label_input prescription_editing_to_form_of_patient">
             <div>Age:</div>
-            <div style={{ width: "70%" }}>{data_for_lab_test_result?.age}</div>
+            <div style={{ width: "70%" }}>
+              {data_for_lab_test_result?.patient_age}
+            </div>
           </div>
           <div className="profile_label_input prescription_editing_to_form_of_patient">
             <label htmlFor="date" className="profile_lanel_input_label">
@@ -138,7 +166,7 @@ function Samples() {
             ></input>
             <p className="pForForm">{errors.date?.message}</p>
           </div>
-          <div className="profile_label_input prescription_editing_to_form_of_patient">
+          {/* <div className="profile_label_input prescription_editing_to_form_of_patient">
             <label htmlFor="date" className="profile_lanel_input_label">
               Time:
             </label>
@@ -149,7 +177,7 @@ function Samples() {
               placeholder="Enter Patient Test Time"
             ></input>
             <p className="pForForm">{errors.time?.message}</p>
-          </div>
+          </div> */}
 
           {fields.map((field, index) => (
             <div
@@ -281,51 +309,23 @@ function Samples() {
                 <tbody>
                   <tr>
                     <td>PID</td>
-                    <td>{_showPatient_Details.PID}</td>
+                    <td>{_showPatient_Details.patient_UID}</td>
                   </tr>
                   <tr>
                     <td>Name</td>
-                    <td> {_showPatient_Details.name}</td>
-                  </tr>
-                  <tr>
-                    <td>Age</td>
-                    <td>{_showPatient_Details.age}</td>
-                  </tr>
-                  <tr>
-                    <td>Last Appointment Date</td>
-                    <td>{_showPatient_Details.date}</td>
-                  </tr>
-                  <tr>
-                    <td>Contact</td>
-                    <td>{_showPatient_Details.contact}</td>
-                  </tr>
-                  <tr>
-                    <td>City</td>
-                    <td> {_showPatient_Details.city}</td>
+                    <td> {_showPatient_Details.patient_name}</td>
                   </tr>
                   <tr>
                     <td>Department</td>
-                    <td>{_showPatient_Details.department}</td>
+                    <td>{_showPatient_Details.patient_department}</td>
                   </tr>
                   <tr>
-                    <td>Admitted Status</td>
-                    <td>{_showPatient_Details.admitted_status}</td>
+                    <td>Last Appointment Date</td>
+                    <td>{_showPatient_Details.patient_eappointmentdate}</td>
                   </tr>
                   <tr>
-                    <td>Bed No</td>
-                    <td>{_showPatient_Details.bed_no}</td>
-                  </tr>
-                  <tr>
-                    <td>Patient Doctor</td>
-                    <td>{_showPatient_Details.doctor}</td>
-                  </tr>
-                  <tr>
-                    <td>Medicine</td>
-                    <td>{_showPatient_Details.medicine}</td>
-                  </tr>
-                  <tr>
-                    <td>Instructions</td>
-                    <td>{_showPatient_Details.instructions}</td>
+                    <td>Tests to be done</td>
+                    <td>{_showPatient_Details.patient_tests}</td>
                   </tr>
                 </tbody>
               </table>
@@ -340,9 +340,8 @@ function Samples() {
             <thead>
               <tr>
                 <th>Patient Name</th>
-                <th>Age</th>
-                <th>Date</th>
-                <th>City</th>
+                <th>Patient ID</th>
+                <th>Patient Department</th>
                 <th>View</th>
               </tr>
             </thead>
@@ -351,10 +350,9 @@ function Samples() {
                 lab_new_samples.map((patsam, id) => {
                   return (
                     <tr key={id}>
-                      <td>{patsam.name}</td>
-                      <td>{patsam.age}</td>
-                      <td>{patsam.date}</td>
-                      <td>{patsam.city}</td>
+                      <td>{patsam.patient_name}</td>
+                      <td>{patsam.patient_UID}</td>
+                      <td>{patsam.patient_department}</td>
                       <td
                         onClick={() => {
                           set_showPatient_Details(patsam);

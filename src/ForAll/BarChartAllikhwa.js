@@ -84,13 +84,14 @@ const data = [
   },
 ];
 
-function BarChartAllikhwa() {
+function BarChartAllikhwa(props) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={500}
         height={300}
-        data={data}
+        // data={props.data}
+        data={props.data}
         margin={{
           top: 5,
           right: 30,

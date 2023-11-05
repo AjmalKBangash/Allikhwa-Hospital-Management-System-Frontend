@@ -1,10 +1,26 @@
 import { Link } from "react-router-dom";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
-
+import { FaBed } from "react-icons/fa";
+import { PiBedFill } from "react-icons/pi";
+import { useEffect, useState } from "react";
+import axios from "axios";
 function DrInformationCards(props) {
   let departmentname = [props.data];
+  const [department_beds_info, setdepartment_beds_info] = useState();
 
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8000/allikhwa-hms/department-beds/" + departmentname
+      )
+      .then((res) => {
+        setdepartment_beds_info(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [departmentname]);
   return (
     <>
       <div className="dashboard_top">
@@ -20,7 +36,6 @@ function DrInformationCards(props) {
             <BsPersonFillExclamation />
           </span>
         </div>
-
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">324</span>
           <span className="dashboard_employee_card_name">
@@ -44,15 +59,10 @@ function DrInformationCards(props) {
           <span className="dashboard_employee_card_num">324</span>
           <span className="dashboard_employee_card_name">
             <Link
-              to={
-                "http://localhost:3000/rec-hms/rec-departments/" +
-                departmentname +
-                "/department-doctors"
-              }
-              // to={"department-doctors"}
+              to={"department-doctors"}
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Doctors
             </Link>
@@ -62,17 +72,13 @@ function DrInformationCards(props) {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num"></span>
           <span className="dashboard_employee_card_name">
             <Link
-              to={
-                "http://localhost:3000/rec-hms/rec-departments/" +
-                departmentname +
-                "/department-nurses"
-              }
+              to={"department-nurses"}
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Nurses
             </Link>
@@ -82,63 +88,57 @@ function DrInformationCards(props) {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {department_beds_info && department_beds_info.total_beds}
+          </span>
           <span className="dashboard_employee_card_name">
             <Link
-              to={
-                "http://localhost:3000/rec-hms/rec-departments/" +
-                departmentname +
-                "/department-beds"
-              }
+              to={"department-beds"}
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Total Beds
             </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
-            <FaUserDoctor />
+            <FaBed />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {department_beds_info && department_beds_info.beds_in_use}
+          </span>
           <span className="dashboard_employee_card_name">
             <Link
-              to={
-                "http://localhost:3000/rec-hms/rec-departments/" +
-                departmentname +
-                "/department-beds"
-              }
+              to={"department-beds"}
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Filled Beds
             </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
-            <FaUserDoctor />
+            <PiBedFill />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {department_beds_info && department_beds_info.free_beds}
+          </span>
           <span className="dashboard_employee_card_name">
             <Link
-              to={
-                "http://localhost:3000/rec-hms/rec-departments/" +
-                departmentname +
-                "/department-beds"
-              }
+              to={"department-beds"}
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Free Beds
             </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
-            <FaUserDoctor />
+            <PiBedFill />
           </span>
         </div>
       </div>

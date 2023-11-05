@@ -1,12 +1,27 @@
 import { Link, Outlet } from "react-router-dom";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FaUserDoctor } from "react-icons/fa6";
-import { Routes, Route } from "react-router-dom";
-import DepartmentDoctors from "./DepartmentDoctors";
+import { FaBed } from "react-icons/fa";
+import { PiBedFill } from "react-icons/pi";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function InformationCards(props) {
   let departmentname = [props.data];
+  const [department_beds_info, setdepartment_beds_info] = useState();
 
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8000/allikhwa-hms/department-beds/" + departmentname
+      )
+      .then((res) => {
+        setdepartment_beds_info(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [departmentname]);
   return (
     <>
       {" "}
@@ -55,7 +70,7 @@ function InformationCards(props) {
               // to={"department-doctors"}
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Doctors
             </Link>
@@ -75,7 +90,7 @@ function InformationCards(props) {
               }
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Nurses
             </Link>
@@ -85,7 +100,9 @@ function InformationCards(props) {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {department_beds_info && department_beds_info.total_beds}
+          </span>
           <span className="dashboard_employee_card_name">
             <Link
               to={
@@ -95,17 +112,19 @@ function InformationCards(props) {
               }
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Total Beds
             </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
-            <FaUserDoctor />
+            <FaBed />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {department_beds_info && department_beds_info.beds_in_use}
+          </span>
           <span className="dashboard_employee_card_name">
             <Link
               to={
@@ -115,17 +134,19 @@ function InformationCards(props) {
               }
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Filled Beds
             </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
-            <FaUserDoctor />
+            <PiBedFill />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {department_beds_info && department_beds_info.free_beds}
+          </span>
           <span className="dashboard_employee_card_name">
             <Link
               to={
@@ -135,13 +156,13 @@ function InformationCards(props) {
               }
               state={departmentname}
               className="linkk"
-              style={{ color: "#fe4200", borderBottom: "2px solid #fe4200" }}
+              style={{ color: "#fe4200" }}
             >
               Free Beds
             </Link>
           </span>{" "}
           <span className="dashboard_employee_card_icon">
-            <FaUserDoctor />
+            <PiBedFill />
           </span>
         </div>
       </div>

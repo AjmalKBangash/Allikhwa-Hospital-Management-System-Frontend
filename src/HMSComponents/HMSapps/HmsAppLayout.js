@@ -89,16 +89,16 @@ const departments = [
     name: "EXPENSES",
     logo: FaMoneyCheckDollar,
   },
-  {
-    id: "13",
-    name: "COMPLAINTS",
-    logo: BiSolidCommentAdd,
-  },
-  {
-    id: "14",
-    name: "CHAT",
-    logo: AiFillWechat,
-  },
+  // {
+  //   id: "13",
+  //   name: "COMPLAINTS",
+  //   logo: BiSolidCommentAdd,
+  // },
+  // {
+  //   id: "14",
+  //   name: "CHAT",
+  //   logo: AiFillWechat,
+  // },
 ];
 let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");

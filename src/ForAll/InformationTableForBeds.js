@@ -70,12 +70,12 @@ function InformationTableForBeds(props) {
       )
       .then((res) => {
         setfetched_beds_data(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [state_for_axios_post_torun]);
+
   // aDDUPDATEFORM
   useEffect(() => {
     {

@@ -1,4 +1,5 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, useEffect, useState } from "react";
+import axios from "axios";
 import {
   RadialBarChart,
   RadialBar,
@@ -55,6 +56,12 @@ const data = [
     pv: 4800,
     fill: "#013737a2",
   },
+  {
+    name: "OTHERS",
+    uv: 6.67,
+    pv: 4800,
+    fill: "#013737a2",
+  },
 ];
 
 const style = {
@@ -65,6 +72,37 @@ const style = {
 };
 
 function Radialbarchart() {
+  const [expenseData, setExpenseData] = useState();
+  useEffect(() => {
+    try {
+      const fetchPatients = async () => {
+        const responses = await Promise.all(
+          data.map((expense) => {
+            return axios.get(
+              "http://localhost:8000/allikhwa-hms/expenses/" + expense.name
+            );
+          })
+        );
+        const expenses = responses.map((expense) => {
+          return expense.data.map((expensee) => ({
+            name: expensee.expense_type,
+            cost: expensee.expense_cost,
+            fill: "#8dd1e1",
+          }));
+        });
+        // const expenses = responses.map((exx) => ({
+        //   name: exx.data.expense_type,
+        //   cost: exx.data.expense_cost,
+        // }));
+        const arrayOfexpensesobjs = [].concat(...expenses);
+        setExpenseData(arrayOfexpensesobjs);
+      };
+      fetchPatients();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadialBarChart
@@ -73,7 +111,7 @@ function Radialbarchart() {
         innerRadius="30%"
         outerRadius="200%"
         barSize={100}
-        data={data}
+        data={expenseData}
         startAngle={180}
         endAngle={0}
         color={"black"}
@@ -83,7 +121,9 @@ function Radialbarchart() {
           label={{ position: "insideStart", fill: "#013737" }}
           background
           clockWise
-          dataKey="uv"
+          // dataKey={data.map((expenxe) => expenxe.uv)}
+          // dataKey={expense_cost}
+          dataKey="cost"
         />
         <Legend
           iconSize={20}

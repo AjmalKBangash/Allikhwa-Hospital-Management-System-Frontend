@@ -66,15 +66,15 @@ const doctorhmsobjs = [
   {
     id: "14",
     name: "COMPLAINTS",
-    path: "jjjj",
+    path: "dr-complaints",
     logo: BiSolidCommentAdd,
   },
-  {
-    id: "15",
-    name: "CHAT",
-    path: "jjjj",
-    logo: AiFillWechat,
-  },
+  // {
+  //   id: "15",
+  //   name: "CHAT",
+  //   path: "",
+  //   logo: AiFillWechat,
+  // },
 ];
 let strr = "";
 const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
