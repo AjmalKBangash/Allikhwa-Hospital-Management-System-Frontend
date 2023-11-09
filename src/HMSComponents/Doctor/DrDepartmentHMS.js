@@ -1,4 +1,5 @@
-import DrInformationCards from "./DrInformationCards";
+// import DrInformationCards from "./DrInformationCards"; // It s totally useless component and it is not using the idea of component reusability
+import InformationCards from "../../ForAll/InformationCards";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -38,7 +39,7 @@ function DrDepartmentHMS() {
   return (
     <>
       {location.state != null ? (
-        <DrInformationCards data={department_name} />
+        <InformationCards data={department_name} />
       ) : (
         ""
       )}
