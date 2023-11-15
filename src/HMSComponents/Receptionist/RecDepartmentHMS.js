@@ -1,4 +1,4 @@
-import DrInformationCards from "../Doctor/DrInformationCards";
+import InformationCards from "../../ForAll/InformationCards";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -37,7 +37,7 @@ function RecDepartmentHMS() {
   return (
     <>
       {location.state != null ? (
-        <DrInformationCards data={department_name} />
+        <InformationCards data={department_name} />
       ) : (
         ""
       )}

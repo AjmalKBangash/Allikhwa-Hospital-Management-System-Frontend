@@ -7,13 +7,35 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function InformationCards(props) {
-  let departmentname = [props.data];
-  const [department_beds_info, setdepartment_beds_info] = useState();
+  let departmentname = props.data;
+  let departmentname02 = props.data.toUpperCase();
 
+  const [department_beds_info, setdepartment_beds_info] = useState();
+  const [
+    patients_count_info_for_statistics,
+    setpatients_count_info_for_statistics,
+  ] = useState();
+  const [last_month_patients, setlast_month_patients] = useState();
+  const [last_year_patients_state, setlast_year_patients_state] = useState();
+
+  useEffect(() => {
+    let last_year_patients = 0;
+    if (patients_count_info_for_statistics) {
+      patients_count_info_for_statistics.counts.map((months_counts) => {
+        last_year_patients =
+          last_year_patients + months_counts.patients_per_month;
+        if ("2023-12-01" == months_counts.year_month) {
+          setlast_month_patients(months_counts.patients_per_month);
+        }
+      });
+      setlast_year_patients_state(last_year_patients);
+    }
+  }, [patients_count_info_for_statistics]);
+  // THIS API IS FOR GETTING DEPARTMEN BEDS INFORMATON FOR STATISTICS FOR INFORMATION CARDS
   useEffect(() => {
     axios
       .get(
-        "http://localhost:8000/allikhwa-hms/department-beds/" + departmentname
+        "http://localhost:8000/allikhwa-hms/department-beds/" + departmentname02
       )
       .then((res) => {
         setdepartment_beds_info(res.data);
@@ -21,18 +43,36 @@ function InformationCards(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [departmentname]);
+  }, [departmentname02]);
+
+  // THIS API IS FOR GETTING TOTAL PATIENTS COUNT TREATED BY THIS INDIVIDUAL DEPARTMENT LAST YEAR PATIENTS AND LAST MONTH PATIENTS
+  useEffect(() => {
+    axios
+      .get(
+        "http://localhost:8000/allikhwa-hms/patients-information/" +
+          departmentname02
+      )
+      .then((res) => {
+        setpatients_count_info_for_statistics(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [departmentname02]);
   return (
     <>
       {" "}
       <div className="dashboard_top">
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">1224</span>
+          <span className="dashboard_employee_card_num">
+            {patients_count_info_for_statistics &&
+              patients_count_info_for_statistics.total_treated_patients}
+          </span>
           <span
             className="dashboard_employee_card_name"
             style={{ fontSize: "15px" }}
           >
-            Total Treated Patients Today
+            Total Treated Patients
           </span>
           <span className="dashboard_employee_card_icon">
             <BsPersonFillExclamation />
@@ -40,7 +80,9 @@ function InformationCards(props) {
         </div>
 
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {last_month_patients ? last_month_patients : 0}
+          </span>
           <span className="dashboard_employee_card_name">
             Last Month Patients
           </span>
@@ -49,7 +91,9 @@ function InformationCards(props) {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {last_year_patients_state && last_year_patients_state}
+          </span>
           <span className="dashboard_employee_card_name">
             {" "}
             Last Year Patients
@@ -59,7 +103,7 @@ function InformationCards(props) {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num"></span>
           <span className="dashboard_employee_card_name">
             <Link
               to={
@@ -80,7 +124,7 @@ function InformationCards(props) {
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num"></span>
           <span className="dashboard_employee_card_name">
             <Link
               to={
