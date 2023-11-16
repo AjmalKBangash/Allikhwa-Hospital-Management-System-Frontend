@@ -13,7 +13,7 @@ function DepartmentBeds() {
   let departname = {};
   if (location.state) {
     departname = {
-      department_name: location.state[0],
+      department_name: location.state,
       // employee_category: "BEDS",
     };
   }

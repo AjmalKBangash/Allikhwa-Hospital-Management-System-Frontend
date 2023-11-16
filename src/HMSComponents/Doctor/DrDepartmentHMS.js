@@ -1,4 +1,4 @@
-// import DrInformationCards from "./DrInformationCards"; // It s totally useless component and it is not using the idea of component reusability
+import DrInformationCards from "./DrInformationCards"; // It s totally useless component and it is not using the idea of component reusability
 import InformationCards from "../../ForAll/InformationCards";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";

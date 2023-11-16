@@ -17,8 +17,78 @@ import { AreaChart } from "recharts";
 import PieChartt from "./PieChartt";
 import { FaBed } from "react-icons/fa";
 import { PiBedFill } from "react-icons/pi";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Dashboard() {
+  const [total_treated_patients_state, settotal_treated_Patients_state] =
+    useState();
+  const [total_departments_state, settotal_departments_state] = useState();
+  const [total_free_broken_beds_state, settotal_free_broken_beds_state] =
+    useState();
+  const [total_hospital_employees_state, settotal_hospital_employees_state] =
+    useState();
+  const [total_departmn, ments_state, settotal_deparbnmtmentns_state] =
+    useState();
+  const [total_deparbmnments_state, settotal_depabnvnbrtments_state] =
+    useState();
+
+  // TOTAL TREATED PATIENTS
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/allikhwa-hms/all-treated-patients/")
+      .then((res) => {
+        settotal_treated_Patients_state(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  // TOTAL DEPARTMENTS
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/allikhwa-hms/departments/")
+      .then((res) => {
+        settotal_departments_state(res.data.length);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  // TOTAL FREE BYSY BROKEN BEDS
+  useEffect(() => {
+    let total_beds = 0;
+    let free_beds = 0;
+    let broken_beds = 0;
+    axios
+      .get("http://localhost:8000/allikhwa-hms/department-beds/")
+      .then((res) => {
+        res.data.map((department_beds) => {
+          total_beds += Number(department_beds.total_beds);
+          free_beds += Number(department_beds.free_beds);
+          broken_beds += Number(department_beds.broken_beds);
+        });
+        settotal_free_broken_beds_state({
+          total_beds: total_beds,
+          broken_beds: broken_beds,
+          free_beds: free_beds,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  // TOTAL HOSPITAL EMPLOYEES
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/allikhwa-hms/total-hospital-employees/")
+      .then((res) => {
+        settotal_hospital_employees_state(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       {/* Patients Card Started */}
@@ -31,7 +101,8 @@ function Dashboard() {
             className="dashboard_employee_card_num"
             style={{ bottom: "10%", left: "0%" }}
           >
-            79876
+            {total_treated_patients_state &&
+              total_treated_patients_state.total_treated_patients}
           </span>
           <span
             className="dashboard_employee_card_name"
@@ -51,7 +122,7 @@ function Dashboard() {
             className="dashboard_employee_card_num"
             style={{ bottom: "10%", left: "0%" }}
           >
-            564
+            2
           </span>
           <span
             className="dashboard_employee_card_name"
@@ -72,7 +143,7 @@ function Dashboard() {
             className="dashboard_employee_card_num"
             style={{ bottom: "10%", left: "0%" }}
           >
-            187
+            4
           </span>
           <span
             className="dashboard_employee_card_name"
@@ -93,7 +164,7 @@ function Dashboard() {
             className="dashboard_employee_card_num"
             style={{ bottom: "10%", left: "0%" }}
           >
-            97
+            2
           </span>
           <span
             className="dashboard_employee_card_name"
@@ -132,7 +203,7 @@ function Dashboard() {
               className="dashboard_employee_card_num"
               style={{ bottom: "10%", left: "0%" }}
             >
-              18
+              {total_departments_state && total_departments_state}
             </span>
             <span
               className="dashboard_employee_card_name"
@@ -152,7 +223,8 @@ function Dashboard() {
               className="dashboard_employee_card_num"
               style={{ bottom: "10%", left: "0%" }}
             >
-              240
+              {total_free_broken_beds_state &&
+                total_free_broken_beds_state.total_beds}
             </span>
             <span
               className="dashboard_employee_card_name"
@@ -173,7 +245,8 @@ function Dashboard() {
               className="dashboard_employee_card_num"
               style={{ bottom: "10%", left: "0%" }}
             >
-              21
+              {total_free_broken_beds_state &&
+                total_free_broken_beds_state.free_beds}
             </span>
             <span
               className="dashboard_employee_card_name"
@@ -194,7 +267,8 @@ function Dashboard() {
               className="dashboard_employee_card_num"
               style={{ bottom: "10%", left: "0%" }}
             >
-              21
+              {total_free_broken_beds_state &&
+                total_free_broken_beds_state.broken_beds}
             </span>
             <span
               className="dashboard_employee_card_name"
@@ -212,52 +286,62 @@ function Dashboard() {
       {/* General Like doctors, pharmacists, staf members others etc in totall numbers  */}
       <div className="dashboard_top">
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">1224</span>
-          <span className="dashboard_employee_card_name">
-            {" "}
-            Total Employess{" "}
+          <span className="dashboard_employee_card_num">
+            {total_hospital_employees_state &&
+              total_hospital_employees_state.total_employees}
           </span>
+          <span className="dashboard_employee_card_name">Total Employess</span>
           <span className="dashboard_employee_card_icon">
             <AiFillIdcard />
           </span>
         </div>
 
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {total_hospital_employees_state &&
+              total_hospital_employees_state.admins}
+          </span>
           <span className="dashboard_employee_card_name">ADMINS </span>
           <span className="dashboard_employee_card_icon">
             <RiAdminFill />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {total_hospital_employees_state &&
+              total_hospital_employees_state.doctors}
+          </span>
           <span className="dashboard_employee_card_name"> DOCTORS</span>
           <span className="dashboard_employee_card_icon">
             <FaUserDoctor />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
-          <span className="dashboard_employee_card_name">
-            PHARMACISTS{" "}
-          </span>{" "}
+          <span className="dashboard_employee_card_num">
+            {total_hospital_employees_state &&
+              total_hospital_employees_state.pharmacists}
+          </span>
+          <span className="dashboard_employee_card_name">PHARMACISTS </span>{" "}
           <span className="dashboard_employee_card_icon">
             <AiFillMedicineBox />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
+          <span className="dashboard_employee_card_num">
+            {total_hospital_employees_state &&
+              total_hospital_employees_state.nurses}
+          </span>
           <span className="dashboard_employee_card_name">NURSES </span>{" "}
           <span className="dashboard_employee_card_icon">
             <FaUserNurse />
           </span>
         </div>
         <div className="dashboard_employee_card">
-          <span className="dashboard_employee_card_num">324</span>
-          <span className="dashboard_employee_card_name">
-            {" "}
-            RECEPTIONISTS
-          </span>{" "}
+          <span className="dashboard_employee_card_num">
+            {total_hospital_employees_state &&
+              total_hospital_employees_state.receptionists}
+          </span>
+          <span className="dashboard_employee_card_name"> RECEPTIONISTS</span>{" "}
           <span className="dashboard_employee_card_icon">
             <MdPersonalInjury />
           </span>

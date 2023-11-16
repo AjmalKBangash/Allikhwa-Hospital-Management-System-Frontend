@@ -182,7 +182,7 @@ function HmsAppLayout() {
                   fontWeight: "500",
                 }}
               >
-                "SAFEER KASHMIRI"
+                "DR.ABDUL QADEER KHAN"
               </span>
             </span>
           </span>

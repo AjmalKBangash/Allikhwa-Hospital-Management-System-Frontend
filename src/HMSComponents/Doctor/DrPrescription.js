@@ -755,9 +755,17 @@ const Prescription = React.forwardRef((props, ref) => {
     const result = window.confirm(
       "Are you sure you want to refer this patient to Admission?"
     );
+    // if (result) {
+    //   setpresc_print_refer_to_admission({
+    //     patient_UID: data.patient_UID,
+    //     patient_department: data.patient_department,
+    //     patient_admissiondate: formatDateToYYYYMMDD(data.patient_admissiondate),
+    //   });
+    // }
+    // THISIS FOR REFERRED TO ADMISSION
     if (result) {
       setpresc_print_refer_to_admission({
-        patient_UID: data.patient_UID,
+        patient: data.patient_UID,
         patient_department: data.patient_department,
         patient_admissiondate: formatDateToYYYYMMDD(data.patient_admissiondate),
       });
@@ -802,9 +810,6 @@ const Prescription = React.forwardRef((props, ref) => {
       !waiting_list_deletion_work
     ) {
       //  DELETING FROM WAITING PATIENTS IS REMAINING OKAYYYYY
-      console.log("useffect for uuids-for-pres deletion inside");
-      console.log(from_prescription_to_patients.patient);
-
       axios
         .delete(
           "http://localhost:8000/allikhwa-hms/uuids-for-prescription-deletion/" +
@@ -1044,7 +1049,6 @@ const Prescription = React.forwardRef((props, ref) => {
                 ></textarea>
                 <p className="pForForm">{errors.patient_disease?.message}</p>
               </div>
-
               <div className="profile_label_input prescription_editing_to_form_of_patient">
                 <label htmlFor="medicine" className="profile_lanel_input_label">
                   Medicine:

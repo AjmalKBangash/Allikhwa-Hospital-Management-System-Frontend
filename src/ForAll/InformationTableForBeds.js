@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { fillfreebeds_variable } from "../Store/Store";
 
 function InformationTableForBeds(props) {
   const [fetched_beds_data, setfetched_beds_data] = useState(false);
@@ -16,6 +18,10 @@ function InformationTableForBeds(props) {
   const [show_editing_beds_form, setshow_editing_beds_form] = useState(false);
   const [show_adding_beds_form, setshow_adding_beds_form] = useState(false);
   const table_details_beds = useRef(null);
+  const fillfreebeds_variable_var = useSelector(
+    (state) => state.fillfreebeds_variable
+  );
+  const dispatch = useDispatch();
 
   // const psswd = /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/;
   // const exclude_spaces_regex = /^[\d\w]*$/;
@@ -61,12 +67,12 @@ function InformationTableForBeds(props) {
       set_Add_Form_Data(data);
     }
   };
+
   useEffect(() => {
-    console.log("wachaledoooo!");
     axios
       .get(
         "http://localhost:8000/allikhwa-hms/department-beds/" +
-          props.department_name
+          props.department_name.toUpperCase()
       )
       .then((res) => {
         setfetched_beds_data(res.data);
@@ -83,7 +89,7 @@ function InformationTableForBeds(props) {
         axios
           .put(
             `http://localhost:8000/allikhwa-hms/department-beds/` +
-              props.department_name, //currently it is not working in json server i will fix it after the creation of backend django
+              props.department_name.toUpperCase(), //currently it is not working in json server i will fix it after the creation of backend django
             {
               ...addUpdate_Form_Data,
             }
@@ -96,6 +102,7 @@ function InformationTableForBeds(props) {
           });
     }
   }, [addUpdate_Form_Data]);
+
   // aDDUPDATEFORM
   useEffect(() => {
     {
@@ -117,13 +124,16 @@ function InformationTableForBeds(props) {
     }
   }, [add_Form_Data]);
 
+  // HERE I SHOULD DECLARE A VARIABLE IN STORE
   let informationtablefrbedsprops_departname_totalbeds = {};
+  // useEffect(() => {
   if (fetched_beds_data) {
     informationtablefrbedsprops_departname_totalbeds = {
       department_name: props.department_name,
       total_beds: fetched_beds_data.total_beds,
     };
   }
+  // }, [fetched_beds_data]);
 
   return (
     <>
@@ -192,7 +202,7 @@ function InformationTableForBeds(props) {
                 type="text"
                 {...register("department_name")}
                 // defaultValue={fetched_beds_data?.department_name}
-                value={props.department_name}
+                value={props.department_name.toUpperCase()}
                 placeholder="Enter Department Name"
               ></input>
               <p className="pForForm">{errors.department_name?.message}</p>
@@ -438,7 +448,7 @@ function InformationTableForBeds(props) {
                 type="text"
                 {...register("department_name")}
                 // defaultValue={fetched_beds_data?.department_name}
-                value={props.department_name}
+                value={props.department_name.toUpperCase()}
                 placeholder="Enter Department Name"
               ></input>
               <p className="pForForm">{errors.department_name?.message}</p>
