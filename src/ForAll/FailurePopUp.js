@@ -12,7 +12,7 @@ const FailurePopUp = ({ message }) => {
     const timer = setTimeout(() => {
       setShowMessage(false);
       dispatch(failurepopup(false));
-    }, 3000);
+    }, 5000);
 
     // Clear the timer when the component unmounts to avoid memory leaks
     return () => clearTimeout(timer);

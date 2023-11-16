@@ -111,7 +111,7 @@ function LabHMS() {
                   fontWeight: "500",
                 }}
               >
-                "SAFEER KASHMIRI"
+                "RIZWAN ULLAH KHAN"
               </span>
             </span>
           </span>

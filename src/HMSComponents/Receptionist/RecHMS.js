@@ -4,6 +4,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { cd_open_close } from "../../Store/Store";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
 // HMS Icons
 import { RiDashboardFill, RiAdminFill } from "react-icons/ri";
@@ -17,7 +18,7 @@ import {
   AiFillMedicineBox,
   AiFillSchedule,
 } from "react-icons/ai";
-import { MdPersonalInjury } from "react-icons/md";
+import { MdPersonalInjury, MdControlPoint } from "react-icons/md";
 import { MdLocalPharmacy } from "react-icons/md";
 import { FaBuildingCircleArrowRight } from "react-icons/fa6";
 import { BsPersonFillExclamation } from "react-icons/bs";
@@ -25,7 +26,6 @@ import { FcDepartment } from "react-icons/fc";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
 import { BiSolidCommentAdd } from "react-icons/bi";
 import { IoMdNotifications } from "react-icons/io";
-import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
 const rechmsobjs = [
   // {
@@ -54,21 +54,21 @@ const rechmsobjs = [
   },
   // {
   //   id: "6",
-  //   name: "REC_SCHEDULE",
-  //   path: "rec-schedule",
-  //   logo: AiFillSchedule,
+  //   name: "ADMISSION",
+  //   path: "rec-patients-admission",
+  //   logo: MdControlPoint,
   // },
   {
     id: "7",
-    name: "PATIENTS",
-    path: "rec-patients",
-    logo: BsPersonFillExclamation,
-  },
-  {
-    id: "8",
     name: "DEPARTMENTS",
     path: "rec-departments",
     logo: FcDepartment,
+  },
+  {
+    id: "8",
+    name: "PATIENTS",
+    path: "rec-patients",
+    logo: BsPersonFillExclamation,
   },
   {
     id: "9",

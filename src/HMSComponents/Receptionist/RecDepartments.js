@@ -96,36 +96,43 @@ function RecDepartments() {
             {departments &&
               departments.map((department, id) => {
                 return (
-                  <NavLink
-                    key={id}
-                    to={
-                      "http://localhost:3000/rec-hms/rec-departments/" +
-                      Replacing(department.department_name.toLowerCase().trim())
-                    }
-                    className={
-                      departmentname ===
-                      Replacing(department.department_name.toLowerCase().trim())
-                        ? "active linkk"
-                        : "linkk"
-                    }
-                    state={[
-                      department.department_name,
-                      department.department_description,
-                    ]}
-                    style={{ color: "white" }}
-                    onClick={() => {
-                      setDepart_name_for_bread(
-                        Replacing(department.department_name.trim())
-                      );
-                    }}
-                  >
-                    <li key={id + 1}>
-                      <span> {department.department_name}</span>
-                      <span className="departdetail_column01_arrow_hmsapps">
-                        &#8594;
-                      </span>
-                    </li>
-                  </NavLink>
+                  <>
+                    <NavLink
+                      key={id}
+                      to={
+                        "http://localhost:3000/rec-hms/rec-departments/" +
+                        Replacing(
+                          department.department_name.toLowerCase().trim()
+                        )
+                      }
+                      className={
+                        departmentname ===
+                        Replacing(
+                          department.department_name.toLowerCase().trim()
+                        )
+                          ? "active linkk"
+                          : "linkk"
+                      }
+                      state={[
+                        department.department_name,
+                        department.department_description,
+                      ]}
+                      style={{ color: "white" }}
+                      onClick={() => {
+                        setDepart_name_for_bread(
+                          Replacing(department.department_name.trim())
+                        );
+                      }}
+                    >
+                      <li key={id + 1}>
+                        <span> {department.department_name}</span>
+                        <span className="departdetail_column01_arrow_hmsapps">
+                          &#8594;
+                        </span>
+                      </li>
+                    </NavLink>
+                    {/* <NavLink></NavLink> */}
+                  </>
                 );
               })}
           </ul>

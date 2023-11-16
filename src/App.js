@@ -56,6 +56,8 @@ import DrPrescription from "./HMSComponents/Doctor/DrPrescription";
 import DrSchedule from "./HMSComponents/Doctor/DrSchedule";
 import DrComplaints from "./HMSComponents/Doctor/DrComplaints";
 import DrDepartmentHMS from "./HMSComponents/Doctor/DrDepartmentHMS";
+import RecPatAdmission from "./HMSComponents/Receptionist/RecPatAdmission";
+
 // NOW RECEPTIONNIST HMS STARTED
 import RecHMS from "./HMSComponents/Receptionist/RecHMS";
 import RecDashboard from "./HMSComponents/Receptionist/RecDashboard";
@@ -147,6 +149,10 @@ const theRoutes = createBrowserRouter(
             path="/all'ikhwa-management-system/departments/:departmentname/informationcardforemployee"
             element={<InformationCardForEmployee />}
           />
+          <Route
+            path="/all'ikhwa-management-system/departments/:departmentname/rec-patients-admission"
+            element={<RecPatAdmission />}
+          />
         </Route>
         <Route path="expenses" element={<Expenses />}>
           <Route path="expensedetails" element={<ExpenseDynamicDetails />} />
@@ -191,6 +197,7 @@ const theRoutes = createBrowserRouter(
         <Route path="rec-complaints" element={<RecComplaints />} />
         <Route path="rec-schedule" element={<RecSchedule />} />
         <Route path="rec-chat" element={<RecSchedule />} />
+        {/* <Route path="/department-beds" element={<DepartmentBeds />} /> */}
         <Route path="rec-departments" element={<RecDepartments />}>
           <Route
             path="/rec-hms/rec-departments/:departmentname"
@@ -207,6 +214,10 @@ const theRoutes = createBrowserRouter(
           <Route
             path="/rec-hms/rec-departments/:departmentname/department-beds"
             element={<DepartmentBeds />}
+          />
+          <Route
+            path="/rec-hms/rec-departments/:departmentname/rec-patients-admission"
+            element={<RecPatAdmission />}
           />
         </Route>
       </Route>

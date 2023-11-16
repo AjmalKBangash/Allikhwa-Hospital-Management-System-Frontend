@@ -44,25 +44,24 @@ function AddUpdateForm(props) {
     employee_departments: Yup.array()
       .min(1, "Pick at least 1 Department")
       .required("Department Selection is required"),
-    employee_photo: Yup.mixed()
-      .test("fileSize", "File size is too large", (value) => {
-        if (value) {
-          return value && value.length && value[0].size <= 1024 * 1024 * 3; // Max file size is 3MB
-        } else {
-          return "";
-        }
-      })
-      .test("fileType", "Invalid file type", (value) => {
-        return (
-          value &&
-          value.length &&
-          ["image/jpeg", "image/png", "image/gif"].includes(value[0].type)
-        ); // Supported file types
-      }),
-    // .test("fileRequired", "File is required", (value) => {
-    //   return value && value.length > 0; // File must not be empty
-    // }),
-
+    // employee_photo: Yup.mixed()
+    //   .test("fileRequired", "File is required", (value) => {
+    //     return value && value.length > 0; // File must not be empty
+    //   })
+    //   .test("fileSize", "File size is too large", (value) => {
+    //     if (value) {
+    //       return value && value.length && value[0].size <= 1024 * 1024 * 3; // Max file size is 3MB
+    //     } else {
+    //       return "";
+    //     }
+    //   })
+    //   .test("fileType", "Invalid file type", (value) => {
+    //     return (
+    //       value &&
+    //       value.length &&
+    //       ["image/jpeg", "image/png", "image/gif"].includes(value[0].type)
+    //     ); // Supported file types
+    //   }),
     employee_phone: Yup.string("Enter Phone Number in Digits")
       .required("Phone Number is required")
       .matches(/^\d{14}$/, "Enter 14 digit International Cell Phone Number")
@@ -168,10 +167,11 @@ function AddUpdateForm(props) {
   useEffect(() => {
     if (addUpdate_Form_Data && postpatch) {
       axios
-        .put(
+        .patch(
           `http://localhost:8000/allikhwa-hms/` +
             data__employee_category.toLowerCase() +
-            "s/",
+            "s/" +
+            addUpdate_Form_Data.employee_UID,
 
           addUpdate_Form_Data
           // employee_UID: uuidv4(),
@@ -202,7 +202,6 @@ function AddUpdateForm(props) {
   useEffect(() => {
     setdatastate(data.employee_photo);
   }, []);
-  console.log(data.employee_photo);
   return (
     <div
       className="profile_information_all"
