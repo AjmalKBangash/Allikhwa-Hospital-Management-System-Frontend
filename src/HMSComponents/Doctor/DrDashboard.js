@@ -97,17 +97,18 @@ function DrDashboard() {
       settotal_last_year_appointments_by_ind_dr(listtt);
     }
   }, [last_year_ind_dr_appointments]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3100/patients")
-      .then((res) => {
-        // console.log(res.data);
-        setPatientData(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [patientData]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3100/patients")
+  //     .then((res) => {
+  //       // console.log(res.data);
+  //       setPatientData(res.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [patientData]);
 
   // LAST YEAR MdAirlineSeatIndividualSuiteL DOCTOR APPOINTMENTS
   useEffect(() => {

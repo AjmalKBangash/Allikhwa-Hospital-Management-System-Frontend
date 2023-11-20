@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  height: 89vh;
+  width: 84vw;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  /* height: 89vh; */
+  /* width: 84vw; */
+  opacity: 0.9;
+  object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+.animated-text {
+  position: absolute;
+  top: 70%;
+  left: 5%;
+  /* transform: translateX(-10%); */
+  font-size: 30px;
+  font-weight: 900;
+  color: #fe4200;
+  animation: slideIn 5s ease-in-out infinite; /* Example animation */
+  /* background-color: #013737; */
+  /* padding: 12px; */
+  /* border-radius: 8px; */
+  /* background: transparent; */
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+}
+
+.animated-text:hover {
+  border-bottom: 4px solid #fe4200;
+  cursor: pointer;
+}

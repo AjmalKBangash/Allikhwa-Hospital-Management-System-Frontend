@@ -102,7 +102,7 @@ function InformationCards(props) {
         {/* {location.pathname ===  
           "/all'ikhwa-management-system/departments/:departmentname" ||
         location.pathname === "/rec-hms/rec-departments/:departmentname" ? ( */}
-        {path_for_allikhwa || path_for_rec ? (
+        {path_for_allikhwa && (
           <div className="dashboard_employee_card">
             <span className="dashboard_employee_card_num">
               {referred_to_admission ? referred_to_admission : 0}
@@ -129,7 +129,35 @@ function InformationCards(props) {
               <MdControlPoint />
             </span>
           </div>
-        ) : null}
+        )}
+        {path_for_rec && (
+          <div className="dashboard_employee_card">
+            <span className="dashboard_employee_card_num">
+              {referred_to_admission ? referred_to_admission : 0}
+            </span>
+            <span
+              className="dashboard_employee_card_name"
+              style={{ fontSize: "15px" }}
+            >
+              <Link
+                className="linkk"
+                style={{ color: "#fe4200" }}
+                to={`${location.pathname}/rec-patients-admission`}
+                state={
+                  departmentname && {
+                    department_name: departmentname,
+                    total_beds: department_beds_info.total_beds,
+                  }
+                }
+              >
+                Patients Admission
+              </Link>
+            </span>
+            <span className="dashboard_employee_card_icon">
+              <MdControlPoint />
+            </span>
+          </div>
+        )}
         <div className="dashboard_employee_card">
           <span className="dashboard_employee_card_num">
             {patients_count_info_for_statistics &&

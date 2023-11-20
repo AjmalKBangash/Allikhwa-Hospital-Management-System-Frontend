@@ -1,8 +1,15 @@
 import "./DoctorHMS.css";
+import AnimatedTextOnImage from "../../ForAll/AnimatedTextOnImage";
 
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import React, { useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  matchPath,
+} from "react-router-dom";
 
 // HMS Icons
 import { RiDashboardFill } from "react-icons/ri";
@@ -86,6 +93,7 @@ function DoctorHMS() {
   const hms_outlet = useRef();
   const cd_open_close_var = useSelector((state) => state.cd_open_close);
   const location = useLocation();
+  let display_img = matchPath("/doctor-hms/", location.pathname);
 
   return (
     <>
@@ -213,6 +221,15 @@ function DoctorHMS() {
             </ul>
           </div>
           <div className="hmscontainercol02" ref={hms_outlet}>
+            {display_img && (
+              <AnimatedTextOnImage
+                {...{
+                  image:
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwZoQ9XzGJOaUPXWi5jOShnywFNgGSU0OIbw&usqp=CAU",
+                  management: "DOCTOR",
+                }}
+              />
+            )}
             <Outlet />
           </div>
         </div>

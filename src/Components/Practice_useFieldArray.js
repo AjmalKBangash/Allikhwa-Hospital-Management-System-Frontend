@@ -99,16 +99,16 @@ const Practice_useFieldArray = () => {
 export default Practice_useFieldArray;
 
 // usefieldarray example of appointment
-// appointments: Yup.array().of(
-//   Yup.object().shape({
-//     patient_disease: Yup.string(),
-//     medicine: Yup.string().required("Medicine is Required!"),
-//     dosage_frequency: Yup.string().required(
-//       "Dosage and Frequency is required!"
-//     ),
-//     instructions: Yup.string().required("Instructions is required!"),
-//   })
-// ),
+appointments: Yup.array().of(
+  Yup.object().shape({
+    patient_disease: Yup.string(),
+    medicine: Yup.string().required("Medicine is Required!"),
+    dosage_frequency: Yup.string().required(
+      "Dosage and Frequency is required!"
+    ),
+    instructions: Yup.string().required("Instructions is required!"),
+  })
+)
 // const { fields, append, remove, removeField } = useFieldArray({
 //   control,
 //   name: "appointments",

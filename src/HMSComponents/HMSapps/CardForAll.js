@@ -1,5 +1,7 @@
 import "./CardForAll.css";
 import AddUpdateForm from "./AddUpdateForm";
+import SuccessPopUp from "../../ForAll/SuccessPopUp";
+import FailurePopUp from "../../ForAll/FailurePopUp";
 
 import { Link } from "react-router-dom";
 import { BiLogoFacebookCircle } from "react-icons/bi";
@@ -10,6 +12,8 @@ import ScrollToTop from "/home/ajay/Desktop/FYP/allikhwa/src/Components/ScrollTo
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { FaLessThanEqual } from "react-icons/fa6";
+import { profile_updated } from "../../Store/Store";
+import { useDispatch, useSelector } from "react-redux";
 const empty_data_for_adupdate_component = [
   {
     // employee_name: "",
@@ -42,6 +46,10 @@ function CardForAll(props) {
   const [displayFormForUpdate, setDisplayFormForUpdate] = useState(false);
   const [admin_add_button_display, set_admin_add_button_display] =
     useState(true);
+  const successpopup_var = useSelector((state) => state.successpopup);
+  const failurepopup_var = useSelector((state) => state.failurepopup);
+  const profile_updated_var = useSelector((state) => state.profile_updated);
+  const dispatch = useDispatch();
 
   function showdoctordetailsFun(doctorpropfromcard) {
     setpropfromshodetailsdoctorcard(doctorpropfromcard);
@@ -62,7 +70,16 @@ function CardForAll(props) {
     data__employee_category: props.data,
     postpatch: false,
   };
-
+  // ADD UPDATE FORM CLOSING AFTER UPDATION OR ADDING
+  useEffect(() => {
+    if (profile_updated_var) {
+      setDisplayFormForUpdate(!profile_updated_var);
+      setDisplayFormForAddUpdate(!profile_updated_var);
+      setpropfromshodetailsdoctorcard(!profile_updated_var);
+      dispatch(profile_updated(false));
+    }
+  }, [profile_updated_var]);
+  // GETTTING EMPOYEES DATA
   useEffect(() => {
     axios
       .get(
@@ -74,10 +91,12 @@ function CardForAll(props) {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [profile_updated_var]);
 
   return (
     <>
+      {successpopup_var && <SuccessPopUp message={successpopup_var} />}
+      {failurepopup_var && <FailurePopUp message={failurepopup_var} />}
       <ScrollToTop />
       <div className="admin_buttons_add_update">
         {admin_add_button_display && (
