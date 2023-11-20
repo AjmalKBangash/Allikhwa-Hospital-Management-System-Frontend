@@ -1,0 +1,23 @@
+.element {
+  background-image: url("https://www.northwoodtech.edu/sites/default/files/HealthcareReceptionist-main-web-FY23-1337067405-.jpg");
+  /* You can also specify other background properties */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* opacity: 80%; */
+  height: 89vh;
+  width: 84vw;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.element span {
+  margin-bottom: 50px;
+  padding: 12px;
+  /* opacity: 0.8; */
+  color: #fe4200;
+  font-size: 30px;
+  font-weight: 900;
+  /* background-color: white; */
+  border-radius: 8px;
+}

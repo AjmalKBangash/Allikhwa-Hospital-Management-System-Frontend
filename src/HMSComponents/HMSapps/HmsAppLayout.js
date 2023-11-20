@@ -1,5 +1,6 @@
 import "./HmsAppLayout.css";
 // import Dashboard from "./HMSapps/Dashboard";
+import AnimatedTextOnImage from "../../ForAll/AnimatedTextOnImage";
 
 import React, { useEffect, useRef, useState } from "react";
 import {
@@ -117,6 +118,10 @@ function HmsAppLayout() {
   //   pathhh ? setDisplayDashboard(true) : setDisplayDashboard(false);
   // }, [pathhh]);
   // matching path for displaying dashboard otherwise not
+  let display_img = matchPath(
+    "/all'ikhwa-management-system/",
+    location.pathname
+  );
   const path_depart = matchPath(
     "/all'ikhwa-management-system/departments/",
     location.pathname
@@ -268,7 +273,15 @@ function HmsAppLayout() {
           </div>
           <div className="hmscontainercol02" ref={hms_outlet}>
             {/* {displayDashboard && <Dashboard />} */}
-
+            {display_img && (
+              <AnimatedTextOnImage
+                {...{
+                  image:
+                    "https://www.northwoodtech.edu/sites/default/files/HealthcareReceptionist-main-web-FY23-1337067405-.jpg",
+                  management: "ADMINISTRATION",
+                }}
+              />
+            )}
             <Outlet />
           </div>
         </div>

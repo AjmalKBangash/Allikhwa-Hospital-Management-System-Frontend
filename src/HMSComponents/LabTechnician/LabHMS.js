@@ -1,7 +1,15 @@
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import { cd_open_close } from "../../Store/Store";
+import AnimatedTextOnImage from "/home/ajay/Desktop/FYP/allikhwa/src/ForAll/AnimatedTextOnImage.js";
+
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  matchPath,
+} from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 // HMS Icons
 import { RiDashboardFill, RiAdminFill } from "react-icons/ri";
@@ -69,6 +77,7 @@ function LabHMS() {
   const hms_outlet = useRef();
   const cd_open_close_var = useSelector((state) => state.cd_open_close);
   const location = useLocation();
+  let display_img = matchPath("lab-hms", location.pathname);
 
   return (
     <>
@@ -196,6 +205,15 @@ function LabHMS() {
             </ul>
           </div>
           <div className="hmscontainercol02" ref={hms_outlet}>
+            {display_img && (
+              <AnimatedTextOnImage
+                {...{
+                  image:
+                    "https://www.northwoodtech.edu/sites/default/files/HealthcareReceptionist-main-web-FY23-1337067405-.jpg",
+                  management: "LAB TECHNICIAN",
+                }}
+              />
+            )}
             <Outlet />
           </div>
         </div>

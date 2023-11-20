@@ -383,7 +383,7 @@ function Gallary() {
       <div className="Gallary">
         {photos.map((photo, id) => {
           return (
-            <div top distance="100%" duration="3000">
+            <div>
               <div
                 //   key={id}
                 className="pics"

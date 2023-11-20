@@ -5,11 +5,15 @@ import { MultiSelect } from "react-multi-select-component";
 import * as Yup from "yup";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import FailurePopUp from "/home/ajay/Desktop/FYP/allikhwa/src/ForAll/FailurePopUp.js";
+import SuccessPopUp from "/home/ajay/Desktop/FYP/allikhwa/src/ForAll/SuccessPopUp.js";
+import { successpopup, failurepopup, profile_updated } from "../../Store/Store";
 
 // importing react-router-dom for routing
 // importing icons from react-icons
 import { AiOutlineOrderedList, AiOutlineUnorderedList } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function AddUpdateForm(props) {
   const { data__employee_category, data, postpatch } = props;
@@ -25,10 +29,14 @@ function AddUpdateForm(props) {
         return { label: department, value: department };
       });
   }
-  let [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
+  const [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState(false);
   const [options_dropdown, setoptions_dropdown] = useState("");
   const [datastate, setdatastate] = useState({ employee_photo: "" });
   let [selected, setSelected] = useState([]);
+  // const [re_run_get, setRe_run_get] = useState(false);
+  const successpopup_var = useSelector((state) => state.successpopup);
+  const failurepopup_var = useSelector((state) => state.failurepopup);
+  const dispatch = useDispatch();
 
   const adduppdateschema = Yup.object().shape({
     // Sign Up Form Validation
@@ -101,6 +109,8 @@ function AddUpdateForm(props) {
     for (let i = 0; departments.length > i; i++) {
       departments02 = departments02 + departments[i].toUpperCase() + ",";
     }
+    console.log(data.employee_photo[0]);
+    console.log(data.employee_photo);
     set_AddUpdate_Form_Data({
       employee_name: data.employee_name,
       employee_UID: data.employee_UID,
@@ -132,7 +142,6 @@ function AddUpdateForm(props) {
         // }
         // setoptions_dropdown(array_for_options_in_dropdown);
         setoptions_dropdown(res.data);
-        reset();
       })
       .catch((error) => {
         console.log(error);
@@ -155,10 +164,18 @@ function AddUpdateForm(props) {
           }
         )
         .then((response) => {
-          // console.log(response);
+          set_AddUpdate_Form_Data(false);
+          reset();
+          dispatch(
+            successpopup(
+              `The ${data__employee_category} has been added successfully!`
+            )
+          );
+          dispatch(profile_updated(true));
+          // setRe_run_get(true);
         })
         .catch((error) => {
-          console.log(error);
+          dispatch(failurepopup(error.response.data.user));
         });
     }
   }, [addUpdate_Form_Data]);
@@ -173,15 +190,29 @@ function AddUpdateForm(props) {
             "s/" +
             addUpdate_Form_Data.employee_UID,
 
-          addUpdate_Form_Data
-          // employee_UID: uuidv4(),
-          // employee_category: data__employee_category,
+          addUpdate_Form_Data,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
         )
         .then((response) => {
+          set_AddUpdate_Form_Data(false);
+          reset();
           console.log("Successful");
+          dispatch(
+            successpopup(
+              `The ${data__employee_category} has been updated successfully!`
+            )
+          );
+          dispatch(profile_updated(true));
+          // setRe_run_get(true);
         })
         .catch((error) => {
           console.log(error);
+          console.log(error.response.data);
+          dispatch(failurepopup(error.response.data.user));
         });
     }
   }, [addUpdate_Form_Data]);
@@ -203,455 +234,467 @@ function AddUpdateForm(props) {
     setdatastate(data.employee_photo);
   }, []);
   return (
-    <div
-      className="profile_information_all"
-      style={{
-        borderRadius: "8px",
-        boxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
-        webkitboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
-        mozboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
-      }}
-    >
-      <h2
+    <>
+      {/* {successpopup_var && <SuccessPopUp message={successpopup_var} />}
+      {failurepopup_var && <FailurePopUp message={failurepopup_var} />} */}
+      <div
+        className="profile_information_all"
         style={{
-          fontSize: "15px",
-          margin: "20px auto",
-          padding: "10px",
-          borderRadius: "4px",
-          boxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
-          webkitboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
-          mozboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
+          borderRadius: "8px",
+          boxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+          webkitboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
+          mozboxShadow: "0px 2px 5px 0px rgba(1, 55, 55, 0.7)",
         }}
       >
-        {data__employee_category}
-      </h2>
-      <form onSubmit={handleSubmit(handle_addupdateformsubmit)}>
-        {data.employee_UID ? (
-          <div className="profile_label_input">
-            <label htmlFor="employee_UID">
-              Employee ID:<span style={{ color: "red", margin: "4px" }}>*</span>
-            </label>
-            <input
-              {...register("employee_UID")}
-              id="employee_UID"
-              type="text"
-              value={data.employee_UID}
-              placeholder="Enter Employee ID"
-            ></input>
-          </div>
-        ) : (
-          <div className="profile_label_input">
-            <label htmlFor="employee_UID">
-              Empoyee ID:<span style={{ color: "red", margin: "4px" }}>*</span>
-            </label>
-            <input
-              {...register("employee_UID")}
-              id="employee_UID"
-              type="text"
-              value={uuidv4()}
-              placeholder="Enter Employee ID"
-            ></input>
-          </div>
-        )}
-
-        <div className="profile_label_input">
-          {" "}
-          {/*  This field belongs to CustomUser not its associated foreign keys */}
-          <label htmlFor="employee_name">
-            {" "}
-            Name:<span style={{ color: "red", margin: "4px" }}>*</span>
-          </label>
-          <input
-            {...register("employee_name")}
-            id="employee_name"
-            type="text"
-            defaultValue={data.employee_name}
-            placeholder="Enter Your Name"
-          ></input>
-          <p className="pForForm">{errors.employee_name?.message}</p>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_website"
-            className="profile_lanel_input_label"
-          >
-            Website:
-          </label>
-          <input
-            id="employee_website"
-            type="text"
-            {...register("employee_website")}
-            defaultValue={data.employee_website}
-            placeholder="Enter Your Website"
-          ></input>
-        </div>
-        <div className="profile_label_input ">
-          <label htmlFor="employee_photo" className="profile_lanel_input_label">
-            Employee Photo:
-            <span style={{ color: "red", margin: "4px" }}>*</span>
-          </label>
-          <input
-            name="employee_photo"
-            {...register("employee_photo")}
-            type="file"
-          />
-          {errors.employee_photo && (
-            <p className="pForForm">{errors.employee_photo.message}</p>
+        <h2
+          style={{
+            fontSize: "15px",
+            margin: "20px auto",
+            padding: "10px",
+            borderRadius: "4px",
+            boxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
+            webkitboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
+            mozboxShadow: "0px 1px 4px 0px rgba(1, 55, 55, 0.7)",
+          }}
+        >
+          {data__employee_category}
+        </h2>
+        <form onSubmit={handleSubmit(handle_addupdateformsubmit)}>
+          {data.employee_UID ? (
+            <div className="profile_label_input">
+              <label htmlFor="employee_UID">
+                Employee ID:
+                <span style={{ color: "red", margin: "4px" }}>*</span>
+              </label>
+              <input
+                {...register("employee_UID")}
+                id="employee_UID"
+                type="text"
+                value={data.employee_UID}
+                placeholder="Enter Employee ID"
+              ></input>
+            </div>
+          ) : (
+            <div className="profile_label_input">
+              <label htmlFor="employee_UID">
+                Empoyee ID:
+                <span style={{ color: "red", margin: "4px" }}>*</span>
+              </label>
+              <input
+                {...register("employee_UID")}
+                id="employee_UID"
+                type="text"
+                value={uuidv4()}
+                placeholder="Enter Employee ID"
+              ></input>
+            </div>
           )}
-          {/* Photo: */}
-          {/* <input
+
+          <div className="profile_label_input">
+            {" "}
+            {/*  This field belongs to CustomUser not its associated foreign keys */}
+            <label htmlFor="employee_name">
+              {" "}
+              Name:<span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              {...register("employee_name")}
+              id="employee_name"
+              type="text"
+              defaultValue={data.employee_name}
+              placeholder="Enter Your Name"
+            ></input>
+            <p className="pForForm">{errors.employee_name?.message}</p>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_website"
+              className="profile_lanel_input_label"
+            >
+              Website:
+            </label>
+            <input
+              id="employee_website"
+              type="text"
+              {...register("employee_website")}
+              defaultValue={data.employee_website}
+              placeholder="Enter Your Website"
+            ></input>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_photo"
+              className="profile_lanel_input_label"
+            >
+              Employee Photo:
+              <span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              name="employee_photo"
+              {...register("employee_photo")}
+              type="file"
+            />
+            {errors.employee_photo && (
+              <p className="pForForm">{errors.employee_photo.message}</p>
+            )}
+            {/* Photo: */}
+            {/* <input
             id="employee_photo"
             type="file"
             {...register("employee_photo")}
             // defaultValue={data.employee_photo && data.employee_photo}
             placeholder="Upload Your Photo"
           ></input> */}
-        </div>
-        {data.employee_photo && (
-          <div className="profile_label_input ">
-            <span>Image Preview</span>
-            <img
-              style={{
-                height: "100px",
-                width: "100px",
-                border: "2px solid #fe4200",
-              }}
-              src={data.employee_photo && data.employee_photo}
-              alt="Preview"
-            />
           </div>
-        )}
-        <div className="profile_label_input ">
-          <span>
-            <p>
-              <label htmlFor="employee_bio">
-                Employee Bio:
-                <span style={{ color: "red", margin: "4px" }}>*</span>
-              </label>
-            </p>
-            <p>Write a Short Introduction:</p>
-            <p className="pForForm">{errors.employee_bio?.message}</p>
-          </span>
-          <div>
-            <div
-              style={{
-                margin: "10px 0",
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <select
-                {...register("employee_website")}
-                defaultValue={"Normal text"}
+          {data.employee_photo && (
+            <div className="profile_label_input ">
+              <span>Image Preview</span>
+              <img
                 style={{
-                  fontSize: "15px",
-                  backgroundColor: "white",
-                  border: "1px solid rgba(0, 0, 0, 0.199)",
-                  borderRadius: "4px",
-                  padding: "10px",
-                  marginRight: "5px",
-                  outline: "none",
+                  height: "100px",
+                  width: "100px",
+                  border: "2px solid #fe4200",
                 }}
-              >
-                <option>Normal text</option>
-                <option>Bold text</option>
-                <option>Italix text</option>
-              </select>
-              <span
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "900",
-                  border: "1px solid rgba(0, 0, 0, 0.199)",
-                  borderRadius: "4px",
-                  padding: "7px 10px ",
-                  marginRight: "5px",
-                }}
-              >
-                B
-              </span>
-              <span
-                style={{
-                  fontSize: "15px",
-                  fontWeight: "900",
-                  border: "1px solid rgba(0, 0, 0, 0.199)",
-                  borderRadius: "4px",
-                  padding: "7px 10px",
-                  marginRight: "5px",
-                  fontFamily: "serif",
-                }}
-              >
-                <i>I</i>
-              </span>
-
-              <AiOutlineOrderedList
-                style={{
-                  border: "1px solid rgba(0, 0, 0, 0.199)",
-                  borderRadius: "4px",
-                  padding: "10px",
-                  marginRight: "5px",
-                }}
-              />
-              <AiOutlineUnorderedList
-                style={{
-                  border: "1px solid rgba(0, 0, 0, 0.199)",
-                  borderRadius: "4px",
-                  padding: "10px",
-                  marginRight: "5px",
-                }}
+                src={data.employee_photo && data.employee_photo}
+                alt="Preview"
               />
             </div>
-            <textarea
-              {...register("employee_bio")}
-              id="employee_bio"
-              name="employee_bio"
-              placeholder="Your short introduction!"
-              rows="6"
-              cols="60"
-              defaultValue={data.employee_bio}
-              style={{ width: "74%", padding: "5px", outline: "none" }}
-            />
-          </div>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_jobtitle"
-            className="profile_lanel_input_label"
-          >
-            Job Title:<span style={{ color: "red", margin: "4px" }}>*</span>
-          </label>
-          <input
-            id="employee_jobtitle"
-            type="text"
-            {...register("employee_jobtitle")}
-            defaultValue={data.employee_jobtitle}
-            placeholder="Enter Your Job Title"
-          ></input>
-          <p className="pForForm">{errors.employee_jobtitle?.message}</p>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_education"
-            className="profile_lanel_input_label"
-          >
-            Education:
-          </label>
-          <input
-            {...register("employee_education")}
-            id="employee_education"
-            type="text"
-            defaultValue={data.employee_education}
-            placeholder="Enter Youe Education Details"
-          ></input>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_experience"
-            className="profile_lanel_input_label"
-          >
-            {" "}
-            Experience:<span style={{ color: "red", margin: "4px" }}>*</span>
-          </label>
-          <input
-            {...register("employee_experience")}
-            id="employee_experience"
-            type="text"
-            defaultValue={data.employee_experience}
-            placeholder="Enter Your Experience"
-          ></input>
-          <p className="pForForm">{errors.employee_experience?.message}</p>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_departments"
-            className="profile_lanel_input_label"
-          >
-            Select Departments:
-          </label>
-          <Controller
-            name="employee_departments"
-            control={control}
-            // defaultValue={[
-            //   {
-            //     // label: data.employee_departments.toUpperCase(),
-            //     // value: data.employee_departments.toUpperCase(),
-            //   },
-            // ]}
-            // defaultValue={[{ label: "ENT,PAEDS", value: "ENT,PAEDS" }]}
-            defaultValue={
-              departments_from_props_data ? departments_from_props_data : []
-            }
-            render={({ field }) => (
-              <MultiSelect
-                {...field}
-                hasSelectAll={false}
-                options={
-                  options_dropdown &&
-                  options_dropdown.map((option) => ({
-                    label: option.department_name,
-                    value: option.department_name,
-                  }))
-                }
-                // value={field.value}
-                // onChange={(selected) => { This is for default values not having that much experties in js now i am having later future task this is
-                //   field.onChange(selected);
-                //   setValue("employee_departments", selected);
-                // }}
-                className="custom-multi-select"
+          )}
+          <div className="profile_label_input ">
+            <span>
+              <p>
+                <label htmlFor="employee_bio">
+                  Employee Bio:
+                  <span style={{ color: "red", margin: "4px" }}>*</span>
+                </label>
+              </p>
+              <p>Write a Short Introduction:</p>
+              <p className="pForForm">{errors.employee_bio?.message}</p>
+            </span>
+            <div>
+              <div
+                style={{
+                  margin: "10px 0",
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <select
+                  {...register("employee_website")}
+                  defaultValue={"Normal text"}
+                  style={{
+                    fontSize: "15px",
+                    backgroundColor: "white",
+                    border: "1px solid rgba(0, 0, 0, 0.199)",
+                    borderRadius: "4px",
+                    padding: "10px",
+                    marginRight: "5px",
+                    outline: "none",
+                  }}
+                >
+                  <option>Normal text</option>
+                  <option>Bold text</option>
+                  <option>Italix text</option>
+                </select>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "900",
+                    border: "1px solid rgba(0, 0, 0, 0.199)",
+                    borderRadius: "4px",
+                    padding: "7px 10px ",
+                    marginRight: "5px",
+                  }}
+                >
+                  B
+                </span>
+                <span
+                  style={{
+                    fontSize: "15px",
+                    fontWeight: "900",
+                    border: "1px solid rgba(0, 0, 0, 0.199)",
+                    borderRadius: "4px",
+                    padding: "7px 10px",
+                    marginRight: "5px",
+                    fontFamily: "serif",
+                  }}
+                >
+                  <i>I</i>
+                </span>
+
+                <AiOutlineOrderedList
+                  style={{
+                    border: "1px solid rgba(0, 0, 0, 0.199)",
+                    borderRadius: "4px",
+                    padding: "10px",
+                    marginRight: "5px",
+                  }}
+                />
+                <AiOutlineUnorderedList
+                  style={{
+                    border: "1px solid rgba(0, 0, 0, 0.199)",
+                    borderRadius: "4px",
+                    padding: "10px",
+                    marginRight: "5px",
+                  }}
+                />
+              </div>
+              <textarea
+                {...register("employee_bio")}
+                id="employee_bio"
+                name="employee_bio"
+                placeholder="Your short introduction!"
+                rows="6"
+                cols="60"
+                defaultValue={data.employee_bio}
+                style={{ width: "74%", padding: "5px", outline: "none" }}
               />
-            )}
+            </div>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_jobtitle"
+              className="profile_lanel_input_label"
+            >
+              Job Title:<span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              id="employee_jobtitle"
+              type="text"
+              {...register("employee_jobtitle")}
+              defaultValue={data.employee_jobtitle}
+              placeholder="Enter Your Job Title"
+            ></input>
+            <p className="pForForm">{errors.employee_jobtitle?.message}</p>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_education"
+              className="profile_lanel_input_label"
+            >
+              Education:
+            </label>
+            <input
+              {...register("employee_education")}
+              id="employee_education"
+              type="text"
+              defaultValue={data.employee_education}
+              placeholder="Enter Youe Education Details"
+            ></input>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_experience"
+              className="profile_lanel_input_label"
+            >
+              {" "}
+              Experience:<span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              {...register("employee_experience")}
+              id="employee_experience"
+              type="text"
+              defaultValue={data.employee_experience}
+              placeholder="Enter Your Experience"
+            ></input>
+            <p className="pForForm">{errors.employee_experience?.message}</p>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_departments"
+              className="profile_lanel_input_label"
+            >
+              Select Departments:
+            </label>
+            <Controller
+              name="employee_departments"
+              control={control}
+              // defaultValue={[
+              //   {
+              //     // label: data.employee_departments.toUpperCase(),
+              //     // value: data.employee_departments.toUpperCase(),
+              //   },
+              // ]}
+              // defaultValue={[{ label: "ENT,PAEDS", value: "ENT,PAEDS" }]}
+              defaultValue={
+                departments_from_props_data ? departments_from_props_data : []
+              }
+              render={({ field }) => (
+                <MultiSelect
+                  {...field}
+                  hasSelectAll={false}
+                  options={
+                    options_dropdown &&
+                    options_dropdown.map((option) => ({
+                      label: option.department_name,
+                      value: option.department_name,
+                    }))
+                  }
+                  // value={field.value}
+                  // onChange={(selected) => { This is for default values not having that much experties in js now i am having later future task this is
+                  //   field.onChange(selected);
+                  //   setValue("employee_departments", selected);
+                  // }}
+                  className="custom-multi-select"
+                />
+              )}
+            />
+            <p className="pForForm">{errors.employee_departments?.message}</p>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_surgeries"
+              className="profile_lanel_input_label"
+            >
+              {" "}
+              Suregries Performed:
+            </label>
+            <input
+              {...register("employee_surgeries")}
+              id="employee_surgeries"
+              type="text"
+              defaultValue={data.employee_surgeries}
+              placeholder="Enter The Number Of Surgeries You Performed"
+            ></input>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_appointments"
+              className="profile_lanel_input_label"
+            >
+              Appointments Per Month:
+            </label>
+            <input
+              {...register("employee_appointments")}
+              id="employee_appointments"
+              type="text"
+              defaultValue={data.employee_appointments}
+              placeholder="Enter Your Appointments Per Month"
+            ></input>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_awards"
+              className="profile_lanel_input_label"
+            >
+              Awards and Recognitions:
+            </label>
+            <input
+              {...register("employee_awards")}
+              id="employee_awards"
+              type="text"
+              defaultValue={data.employee_awards}
+              placeholder="Enter Your Awards"
+            ></input>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_address"
+              className="profile_lanel_input_label"
+            >
+              Address:
+            </label>
+
+            <input
+              {...register("employee_address")}
+              id="employee_address"
+              type="text"
+              defaultValue={data.employee_address}
+              placeholder="Enter Your Address"
+            ></input>
+            <p className="pForForm">{errors.employee_address?.message}</p>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_phone"
+              className="profile_lanel_input_label"
+            >
+              Phone:<span style={{ color: "red", margin: "4px" }}>*</span>
+            </label>
+            <input
+              {...register("employee_phone")}
+              id="employee_phone"
+              type="text"
+              defaultValue={data.employee_phone}
+              placeholder="Enter Your Phone"
+            ></input>
+            <p className="pForForm">{errors.employee_phone?.message}</p>
+          </div>
+          {data.user ? (
+            <div className="profile_label_input ">
+              <label htmlFor="user" className="profile_lanel_input_label">
+                Registered Email:
+                <span style={{ color: "red", margin: "4px" }}>*</span>
+              </label>
+              <input
+                {...register("user")}
+                id="user"
+                type="text"
+                value={data.user}
+                placeholder="Enter Your Email"
+              ></input>
+              <p className="pForForm">{errors.user?.message}</p>
+            </div>
+          ) : (
+            <div className="profile_label_input ">
+              <label htmlFor="user" className="profile_lanel_input_label">
+                Registered Email:
+                <span style={{ color: "red", margin: "4px" }}>*</span>
+              </label>
+              <input
+                name="user"
+                {...register("user")}
+                id="user"
+                type="text"
+                // defaultValue={data.user}
+                placeholder="Enter Your Email"
+              ></input>
+              <p className="pForForm">{errors.user?.message}</p>
+            </div>
+          )}
+
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_facebook"
+              className="profile_lanel_input_label"
+            >
+              Facebook:
+            </label>
+            <input
+              {...register("employee_facebook")}
+              id="employee_facebook"
+              type="text"
+              defaultValue={data.employee_facebook}
+              placeholder="Enter Your Facebook ID"
+            ></input>
+          </div>
+          <div className="profile_label_input ">
+            <label
+              htmlFor="employee_linkedin"
+              className="profile_lanel_input_label"
+            >
+              LinkedIn:
+            </label>
+            <input
+              {...register("employee_linkedin")}
+              id="employee_linkedin"
+              type="text"
+              defaultValue={data.employee_linkedin}
+              placeholder="Enter Your LinkedIn ID"
+            ></input>
+          </div>
+          <input
+            type="submit"
+            className="admin_buttons_add_update_from_add_update_form"
+            value="Submit Your Form"
+            style={{
+              margin: "10px 25% 20px 25%",
+              width: "50%",
+            }}
           />
-          <p className="pForForm">{errors.employee_departments?.message}</p>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_surgeries"
-            className="profile_lanel_input_label"
-          >
-            {" "}
-            Suregries Performed:
-          </label>
-          <input
-            {...register("employee_surgeries")}
-            id="employee_surgeries"
-            type="text"
-            defaultValue={data.employee_surgeries}
-            placeholder="Enter The Number Of Surgeries You Performed"
-          ></input>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_appointments"
-            className="profile_lanel_input_label"
-          >
-            Appointments Per Month:
-          </label>
-          <input
-            {...register("employee_appointments")}
-            id="employee_appointments"
-            type="text"
-            defaultValue={data.employee_appointments}
-            placeholder="Enter Your Appointments Per Month"
-          ></input>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_awards"
-            className="profile_lanel_input_label"
-          >
-            Awards and Recognitions:
-          </label>
-          <input
-            {...register("employee_awards")}
-            id="employee_awards"
-            type="text"
-            defaultValue={data.employee_awards}
-            placeholder="Enter Your Awards"
-          ></input>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_address"
-            className="profile_lanel_input_label"
-          >
-            Address:
-          </label>
-
-          <input
-            {...register("employee_address")}
-            id="employee_address"
-            type="text"
-            defaultValue={data.employee_address}
-            placeholder="Enter Your Address"
-          ></input>
-          <p className="pForForm">{errors.employee_address?.message}</p>
-        </div>
-        <div className="profile_label_input ">
-          <label htmlFor="employee_phone" className="profile_lanel_input_label">
-            Phone:<span style={{ color: "red", margin: "4px" }}>*</span>
-          </label>
-          <input
-            {...register("employee_phone")}
-            id="employee_phone"
-            type="text"
-            defaultValue={data.employee_phone}
-            placeholder="Enter Your Phone"
-          ></input>
-          <p className="pForForm">{errors.employee_phone?.message}</p>
-        </div>
-        {data.user ? (
-          <div className="profile_label_input ">
-            <label htmlFor="user" className="profile_lanel_input_label">
-              Registered Email:
-              <span style={{ color: "red", margin: "4px" }}>*</span>
-            </label>
-            <input
-              {...register("user")}
-              id="user"
-              type="text"
-              value={data.user}
-              placeholder="Enter Your Email"
-            ></input>
-            <p className="pForForm">{errors.user?.message}</p>
-          </div>
-        ) : (
-          <div className="profile_label_input ">
-            <label htmlFor="user" className="profile_lanel_input_label">
-              Registered Email:
-              <span style={{ color: "red", margin: "4px" }}>*</span>
-            </label>
-            <input
-              name="user"
-              {...register("user")}
-              id="user"
-              type="text"
-              // defaultValue={data.user}
-              placeholder="Enter Your Email"
-            ></input>
-            <p className="pForForm">{errors.user?.message}</p>
-          </div>
-        )}
-
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_facebook"
-            className="profile_lanel_input_label"
-          >
-            Facebook:
-          </label>
-          <input
-            {...register("employee_facebook")}
-            id="employee_facebook"
-            type="text"
-            defaultValue={data.employee_facebook}
-            placeholder="Enter Your Facebook ID"
-          ></input>
-        </div>
-        <div className="profile_label_input ">
-          <label
-            htmlFor="employee_linkedin"
-            className="profile_lanel_input_label"
-          >
-            LinkedIn:
-          </label>
-          <input
-            {...register("employee_linkedin")}
-            id="employee_linkedin"
-            type="text"
-            defaultValue={data.employee_linkedin}
-            placeholder="Enter Your LinkedIn ID"
-          ></input>
-        </div>
-        <input
-          type="submit"
-          className="admin_buttons_add_update_from_add_update_form"
-          value="Submit Your Form"
-          style={{
-            margin: "10px 25% 20px 25%",
-            width: "50%",
-          }}
-        />
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 }
 export default AddUpdateForm;

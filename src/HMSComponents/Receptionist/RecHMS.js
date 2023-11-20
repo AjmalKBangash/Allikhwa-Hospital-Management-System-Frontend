@@ -1,9 +1,16 @@
-// import "./DoctorHMS.css";
+import "./RecHMS.css";
+import AnimatedTextOnImage from "../../ForAll/AnimatedTextOnImage";
 
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { cd_open_close } from "../../Store/Store";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  matchPath,
+} from "react-router-dom";
 import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 
 // HMS Icons
@@ -93,6 +100,7 @@ function RecHMS() {
   const hms_outlet = useRef();
   const cd_open_close_var = useSelector((state) => state.cd_open_close);
   const location = useLocation();
+  let display_img = matchPath("/rec-hms/", location.pathname);
 
   return (
     <>
@@ -220,6 +228,15 @@ function RecHMS() {
             </ul>
           </div>
           <div className="hmscontainercol02" ref={hms_outlet}>
+            {display_img && (
+              <AnimatedTextOnImage
+                {...{
+                  image:
+                    "https://www.northwoodtech.edu/sites/default/files/HealthcareReceptionist-main-web-FY23-1337067405-.jpg",
+                  management: "RECEPTIONIST",
+                }}
+              />
+            )}
             <Outlet />
           </div>
         </div>

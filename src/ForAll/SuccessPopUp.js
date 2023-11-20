@@ -10,8 +10,8 @@ const SuccessPopUp = ({ message }) => {
   useEffect(() => {
     // Automatically close the message after 1000 milliseconds (1 second)
     const timer = setTimeout(() => {
-      setShowMessage(false);
       dispatch(successpopup(false));
+      setShowMessage(false);
     }, 5000);
 
     // Clear the timer when the component unmounts to avoid memory leaks

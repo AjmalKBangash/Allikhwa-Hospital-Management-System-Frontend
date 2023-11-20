@@ -26,6 +26,7 @@ export const dr_nurse_beds_refresh = createAction("dr_nurse_beds_refresh");
 export const successpopup = createAction("successpopup");
 export const failurepopup = createAction("failurepopup");
 export const fillfreebeds_variable = createAction("fillfreebeds_variable");
+export const profile_updated = createAction("profile_updated");
 
 const initialState = {
   props_from_depart_actions: [],
@@ -41,6 +42,7 @@ const initialState = {
   successpopup: false,
   failurepopup: false,
   fillfreebeds_variable: "",
+  profile_updated: false,
 };
 
 const sliceReducer = createReducer(initialState, (builder) => {
@@ -88,6 +90,9 @@ const sliceReducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(fillfreebeds_variable, (state, action) => {
     state.fillfreebeds_variable = action.payload;
+  });
+  builder.addCase(profile_updated, (state, action) => {
+    state.profile_updated = action.payload;
   });
 });
 
