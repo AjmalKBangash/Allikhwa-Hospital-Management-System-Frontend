@@ -10,9 +10,15 @@ import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+// REACT ICONS
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+
 function SignUpIn() {
   const [displaySignIn, setDisplaySignIn] = useState(true);
   const [patientForm, setPatientForm] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // State to control password visibility for login
+  const [showPasswordSignUp, setShowPasswordSignUp] = useState(false); // State to control password visibility
   const location = useLocation();
 
   function RegisterFunForOptions(e) {
@@ -44,8 +50,8 @@ function SignUpIn() {
       .required("Name is Required!"),
     email: Yup.string()
       .email("Invalid Email Address!")
-      .required("Email is Required"),
-    phone: Yup.string().required("Phone num is required!").matches("123"),
+      .required("Email is Required!"),
+    // phone: Yup.string().required("Phone num is required!").matches("123"),
     password: Yup.string()
       .required("Password is required!")
       .matches(
@@ -116,16 +122,25 @@ function SignUpIn() {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-    reset01();
+    // reset01();
   };
 
   const onSubmitOthers = (data) => {
     alert(JSON.stringify(data));
-    reset02();
+    // reset02();
   };
   const onSubmitPatient = (data) => {
     alert(JSON.stringify(data));
     reset03();
+  };
+
+  // SHOWING PASSWORD ONCLICK FOR LOGIN
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+  // SHOWING PASSWORD ONCLICK FOR SIGNUP
+  const handleTogglePasswordSignUp = () => {
+    setShowPasswordSignUp(!showPasswordSignUp);
   };
   // last effect
   useEffect(() => {
@@ -186,13 +201,44 @@ function SignUpIn() {
             {errors.nameelogin && (
               <p className="pForForm">{errors.nameelogin.message}</p>
             )}
-            <input
-              type="password"
-              className="inputFieldinOverlayForm"
-              name="passwordlogin"
-              placeholder="Password"
-              {...register("passwordlogin")}
-            ></input>
+            <div
+              style={{
+                position: "relative",
+                border: "1px solid #fe440063",
+                borderRadius: "4px",
+                height: "40px",
+                margin: "5px",
+              }}
+            >
+              <input
+                type={showPassword ? "text" : "password"}
+                name="passwordlogin"
+                placeholder="Enter Password"
+                {...register("passwordlogin")}
+                style={{
+                  width: "100%",
+                  padding: "0 34px 0 10px",
+                  height: "40px",
+                  fontSize: "15px",
+                  margin: "0",
+                  border: "none",
+                  borderRadius: "4px",
+                  boxSizing: "border-box",
+                }}
+                // className="inputFieldinOverlayForm"  THIS CLASS SHOLD MUST BE COMMETED OTHERWISE IT WILL BE CONFLICTED WITHE THE INLINE CSS
+              ></input>
+              {showPassword ? (
+                <FaEyeSlash
+                  onClick={handleTogglePassword}
+                  style={{ position: "absolute", right: 14, top: "33%" }}
+                />
+              ) : (
+                <FaEye
+                  onClick={handleTogglePassword}
+                  style={{ position: "absolute", right: 14, top: "33%" }}
+                />
+              )}
+            </div>
             <p className="pForForm">{errors.passwordlogin?.message}</p>
             <button
               type="submit"
@@ -213,7 +259,7 @@ function SignUpIn() {
                 key={2}
                 onSubmit={handleSubmit2(onSubmitOthers)}
               >
-                <select
+                {/* <select
                   type="select"
                   name="selectpatientother"
                   className="inputFieldinOverlayForm"
@@ -221,16 +267,13 @@ function SignUpIn() {
                   {...register2("selectpatientother")}
                   onChange={RegisterFunForOptions}
                 >
-                  {/* <option value={""} disabled >
-                    Register Yourself As..
-                 </option> */}
                   <option key="patient" value="patient" name="patient">
                     Patient
                   </option>
                   <option key="others" value="others" name="others">
                     Others
                   </option>
-                </select>
+                </select> */}
                 {/* <p className="pForForm">{errors.selectpatientother?.message}</p> */}
                 <input
                   type="text"
@@ -248,21 +291,52 @@ function SignUpIn() {
                   {...register2("email")}
                 ></input>
                 <p className="pForForm">{errors2.email?.message}</p>
-                <input
+                {/* <input
                   type="text"
                   className="inputFieldinOverlayForm"
                   name="phone"
                   placeholder="Enter Your Phone Number"
                   {...register2("phone")}
                 ></input>
-                <p className="pForForm">{errors2.phone?.message}</p>
-                <input
-                  type="password"
-                  className="inputFieldinOverlayForm"
-                  name="password"
-                  placeholder="Password"
-                  {...register2("password")}
-                ></input>
+                <p className="pForForm">{errors2.phone?.message}</p> */}
+                <div
+                  style={{
+                    position: "relative",
+                    border: "1px solid #fe440063",
+                    borderRadius: "4px",
+                    height: "40px",
+                    margin: "5px",
+                  }}
+                >
+                  <input
+                    type={showPasswordSignUp ? "text" : "password"}
+                    name="password"
+                    placeholder="Enter Password"
+                    {...register("password")}
+                    style={{
+                      width: "100%",
+                      padding: "0 34px 0 10px",
+                      height: "40px",
+                      fontSize: "15px",
+                      margin: "0",
+                      border: "none",
+                      borderRadius: "4px",
+                      boxSizing: "border-box",
+                    }}
+                    // className="inputFieldinOverlayForm"
+                  ></input>
+                  {showPasswordSignUp ? (
+                    <FaEyeSlash
+                      onClick={handleTogglePasswordSignUp}
+                      style={{ position: "absolute", right: 14, top: "36%" }}
+                    />
+                  ) : (
+                    <FaEye
+                      onClick={handleTogglePasswordSignUp}
+                      style={{ position: "absolute", right: 14, top: "36%" }}
+                    />
+                  )}
+                </div>
                 <p className="pForForm">{errors2.password?.message}</p>
                 <input
                   type="password"

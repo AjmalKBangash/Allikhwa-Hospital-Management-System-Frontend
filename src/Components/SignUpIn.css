@@ -94,7 +94,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1070px) {
   .signupinform {
     display: flex;
     flex-direction: column;
