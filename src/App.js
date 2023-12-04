@@ -46,6 +46,7 @@ import DepartmentNurses from "./ForAll/DepartmentNurses";
 import InformationCardForEmployee from "./ForAll/InformationCardForEmployee";
 import ExpenseDynamicDetails from "./ForAll/ExpenseDynamicDetails";
 // Now Doctor HMS started
+import ProtectedRoutesDoctor from "./HMSComponents/Doctor/ProtectedRoutesDoctor";
 import DoctorHMS from "./HMSComponents/Doctor/DoctorHMS";
 import DrDashboard from "./HMSComponents/Doctor/DrDashboard";
 import DrProfile from "./HMSComponents/Doctor/DrProfile";
@@ -59,6 +60,7 @@ import DrDepartmentHMS from "./HMSComponents/Doctor/DrDepartmentHMS";
 import RecPatAdmission from "./HMSComponents/Receptionist/RecPatAdmission";
 
 // NOW RECEPTIONNIST HMS STARTED
+import ProtectedRoutesRec from "./HMSComponents/Receptionist/ProtectedRoutesRec";
 import RecHMS from "./HMSComponents/Receptionist/RecHMS";
 import RecDashboard from "./HMSComponents/Receptionist/RecDashboard";
 import RecComplaints from "./HMSComponents/Receptionist/RecComplaints";
@@ -71,6 +73,7 @@ import RecSchedule from "./HMSComponents/Receptionist/RecSchedule";
 import RecChat from "./HMSComponents/Receptionist/RecChat";
 import RecDepartmentHMS from "./HMSComponents/Receptionist/RecDepartmentHMS";
 // NOW LAB TECHNICIAN STARTED
+import ProtectedRoutesLabTechnician from "./HMSComponents/LabTechnician/ProtectedRoutesLabTechnician";
 import LabHMS from "./HMSComponents/LabTechnician/LabHMS";
 import LabDashboard from "./HMSComponents/LabTechnician/LabDashboard";
 import LabProfile from "./HMSComponents/LabTechnician/LabProfile";
@@ -159,7 +162,11 @@ const theRoutes = createBrowserRouter(
         </Route>
       </Route>
       {/* Doctor HMS  */}
-      <Route path="doctor-hms" element={<DoctorHMS />}>
+      <Route
+        path="doctor-hms"
+        // element={<DoctorHMS />}
+        element={<ProtectedRoutesDoctor Component={DoctorHMS} />}
+      >
         <Route path="dr-dashboard" element={<DrDashboard />} />
         <Route path="dr-profile" element={<DrProfile />} />
         <Route path="dr-patients" element={<DrPatients />} />
@@ -188,7 +195,11 @@ const theRoutes = createBrowserRouter(
         </Route>
       </Route>
       {/* Receptionist HMS */}
-      <Route path="rec-hms" element={<RecHMS />}>
+      <Route
+        path="rec-hms"
+        // element={<RecHMS />}
+        element={<ProtectedRoutesRec Component={RecHMS} />}
+      >
         <Route path="rec-dashboard" element={<RecDashboard />} />
         <Route path="rec-profile" element={<RecProfile />} />
         <Route path="rec-e-appointments" element={<ReceAppointments />} />
@@ -222,7 +233,11 @@ const theRoutes = createBrowserRouter(
         </Route>
       </Route>
       {/* Lab-Technician HMS */}
-      <Route path="lab-hms" element={<LabHMS />}>
+      <Route
+        path="lab-hms"
+        // element={<LabHMS />}
+        element={<ProtectedRoutesLabTechnician Component={LabHMS} />}
+      >
         <Route path="lab-dashboard" element={<LabDashboard />} />
         <Route path="lab-profile" element={<LabProfile />} />
         <Route path="lab-patients" element={<LabPatients />} />
