@@ -1,5 +1,5 @@
 import "./SignUpIn.css";
-
+// import axiosinstance from "./axiosinstance"; //  IT HAS BEEN CHANGED GLOBALLY
 // form handling and validatiion
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,18 +8,27 @@ import * as Yup from "yup";
 // media
 import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 // REACT ICONS
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
 
 function SignUpIn() {
+  // axios.defaults = axiosinstance.defaults;
   const [displaySignIn, setDisplaySignIn] = useState(true);
   const [patientForm, setPatientForm] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // State to control password visibility for login
   const [showPasswordSignUp, setShowPasswordSignUp] = useState(false); // State to control password visibility
+  const [registeringUser, setRegisteringUser] = useState(false);
+  const [registrationErrorEmail, setRegistrationErrorEmail] = useState(false);
+  const [registrationErrorUsername, setRegistrationErrorUsername] =
+    useState(false);
+  const [logginInUser, setLogginInUser] = useState(false);
+  const [click, setClick] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   function RegisterFunForOptions(e) {
     if (e.target.value === "patient") {
@@ -39,23 +48,26 @@ function SignUpIn() {
 
   const loginSchema = Yup.object().shape({
     // Log In Form Validation
-    nameelogin: Yup.string().required("Name is required!"),
-    passwordlogin: Yup.string().required("Password is required!"),
+    // username: Yup.string().required("Name is required!"),
+    email: Yup.string()
+      .email("Invalid Email Address!")
+      .required("Email is Required!"),
+    password: Yup.string().required("Password is required!"),
   });
 
   const signupSchema1 = Yup.object().shape({
     // Sign Up Form Validation
-    namee: Yup.string()
+    username: Yup.string()
       .max(25, "Must be 25 characters or less")
       .required("Name is Required!"),
     email: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required!"),
-    // phone: Yup.string().required("Phone num is required!").matches("123"),
+    phone: Yup.string().required("Phone num is required!").matches("123"),
     password: Yup.string()
       .required("Password is required!")
       .matches(
-        "321",
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
         "Minimum eight characters, at least one letter, one number and one special character!"
       ),
     confirmpassword: Yup.string()
@@ -122,13 +134,17 @@ function SignUpIn() {
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
+    setLogginInUser(data);
     // reset01();
   };
 
   const onSubmitOthers = (data) => {
+    console.log("run fun");
     alert(JSON.stringify(data));
+    setRegisteringUser(data);
     // reset02();
   };
+
   const onSubmitPatient = (data) => {
     alert(JSON.stringify(data));
     reset03();
@@ -142,6 +158,127 @@ function SignUpIn() {
   const handleTogglePasswordSignUp = () => {
     setShowPasswordSignUp(!showPasswordSignUp);
   };
+
+  // REGISTERING USER
+  useEffect(() => {
+    console.log("run");
+    if (registeringUser) {
+      axios
+        .post(
+          "http://localhost:8000/allikhwa-hms/custom-user/",
+          registeringUser
+        )
+        .then((res) => {
+          console.log(res.data);
+          setRegisteringUser(false);
+          setDisplaySignIn(true);
+          // navigate("/signup");
+          setRegistrationErrorUsername(false);
+          setRegistrationErrorEmail(false);
+          reset02();
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.data.email) {
+            setRegistrationErrorEmail("User with this email already exists");
+          } else {
+            setRegistrationErrorEmail(false);
+          }
+          if (err.response.data.username) {
+            setRegistrationErrorUsername(
+              "User with this username already exists"
+            );
+          } else {
+            setRegistrationErrorUsername(false);
+          }
+          setRegisteringUser(false);
+        });
+    }
+  }, [registeringUser]);
+  // USER LOGIN
+  console.log(axios);
+  console.log(axios.defaults);
+  useEffect(() => {
+    if (logginInUser) {
+      const baseurl = "http://localhost:8000/";
+      axios
+        .post(baseurl + "api/token/", logginInUser)
+        .then((res) => {
+          console.log(res.data);
+          localStorage.setItem("access_token", res.data.access);
+          localStorage.setItem("refresh_token", res.data.refresh);
+          setLogginInUser(false);
+          //////////////////
+          axios
+            .get(baseurl + "allikhwa-hms/doctors/" + logginInUser.email)
+            .then((res) => {
+              // navigate("doctor-hms");  // IT WILL NOT WORK BECAUSE NAVIGATE WILL APPEND THE PATH TO THE END OF THE CURRENT RL FOR FURTHER EXPLANATION READ THE DOCUMENTATION OF USENAVIGATION HOOK
+              navigate("../doctor-hms", { relative: "path" });
+              // return <Navigate to={"doctor-hms"} />;
+            })
+            .catch((err) => {
+              console.log("doc is not correct");
+              // pass;
+            });
+          axios
+            .get(baseurl + "allikhwa-hms/staffs/" + logginInUser.email)
+            .then((res) => {
+              navigate("../rec-hms", {
+                relative: "path",
+              });
+            })
+            .catch((err) => {
+              console.log("staff is not correct");
+              // pass;
+            });
+          axios
+            .get(baseurl + "allikhwa-hms/receptionists/" + logginInUser.email)
+            .then((res) => {
+              navigate("../rec-hms", {
+                relative: "path",
+              });
+            })
+            .catch((err) => {
+              console.log("rec is not correct");
+              // pass;
+            });
+          axios
+            .get(baseurl + "allikhwa-hms/nurses/" + logginInUser.email)
+            .then((res) => {
+              navigate("../rec-hms", { relative: "path" });
+            })
+            .catch((err) => {
+              console.log("nurse is not correct");
+            });
+          axios
+            .get(baseurl + "allikhwa-hms/pharmacists/" + logginInUser.email)
+            .then((res) => {
+              navigate("../lab-hms", { relative: "path" });
+            })
+            .catch((err) => {
+              console.log("pharmacist is not correct");
+            });
+          console.log("allikhwa-hms/admins/" + logginInUser.email);
+          axios
+            .get(baseurl + "allikhwa-hms/admins/" + logginInUser.email)
+            .then((res) => {
+              navigate("../all'ikhwa-management-system", {
+                relative: "path",
+              });
+            })
+            .catch((err) => {
+              console.log("admin is not correct");
+              console.log(err);
+              // pass;
+            });
+          //////////////////
+          navigate("");
+        })
+        .catch((err) => {
+          // console.log(err);
+        });
+    }
+  }, [logginInUser]);
   // last effect
   useEffect(() => {
     try {
@@ -154,6 +291,27 @@ function SignUpIn() {
   }, [location.state]);
 
   // this is a sample for reverting backbudyyyyy
+  useEffect(() => {
+    const accessToken = localStorage.getItem("access_token");
+    console.log(accessToken);
+    if (accessToken && click) {
+      axios
+        .get("allikhwa-hms/departments/", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          setClick(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setClick(false);
+        });
+    }
+  }, [localStorage.getItem("access_token"), click]);
 
   return (
     <div className="signupintop">
@@ -162,6 +320,19 @@ function SignUpIn() {
         className="imgofform"
         src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
       />
+      <div
+        style={{
+          width: "200px",
+          height: "200px",
+          backgroundColor: "purple",
+          zIndex: "9999999999999",
+        }}
+        onClick={() => {
+          setClick(true);
+        }}
+      >
+        Click
+      </div>
       <div className="signupinform">
         <div className="menuforsignup">
           <img src={AllikhwaLogo}></img>
@@ -184,6 +355,7 @@ function SignUpIn() {
         </div>
         {/* </> */}
         {/* Sign In Form */}
+        {/* LOGIN FORM */}
         {displaySignIn && (
           <form
             className="signupform"
@@ -194,13 +366,23 @@ function SignUpIn() {
             <input
               type="text"
               className="inputFieldinOverlayForm"
-              name="nameelogin"
-              placeholder="Enter Your Name"
-              {...register("nameelogin")}
+              name="email"
+              placeholder="Email Address"
+              {...register("email")}
             ></input>
-            {errors.nameelogin && (
-              <p className="pForForm">{errors.nameelogin.message}</p>
+            {errors2.email && (
+              <p className="pForForm">{errors2.email?.message}</p>
             )}
+            {/* <input
+              type="text"
+              className="inputFieldinOverlayForm"
+              name="username"
+              placeholder="Enter Your Name"
+              {...register("username")}
+            ></input>
+            {errors.username && (
+              <p className="pForForm">{errors.username.message}</p>
+            )} */}
             <div
               style={{
                 position: "relative",
@@ -212,9 +394,9 @@ function SignUpIn() {
             >
               <input
                 type={showPassword ? "text" : "password"}
-                name="passwordlogin"
+                name="password"
                 placeholder="Enter Password"
-                {...register("passwordlogin")}
+                {...register("password")}
                 style={{
                   width: "100%",
                   padding: "0 34px 0 10px",
@@ -239,17 +421,14 @@ function SignUpIn() {
                 />
               )}
             </div>
-            <p className="pForForm">{errors.passwordlogin?.message}</p>
-            <button
-              type="submit"
-              className="loginSignBtn"
-              onClick={() => reset()}
-            >
+            <p className="pForForm">{errors.password?.message}</p>
+            <button type="submit" className="loginSignBtn">
               Submit
             </button>
           </form>
         )}
         {/* Sign Up Form  */}
+        {/* REGSITERNG USER FORM  */}
         {!displaySignIn && (
           <>
             {!patientForm && (
@@ -278,11 +457,16 @@ function SignUpIn() {
                 <input
                   type="text"
                   className="inputFieldinOverlayForm"
-                  name="namee"
+                  name="username"
                   placeholder="Enter Your Name"
-                  {...register2("namee")}
+                  {...register2("username")}
                 ></input>
-                <p className="pForForm">{errors2.namee?.message}</p>
+                {errors2.username && (
+                  <p className="pForForm">{errors2.username?.message}</p>
+                )}
+                <p className="pForForm">
+                  {registrationErrorUsername && registrationErrorUsername}
+                </p>
                 <input
                   type="text"
                   className="inputFieldinOverlayForm"
@@ -290,20 +474,25 @@ function SignUpIn() {
                   placeholder="Email Address"
                   {...register2("email")}
                 ></input>
-                <p className="pForForm">{errors2.email?.message}</p>
-                {/* <input
+                {errors2.email && (
+                  <p className="pForForm">{errors2.email?.message}</p>
+                )}
+                <p className="pForForm">
+                  {registrationErrorEmail && registrationErrorEmail}
+                </p>
+                <input
                   type="text"
                   className="inputFieldinOverlayForm"
                   name="phone"
                   placeholder="Enter Your Phone Number"
                   {...register2("phone")}
                 ></input>
-                <p className="pForForm">{errors2.phone?.message}</p> */}
+                <p className="pForForm">{errors2.phone?.message}</p>
                 <div
                   style={{
                     position: "relative",
                     border: "1px solid #fe440063",
-                    borderRadius: "4px",
+                    // borderRadius: "4px",
                     height: "40px",
                     margin: "5px",
                   }}
@@ -312,7 +501,7 @@ function SignUpIn() {
                     type={showPasswordSignUp ? "text" : "password"}
                     name="password"
                     placeholder="Enter Password"
-                    {...register("password")}
+                    {...register2("password")}
                     style={{
                       width: "100%",
                       padding: "0 34px 0 10px",
@@ -320,7 +509,7 @@ function SignUpIn() {
                       fontSize: "15px",
                       margin: "0",
                       border: "none",
-                      borderRadius: "4px",
+                      // borderRadius: "4px",
                       boxSizing: "border-box",
                     }}
                     // className="inputFieldinOverlayForm"
