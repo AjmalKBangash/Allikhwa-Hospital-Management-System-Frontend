@@ -115,7 +115,7 @@ const theRoutes = createBrowserRouter(
         />
       </Route>
       <Route path="/doctors" element={<Doctor />} />
-      <Route path="signup" element={<SignUpIn />} />
+      <Route path="/signup" element={<SignUpIn />} />
       <Route
         path="all'ikhwa-management-system"
         element={<ProtectedRoutesHmsAppLayout Component={HmsAppLayout} />}
