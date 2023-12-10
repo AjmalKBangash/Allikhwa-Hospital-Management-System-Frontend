@@ -2,7 +2,7 @@ import "./DoctorHMS.css";
 import AnimatedTextOnImage from "../../ForAll/AnimatedTextOnImage";
 
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   Link,
   NavLink,
@@ -19,7 +19,7 @@ import { FaPrescription } from "react-icons/fa6";
 import { AiFillSchedule } from "react-icons/ai";
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FcDepartment } from "react-icons/fc";
-import { AiFillWechat } from "react-icons/ai";
+// import { AiFillWechat } from "react-icons/ai";
 import { FaBookMedical } from "react-icons/fa6";
 import ConfirmDialogue from "../../ForAll/ConfirmDialogue";
 import { ImHome } from "react-icons/im";
@@ -83,15 +83,14 @@ const doctorhmsobjs = [
   //   logo: AiFillWechat,
   // },
 ];
-let strr = "";
-const stringifyUpper = (strrr) => strrr.toUpperCase().replace("-", " ");
 
 function DoctorHMS() {
-  const [displayDashboard, setDisplayDashboard] = useState(false);
-  const [displayHmsMenu, setDisplayHmsMenu] = useState(true);
   const only_hms_icons = useRef();
   const hms_outlet = useRef();
   const cd_open_close_var = useSelector((state) => state.cd_open_close);
+  const employee_loggedin_doctor = useSelector(
+    (state) => state.employee_loggedin
+  );
   const location = useLocation();
   let display_img = matchPath("/doctor-hms/", location.pathname);
 
@@ -120,7 +119,12 @@ function DoctorHMS() {
             >
               <img // onClick={() => setDisplayDashboard(false)}
                 className="hmscontainercol02_img"
-                src="https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
+                // src="https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
+                src={
+                  employee_loggedin_doctor.employee_photo
+                    ? employee_loggedin_doctor.employee_photo
+                    : "https://img.freepik.com/free-photo/hospital-healthcare-workers-covid-19-treatment-concept-young-doctor-scrubs-making-daily-errands-clinic-listening-patient-symptoms-look-camera-professional-physician-curing-diseases_1258-57233.jpg?w=2000"
+                }
                 alt="Doctor"
               />
             </Link>
@@ -136,7 +140,9 @@ function DoctorHMS() {
                   fontWeight: "500",
                 }}
               >
-                "SAFEER KASHMIRI"
+                {/* "SAFEER KASHMIRI" */}
+                {employee_loggedin_doctor &&
+                  employee_loggedin_doctor.employee_name}
               </span>
             </span>
           </span>
@@ -207,6 +213,7 @@ function DoctorHMS() {
                     to={hmsobjs.path}
                     className="linkk"
                     style={{ color: "white" }}
+                    data={employee_loggedin_doctor}
                   >
                     <li>
                       <span className="hmsmanagementicons">
@@ -239,18 +246,3 @@ function DoctorHMS() {
 }
 
 export default DoctorHMS;
-
-// function DoctorHMS() {
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     navigate("dr-dashboard");
-//   }, []);
-//   return (
-//     <>
-//       <Outlet />
-//     </>
-//   );
-// }
-
-// export default DoctorHMS;

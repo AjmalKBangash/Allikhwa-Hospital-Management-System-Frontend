@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// function axiosinstance() {
 // Create an instance of Axios with custom configurations
 // const axiosinstance = axios.create({
 //   baseURL: "http://localhost:8000/", // Common base URL for all requests
@@ -57,7 +58,7 @@ axios.interceptors.response.use(
 
       try {
         // Call your Django backend's refresh token endpoint
-        const response = await axiosinstance.post("api/token/refresh/", {
+        const response = await axios.post("api/token/refresh/", {
           refresh: localStorage.getItem("refresh_token"),
         });
 
@@ -69,7 +70,7 @@ axios.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
 
         // Retry the original request with the new access token
-        return axiosinstance(originalRequest);
+        return axios(originalRequest);
       } catch (refreshError) {
         // Handle refresh error, e.g., redirect to login
         console.error("Token refresh failed:", refreshError);
@@ -82,7 +83,12 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// return <></>;
+// }
+
 // export default axiosinstance;
+export default axios;
 
 // Set Axios globally to use the custom instance
 // axios.defaults = axiosinstance.defaults;

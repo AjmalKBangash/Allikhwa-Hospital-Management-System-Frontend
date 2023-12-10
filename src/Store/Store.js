@@ -27,6 +27,8 @@ export const successpopup = createAction("successpopup");
 export const failurepopup = createAction("failurepopup");
 export const fillfreebeds_variable = createAction("fillfreebeds_variable");
 export const profile_updated = createAction("profile_updated");
+// AFTER LOGIN THIS STATE WILL BE USED AS AN EMPLOYEE
+export const employee_loggedin = createAction("employee_loggedin");
 
 const initialState = {
   props_from_depart_actions: [],
@@ -43,6 +45,7 @@ const initialState = {
   failurepopup: false,
   fillfreebeds_variable: "",
   profile_updated: false,
+  employee_loggedin: false,
 };
 
 const sliceReducer = createReducer(initialState, (builder) => {
@@ -93,6 +96,9 @@ const sliceReducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(profile_updated, (state, action) => {
     state.profile_updated = action.payload;
+  });
+  builder.addCase(employee_loggedin, (state, action) => {
+    state.employee_loggedin = action.payload;
   });
 });
 

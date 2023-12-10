@@ -7,13 +7,14 @@ import * as Yup from "yup";
 
 // media
 import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
-import { useEffect, useRef, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // REACT ICONS
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
+import ProtectedRoutesHmsAppLayout from "../HMSComponents/HMSapps/ProtectedRoutesHmsAppLayout";
 
 function SignUpIn() {
   // axios.defaults = axiosinstance.defaults;
@@ -26,18 +27,15 @@ function SignUpIn() {
   const [registrationErrorUsername, setRegistrationErrorUsername] =
     useState(false);
   const [logginInUser, setLogginInUser] = useState(false);
-  const [click, setClick] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   function RegisterFunForOptions(e) {
     if (e.target.value === "patient") {
       setPatientForm(true);
-      console.log("patientshooooooo");
     }
     if (e.target.value === "others") {
       setPatientForm(false);
-      console.log("Othersshoooooooo");
     }
   }
 
@@ -139,8 +137,6 @@ function SignUpIn() {
   };
 
   const onSubmitOthers = (data) => {
-    console.log("run fun");
-    alert(JSON.stringify(data));
     setRegisteringUser(data);
     // reset02();
   };
@@ -161,7 +157,6 @@ function SignUpIn() {
 
   // REGISTERING USER
   useEffect(() => {
-    console.log("run");
     if (registeringUser) {
       axios
         .post(
@@ -169,7 +164,6 @@ function SignUpIn() {
           registeringUser
         )
         .then((res) => {
-          console.log(res.data);
           setRegisteringUser(false);
           setDisplaySignIn(true);
           // navigate("/signup");
@@ -178,7 +172,6 @@ function SignUpIn() {
           reset02();
         })
         .catch((err) => {
-          console.log(err);
           if (err.response.data.email) {
             setRegistrationErrorEmail("User with this email already exists");
           } else {
@@ -196,82 +189,97 @@ function SignUpIn() {
     }
   }, [registeringUser]);
   // USER LOGIN
-  console.log(axios);
-  console.log(axios.defaults);
   useEffect(() => {
     if (logginInUser) {
       const baseurl = "http://localhost:8000/";
       axios
         .post(baseurl + "api/token/", logginInUser)
         .then((res) => {
-          console.log(res.data);
           localStorage.setItem("access_token", res.data.access);
           localStorage.setItem("refresh_token", res.data.refresh);
           setLogginInUser(false);
-          //////////////////
+          ///////////////////////////////////////////
           axios
-            .get(baseurl + "allikhwa-hms/doctors/" + logginInUser.email)
-            .then((res) => {
-              // navigate("doctor-hms");  // IT WILL NOT WORK BECAUSE NAVIGATE WILL APPEND THE PATH TO THE END OF THE CURRENT RL FOR FURTHER EXPLANATION READ THE DOCUMENTATION OF USENAVIGATION HOOK
+            .get("allikhwa-hms/doctors/" + logginInUser.email)
+            .then((response) => {
+              // Handle successful response from the first request
+              // dispatch(employee_loggedin(response.data)); IT IS USELESS BECAUSE THE STATES IN REACT COMPONENTS INCLUDING REACT-REDUX THE STATES IS NOT PERSISTENT HENCE IT WILL BE UNMOUNTED WHEN PAGE REFRESHED
+              localStorage.setItem(
+                "employee_loggedin_persistentdata",
+                logginInUser.email
+              );
               navigate("../doctor-hms", { relative: "path" });
-              // return <Navigate to={"doctor-hms"} />;
             })
-            .catch((err) => {
-              console.log("doc is not correct");
-              // pass;
+            .catch((error) => {
+              axios
+                .get("allikhwa-hms/staffs/" + logginInUser.email)
+                .then((response) => {
+                  localStorage.setItem(
+                    "employee_loggedin_persistentdata",
+                    logginInUser.email
+                  );
+                  navigate("../rec-hms", {
+                    relative: "path",
+                  });
+                })
+                .catch((error) => {
+                  axios
+                    .get("allikhwa-hms/receptionists/" + logginInUser.email)
+                    .then((response) => {
+                      localStorage.setItem(
+                        "employee_loggedin_persistentdata",
+                        logginInUser.email
+                      );
+                      navigate("../rec-hms", {
+                        relative: "path",
+                      });
+                    })
+                    .catch((error) => {
+                      axios
+                        .get("allikhwa-hms/nurses/" + logginInUser.email)
+                        .then((response) => {
+                          localStorage.setItem(
+                            "employee_loggedin_persistentdata",
+                            response.data
+                          );
+                          navigate("../rec-hms", {
+                            relative: "path",
+                          });
+                        })
+                        .catch((error) => {
+                          axios
+                            .get(
+                              "allikhwa-hms/pharmacists/" + logginInUser.email
+                            )
+                            .then((response) => {
+                              localStorage.setItem(
+                                "employee_loggedin_persistentdata",
+                                logginInUser.email
+                              );
+                              navigate("../lab-hms", {
+                                relative: "path",
+                              });
+                            })
+                            .catch((error) => {
+                              axios
+                                .get(
+                                  "allikhwa-hms/admins/" + logginInUser.email
+                                )
+                                .then((response) => {
+                                  localStorage.setItem(
+                                    "employee_loggedin_persistentdata",
+                                    logginInUser.email
+                                  );
+                                  navigate("../all'ikhwa-management-system/", {
+                                    relative: "path",
+                                  });
+                                });
+                            });
+                        });
+                    });
+                });
             });
-          axios
-            .get(baseurl + "allikhwa-hms/staffs/" + logginInUser.email)
-            .then((res) => {
-              navigate("../rec-hms", {
-                relative: "path",
-              });
-            })
-            .catch((err) => {
-              console.log("staff is not correct");
-              // pass;
-            });
-          axios
-            .get(baseurl + "allikhwa-hms/receptionists/" + logginInUser.email)
-            .then((res) => {
-              navigate("../rec-hms", {
-                relative: "path",
-              });
-            })
-            .catch((err) => {
-              console.log("rec is not correct");
-              // pass;
-            });
-          axios
-            .get(baseurl + "allikhwa-hms/nurses/" + logginInUser.email)
-            .then((res) => {
-              navigate("../rec-hms", { relative: "path" });
-            })
-            .catch((err) => {
-              console.log("nurse is not correct");
-            });
-          axios
-            .get(baseurl + "allikhwa-hms/pharmacists/" + logginInUser.email)
-            .then((res) => {
-              navigate("../lab-hms", { relative: "path" });
-            })
-            .catch((err) => {
-              console.log("pharmacist is not correct");
-            });
-          console.log("allikhwa-hms/admins/" + logginInUser.email);
-          axios
-            .get(baseurl + "allikhwa-hms/admins/" + logginInUser.email)
-            .then((res) => {
-              navigate("../all'ikhwa-management-system", {
-                relative: "path",
-              });
-            })
-            .catch((err) => {
-              console.log("admin is not correct");
-              console.log(err);
-              // pass;
-            });
-          //////////////////
+          ///////////////////////////////////////////
           navigate("");
         })
         .catch((err) => {
@@ -279,6 +287,7 @@ function SignUpIn() {
         });
     }
   }, [logginInUser]);
+
   // last effect
   useEffect(() => {
     try {
@@ -290,29 +299,6 @@ function SignUpIn() {
     }
   }, [location.state]);
 
-  // this is a sample for reverting backbudyyyyy
-  useEffect(() => {
-    const accessToken = localStorage.getItem("access_token");
-    console.log(accessToken);
-    if (accessToken && click) {
-      axios
-        .get("allikhwa-hms/departments/", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          setClick(false);
-        })
-        .catch((err) => {
-          console.error(err);
-          setClick(false);
-        });
-    }
-  }, [localStorage.getItem("access_token"), click]);
-
   return (
     <div className="signupintop">
       {/* <> */}
@@ -320,19 +306,6 @@ function SignUpIn() {
         className="imgofform"
         src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
       />
-      <div
-        style={{
-          width: "200px",
-          height: "200px",
-          backgroundColor: "purple",
-          zIndex: "9999999999999",
-        }}
-        onClick={() => {
-          setClick(true);
-        }}
-      >
-        Click
-      </div>
       <div className="signupinform">
         <div className="menuforsignup">
           <img src={AllikhwaLogo}></img>
@@ -387,7 +360,7 @@ function SignUpIn() {
               style={{
                 position: "relative",
                 border: "1px solid #fe440063",
-                borderRadius: "4px",
+                // borderRadius: "4px",
                 height: "40px",
                 margin: "5px",
               }}
@@ -404,7 +377,7 @@ function SignUpIn() {
                   fontSize: "15px",
                   margin: "0",
                   border: "none",
-                  borderRadius: "4px",
+                  // borderRadius: "4px",
                   boxSizing: "border-box",
                 }}
                 // className="inputFieldinOverlayForm"  THIS CLASS SHOLD MUST BE COMMETED OTHERWISE IT WILL BE CONFLICTED WITHE THE INLINE CSS

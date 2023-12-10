@@ -18,6 +18,7 @@ import {
   prescription_show_patient_detail_rest_pres_form,
   re_render_presc_upper_component,
   show_lab_test_form,
+  employee_loggedin,
 } from "../../Store/Store";
 
 // icons
@@ -679,6 +680,7 @@ const Prescription = React.forwardRef((props, ref) => {
   );
   const successpopup_var = useSelector((state) => state.successpopup);
   const failurepopup_var = useSelector((state) => state.failurepopup);
+  const employee_loggedin_var = useSelector((state) => state.employee_loggedin);
   const dispatch = useDispatch();
 
   const prescription_validation_schema = Yup.object().shape({
@@ -894,18 +896,21 @@ const Prescription = React.forwardRef((props, ref) => {
               <img src={AllikhwaLogo} className="presc_allikhwa_logo" />
               <br />
               <div>
-                <FaUserDoctor style={{ color: "#fe4200", margin: "2px" }} /> Dr
-                Marine Khan
+                <FaUserDoctor style={{ color: "#fe4200", margin: "2px" }} />
+                {/* Dr Marine Khan */}
+                {employee_loggedin_var && employee_loggedin_var.employee_name}
               </div>
               <div>
                 <BsFillTelephoneFill
                   style={{ color: "#fe4200", margin: "2px" }}
                 />{" "}
-                0092 4483486
+                {/* 0092 4483486 */}
+                {employee_loggedin_var && employee_loggedin_var.employee_phone}
               </div>
               <div>
-                <MdEmail style={{ color: "#fe4200", margin: "2px" }} />{" "}
-                ak1489007@gmail.com
+                <MdEmail style={{ color: "#fe4200", margin: "2px" }} />
+                {/* ak1489007@gmail.com */}
+                {employee_loggedin_var && employee_loggedin_var.user}
               </div>
             </div>
             <div
@@ -914,12 +919,18 @@ const Prescription = React.forwardRef((props, ref) => {
             >
               <div>
                 <h2 className="prescription_h2">DOCTOR EDUCATION</h2>
-                <p></p>
+                <p>
+                  {employee_loggedin_var &&
+                    employee_loggedin_var.employee_education}
+                </p>
               </div>
               <div>
                 {" "}
                 <h2 className="prescription_h2">DOCTOR EXPERIENCE </h2>
-                <p></p>
+                <p>
+                  {employee_loggedin_var &&
+                    employee_loggedin_var.employee_experience}
+                </p>
               </div>
             </div>
           </div>

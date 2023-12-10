@@ -1,5 +1,7 @@
 import "./DrAppointments.css";
 import { useEffect, useState } from "react";
+// import { employee_loggedin } from "../../Store/Store";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 // Icons
@@ -23,12 +25,14 @@ function DrAppointments() {
   ] = useState(null);
   const [uuids_for_appointments, setuuids_for_appointments] = useState();
   const [rerendertwo_axios_gets, setrerendertwo_axios_gets] = useState(false);
+  const employee_loggedin_var = useSelector((state) => state.employee_loggedin);
 
   // FETCHING DATA FROM SERVER OF APPOINTMENTS MADE BY THE CURRENT DOCTOR
   useEffect(() => {
     axios
       .get(
-        "http://localhost:8000/allikhwa-hms/uuids-for-appointments/Ajmal Bangash"
+        "allikhwa-hms/uuids-for-appointments/" +
+          employee_loggedin_var.employee_name
       )
       .then((res) => {
         setuuids_for_appointments(res.data);
@@ -45,10 +49,7 @@ function DrAppointments() {
         const fetchPatients = async () => {
           const responses = await Promise.all(
             uuids_for_appointments.map((uuid) => {
-              return axios.get(
-                "http://localhost:8000/allikhwa-hms/patients-list/",
-                { params: uuid }
-              );
+              return axios.get("allikhwa-hms/patients-list/", { params: uuid });
             })
           );
 
@@ -87,7 +88,7 @@ function DrAppointments() {
     {
       prescription_from_appointments &&
         axios
-          .post("http://localhost:8000/allikhwa-hms/uuids-for-prescriptions/", {
+          .post("allikhwa-hms/uuids-for-prescriptions/", {
             ...prescription_from_appointments,
           })
           .then((res) => {
@@ -103,7 +104,7 @@ function DrAppointments() {
       deletion_for_appointments &&
         axios
           .delete(
-            "http://localhost:8000/allikhwa-hms/uuids-for-appointments-deletion/" +
+            "allikhwa-hms/uuids-for-appointments-deletion/" +
               deletion_for_appointments
           )
           .then((res) => {
@@ -119,13 +120,10 @@ function DrAppointments() {
     {
       rejected_reception_from_appointments &&
         axios
-          .post(
-            "http://localhost:8000/allikhwa-hms/uuids-for-rejected-appointments/",
-            {
-              // the new patients data model in databse(server) will be for newly patients which will be handled by receptionists
-              ...rejected_reception_from_appointments, //here i should also pass the doctor name to rejectedappointments database table Noo The doctor name is already added by the receptionist so need to add dr which is already in the appointment data table
-            }
-          )
+          .post("allikhwa-hms/uuids-for-rejected-appointments/", {
+            // the new patients data model in databse(server) will be for newly patients which will be handled by receptionists
+            ...rejected_reception_from_appointments, //here i should also pass the doctor name to rejectedappointments database table Noo The doctor name is already added by the receptionist so need to add dr which is already in the appointment data table
+          })
           .then((res) => {
             setrejected_reception_from_appointments(false);
           })
