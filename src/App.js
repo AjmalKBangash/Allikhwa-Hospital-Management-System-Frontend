@@ -1,4 +1,5 @@
 import "./App.css";
+import axiosinstance from "./Components/axiosinstance";
 
 // AppLayout Components
 import NavBar from "./Components/AppLayout/NavBar";

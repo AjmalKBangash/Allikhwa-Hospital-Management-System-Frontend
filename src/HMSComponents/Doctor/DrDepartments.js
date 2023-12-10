@@ -1,7 +1,10 @@
 import { matchPath } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import { allikhwa_department_infomation_dynamic_name } from "../../Store/Store";
+import {
+  allikhwa_department_infomation_dynamic_name,
+  employee_loggedin,
+} from "../../Store/Store";
 
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams, useLocation, Outlet } from "react-router-dom";
@@ -17,6 +20,7 @@ function DrDepartments() {
   const allikhwa_department_infomation_dynamic_name_var = useSelector(
     (state) => state.allikhwa_department_infomation_dynamic_name
   );
+  const employee_loggedin_var = useSelector((state) => state.employee_loggedin);
   const dispatch = useDispatch();
 
   function Replacing(text) {
@@ -37,22 +41,27 @@ function DrDepartments() {
   }
 
   useEffect(() => {
+    // let listtt = [];
+    // axios
+    //   .get("allikhwa-hms/doctors/" + employee_loggedin_var.user)
+    //   .then((res) => {
+    //     var departments = res.data.employee_departments
+    //       .split(",")
+    //       .map(function (department) {
+    //         return { name: department.trim() };
+    //       });
+    //     setdepartments02(departments);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     let listtt = [];
-    axios
-      .get(
-        "http://localhost:8000/allikhwa-hms/doctors/cad5aad8-bf96-48ed-8c48-e1b190ac829a"
-      )
-      .then((res) => {
-        var departments = res.data.employee_departments
-          .split(",")
-          .map(function (department) {
-            return { name: department.trim() };
-          });
-        setdepartments02(departments);
-      })
-      .catch((err) => {
-        console.log(err);
+    var departments = employee_loggedin_var.employee_departments
+      .split(",")
+      .map(function (department) {
+        return { name: department.trim() };
       });
+    setdepartments02(departments);
   }, []);
 
   //  FETCHIN DEPARTMENT ON THE BASIS OF DOCTOR because THESE DEPARTMENTS ARE ALLOCATED TO DOCTORS BY HOSPITAL ADMINISTRATION
@@ -63,8 +72,7 @@ function DrDepartments() {
           const responses = await Promise.all(
             departments02.map((department) => {
               return axios.get(
-                "http://localhost:8000/allikhwa-hms/departments/" +
-                  department.name.toUpperCase()
+                "allikhwa-hms/departments/" + department.name.toUpperCase()
               );
             })
           );

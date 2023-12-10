@@ -1,18 +1,16 @@
 import "./DrDashboard.css";
 import BarChartAllikhwa from "../../ForAll/BarChartAllikhwa";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import axios from "axios";
 
 // Icons
 import { BsPersonFillExclamation } from "react-icons/bs";
 import { FaHandHoldingMedical } from "react-icons/fa";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { MdDetails } from "react-icons/md";
+// import { MdDetails } from "react-icons/md";
 
 function DrDashboard() {
-  const [drdashboard_showPatient_Details, setdrdashboard_showPatient_Details] =
-    useState(false);
-  const [patientData, setPatientData] = useState();
   const [total_treated_Patients, settotal_treated_Patients] = useState();
   const [last_year_ind_dr_appointments, setlast_year_ind_dr_appointments] =
     useState();
@@ -24,67 +22,70 @@ function DrDashboard() {
     total_last_month_appointments_by_ind_dr,
     settotal_last_month_appointments_by_ind_dr,
   ] = useState();
+  const employee_loggedin_doctor = useSelector(
+    (state) => state.employee_loggedin
+  );
 
   useEffect(() => {
     let listtt = [];
     if (last_year_ind_dr_appointments) {
       last_year_ind_dr_appointments.map((each_months_appointment) => {
-        if ("2023-01-01" == each_months_appointment.year_month) {
+        if ("2023-01-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "JAN",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-02-01" == each_months_appointment.year_month) {
+        } else if ("2023-02-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "FEB",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-03-01" == each_months_appointment.year_month) {
+        } else if ("2023-03-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "MAR",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-04-01" == each_months_appointment.year_month) {
+        } else if ("2023-04-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "APR",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-05-01" == each_months_appointment.year_month) {
+        } else if ("2023-05-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "MAY",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-06-01" == each_months_appointment.year_month) {
+        } else if ("2023-06-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "JUN",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-07-01" == each_months_appointment.year_month) {
+        } else if ("2023-07-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "JUL",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-08-01" == each_months_appointment.year_month) {
+        } else if ("2023-08-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "AUG",
             Tests: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-09-01" == each_months_appointment.year_month) {
+        } else if ("2023-09-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "SEP",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-10-01" == each_months_appointment.year_month) {
+        } else if ("2023-10-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "OCT",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-11-01" == each_months_appointment.year_month) {
+        } else if ("2023-11-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "NOV",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
           });
-        } else if ("2023-12-01" == each_months_appointment.year_month) {
+        } else if ("2023-12-01" === each_months_appointment.year_month) {
           listtt.push({
             name: "DEC",
             APPOINTMENTS: each_months_appointment.appointments_per_month,
@@ -98,24 +99,13 @@ function DrDashboard() {
     }
   }, [last_year_ind_dr_appointments]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3100/patients")
-  //     .then((res) => {
-  //       // console.log(res.data);
-  //       setPatientData(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, [patientData]);
-
   // LAST YEAR MdAirlineSeatIndividualSuiteL DOCTOR APPOINTMENTS
   useEffect(() => {
     axios
       .get(
-        "http://localhost:8000/allikhwa-hms/patients-lastyear-appointments/" +
-          "cad5aad8-bf96-48ed-8c48-e1b190ac829a"
+        "allikhwa-hms/patients-lastyear-appointments/" +
+          // "cad5aad8-bf96-48ed-8c48-e1b190ac829a"
+          employee_loggedin_doctor.employee_UID
       )
       .then((res) => {
         setlast_year_ind_dr_appointments(res.data);
@@ -123,22 +113,21 @@ function DrDashboard() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [employee_loggedin_doctor]);
   // FOR TOTAL TRETAED PATIENTS BY DOCTOR
   useEffect(() => {
     axios
       .get(
         "http://localhost:8000/allikhwa-hms/total-treated-patients/" +
-          "cad5aad8-bf96-48ed-8c48-e1b190ac829a"
+          employee_loggedin_doctor.employee_UID
       )
       .then((res) => {
         settotal_treated_Patients(res.data);
-        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [employee_loggedin_doctor]);
   return (
     <>
       <div className="dashboard_top">

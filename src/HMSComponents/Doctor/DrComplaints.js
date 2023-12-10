@@ -3,12 +3,12 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { employee_loggedin } from "../../Store/Store";
+import { useSelector } from "react-redux";
 
 function DrComplaints() {
-  const [data_of_patient_appointments, setdata_of_patient_appointments] =
-    useState();
   const [patient_complaint_data, setpatient_complaint_data] = useState();
-
+  const employee_loggedin_var = useSelector((state) => state.employee_loggedin);
   const newpatient_complaint_schema = Yup.object().shape({
     employee_complaints: Yup.string()
       .required("Complaint is required")
@@ -29,24 +29,13 @@ function DrComplaints() {
       setpatient_complaint_data(data);
     }
   }
-  useEffect(() => {
-    axios
-      .get(
-        "http://localhost:8000/allikhwa-hms/doctors/cad5aad8-bf96-48ed-8c48-e1b190ac829a"
-      )
-      .then((res) => {
-        setdata_of_patient_appointments(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+
   useEffect(() => {
     if (patient_complaint_data) {
       axios
-        .post("http://localhost:8000/allikhwa-hms/employee-complaints/", {
+        .post("allikhwa-hms/employee-complaints/", {
           ...patient_complaint_data,
-          employee_UID: data_of_patient_appointments.employee_UID,
+          employee_UID: employee_loggedin_var.employee_UID,
         })
         .then((res) => {
           setpatient_complaint_data(false);
@@ -77,19 +66,19 @@ function DrComplaints() {
             <label htmlFor="PID" className="profile_lanel_input_label">
               Doctor ID:
             </label>
-            <p>{data_of_patient_appointments?.employee_UID}</p>
+            <p>{employee_loggedin_var?.employee_UID}</p>
           </div>
           <div className="profile_label_input ">
             <label htmlFor="name" className="profile_lanel_input_label">
               Name:
             </label>
-            <p>{data_of_patient_appointments?.employee_name}</p>
+            <p>{employee_loggedin_var?.employee_name}</p>
           </div>
           <div className="profile_label_input ">
             <label htmlFor="Age" className="profile_lanel_input_label">
               Age:
             </label>
-            <p>{data_of_patient_appointments?.employee_age}</p>
+            <p>{employee_loggedin_var?.employee_age}</p>
           </div>
           <div className="profile_label_input ">
             <label
