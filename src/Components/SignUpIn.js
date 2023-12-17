@@ -8,13 +8,14 @@ import * as Yup from "yup";
 // media
 import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 // REACT ICONS
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import ProtectedRoutesHmsAppLayout from "../HMSComponents/HMSapps/ProtectedRoutesHmsAppLayout";
+import ForgotPassword from "./ForgotPassword";
 
 function SignUpIn() {
   // axios.defaults = axiosinstance.defaults;
@@ -124,7 +125,6 @@ function SignUpIn() {
     register: register3,
     formState: { errors: errors3 },
     handleSubmit: handleSubmit3,
-    reset,
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(signupSchema2),
@@ -191,13 +191,13 @@ function SignUpIn() {
   // USER LOGIN
   useEffect(() => {
     if (logginInUser) {
-      const baseurl = "http://localhost:8000/";
       axios
-        .post(baseurl + "api/token/", logginInUser)
+        // .post("https://localhost:8000/alllikhwa-hms/api/token/", logginInUser)
+        .post("api/token/", logginInUser)
         .then((res) => {
           localStorage.setItem("access_token", res.data.access);
           localStorage.setItem("refresh_token", res.data.refresh);
-          setLogginInUser(false);
+
           ///////////////////////////////////////////
           axios
             .get("allikhwa-hms/doctors/" + logginInUser.email)
@@ -280,6 +280,7 @@ function SignUpIn() {
                 });
             });
           ///////////////////////////////////////////
+          setLogginInUser(false);
           navigate("");
         })
         .catch((err) => {
@@ -310,7 +311,10 @@ function SignUpIn() {
         <div className="menuforsignup">
           <img src={AllikhwaLogo}></img>
           <h3
-            onClick={() => setDisplaySignIn(true)}
+            onClick={() => {
+              setDisplaySignIn(true);
+              // setdisplaySignIn_from_forot_psswd(false);
+            }}
             style={{
               backgroundColor: displaySignIn ? "#fe4200" : "#fe440081",
             }}
@@ -318,7 +322,10 @@ function SignUpIn() {
             Sign In
           </h3>
           <h3
-            onClick={() => setDisplaySignIn(false)}
+            onClick={() => {
+              setDisplaySignIn(false);
+              // setdisplaySignIn_from_forot_psswd(false);
+            }}
             style={{
               backgroundColor: !displaySignIn ? "#fe4200" : "#fe440081",
             }}
@@ -395,9 +402,37 @@ function SignUpIn() {
               )}
             </div>
             <p className="pForForm">{errors.password?.message}</p>
-            <button type="submit" className="loginSignBtn">
+            <div
+              style={{
+                margin: "5px",
+                height: "15px",
+                // border: "1px solid #fe440063 ",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <input
+                type="checkbox"
+                id="rememberMe"
+                name="rememberMe"
+                {...register("rememberMe")}
+                style={{ marginRight: "10px" }}
+              />
+              <label htmlFor="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit" style={{ margin: "8px 5px" }}>
+              {/* loginSignBtn */}
               Submit
             </button>
+            <p
+              className="forgotpassword"
+              onClick={() => {
+                // Navigate(<ForgotPassword />);
+                navigate("/forgot-password");
+              }}
+            >
+              Forgot password
+            </p>
           </form>
         )}
         {/* Sign Up Form  */}

@@ -10,12 +10,19 @@ import axios from "axios";
 
 // importing icons from react-icons
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
+import DrProfile from "../Doctor/DrProfile";
 
 function Profile(props) {
-  let data = "";
+  console.log(props);
   // str.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
   // this upper regex is for converting paargraphs into sentences and then we have to store it in list and we have to convert it into ul li childs through map function
-  let [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState();
+  let [addUpdate_Form_Data, set_AddUpdate_Form_Data] = useState(false);
+  const employee_employeea_var = useSelector(
+    (state) => state.employee_employee
+  );
+  const navigate = useNavigate();
 
   const psswd = /^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$/;
   const exclude_spaces_regex = /^[\d\w]*$/;
@@ -23,27 +30,45 @@ function Profile(props) {
   const adduppdateschema = Yup.object().shape({
     // Sign Up Form Validation
     employee_name: Yup.string()
-      .max(25, "Must be 25 characters or less")
+      .max(30, "Must be 30 characters or less")
       .required("Name is Required!"),
     employee_jobtitle: Yup.string()
       .max(50, "Must be 50 characters or less")
       .required("Job title is Required"),
-    employee_category: Yup.string()
-      .max(50, "Must be 50 characters or less")
-      .required("Job category is Required"),
+    // employee_category: Yup.string()
+    //   .max(50, "Must be 50 characters or less")
+    //   .required("Job category is Required"),
     employee_experience: Yup.string()
       .max(200, "Must be 200 characters or less")
       .required("Experience is Required"),
-    // employee_department: Yup.string()
+    employee_education: Yup.string()
+      // .max(200, "Must be 200 characters or less")
+      .required("Education is Required"),
+    employee_awards: Yup.string()
+      .max(200, "Must be 200 characters or less")
+      .required("Awards or Recognition is Required"),
+    employee_website: Yup.string()
+      .max(30, "Must be 30 characters or less")
+      .required("Website is Required"),
+    employee_facebook: Yup.string()
+      .max(30, "Must be 30 characters or less")
+      .required("Facebook is Required"),
+    employee_linkedin: Yup.string()
+      .max(30, "Must be 30 characters or less")
+      .required("LinkedIn is Required"),
+    // employee_departments: Yup.string()
     //   .max(20, "Must be 20 characters or less")
     //   .required("Department is Required"),
-    employee_email: Yup.string()
-      .email("Invalid Email Address!")
-      .required("Email is Required"),
-    employee_description: Yup.string()
-      .required("Description is Required")
-      .min(200, "Minimum characters should be 200")
-      .max(800, "Characters should not be more than 800"),
+    // user: Yup.string()
+    // .email("Invalid Email Address!")
+    //   .required("Description is Required")
+    //   .min(200, "Minimum characters should be 200")
+    //   .max(800, "Characters should not be more than 800"),
+    // .required("Email is Required"),
+    // employee_description: Yup.string()
+    //   .required("Description is Required")
+    //   .min(200, "Minimum characters should be 200")
+    //   .max(800, "Characters should not be more than 800"),
     //   .matches("", "should not be spaces"), here i should write regex which will exclude more than two whitespaces
     employee_phone: Yup.number()
       .required("Phone num is required")
@@ -62,14 +87,29 @@ function Profile(props) {
   });
 
   const handle_addupdateformsubmit = (data) => {
+    console.log(data);
     alert(JSON.stringify(data));
-    set_AddUpdate_Form_Data(data);
-    reset();
+    set_AddUpdate_Form_Data({
+      employee_name: data.employee_name,
+      employee_UID: data.employee_UID,
+      employee_website: data.employee_website,
+      employee_bio: data.employee_bio,
+      employee_jobtitle: data.employee_jobtitle,
+      employee_education: data.employee_education,
+      employee_experience: data.employee_experience,
+      employee_photo: data.employee_photo[0],
+      employee_awards: data.employee_awards,
+      employee_address: data.employee_address,
+      employee_phone: data.employee_phone,
+      employee_facebook: data.employee_facebook,
+      employee_linkedin: data.employee_linkedin,
+    });
+    // reset();
   };
   useEffect(() => {
     if (props.data) {
       setValue("employee_name", props.data.employee_name);
-      // setValue("employee_jobtitle", props.data.employee_jobtitle);
+      setValue("employee_jobtitle", props.data.employee_jobtitle);
 
       // setValue("employee_category", props.data.employee_category);
 
@@ -77,19 +117,19 @@ function Profile(props) {
 
       // setValue("employee_department", props.data.employee_department); This should not be editable or updatable because through this later we are going to assign departments to the current employee in which he is working
 
-      setValue("employee_email", props.data.employee_email);
+      // setValue("employee_email", props.data.user);
 
-      setValue("employee_description", props.data.employee_description);
+      setValue("employee_bio", props.data.employee_bio);
 
       setValue("employee_website", props.data.employee_website);
 
-      setValue("employee_photo", props.data.employee_photo);
+      // setValue("employee_photo", props.data.employee_photo);
 
       setValue("employee_education", props.data.employee_education);
 
-      setValue("employee_surgeries", props.data.employee_surgeries);
+      // setValue("employee_surgeries", props.data.employee_surgeries);
 
-      setValue("employee_appointments", props.data.employee_appointments);
+      // setValue("employee_appointments", props.data.employee_appointments);
 
       setValue("employee_awards", props.data.employee_awards);
 
@@ -100,31 +140,47 @@ function Profile(props) {
       setValue("employee_facebook", props.data.employee_facebook);
 
       setValue("employee_linkedin", props.data.employee_linkedin);
-      // setValue("employee_id", props.data.employee_id); it should not be editable
+      // setValue("employee_UID", props.data.employee_UID);  //it should not be editable
     }
-  }, []);
-  // useEffect(() => {  this will be un-commentedd when bckend created
-  // this axios willl be update (patch) http request because the employee will be added in according sessions in admin
-  //   {
-  //     addUpdate_Form_Data &&
-  //       axios
-  //         .patch(
-  //           `http://localhost:3100/employess` +
-  //           { ...addUpdate_Form_Data }
-  //         )
-  //         .then((response) => {
-  //           console.log(response);
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
+  }, [props.data]);
+  useEffect(() => {
+    // this will be un-commentedd when bckend created
+    // this axios willl be update (patch) http request because the employee will be added in according sessions in admin
+    if (addUpdate_Form_Data) {
+      axios
+        .patch(
+          `allikhwa-hms/${employee_employeea_var}/${props.data.user}`,
+          addUpdate_Form_Data
+        )
+        .then((response) => {
+          console.log(response);
+          set_AddUpdate_Form_Data(false);
+          navigate("../doctor-hms", { relative: "path" });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [addUpdate_Form_Data]);
+  // useEffect(() => {
+  //   if (!props.data.employee_UID) {
+  //     navigate("doctor-hms/dr-profile");
   //   }
-  // }, [addUpdate_Form_Data]);
+  // else {
+  // navigate("dr-dashboard", { relative: "path" });
+  // navigate("doctor-hms/dr-profile");
+  // return <DrProfile />;
+  // }
+  // }, []);
   return (
     <div className="profile_top">
       <div className="profile_profile_pic_card">
         <img
-          src="https://pakobserver.net/wp-content/uploads/2021/09/4-75.jpg"
+          src={
+            props.data.employee_photo
+              ? props.data.employee_photo
+              : "https://pakobserver.net/wp-content/uploads/2021/09/4-75.jpg"
+          }
           alt="Doctor"
         />
         <div className="profile_name_speciality_jobtitile">
@@ -157,11 +213,12 @@ function Profile(props) {
             <label>Your Hospital ID</label>
             <input
               type="text"
-              id="employee_id"
-              name="employee_id"
-              value={props.data?.employee_id}
-              {...register("employee_id")}
+              id="employee_UID"
+              name="employee_UID"
+              value={props.data?.employee_UID}
+              {...register("employee_UID")}
             ></input>
+            <p className="pForForm">{errors.employee_UID?.message}</p>
           </div>
           <div className="profile_label_input ">
             <label
@@ -176,6 +233,7 @@ function Profile(props) {
               {...register("employee_website")}
               placeholder="Enter Your Website"
             ></input>
+            <p className="pForForm">{errors.employee_website?.message}</p>
           </div>
           <div className="profile_label_input ">
             <label
@@ -195,10 +253,10 @@ function Profile(props) {
           <div className="profile_label_input ">
             <span>
               <p>
-                <label htmlFor="employee_description">Your Bio:</label>
+                <label htmlFor="employee_bio">Your Bio:</label>
               </p>
               <p>Write a Short Introduction:</p>
-              <p className="pForForm">{errors.employee_description?.message}</p>
+              <p className="pForForm">{errors.employee_bio?.message}</p>
             </span>
             <div>
               <div
@@ -268,13 +326,12 @@ function Profile(props) {
                 />
               </div>
               <textarea
-                {...register("employee_description")}
-                id="employee_description"
-                name="employee_description"
+                {...register("employee_bio")}
+                id="employee_bio"
+                name="employee_bio"
                 placeholder="Your short introduction!"
                 rows="6"
                 cols="60"
-                value={data.employee_description}
               />
             </div>
           </div>
@@ -290,12 +347,12 @@ function Profile(props) {
               id="employee_jobtitle"
               type="text"
               {...register("employee_jobtitle")}
-              value={data.employee_jobtitle}
+              value={props.data?.employee_jobtitle}
               placeholder="Enter Your Job Title"
             ></input>
-            {/* <p className="pForForm">{errors.employee_jobtitle?.message}</p> */}
+            <p className="pForForm">{errors.employee_jobtitle?.message}</p>
           </div>
-          <div className="profile_label_input ">
+          {/* <div className="profile_label_input ">
             <label
               htmlFor="employee_category"
               className="profile_lanel_input_label"
@@ -306,11 +363,11 @@ function Profile(props) {
               id="employee_category"
               type="text"
               {...register("employee_category")}
-              value={data.employee_category}
+              value={props.data?.employee_category}
               placeholder="Enter Your Job Category"
             ></input>
-            {/* <p className="pForForm">{errors.employee_category?.message}</p> */}
-          </div>
+            <p className="pForForm">{errors.employee_category?.message}</p>
+          </div> */}
           <div className="profile_label_input ">
             <label
               htmlFor="employee_education"
@@ -324,6 +381,7 @@ function Profile(props) {
               type="text"
               placeholder="Enter Youe Education Details"
             ></input>
+            <p className="pForForm">{errors.employee_education?.message}</p>
           </div>
           <div className="profile_label_input ">
             <label
@@ -343,27 +401,26 @@ function Profile(props) {
           </div>
           <div className="profile_label_input ">
             <label
-              htmlFor="employee_department"
+              htmlFor="employee_departments"
               className="profile_lanel_input_label"
             >
               {" "}
               Department:
             </label>
             <input
-              {...register("employee_department")}
-              id="employee_department"
+              // {...register("employee_departments")}
+              id="employee_departments"
               type="text"
-              value={data.employee_department}
+              value={props.data?.employee_departments}
               placeholder="Enter Your Department Name You Are Working "
             ></input>
-            {/* <p className="pForForm">{errors.employee_department?.message}</p> */}
+            <p className="pForForm">{errors.employee_departments?.message}</p>
           </div>
-          <div className="profile_label_input ">
+          {/* <div className="profile_label_input ">
             <label
               htmlFor="employee_surgeries"
               className="profile_lanel_input_label"
             >
-              {" "}
               Suregries Performed:
             </label>
             <input
@@ -372,8 +429,8 @@ function Profile(props) {
               type="text"
               placeholder="Enter The Number Of Surgeries You Performed"
             ></input>
-          </div>
-          <div className="profile_label_input ">
+          </div> */}
+          {/* <div className="profile_label_input ">
             <label
               htmlFor="employee_appointments"
               className="profile_lanel_input_label"
@@ -386,7 +443,7 @@ function Profile(props) {
               type="text"
               placeholder="Enter Your Appointments Per Month"
             ></input>
-          </div>
+          </div> */}
           <div className="profile_label_input ">
             <label
               htmlFor="employee_awards"
@@ -398,8 +455,9 @@ function Profile(props) {
               {...register("employee_awards")}
               id="employee_awards"
               type="text"
-              placeholder="Enter Your Awards"
+              placeholder="Enter Your Awards and Recognitions"
             ></input>
+            <p className="pForForm">{errors.employee_awards?.message}</p>
           </div>
           <div className="profile_label_input ">
             <label
@@ -408,7 +466,6 @@ function Profile(props) {
             >
               Address:
             </label>
-
             <input
               {...register("employee_address")}
               id="employee_address"
@@ -433,19 +490,17 @@ function Profile(props) {
             <p className="pForForm">{errors.employee_phone?.message}</p>
           </div>
           <div className="profile_label_input ">
-            <label
-              htmlFor="employee_email"
-              className="profile_lanel_input_label"
-            >
+            <label htmlFor="user" className="profile_lanel_input_label">
               Email:
             </label>
             <input
-              {...register("employee_email")}
-              id="employee_email"
+              // {...register("user")}
+              id="user"
               type="text"
               placeholder="Enter Your Email"
+              value={props.data.user}
             ></input>
-            <p className="pForForm">{errors.employee_email?.message}</p>
+            {/* <p className="pForForm">{errors.user?.message}</p> */}
           </div>
           <div className="profile_label_input ">
             <label
@@ -460,6 +515,7 @@ function Profile(props) {
               type="text"
               placeholder="Enter Your Facebook ID"
             ></input>
+            <p className="pForForm">{errors.employee_facebook?.message}</p>
           </div>
           <div className="profile_label_input ">
             <label
@@ -474,6 +530,7 @@ function Profile(props) {
               type="text"
               placeholder="Enter Your LinkedIn ID"
             ></input>
+            <p className="pForForm">{errors.employee_linkedin?.message}</p>
           </div>
           <input
             type="submit"

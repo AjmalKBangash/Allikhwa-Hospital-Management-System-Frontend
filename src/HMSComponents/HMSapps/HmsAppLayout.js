@@ -9,6 +9,7 @@ import {
   Outlet,
   useLocation,
   matchPath,
+  useNavigate,
 } from "react-router-dom";
 
 // HMS Icons
@@ -33,61 +34,73 @@ const departments = [
   {
     id: "1",
     name: "DASHBOARD",
+    path: "dashboard",
     logo: RiDashboardFill,
   },
   {
     id: "2",
     name: "PROFILE",
+    path: "admin-profile",
     logo: BsFillPersonLinesFill,
   },
   {
     id: "3",
     name: "ADMINS",
+    path: "admins",
     logo: RiAdminFill,
   },
   {
     id: "4",
     name: "DOCTORS",
+    path: "doctors",
     logo: FaUserDoctor,
   },
   {
     id: "5",
     name: "PHARMACISTS",
+    path: "pharmacists",
     logo: AiFillMedicineBox,
   },
   {
     id: "6",
     name: "NURSES",
+    path: "nurses",
     logo: FaUserNurse,
   },
   {
     id: "7",
     name: "RECEPTIONISTS",
+    path: "receptionists",
     logo: MdPersonalInjury,
   },
   {
     id: "8",
     name: "STAFF",
+    path: "staff",
     logo: MdLocalPharmacy,
   },
   {
     id: "9",
     name: "OTHERS",
+    path: "others",
     logo: FaBuildingCircleArrowRight,
   },
   {
     id: "10",
     name: "PATIENTS",
+    path: "patients",
     logo: BsPersonFillExclamation,
   },
   {
     id: "11",
     name: "DEPARTMENTS",
+    path: "departments",
     logo: FcDepartment,
   },
   {
     id: "12",
     name: "EXPENSES",
+    path: "expenses",
     logo: FaMoneyCheckDollar,
   },
   // {
@@ -110,6 +123,7 @@ function HmsAppLayout() {
   const only_hms_icons = useRef();
   const hms_outlet = useRef();
   const location = useLocation();
+  const navigate = useNavigate();
   // only_hms_icons.current.style.display = "none";
 
   // matching path for displaying dashboard otherwise not
@@ -239,6 +253,12 @@ function HmsAppLayout() {
                 padding: "5px",
                 cursor: "pointer",
               }}
+              onClick={() => {
+                localStorage.setItem("access_token", "");
+                localStorage.setItem("refresh_token", "");
+                localStorage.setItem("employee_loggedin_persistentdata", "");
+                navigate("/signup");
+              }}
             />
           </span>
         </div>
@@ -249,7 +269,7 @@ function HmsAppLayout() {
                 return (
                   <NavLink
                     key={id}
-                    to={department.name.toLowerCase()}
+                    to={department.path}
                     className="linkk"
                     style={{ color: "white" }}
                   >

@@ -109,8 +109,6 @@ function AddUpdateForm(props) {
     for (let i = 0; departments.length > i; i++) {
       departments02 = departments02 + departments[i].toUpperCase() + ",";
     }
-    console.log(data.employee_photo[0]);
-    console.log(data.employee_photo);
     set_AddUpdate_Form_Data({
       employee_name: data.employee_name,
       employee_UID: data.employee_UID,

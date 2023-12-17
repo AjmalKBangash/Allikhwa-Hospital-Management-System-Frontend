@@ -25,8 +25,7 @@ import Jaan from "./Components/Jaan";
 import ProtectedRoutesHmsAppLayout from "./HMSComponents/HMSapps/ProtectedRoutesHmsAppLayout";
 import HmsAppLayout from "./HMSComponents/HMSapps/HmsAppLayout";
 import Dashboard from "./HMSComponents/HMSapps/Dashboard";
-// import CardForAll from "./HMSComponents/HMSapps/CardForAll";
-import Profile from "./HMSComponents/HMSapps/Profile";
+import AdminProfile from "./HMSComponents/HMSapps/AdminProfile";
 import Admins from "./HMSComponents/HMSapps/Admins";
 import Doctors from "./HMSComponents/HMSapps/Doctors";
 import Pharmacists from "./HMSComponents/HMSapps/Pharmacists";
@@ -100,6 +99,7 @@ import {
   Routes,
   Outlet,
 } from "react-router-dom";
+import ForgotPassword from "./Components/ForgotPassword";
 
 const theRoutes = createBrowserRouter(
   createRoutesFromElements(
@@ -117,13 +117,14 @@ const theRoutes = createBrowserRouter(
       </Route>
       <Route path="/doctors" element={<Doctor />} />
       <Route path="/signup" element={<SignUpIn />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route
         path="all'ikhwa-management-system"
         element={<ProtectedRoutesHmsAppLayout Component={HmsAppLayout} />}
         // element={<HmsAppLayout />}
       >
         <Route index path="dashboard" element={<Dashboard />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="admin-profile" element={<AdminProfile />} />
         <Route path="admins" element={<Admins />} />
         <Route path="doctors" element={<Doctors />} />
         <Route path="pharmacists" element={<Pharmacists />} />

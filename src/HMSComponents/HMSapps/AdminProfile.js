@@ -2,10 +2,11 @@ import { employee_employee } from "../../Store/Store";
 import Profile from "/home/ajay/Desktop/FYP/allikhwa/src/HMSComponents/HMSapps/Profile.js";
 import { useSelector, useDispatch } from "react-redux";
 
-function DrProfile() {
+function AdminProfile() {
   const employee_loggedin_var = useSelector((state) => state.employee_loggedin);
+  console.log(employee_loggedin_var);
   const dispatch = useDispatch();
-  dispatch(employee_employee("doctors"));
+  dispatch(employee_employee("admins"));
 
   return (
     <>
@@ -16,4 +17,4 @@ function DrProfile() {
   );
 }
 
-export default DrProfile;
+export default AdminProfile;

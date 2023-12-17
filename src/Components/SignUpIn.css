@@ -61,7 +61,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 20px;
+  margin-top: 20px;
   width: 90%;
 }
 .inputFieldinOverlayForm {
@@ -92,6 +92,16 @@
   font-size: 18px;
   padding: 8px;
   cursor: pointer;
+}
+.forgotpassword {
+  margin: 5px;
+  color: #fe4200;
+  margin-left: auto;
+  text-decoration: none;
+}
+.forgotpassword:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 1070px) {
