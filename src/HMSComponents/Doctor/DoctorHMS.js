@@ -9,6 +9,7 @@ import {
   Outlet,
   useLocation,
   matchPath,
+  useNavigate,
 } from "react-router-dom";
 
 // HMS Icons
@@ -92,6 +93,7 @@ function DoctorHMS() {
     (state) => state.employee_loggedin
   );
   const location = useLocation();
+  const navigate = useNavigate();
   let display_img = matchPath("/doctor-hms/", location.pathname);
 
   return (
@@ -194,6 +196,12 @@ function DoctorHMS() {
                 padding: "5px",
                 cursor: "pointer",
               }}
+              onClick={() => {
+                localStorage.setItem("access_token", "");
+                localStorage.setItem("refresh_token", "");
+                localStorage.setItem("employee_loggedin_persistentdata", "");
+                navigate("/signup");
+              }}
             />
           </span>
         </div>
@@ -213,7 +221,6 @@ function DoctorHMS() {
                     to={hmsobjs.path}
                     className="linkk"
                     style={{ color: "white" }}
-                    data={employee_loggedin_doctor}
                   >
                     <li>
                       <span className="hmsmanagementicons">

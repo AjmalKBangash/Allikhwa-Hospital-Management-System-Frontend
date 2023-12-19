@@ -20,9 +20,7 @@ function HMSroutes() {
   return (
     <>
       <h1>hms</h1>
-      <Routes path="/HMSroutes/" element={<HMSroutes />}>
-        <Route path="ajay" element={<Ajay />} />
-      </Routes>
+      <Routes path="/HMSroutes/" element={<HMSroutes />}></Routes>
     </>
   );
 }

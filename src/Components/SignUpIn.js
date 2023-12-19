@@ -8,13 +8,14 @@ import * as Yup from "yup";
 // media
 import AllikhwaLogo from "/home/ajay/Desktop/FYP/allikhwa/src/Media/AllikhwaLogo.png";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 // REACT ICONS
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import ProtectedRoutesHmsAppLayout from "../HMSComponents/HMSapps/ProtectedRoutesHmsAppLayout";
+import ForgotPassword from "./ForgotPassword";
 
 function SignUpIn() {
   // axios.defaults = axiosinstance.defaults;
@@ -124,7 +125,6 @@ function SignUpIn() {
     register: register3,
     formState: { errors: errors3 },
     handleSubmit: handleSubmit3,
-    reset,
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(signupSchema2),
@@ -191,99 +191,111 @@ function SignUpIn() {
   // USER LOGIN
   useEffect(() => {
     if (logginInUser) {
-      const baseurl = "http://localhost:8000/";
       axios
-        .post(baseurl + "api/token/", logginInUser)
+        .post("http://localhost:8000/api/token/", {
+          email: logginInUser.email,
+          password: logginInUser.password,
+          rememberMe: logginInUser.rememberMe ? "true" : "false",
+        })
+        // .post("api/token/", logginInUser)
         .then((res) => {
           localStorage.setItem("access_token", res.data.access);
           localStorage.setItem("refresh_token", res.data.refresh);
-          setLogginInUser(false);
+
           ///////////////////////////////////////////
-          axios
-            .get("allikhwa-hms/doctors/" + logginInUser.email)
-            .then((response) => {
-              // Handle successful response from the first request
-              // dispatch(employee_loggedin(response.data)); IT IS USELESS BECAUSE THE STATES IN REACT COMPONENTS INCLUDING REACT-REDUX THE STATES IS NOT PERSISTENT HENCE IT WILL BE UNMOUNTED WHEN PAGE REFRESHED
-              localStorage.setItem(
-                "employee_loggedin_persistentdata",
-                logginInUser.email
-              );
-              navigate("../doctor-hms", { relative: "path" });
-            })
-            .catch((error) => {
-              axios
-                .get("allikhwa-hms/staffs/" + logginInUser.email)
-                .then((response) => {
-                  localStorage.setItem(
-                    "employee_loggedin_persistentdata",
-                    logginInUser.email
-                  );
-                  navigate("../rec-hms", {
-                    relative: "path",
-                  });
-                })
-                .catch((error) => {
-                  axios
-                    .get("allikhwa-hms/receptionists/" + logginInUser.email)
-                    .then((response) => {
-                      localStorage.setItem(
-                        "employee_loggedin_persistentdata",
-                        logginInUser.email
-                      );
-                      navigate("../rec-hms", {
-                        relative: "path",
-                      });
-                    })
-                    .catch((error) => {
-                      axios
-                        .get("allikhwa-hms/nurses/" + logginInUser.email)
-                        .then((response) => {
-                          localStorage.setItem(
-                            "employee_loggedin_persistentdata",
-                            response.data
-                          );
-                          navigate("../rec-hms", {
-                            relative: "path",
-                          });
-                        })
-                        .catch((error) => {
-                          axios
-                            .get(
-                              "allikhwa-hms/pharmacists/" + logginInUser.email
-                            )
-                            .then((response) => {
-                              localStorage.setItem(
-                                "employee_loggedin_persistentdata",
-                                logginInUser.email
-                              );
-                              navigate("../lab-hms", {
-                                relative: "path",
-                              });
-                            })
-                            .catch((error) => {
-                              axios
-                                .get(
-                                  "allikhwa-hms/admins/" + logginInUser.email
-                                )
-                                .then((response) => {
-                                  localStorage.setItem(
-                                    "employee_loggedin_persistentdata",
-                                    logginInUser.email
-                                  );
-                                  navigate("../all'ikhwa-management-system/", {
-                                    relative: "path",
-                                  });
-                                });
-                            });
-                        });
+          try {
+            axios
+              .get("allikhwa-hms/doctors/" + logginInUser.email)
+              .then((response) => {
+                // Handle successful response from the first request
+                // dispatch(employee_loggedin(response.data)); IT IS USELESS BECAUSE THE STATES IN REACT COMPONENTS INCLUDING REACT-REDUX THE STATES IS NOT PERSISTENT HENCE IT WILL BE UNMOUNTED WHEN PAGE REFRESHED
+                localStorage.setItem(
+                  "employee_loggedin_persistentdata",
+                  logginInUser.email
+                );
+                navigate("../doctor-hms", { relative: "path" });
+              })
+              .catch((error) => {
+                axios
+                  .get("allikhwa-hms/staffs/" + logginInUser.email)
+                  .then((response) => {
+                    localStorage.setItem(
+                      "employee_loggedin_persistentdata",
+                      logginInUser.email
+                    );
+                    navigate("../rec-hms", {
+                      relative: "path",
                     });
-                });
-            });
+                  })
+                  .catch((error) => {
+                    axios
+                      .get("allikhwa-hms/receptionists/" + logginInUser.email)
+                      .then((response) => {
+                        localStorage.setItem(
+                          "employee_loggedin_persistentdata",
+                          logginInUser.email
+                        );
+                        navigate("../rec-hms", {
+                          relative: "path",
+                        });
+                      })
+                      .catch((error) => {
+                        axios
+                          .get("allikhwa-hms/nurses/" + logginInUser.email)
+                          .then((response) => {
+                            localStorage.setItem(
+                              "employee_loggedin_persistentdata",
+                              response.data
+                            );
+                            navigate("../rec-hms", {
+                              relative: "path",
+                            });
+                          })
+                          .catch((error) => {
+                            axios
+                              .get(
+                                "allikhwa-hms/pharmacists/" + logginInUser.email
+                              )
+                              .then((response) => {
+                                localStorage.setItem(
+                                  "employee_loggedin_persistentdata",
+                                  logginInUser.email
+                                );
+                                navigate("../lab-hms", {
+                                  relative: "path",
+                                });
+                              })
+                              .catch((error) => {
+                                axios
+                                  .get(
+                                    "allikhwa-hms/admins/" + logginInUser.email
+                                  )
+                                  .then((response) => {
+                                    localStorage.setItem(
+                                      "employee_loggedin_persistentdata",
+                                      logginInUser.email
+                                    );
+                                    navigate(
+                                      "../all'ikhwa-management-system/",
+                                      {
+                                        relative: "path",
+                                      }
+                                    );
+                                  });
+                              });
+                          });
+                      });
+                  });
+              });
+          } catch (err) {
+            console.log(err);
+          }
           ///////////////////////////////////////////
+          setLogginInUser(false);
           navigate("");
         })
         .catch((err) => {
-          // console.log(err);
+          console.log(err);
         });
     }
   }, [logginInUser]);
@@ -310,7 +322,10 @@ function SignUpIn() {
         <div className="menuforsignup">
           <img src={AllikhwaLogo}></img>
           <h3
-            onClick={() => setDisplaySignIn(true)}
+            onClick={() => {
+              setDisplaySignIn(true);
+              // setdisplaySignIn_from_forot_psswd(false);
+            }}
             style={{
               backgroundColor: displaySignIn ? "#fe4200" : "#fe440081",
             }}
@@ -318,7 +333,10 @@ function SignUpIn() {
             Sign In
           </h3>
           <h3
-            onClick={() => setDisplaySignIn(false)}
+            onClick={() => {
+              setDisplaySignIn(false);
+              // setdisplaySignIn_from_forot_psswd(false);
+            }}
             style={{
               backgroundColor: !displaySignIn ? "#fe4200" : "#fe440081",
             }}
@@ -395,9 +413,37 @@ function SignUpIn() {
               )}
             </div>
             <p className="pForForm">{errors.password?.message}</p>
-            <button type="submit" className="loginSignBtn">
+            <div
+              style={{
+                margin: "5px",
+                height: "15px",
+                // border: "1px solid #fe440063 ",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <input
+                type="checkbox"
+                id="rememberMe"
+                name="rememberMe"
+                {...register("rememberMe")}
+                style={{ marginRight: "10px" }}
+              />
+              <label htmlFor="rememberMe">Remember Me</label>
+            </div>
+            <button type="submit" style={{ margin: "8px 5px" }}>
+              {/* loginSignBtn */}
               Submit
             </button>
+            <p
+              className="forgotpassword"
+              onClick={() => {
+                // Navigate(<ForgotPassword />);
+                navigate("/forgot-password");
+              }}
+            >
+              Forgot password
+            </p>
           </form>
         )}
         {/* Sign Up Form  */}

@@ -15,13 +15,13 @@ function ProtectedRoutesLabTechnician({ Component }) {
   useEffect(() => {
     if (employee_state) {
       axios
-        .get("allikhwa-hms/doctors/" + employee_state)
+        .get("allikhwa-hms/pharmacists/" + employee_state)
         .then((res) => {
           if (res.data.employee_name) {
             console.log(res.data.employee_name);
             dispatch(employee_loggedin(res.data));
           } else {
-            throw "The doctor is not found please provide valid doctor email";
+            throw "The lab technician is not found please provide valid doctor email";
           }
         })
         .catch((err) => {
