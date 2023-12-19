@@ -155,7 +155,7 @@ function Profile(props) {
         .then((response) => {
           console.log(response);
           set_AddUpdate_Form_Data(false);
-          navigate("../doctor-hms", { relative: "path" });
+          navigate("../", { relative: "path" });
         })
         .catch((error) => {
           console.log(error);
