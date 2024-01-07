@@ -19,6 +19,7 @@ import ForgotPassword from "./ForgotPassword";
 
 function SignUpIn() {
   // axios.defaults = axiosinstance.defaults;
+  const [loading_signup_in, setloading_up_in] = useState(false);
   const [displaySignIn, setDisplaySignIn] = useState(true);
   const [patientForm, setPatientForm] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // State to control password visibility for login
@@ -62,7 +63,12 @@ function SignUpIn() {
     email: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required!"),
-    phone: Yup.string().required("Phone num is required!").matches("123"),
+    phone: Yup.string()
+      .required("Phone num is required!")
+      .matches(
+        /^\+?\d{10,11}$/,
+        "Please ensure the phone number is between 10 and 11 digits, and do not include letters or special characters"
+      ), // /^\+?\d{10,11}$/
     password: Yup.string()
       .required("Password is required!")
       .matches(
@@ -83,7 +89,9 @@ function SignUpIn() {
     email: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required"),
-    phone: Yup.string().required("Phone num is required!").matches("123"),
+    phone: Yup.string()
+      .required("Phone num is required!")
+      .matches(/^\+?\d{10,11}$/),
     IDcard: Yup.number().required("Id Card num is required!").min(3).max(3),
     bloodgrplist: Yup.string().required("Blood grp is required!"),
     // password: Yup.string()
@@ -162,16 +170,20 @@ function SignUpIn() {
         .post(
           "http://localhost:8000/allikhwa-hms/custom-user/",
           registeringUser
+          // { headers: headers } // Include headers in the request
         )
         .then((res) => {
           setRegisteringUser(false);
-          setDisplaySignIn(true);
           // navigate("/signup");
           setRegistrationErrorUsername(false);
           setRegistrationErrorEmail(false);
+          setloading_up_in(false);
+          navigate("/confirming-email");
+          setDisplaySignIn(true);
           reset02();
         })
         .catch((err) => {
+          setloading_up_in(false);
           if (err.response.data.email) {
             setRegistrationErrorEmail("User with this email already exists");
           } else {
@@ -213,6 +225,7 @@ function SignUpIn() {
                   "employee_loggedin_persistentdata",
                   logginInUser.email
                 );
+                setloading_up_in(false);
                 navigate("../doctor-hms", { relative: "path" });
               })
               .catch((error) => {
@@ -223,11 +236,13 @@ function SignUpIn() {
                       "employee_loggedin_persistentdata",
                       logginInUser.email
                     );
+                    setloading_up_in(false);
                     navigate("../rec-hms", {
                       relative: "path",
                     });
                   })
                   .catch((error) => {
+                    // setloading_up_in(false);
                     axios
                       .get("allikhwa-hms/receptionists/" + logginInUser.email)
                       .then((response) => {
@@ -235,11 +250,13 @@ function SignUpIn() {
                           "employee_loggedin_persistentdata",
                           logginInUser.email
                         );
+                        setloading_up_in(false);
                         navigate("../rec-hms", {
                           relative: "path",
                         });
                       })
                       .catch((error) => {
+                        // setloading_up_in(false);
                         axios
                           .get("allikhwa-hms/nurses/" + logginInUser.email)
                           .then((response) => {
@@ -247,11 +264,13 @@ function SignUpIn() {
                               "employee_loggedin_persistentdata",
                               response.data
                             );
+                            setloading_up_in(false);
                             navigate("../rec-hms", {
                               relative: "path",
                             });
                           })
                           .catch((error) => {
+                            // setloading_up_in(false);
                             axios
                               .get(
                                 "allikhwa-hms/pharmacists/" + logginInUser.email
@@ -261,11 +280,13 @@ function SignUpIn() {
                                   "employee_loggedin_persistentdata",
                                   logginInUser.email
                                 );
+                                setloading_up_in(false);
                                 navigate("../lab-hms", {
                                   relative: "path",
                                 });
                               })
                               .catch((error) => {
+                                // setloading_up_in(false);
                                 axios
                                   .get(
                                     "allikhwa-hms/admins/" + logginInUser.email
@@ -275,12 +296,17 @@ function SignUpIn() {
                                       "employee_loggedin_persistentdata",
                                       logginInUser.email
                                     );
+                                    setloading_up_in(false);
                                     navigate(
                                       "../all'ikhwa-management-system/",
                                       {
                                         relative: "path",
                                       }
                                     );
+                                  })
+                                  .catch((err) => {
+                                    setloading_up_in(false);
+                                    console.log(err);
                                   });
                               });
                           });
@@ -431,12 +457,19 @@ function SignUpIn() {
               />
               <label htmlFor="rememberMe">Remember Me</label>
             </div>
-            <button type="submit" style={{ margin: "8px 5px" }}>
+            <button
+              type="submit"
+              style={{ margin: "8px 5px" }}
+              onClick={() => {
+                setloading_up_in(true);
+              }}
+            >
               {/* loginSignBtn */}
-              Submit
+              {loading_signup_in ? <p>Loading ...</p> : <p> Submit</p>}
+              {/* Submit */}
             </button>
             <p
-              className="forgotpassword"
+              className="forgotpassword-in-signup"
               onClick={() => {
                 // Navigate(<ForgotPassword />);
                 navigate("/forgot-password");
@@ -477,7 +510,7 @@ function SignUpIn() {
                   type="text"
                   className="inputFieldinOverlayForm"
                   name="username"
-                  placeholder="Enter Your Name"
+                  placeholder="Enter Your Username"
                   {...register2("username")}
                 ></input>
                 {errors2.username && (
@@ -587,8 +620,14 @@ function SignUpIn() {
                   to warn and inform you about present situation and security
                   measures against them.
                 </p>
-                <button type="submit" className="loginSignBtn">
-                  Submit
+                <button
+                  type="submit"
+                  className="loginSignBtn"
+                  onClick={() => {
+                    setloading_up_in(true);
+                  }}
+                >
+                  {loading_signup_in ? <p>Loading ...</p> : <p> Submittt</p>}
                 </button>
               </form>
             )}

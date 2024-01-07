@@ -3,13 +3,19 @@ import { useNavigate } from "react-router-dom";
 // function axiosinstance() {
 // Set Axios global defaults
 axios.defaults.baseURL = "http://localhost:8000/";
-axios.defaults.timeout = 10000;
+// axios.defaults.timeout = 10000;
 
-// // Set Authorization header based on access token in local storage
-axios.defaults.headers.common["Authorization"] = `Bearer ${
+// // Set Authorization header based on access token in local storage // THESE AUTHORIZATION HEADERS ARE WRONG BECAUSE WE ARE INCLUDING Bearer AND THEN FEW EMPTY SPACES BUT THE SERVER STILL GIVES US AUTHORIZATION HEADERS ERROR SO WE NEED TO REMOVE THE BEARER FROM THE AUTHOIRATION HEADERS
+// axios.defaults.headers.common["Authorization"] =
+//   `Bearer ${
+//     localStorage.getItem("access_token")
+//       ? localStorage.getItem("access_token")
+//       : "   "
+//   }`;
+axios.defaults.headers.common["Authorization"] = `${
   localStorage.getItem("access_token")
-    ? localStorage.getItem("access_token")
-    : null
+    ? "Bearer   " + localStorage.getItem("access_token")
+    : ""
 }`;
 // Create an instance of Axios with custom configurations
 // const axios = axios.create({
@@ -20,7 +26,7 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${
 //     Authorization: `Bearer ${
 //       localStorage.getItem("access_token")
 //         ? localStorage.getItem("access_token")
-//         : null
+//         : "  "
 //     }`,
 //   },
 // });
@@ -112,7 +118,7 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${
 // axios.defaults.headers.common["Authorization"] = `Bearer ${
 //   localStorage.getItem("access_token")
 //     ? localStorage.getItem("access_token")
-//     : null
+//     : "  "
 // }`;
 
 // // Track refresh token expiration state
@@ -260,11 +266,12 @@ axios.defaults.headers.common["Authorization"] = `Bearer ${
 axios.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    config.headers.Authorization = `Bearer ${
-      localStorage.getItem("access_token")
-        ? localStorage.getItem("access_token")
-        : ""
-    }`;
+    config.headers.Authorization =
+      ` ${
+        localStorage.getItem("access_token")
+          ? "Bearer   " + localStorage.getItem("access_token")
+          : "   "
+      }` + "  ";
     // config.headers["Content-Type"] = 'Application/json'
     return config;
   },

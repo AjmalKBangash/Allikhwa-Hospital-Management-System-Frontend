@@ -4,30 +4,55 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ForgotPassword() {
+function EnterPin() {
+  const [loadingPIN, setLoadingPIN] = useState(false);
+  const [PIN, setPIN] = useState(false);
+  const navigate = useNavigate();
   // FORGOT PASSWORD
-  const signupSchemaforgotpsswd = Yup.object().shape({
+  const signupSchemaPIN = Yup.object().shape({
     // Log In Form Validation
     // username: Yup.string().required("Name is required!"),
-    email: Yup.string()
+    user_email: Yup.string()
       .email("Invalid Email Address!")
       .required("Email is Required!"),
+    user_otp: Yup.string()
+      .required("Phone num is required!")
+      .matches(/^\d{4}$/, "Please enter only digits!"),
   });
   // FORGOT PASSWORD
   const {
-    reset: resetforgotpsswd,
-    register: registerforgotpsswd,
-    formState: { errors: errorsforgotpsswd },
-    handleSubmit: handleSubmitforgotpsswd,
+    reset: resetPIN,
+    register: registerPIN,
+    formState: { errors: errorsPIN },
+    handleSubmit: handleSubmitPIN,
   } = useForm({
     mode: "onBlur",
-    resolver: yupResolver(signupSchemaforgotpsswd),
+    resolver: yupResolver(signupSchemaPIN),
   });
 
-  function onSubmitforpassword(data) {
+  function onSubmitforPIN(data) {
     alert(JSON.stringify(data));
+    setPIN(data);
   }
+
+  useEffect(() => {
+    if (PIN) {
+      axios
+        .post("api/confirming-email", PIN)
+        .then((res) => {
+          setLoadingPIN(false);
+          console.log(res.data);
+          navigate("/signup");
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoadingPIN(false);
+        });
+    }
+  }, [PIN]);
   return (
     <div className="signupintop">
       {/* <> */}
@@ -39,7 +64,7 @@ function ForgotPassword() {
         FOTGOTTEN YOUR PASSWORD, PLZ ENTER YOUR EMAIL
       </h3> */}
       <div className="signupinform">
-        <p className="forgotpassword01">Forgot Password!</p>
+        <p className="forgotpassword01">Enter PIN!</p>
         <div className="menuforsignup">
           <img src={AllikhwaLogo}></img>
           {/* <h3
@@ -69,31 +94,48 @@ function ForgotPassword() {
           className="signupform"
           name="loginform"
           key={1}
-          onSubmit={handleSubmitforgotpsswd(onSubmitforpassword)}
+          onSubmit={handleSubmitPIN(onSubmitforPIN)}
         >
           <input
             type="text"
             className="inputFieldinOverlayForm"
-            name="email"
+            name="user_email"
             placeholder="Enter Your Email Address"
-            {...registerforgotpsswd("email")}
+            {...registerPIN("user_email")}
           ></input>
-          {errorsforgotpsswd.email && (
-            <p className="pForForm">{errorsforgotpsswd.email?.message}</p>
+          {errorsPIN.user_email && (
+            <p className="pForForm">{errorsPIN.user_email?.message}</p>
           )}
-          <button type="submit" style={{ margin: "8px 5px" }}>
+          <input
+            type="text"
+            className="inputFieldinOverlayForm"
+            name="user_otp"
+            placeholder="Enter the PIN sent to your email address!"
+            {...registerPIN("user_otp")}
+          ></input>
+          {errorsPIN.user_otp && (
+            <p className="pForForm">{errorsPIN.user_otp?.message}</p>
+          )}
+          <button
+            type="submit"
+            style={{ margin: "8px 5px" }}
+            onClick={() => {
+              setLoadingPIN(true);
+            }}
+          >
             {/* loginSignBtn */}
-            Submit
+            {loadingPIN ? <p>Loading ...</p> : <p>Submit</p>}
           </button>
         </form>
         <p className="forgotpassword-line">
-          Resetting your password is easy! Simply provide your email address to
-          initiate the password recovery process and regain access to your
-          account
+          Complete your account registration by entering the PIN sent to your
+          email address.
+          {/* This step ensures the security of your account and */}
+          {/* expedites the registration process! */}
         </p>
       </div>
     </div>
   );
 }
 
-export default ForgotPassword;
+export default EnterPin;

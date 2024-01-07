@@ -93,13 +93,13 @@
   padding: 8px;
   cursor: pointer;
 }
-.forgotpassword {
+.forgotpassword-in-signup {
   margin: 5px;
   color: #fe4200;
   margin-left: auto;
   text-decoration: none;
 }
-.forgotpassword:hover {
+.forgotpassword-in-signup:hover {
   cursor: pointer;
   text-decoration: underline;
 }
