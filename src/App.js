@@ -1,9 +1,10 @@
 import "./App.css";
 import axios from "./Components/axiosinstance";
-
 // AppLayout Components
 import NavBar from "./Components/AppLayout/NavBar";
 import SignUpIn from "./Components/SignUpIn";
+import ForgotPassword from "./Components/ForgotPassword";
+import EnterPin from "./Components/EnterPin";
 import ScrollToTop from "./Components/ScrollToTop";
 import Appointment from "./Components/AppLayout/Appointment";
 import Emergency from "./Components/Emergency";
@@ -99,7 +100,6 @@ import {
   Routes,
   Outlet,
 } from "react-router-dom";
-import ForgotPassword from "./Components/ForgotPassword";
 
 const theRoutes = createBrowserRouter(
   createRoutesFromElements(
@@ -118,6 +118,7 @@ const theRoutes = createBrowserRouter(
       <Route path="/doctors" element={<Doctor />} />
       <Route path="/signup" element={<SignUpIn />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/confirming-email" element={<EnterPin />} />
       <Route
         path="all'ikhwa-management-system"
         element={<ProtectedRoutesHmsAppLayout Component={HmsAppLayout} />}
